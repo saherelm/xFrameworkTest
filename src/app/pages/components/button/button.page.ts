@@ -3,19 +3,19 @@ import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
 @Component({
-  selector: 'app-child',
-  templateUrl: './child.page.html',
-  styleUrls: ['./child.page.scss'],
+  selector: 'app-button',
+  templateUrl: './button.page.html',
+  styleUrls: ['./button.page.scss'],
 })
 // tslint:disable-next-line:component-class-suffix
-export class ChildPage extends VPageComponent {
+export class ButtonPage extends VPageComponent {
   //
   //#region Props ...
   //
   //#region Page Props ...
-  titleRes = AppResourceIDs.tools;
+  titleRes = AppResourceIDs.button;
   toolbarTitle = this.resourceProvider(this.titleRes);
-  toolbarSubTitle = this.resourceProvider(AppResourceIDs.tools_description);
+  toolbarSubTitle = this.resourceProvider(AppResourceIDs.button_description);
   toolbarShowSubTitle = true;
   //#endregion
   //#endregion

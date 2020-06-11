@@ -19,6 +19,7 @@ import {
   XGridModule,
   XFormModule,
   XTableModule,
+  XButtonModule,
   XSliderModule,
   XSpinnerModule,
   XSlotterModule,
@@ -79,6 +80,7 @@ import { VPageComponent } from './v-page/v-page.component';
     XFormModule,
     CommonModule,
     XTableModule,
+    XButtonModule,
     XSliderModule,
     XSpinnerModule,
     XStepperModule,
@@ -104,6 +106,7 @@ import { VPageComponent } from './v-page/v-page.component';
     XFrameworkServicesModule,
     XFrameworkServicesDirectivesModule,
 
+    //
     XPageModule,
     XCardModule,
     XIconModule,
@@ -120,6 +123,7 @@ import { VPageComponent } from './v-page/v-page.component';
     XFormModule,
     CommonModule,
     XTableModule,
+    XButtonModule,
     XSliderModule,
     XSpinnerModule,
     XStepperModule,

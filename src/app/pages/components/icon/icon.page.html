@@ -1,0 +1,21 @@
+<v-page
+  [hasSide]="true"
+  [toolbarTitle]="toolbarTitle"
+  [toolbarSubTitle]="toolbarSubTitle"
+  [toolbarShowSubTitle]="toolbarShowSubTitle"
+>
+  <!-- List Presenter -->
+  <x-list
+    #listPresenter
+    [color]="'light'"
+    [isPageList]="true"
+    [wrapWithCard]="true"
+    [cardColor]="'light'"
+    [showDivider]="false"
+    [clickableItems]="true"
+    [selectableItems]="true"
+    [items]="iconListItems"
+    [enableReordering]="true"
+  >
+  </x-list>
+</v-page>
