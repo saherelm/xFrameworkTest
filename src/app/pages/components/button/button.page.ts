@@ -18,5 +18,16 @@ export class ButtonPage extends VPageComponent {
   toolbarSubTitle = this.resourceProvider(AppResourceIDs.button_description);
   toolbarShowSubTitle = true;
   //#endregion
+
+  //
+  buttonLable = AppResourceIDs.temp_label;
   //#endregion
+
+  //
+  async handleButtonClicked() {
+    await this.managerService.notificationService.presentSuccessNotification({
+      message: this.resourceProvider(this.buttonLable),
+      dissmissable: true,
+    });
+  }
 }

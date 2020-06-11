@@ -19,6 +19,7 @@ import {
   XGridModule,
   XFormModule,
   XTableModule,
+  XEmptyModule,
   XButtonModule,
   XSliderModule,
   XSpinnerModule,
@@ -30,6 +31,7 @@ import {
   XFileUploadModule,
   XTabNavigatorModule,
   XFileDropAreaModule,
+  XBaseComponentModule,
   XExpandableListModule,
 } from 'x-framework-components';
 import { NgModule } from '@angular/core';
@@ -37,6 +39,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VPageComponent } from './v-page/v-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [VPageComponent],
@@ -52,8 +55,12 @@ import { VPageComponent } from './v-page/v-page.component';
   ],
   imports: [
     //
-    CommonModule,
     IonicModule,
+    CommonModule,
+
+    //
+    FormsModule,
+    ReactiveFormsModule,
 
     //
     XFrameworkCoreModule,
@@ -62,6 +69,10 @@ import { VPageComponent } from './v-page/v-page.component';
     //
     XFrameworkServicesModule,
     XFrameworkServicesDirectivesModule,
+
+    //
+    XEmptyModule,
+    XBaseComponentModule,
 
     //
     XPageModule,
@@ -73,7 +84,6 @@ import { VPageComponent } from './v-page/v-page.component';
     XMapModule,
     XTabsModule,
     XPageModule,
-    XCardModule,
     XIconModule,
     XListModule,
     XGridModule,
@@ -95,8 +105,12 @@ import { VPageComponent } from './v-page/v-page.component';
   ],
   exports: [
     //
-    CommonModule,
     IonicModule,
+    CommonModule,
+
+    //
+    FormsModule,
+    ReactiveFormsModule,
 
     //
     XFrameworkCoreModule,
@@ -107,8 +121,11 @@ import { VPageComponent } from './v-page/v-page.component';
     XFrameworkServicesDirectivesModule,
 
     //
+    XEmptyModule,
+    XBaseComponentModule,
+
+    //
     XPageModule,
-    XCardModule,
     XIconModule,
     XFormModule,
     XTabsModule,

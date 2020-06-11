@@ -2,6 +2,11 @@ import { XTranslationItem } from 'x-framework-core';
 
 export enum AppResourceIDs {
   //
+  //#region Global ...
+  temp_label = 'temp_label',
+  //#endregion
+
+  //
   //#region Home ...
   home = 'home',
   home_description = 'home_description',
@@ -28,12 +33,22 @@ export enum AppResourceIDs {
   //#region Icon ...
   icon = 'icon',
   icon_description = 'icon_description',
+
+  icon_list = 'icon_list',
   //#endregion
   //#endregion
 }
 
 //
 export const FaCustomLocales: XTranslationItem[] = [
+  //
+  //#region Global ...
+  {
+    id: 'temp_label',
+    value: 'برچسب پیش فرض',
+  },
+  //#endregion
+
   //
   //#region Home ...
   {
@@ -91,12 +106,26 @@ export const FaCustomLocales: XTranslationItem[] = [
     id: 'icon_description',
     value: 'مستندات مربوط به مولفه شمایل',
   },
+
+  //
+  {
+    id: 'icon_list',
+    value: 'فهرست شمایل های موجود',
+  },
   //#endregion
   //#endregion
 ];
 
 //
 export const EnCustomLocales: XTranslationItem[] = [
+  //
+  //#region Global ...
+  {
+    id: 'temp_label',
+    value: 'Default Label',
+  },
+  //#endregion
+
   //
   //#region Home ...
   {
@@ -153,6 +182,12 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'icon_description',
     value: 'Icon Component Documentation',
+  },
+
+  //
+  {
+    id: 'icon_list',
+    value: 'Icons List',
   },
   //#endregion
   //#endregion

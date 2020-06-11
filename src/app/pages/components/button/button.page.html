@@ -4,5 +4,19 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
-  <x-button [color]="'primary'">Salam</x-button>
+  <div class="content-container">
+    <x-button
+      class="ion-margin-horizontal"
+      [color]="'primary'"
+      [title]="buttonLable"
+      (click)="handleButtonClicked()"
+    ></x-button>
+
+    <x-button
+      class="ion-margin-horizontal"
+      [color]="'danger'"
+      [title]="buttonLable"
+      (click)="handleButtonClicked()"
+    ></x-button>
+  </div>
 </v-page>

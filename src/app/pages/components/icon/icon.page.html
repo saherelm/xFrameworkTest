@@ -4,18 +4,31 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
-  <!-- List Presenter -->
+  <!-- List Actions -->
+  <x-actions
+    [showSearchBar]="true"
+    [showActionBar]="false"
+    [listComponent]="listPresenter"
+    (queryChange)="listPresenter.filterItems($event)"
+  >
+  </x-actions>
+
+  <!-- Icons List -->
   <x-list
     #listPresenter
-    [color]="'light'"
     [isPageList]="true"
     [wrapWithCard]="true"
-    [cardColor]="'light'"
-    [showDivider]="false"
-    [clickableItems]="true"
-    [selectableItems]="true"
     [items]="iconListItems"
-    [enableReordering]="true"
+    [itemTemplate]="iconTemplate"
+    [cardTitle]="resourceProvider(ResourceIDs.icon_list)"
   >
   </x-list>
 </v-page>
+
+<!-- Icon Template Ref -->
+<ng-template #iconTemplate let-item>
+  <div class="cb-inherit ion-text-center">
+    <x-icon [name]="item.data" [color]="'tertiary'"></x-icon>
+    {{ item.data }}
+  </div>
+</ng-template>

@@ -6,7 +6,7 @@
         "capacitor": {}
       },
       "type": "angular",
-      "root": "xFrameworkTest"
+      "root": "."
     }
   },
   "integrations": {
