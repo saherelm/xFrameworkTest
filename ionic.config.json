@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "xFrameworkTest": {
+      "name": "xFrameworkTest",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular",
+      "root": "xFrameworkTest"
+    }
+  },
+  "integrations": {
+    "capacitor": {}
+  },
+  "defaultProject": "xFrameworkTest"
+}
