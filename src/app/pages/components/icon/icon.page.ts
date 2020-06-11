@@ -38,6 +38,9 @@ export class IconPage extends VPageComponent {
   //#region LifeCycle ...
   afterViewInit() {
     //
+    super.afterViewInit();
+
+    //
     console.log('afterViewInit ...');
     this.prepareIconListItems();
   }

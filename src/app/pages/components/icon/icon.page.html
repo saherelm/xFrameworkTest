@@ -5,16 +5,16 @@
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
   <!-- List Actions -->
-  <x-actions
+  <!--
     [showSearchBar]="true"
     [showActionBar]="false"
     [listComponent]="listPresenter"
     (queryChange)="listPresenter.filterItems($event)"
-  >
-  </x-actions>
+  -->
+  <!-- <x-actions [showActionBar]="false" [showSearchBar]="true"> </x-actions> -->
 
   <!-- Icons List -->
-  <x-list
+  <!-- <x-list
     #listPresenter
     [isPageList]="true"
     [wrapWithCard]="true"
@@ -22,7 +22,10 @@
     [itemTemplate]="iconTemplate"
     [cardTitle]="resourceProvider(ResourceIDs.icon_list)"
   >
-  </x-list>
+  </x-list> -->
+
+  <!-- <x-form></x-form> -->
+  <ion-searchbar></ion-searchbar>
 </v-page>
 
 <!-- Icon Template Ref -->

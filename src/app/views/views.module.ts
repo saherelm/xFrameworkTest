@@ -33,13 +33,13 @@ import {
   XFileDropAreaModule,
   XBaseComponentModule,
   XExpandableListModule,
+  XFrameworkComponentsModule,
 } from 'x-framework-components';
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VPageComponent } from './v-page/v-page.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [VPageComponent],
@@ -59,10 +59,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
 
     //
-    FormsModule,
-    ReactiveFormsModule,
-
-    //
     XFrameworkCoreModule,
     XFrameworkCoreDirectivesModule,
 
@@ -73,6 +69,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     //
     XEmptyModule,
     XBaseComponentModule,
+    XFrameworkComponentsModule,
 
     //
     XPageModule,
@@ -107,10 +104,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     //
     IonicModule,
     CommonModule,
-
-    //
-    FormsModule,
-    ReactiveFormsModule,
 
     //
     XFrameworkCoreModule,
