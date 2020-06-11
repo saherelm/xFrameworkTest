@@ -36,13 +36,8 @@ export class IconPage extends VPageComponent {
 
   //
   //#region LifeCycle ...
-  afterViewInit() {
-    //
-    super.afterViewInit();
-
-    //
-    console.log('afterViewInit ...');
-    this.prepareIconListItems();
+  async afterViewInit() {
+    await this.prepareIconListItems();
   }
   //#endregion
 
@@ -55,7 +50,10 @@ export class IconPage extends VPageComponent {
 
   //
   //#region Private ...
-  private prepareIconListItems() {
+  private async prepareIconListItems() {
+    //
+    const loading = await this.managerService.dialogService.presentLoading({});
+
     //
     this.iconListItems = [];
     if (!hasChild(this.iconList)) {
@@ -63,15 +61,18 @@ export class IconPage extends VPageComponent {
     }
 
     //
-    this.iconListItems = this.iconList.map((i) => {
+    this.iconList.forEach((i) => {
       //
       const li: XListItem<string> = {
         data: i,
       };
 
       //
-      return li;
+      this.iconListItems.push(li);
     });
+
+    //
+    loading.dismiss();
   }
   //#endregion
 }
