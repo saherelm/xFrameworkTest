@@ -18,9 +18,10 @@
     [isAccordion]="true"
     [isPagePanel]="true"
     [wrapWithCard]="true"
+    [selected]="'Button'"
   >
-    <!-- Spinner -->
-    <x-panel [id]="'Spinner'">
+    <!-- Button -->
+    <x-panel [id]="'Button'" [hasCustomActions]="true">
       <!-- Title and Description -->
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.button) }}
@@ -29,21 +30,275 @@
         {{ resourceProvider(ResourceIDs.button_description) }}
       </div>
 
-      <!-- Content -->
-      <div>
-        <x-button
-          [color]="'primary'"
-          class="ion-margin-horizontal"
-          (click)="handleButtonClicked()"
-          [title]="ResourceIDs.temp_label"
-        ></x-button>
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="buttonContent"
+      ></x-markdown>
 
-        <x-button
-          [color]="'danger'"
-          class="ion-margin-horizontal"
-          [title]="ResourceIDs.temp_label"
-          (click)="handleButtonClicked()"
-        ></x-button>
+      <!-- Sample1 -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="buttonSample1"
+      ></x-markdown>
+
+      <x-button
+        [color]="'primary'"
+        [type]="ButtonTypes.Raised"
+        class="ion-margin-horizontal"
+        (click)="handleButtonClicked()"
+        [title]="ResourceIDs.temp_label"
+      ></x-button>
+
+      <!-- Sample2 -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="buttonSample2"
+      ></x-markdown>
+
+      <x-button
+        [color]="'secondary'"
+        [foregroundColor]="true"
+        [type]="ButtonTypes.Raised"
+        class="ion-margin-horizontal"
+        (click)="handleButtonClicked()"
+        [title]="ResourceIDs.temp_label"
+      ></x-button>
+
+      <!-- Sample3 -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="buttonSample3"
+      ></x-markdown>
+
+      <x-button
+        [color]="'tertiary'"
+        [type]="ButtonTypes.Icon"
+        class="ion-margin-horizontal"
+        (click)="handleButtonClicked()"
+      >
+        <x-icon [name]="'list'" [color]="'light'"></x-icon>
+      </x-button>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
+          target="_blank"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- Alert -->
+    <x-panel [id]="'Alert'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.alert) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.alert_description) }}
+      </div>
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="alertContent"
+      ></x-markdown>
+
+      <!-- Sample1 -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="alertSample1"
+      ></x-markdown>
+
+      <x-button
+        [color]="'primary'"
+        [type]="ButtonTypes.Raised"
+        [title]="ResourceIDs.alert"
+        (click)="handleShowAlert()"
+        class="ion-margin-horizontal"
+      ></x-button>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
+          target="_blank"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- Notification -->
+    <x-panel [id]="'Notification'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.notification) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.notification_description) }}
+      </div>
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="notificationContent"
+      ></x-markdown>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
+          target="_blank"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- Spinner -->
+    <x-panel [id]="'Spinner'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.spinner) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.spinner_description) }}
+      </div>
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="spinnerContent"
+      ></x-markdown>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
+          target="_blank"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- Loading -->
+    <x-panel [id]="'Loading'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.loading) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.loading_description) }}
+      </div>
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="loadingContent"
+      ></x-markdown>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
+          target="_blank"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- Prompt -->
+    <x-panel [id]="'Prompt'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.prompt) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.prompt_description) }}
+      </div>
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="promptContent"
+      ></x-markdown>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
+          target="_blank"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- Picker -->
+    <x-panel [id]="'Picker'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.picker) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.picker_description) }}
+      </div>
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="pickerContent"
+      ></x-markdown>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
+          target="_blank"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- Slotter -->
+    <x-panel [id]="'Slotter'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.slotter) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.slotter_description) }}
+      </div>
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="slotterContent"
+      ></x-markdown>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
+          target="_blank"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
       </div>
     </x-panel>
   </x-expandable-panel>

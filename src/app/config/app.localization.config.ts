@@ -4,6 +4,7 @@ export enum AppResourceIDs {
   //
   //#region Global ...
   temp_label = 'temp_label',
+  documentation = 'documentation',
   //#endregion
 
   //
@@ -24,15 +25,57 @@ export enum AppResourceIDs {
   components_description = 'components_description',
 
   //
-  //#region Button ...
+  //#region Small Components ...
   small_components = 'small_components',
   small_components_description = 'small_components_description',
-  //#endregion
 
   //
   //#region Button ...
   button = 'button',
   button_description = 'button_description',
+  //#endregion
+
+  //
+  //#region Alert ...
+  alert = 'alert',
+  alert_description = 'alert_description',
+  //#endregion
+
+  //
+  //#region Notification ...
+  notification = 'notification',
+  notification_description = 'notification_description',
+  //#endregion
+
+  //
+  //#region Spinner ...
+  spinner = 'spinner',
+  spinner_description = 'spinner_description',
+  //#endregion
+
+  //
+  //#region Loading ...
+  loading = 'loading',
+  loading_description = 'loading_description',
+  //#endregion
+
+  //
+  //#region Prompt ...
+  prompt = 'prompt',
+  prompt_description = 'prompt_description',
+  //#endregion
+
+  //
+  //#region Picker ...
+  picker = 'picker',
+  picker_description = 'picker_description',
+  //#endregion
+
+  //
+  //#region Slotter ...
+  slotter = 'slotter',
+  slotter_description = 'slotter_description',
+  //#endregion
   //#endregion
 
   //
@@ -143,6 +186,10 @@ export const FaCustomLocales: XTranslationItem[] = [
     id: 'temp_label',
     value: 'برچسب پیش فرض',
   },
+  {
+    id: 'documentation',
+    value: 'مستندات',
+  },
   //#endregion
 
   //
@@ -181,7 +228,7 @@ export const FaCustomLocales: XTranslationItem[] = [
   },
 
   //
-  //#region Button ...
+  //#region Small Components ...
   {
     id: 'small_components',
     value: 'مولفه های جزئی',
@@ -190,7 +237,6 @@ export const FaCustomLocales: XTranslationItem[] = [
     id: 'small_components_description',
     value: 'ارائه مستندات مربوط به مولفه های جزئی',
   },
-  //#endregion
 
   //
   //#region Button ...
@@ -202,6 +248,91 @@ export const FaCustomLocales: XTranslationItem[] = [
     id: 'button_description',
     value: 'مستندات مربوط به مولفه دکمه',
   },
+  //#endregion
+
+  //
+  //#region Alert ...
+  {
+    id: 'alert',
+    value: 'هشدار',
+  },
+  {
+    id: 'alert_description',
+    value: 'مستندات مربوط به مولفه هشدار',
+  },
+  //#endregion
+
+  //
+  //#region Notification ...
+  {
+    id: 'notification',
+    value: 'اعلان',
+  },
+  {
+    id: 'notification_description',
+    value: 'مستندات مربوط به مولفه اعلان',
+  },
+  //#endregion
+
+  //
+  //#region Spinner ...
+  {
+    id: 'spinner',
+    value: 'فرفره',
+  },
+  {
+    id: 'spinner_description',
+    value: 'مستندات مربوط به مولفه فرفره',
+  },
+  //#endregion
+
+  //
+  //#region Loading ...
+  {
+    id: 'loading',
+    value: 'بارگزاری',
+  },
+  {
+    id: 'loading_description',
+    value: 'مستندات مربوط به مولفه بارگزاری',
+  },
+  //#endregion
+
+  //
+  //#region Prompt ...
+  {
+    id: 'prompt',
+    value: 'سوال',
+  },
+  {
+    id: 'prompt_description',
+    value: 'مستندات مربوط به مولفه سوال',
+  },
+  //#endregion
+
+  //
+  //#region Picker ...
+  {
+    id: 'picker',
+    value: 'انتخاب',
+  },
+  {
+    id: 'picker_description',
+    value: 'مستندات مربوط به مولفه انتخاب',
+  },
+  //#endregion
+
+  //
+  //#region Slotter ...
+  {
+    id: 'slotter',
+    value: 'جورچین',
+  },
+  {
+    id: 'slotter_description',
+    value: 'مستندات مربوط به مولفه جورچین',
+  },
+  //#endregion
   //#endregion
 
   //
@@ -400,6 +531,10 @@ export const EnCustomLocales: XTranslationItem[] = [
     id: 'temp_label',
     value: 'Default Label',
   },
+  {
+    id: 'documentation',
+    value: 'Documentation',
+  },
   //#endregion
 
   //
@@ -438,7 +573,7 @@ export const EnCustomLocales: XTranslationItem[] = [
   },
 
   //
-  //#region Button ...
+  //#region Small Components ...
   {
     id: 'small_components',
     value: 'Small Components',
@@ -447,7 +582,6 @@ export const EnCustomLocales: XTranslationItem[] = [
     id: 'small_components_description',
     value: 'Provide Small Components Documentation',
   },
-  //#endregion
 
   //
   //#region Button ...
@@ -459,6 +593,91 @@ export const EnCustomLocales: XTranslationItem[] = [
     id: 'button_description',
     value: 'Button Component Documentation',
   },
+  //#endregion
+
+  //
+  //#region Alert ...
+  {
+    id: 'alert',
+    value: 'Alert',
+  },
+  {
+    id: 'alert_description',
+    value: 'Alert Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Notification ...
+  {
+    id: 'notification',
+    value: 'Notification',
+  },
+  {
+    id: 'notification_description',
+    value: 'Notification Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Spinner ...
+  {
+    id: 'spinner',
+    value: 'Spinner',
+  },
+  {
+    id: 'spinner_description',
+    value: 'Spinner Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Loading ...
+  {
+    id: 'loading',
+    value: 'Loading',
+  },
+  {
+    id: 'loading_description',
+    value: 'Loading Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Prompt ...
+  {
+    id: 'prompt',
+    value: 'Prompt',
+  },
+  {
+    id: 'prompt_description',
+    value: 'Prompt Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Picker ...
+  {
+    id: 'picker',
+    value: 'Picker',
+  },
+  {
+    id: 'picker_description',
+    value: 'Picker Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Slotter ...
+  {
+    id: 'slotter',
+    value: 'Slotter',
+  },
+  {
+    id: 'slotter_description',
+    value: 'Slotter Component Documentation',
+  },
+  //#endregion
   //#endregion
 
   //

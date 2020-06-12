@@ -105,3 +105,13 @@
 body {
   background-color: #ffffff;
 }
+
+.code-block {
+  direction: ltr;
+  color: white;
+  margin: {
+    top: 6px;
+    bottom: 8px;
+  }
+  background-color: black;
+}
