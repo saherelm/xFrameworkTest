@@ -590,11 +590,11 @@ export const EnCustomLocales: XTranslationItem[] = [
   //#region Tools ...
   {
     id: 'tools',
-    value: 'ابزارهای سودمند',
+    value: 'Tools',
   },
   {
     id: 'tools_description',
-    value: 'مستندات مربوط به ابزارهای سودمند موجود',
+    value: 'Provided Tools Documentations',
   },
   //#endregion
   //#endregion

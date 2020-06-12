@@ -240,7 +240,7 @@ export class VPageComponent extends XPageComponent {
   sideType: XStandardType<XSideTypeIdentifier> = XSideType.Overlay;
 
   @Input()
-  sideColor: XStandardType<XColorIdentifier> = XColor.Light;
+  sideColor: XStandardType<XColorIdentifier> = XColor.Primary;
   //#endregion
   //#endregion
 

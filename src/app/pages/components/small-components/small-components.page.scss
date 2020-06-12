@@ -1,0 +1,10 @@
+:host-context(::ng-deep.mat-expansion-panel-header) {
+  //
+  color: var(--x-color-tertiary-contrast) !important;
+  background-color: var(--x-color-tertiary) !important;
+
+  //
+  * {
+    color: var(--x-color-tertiary-contrast) !important;
+  }
+}
