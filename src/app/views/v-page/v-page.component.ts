@@ -10,10 +10,18 @@ import {
 } from '@angular/core';
 import {
   XColor,
+  assign,
+  XParam,
   notValue,
+  XResourceIDs,
   XStandardType,
   XOneOrManyType,
   XColorIdentifier,
+  isFunction,
+  XPickerColumn,
+  XPickerColumnOption,
+  XModalButtonRole,
+  XLocale,
 } from 'x-framework-core';
 import { Observable } from 'rxjs';
 import {
@@ -22,12 +30,15 @@ import {
   XBackSlot,
   XSideType,
   XSideSlot,
+  XListItem,
   XTitleSlot,
+  XIconNames,
   XMenuState,
   XContentSlot,
   XPageComponent,
-  XLogoSlotIdentifier,
+  XPopoverComponent,
   XBackSlotIdentifier,
+  XLogoSlotIdentifier,
   XMenuSlotIdentifier,
   XPageSizeIdentifier,
   XSideSlotIdentifier,
@@ -39,7 +50,7 @@ import { MenuController } from '@ionic/angular';
 import { X_CONFIG } from '../../config/x-config';
 import { XConfig } from '../../config/app-config';
 import { ViewportRuler } from '@angular/cdk/overlay';
-import { isNullOrUndefined } from 'x-framework-core';
+import { isNullOrUndefined, hasChild } from 'x-framework-core';
 import { XManagerService } from 'x-framework-services';
 import { NavPageItems } from '../../config/page.config';
 
@@ -306,8 +317,59 @@ export class VPageComponent extends XPageComponent {
 
   //
   //#region UI Handlers ...
-  handleMoreButtonClicked() {
-    console.log('handleMoreButtonClicked');
+  async handleMoreButtonClicked(event: any) {
+    //
+    const item: XListItem<any> = {
+      data: '',
+      slideOptions: [
+        {
+          id: 'change_language',
+          icon: XIconNames.language,
+          title: XResourceIDs.language,
+          color: XColor.Tertiary,
+          slot: 'start',
+          onlyIcon: false,
+          handler: async () => {
+            await this.handleChangeLocation();
+          },
+        },
+      ],
+    };
+
+    //
+    const popOver = await this.managerService.dialogService.presentPopover({
+      component: XPopoverComponent,
+      componentProps: assign({}, { key: XParam.Item, value: item }),
+      translucent: true,
+      showBackdrop: true,
+      event,
+    });
+
+    //
+    const { data } = await popOver.onWillDismiss();
+    if (!data || !data.id || !data.data) {
+      return;
+    }
+
+    //
+    const optionId = data.id.toString() as string;
+    const option =
+      item && item.slideOptions
+        ? item.slideOptions.find((so) => so.id === optionId)
+        : null;
+    if (!option) {
+      return;
+    }
+
+    //
+    const handler = option.handler;
+    if (!handler || !isFunction(handler)) {
+      return;
+    }
+
+    //
+    // Run Handler ...
+    await handler();
   }
   //#endregion
 
@@ -326,6 +388,68 @@ export class VPageComponent extends XPageComponent {
       this.toolbarShowMenu = false;
       this.toggleMenuWhen = '';
     }
+  }
+
+  private async handleChangeLocation() {
+    //
+    const currentLocale = this.managerService.currentLocale;
+    const availableLanguages = this.config.availableLanguages.map((ai) => {
+      return {
+        name: ai.name,
+        locale: ai.locale,
+      };
+    });
+    if (!hasChild(availableLanguages)) {
+      return;
+    }
+
+    //
+    const localOptions: XPickerColumnOption[] = availableLanguages.map((al) => {
+      //
+      const op: XPickerColumnOption = {
+        text: al.name,
+        value: al.locale,
+        disabled: al.locale === currentLocale,
+      };
+
+      //
+      return op;
+    });
+    const localColumn: XPickerColumn = {
+      name: 'locales',
+      options: localOptions,
+    };
+
+    //
+    await this.managerService.dialogService.presentPicker({
+      buttons: [
+        {
+          text: XResourceIDs.ok,
+          role: XModalButtonRole.Selected,
+          cssClass: ['btn-selected'],
+          handler: async (value) => {
+            //
+            const selectedLocale: XLocale = value?.locales?.value;
+            if (!selectedLocale) {
+              return;
+            }
+
+            //
+            console.log('selectedLocale: ', selectedLocale);
+            await this.managerService.settingsService.changeLocale(
+              selectedLocale
+            );
+          },
+        },
+        {
+          text: XResourceIDs.cancel,
+          role: XModalButtonRole.Cancel,
+          cssClass: ['btn-cancel'],
+          handler: () => {},
+        },
+      ],
+      columns: [localColumn],
+    });
   }
   //#endregion
 }

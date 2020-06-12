@@ -56,6 +56,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'thumbnail',
         value: 'پیش نمایش',
       },
+
+      //
+      {
+        id: 'language',
+        value: 'زبان',
+      },
       //#endregion
 
       //
@@ -364,6 +370,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'thumbnail',
         value: 'Thumbnail',
+      },
+
+      //
+      {
+        id: 'language',
+        value: 'Language',
       },
       //#endregion
 

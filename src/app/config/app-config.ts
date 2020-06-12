@@ -26,7 +26,7 @@ export type XSharedConfig = Partial<XConfig>;
 export const xFrameworkCoreSharedConfig: XFrameworkComponentsSharedConfig = {
   //
   // App Info ...
-  appInstanceName: 'xFramework App',
+  appInstanceName: 'xFrameworkTestApp',
   appNameResource: 'app_name',
   appCompanyResource: 'company',
   appVersion: 'v1.1',

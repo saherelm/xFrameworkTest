@@ -5,6 +5,10 @@ export enum AppResourceIDs {
   //#region Global ...
   temp_label = 'temp_label',
   documentation = 'documentation',
+
+  //
+  english = 'english',
+  persian = 'persian',
   //#endregion
 
   //
@@ -193,6 +197,16 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'documentation',
     value: 'مستندات',
+  },
+
+  //
+  {
+    id: 'persian',
+    value: 'فارسی',
+  },
+  {
+    id: 'english',
+    value: 'انگلیسی',
   },
   //#endregion
 
@@ -548,6 +562,16 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'documentation',
     value: 'Documentation',
+  },
+
+  //
+  {
+    id: 'persian',
+    value: 'Persian',
+  },
+  {
+    id: 'english',
+    value: 'English',
   },
   //#endregion
 
