@@ -7,10 +7,10 @@
   <!-- Content -->
   <x-markdown
     [mode]="'preview'"
-    [content]="content"
     [hasToolbar]="false"
     [wrapWithCard]="true"
     [isPageMarkdown]="true"
+    [content]="getContent('content')"
   ></x-markdown>
 
   <!-- Expandable Panel -->
@@ -34,7 +34,7 @@
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
-        [content]="buttonContent"
+        [content]="getContent('buttonContent')"
       ></x-markdown>
 
       <!-- Sample1 -->
@@ -111,7 +111,7 @@
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
-        [content]="alertContent"
+        [content]="getContent('alertContent')"
       ></x-markdown>
 
       <!-- Sample1 -->
@@ -136,7 +136,7 @@
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
-        [content]="promptContent"
+        [content]="getContent('promptContent')"
       ></x-markdown>
 
       <x-markdown
@@ -178,7 +178,7 @@
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
-        [content]="notificationContent"
+        [content]="getContent('notificationContent')"
       ></x-markdown>
 
       <x-markdown
@@ -220,7 +220,7 @@
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
-        [content]="spinnerContent"
+        [content]="getContent('spinnerContent')"
       ></x-markdown>
 
       <x-markdown
@@ -296,7 +296,14 @@
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
-        [content]="loadingContent"
+        [content]="getContent('loadingContent')"
+      ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="loadingSample1"
       ></x-markdown>
 
       <x-button
@@ -331,7 +338,7 @@
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
-        [content]="pickerContent"
+        [content]="getContent('pickerContent')"
       ></x-markdown>
 
       <x-markdown
@@ -373,7 +380,7 @@
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
-        [content]="slotterContent"
+        [content]="getContent('slotterContent')"
       ></x-markdown>
 
       <br />

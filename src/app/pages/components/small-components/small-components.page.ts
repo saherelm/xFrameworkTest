@@ -6,9 +6,9 @@ import {
   isNullOrEmptyString,
 } from 'x-framework-core';
 import { Component } from '@angular/core';
-import { XButtonType, XSlotName, XSlotLayout } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
+import { XButtonType, XSlotName, XSlotLayout } from 'x-framework-components';
 
 @Component({
   selector: 'app-small-components',
@@ -42,22 +42,35 @@ export class SmallComponentsPage extends VPageComponent {
 
   //
   // Content ...
-  readonly content = `
+  readonly contentFa = `
   # مولفه های جزئی
 
-  مولفه هایی هستند که بسیار جزئی و پرکاربرد هستند و شامل پیکربندی های پیچیده نیستند.
+  مولفه هایی هستند که بسیار جزئی اما پرکاربرد هستند و شامل پیکربندی های پیچیده نیستند.
   این مولفه ها را بسادگی می توان مورد بهره برداری قرار داد.
 
   در ادامه فهرستی از این مولفه ها بهمراه مستندات مربوط به هریک به تفکیک ارائه می گردد:
+  `;
+  readonly contentEn = `
+  # Small Components
+
+  a collection of usefull and common Components which not so complicated to use them.
+  these Components can be implement easily.
+
+  the following list contains documentation and examples of how to use these Components:
   `;
 
   //
   // Button Content ...
   readonly ButtonTypes = Object.assign({}, XButtonType);
-  readonly buttonContent = `
+  readonly buttonContentFa = `
   دکمه ها در زمره پرکاربرد ترین مولفه ها در برنامه های کاربردی هستند.
 
   در این چارچوب مجموعه ای از دکمه ها قابل بهره برداری هستند که در ادامه به آنها اشاره خواهد شد.
+  `;
+  readonly buttonContentEn = `
+  Buttons are most common Components which used in Applications.
+
+  this Framework provide a collection of Buttons which can be used. following are some examples.
   `;
 
   //
@@ -100,13 +113,20 @@ export class SmallComponentsPage extends VPageComponent {
 
   //
   // Alert Content ...
-  readonly alertContent = `
+  readonly alertContentFa = `
   این مولفه زمانی کاربرد دارد که قصد داریم پیام خاصی را به کاربر نمایش دهیم.
 
   گونه های مختلفی از هشدارهای از پیش تعریف شده جهت سهولت استفاده فراهم شده اند که با مطالعه مستندات می توانید آن ها را مورد بهره برداری قرار دهید.
 
   برای نمایش اعلان باید بصورت زیر عمل کنیم:
 
+  `;
+  readonly alertContentEn = `
+  this Component used when we need to show an Special kind of messages to user.
+
+  there are some predefined of this Components, you can read the documentaion for How to use and get more info about them.
+
+  for show an Alert you must act like this:
   `;
 
   readonly alertSample1 =
@@ -126,9 +146,13 @@ export class SmallComponentsPage extends VPageComponent {
 
   //
   // Prompt Content ...
-  readonly promptContent = `
+  readonly promptContentFa = `
   در برخی موارد احتیاج داریم تا اطلاعات خاصی را از کاربر تحت عنوان ورودی دریافت کنیم:
   `;
+  readonly promptContentEn = `
+  in some used cases we need to give som information from user through an Alert.
+  `;
+
   readonly promptSample1 =
     '```' +
     'await this.managerService.dialogService.presentAlert(' +
@@ -173,8 +197,11 @@ export class SmallComponentsPage extends VPageComponent {
 
   //
   // Notification Content ...
-  readonly notificationContent = `
+  readonly notificationContentFa = `
   اعلان ها اغلب جهت اطلاع از نتیجه انجام یک عملیات به کار می روند.
+  `;
+  readonly notificationContentEn = `
+  Notifications almost used to notify a process/action result to user.
   `;
 
   readonly notificationSample1 =
@@ -189,7 +216,9 @@ export class SmallComponentsPage extends VPageComponent {
   //
   // Spinner Content ...
   readonly SpinnerNames = Object.assign({}, XSpinner);
-  readonly spinnerContent = `این مولفه اغلب جهت نمایش وضعیت در حال انجام کار در سایر مولفه ها کاربرد دارد.`;
+  readonly spinnerContentFa = `این مولفه اغلب جهت نمایش وضعیت در حال انجام کار در سایر مولفه ها کاربرد دارد.`;
+  readonly spinnerContentEn = `this Components used to act as indicator of another Components`;
+
   readonly spinnerSample1 =
     '```' +
     '<x-spinner [color]="ColorNames.Primary" [name]="SpinnerNames.Circular">' +
@@ -198,15 +227,32 @@ export class SmallComponentsPage extends VPageComponent {
 
   //
   // Loading Content ...
-  readonly loadingContent = `
+  readonly loadingContentFa = `
   این مولفه در مواردی کاربرد دارد که قصد داریم روال اجرای برنامه را تا اتمام یک فرآیند خاص متوقف کنیم.
   `;
+  readonly loadingContentEn = `this Component used when we have to stop application process until an action finished.`;
+  readonly loadingSample1 =
+    '```' +
+    '      // ' +
+    '      const loading = await this.managerService.dialogService.presentLoading({ ' +
+    '        message: this.resourceProvider(AppResourceIDs.temp_label), ' +
+    '        spinner: this.SpinnerNames.LinesSmall, ' +
+    '      }); ' +
+    '   ' +
+    '      // ' +
+    '      // TODO: Do Actions ... ' +
+    '   ' +
+    '      // ' +
+    '      // This is for Sample tests ... ' +
+    '      loading.dismiss(); ' +
+    '```';
 
   //
   // Picker Content ...
-  readonly pickerContent = `
+  readonly pickerContentFa = `
   انتخاب یک یا چند گزینه از میان مجموعه ای از انتخاب ها مهمترین کاربرد این مولفه است.
   `;
+  readonly pickerContentEn = `select on or more item from a collection of items is the main used case of this Component.`;
 
   readonly pickerSample1 =
     '```' +
@@ -259,11 +305,17 @@ export class SmallComponentsPage extends VPageComponent {
   // Slotter Content ...
   readonly SlotNames = Object.assign({}, XSlotName);
   readonly SlotLayout = Object.assign({}, XSlotLayout);
-  readonly slotterContent = `
+  readonly slotterContentFa = `
   این مولفه جهت تقسیم فضای در دسترس بکار میرود.
 
    توسط بکارگری این مولفه می توان چینش محتوا را مدیریت کرد
   `;
+  readonly slotterContentEn = `
+  this Component used to divide available screen space.
+
+  with help of this Component you can manage how Components appear in available space.
+  `;
+
   readonly slotterSample1 =
     '```' +
     '<x-slotter [layout]="SlotLayout.HORIZONTAL">' +
@@ -295,8 +347,30 @@ export class SmallComponentsPage extends VPageComponent {
     '```';
 
   //
-  // Content ...
-  readonly Content = '';
+  // Provide content based on current locale ...
+  getContent(title: string) {
+    //
+    if (isNullOrEmptyString(title)) {
+      return '';
+    }
+
+    //
+    const currentLocale = this.managerService.currentLocale;
+
+    //
+    const varName =
+      title +
+      (currentLocale === 'en-US'
+        ? 'En'
+        : currentLocale === 'fa-IR'
+        ? 'Fa'
+        : '');
+
+    const result = this[`${varName}`];
+
+    //
+    return result;
+  }
 
   //
   async handleButtonClicked() {

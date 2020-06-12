@@ -44,9 +44,7 @@
 >
   <!-- Side Content -->
   <div class="app-side-content" side>
-    <ng-container
-      *ngTemplateOutlet="defaultSideMenuRef"
-    ></ng-container>
+    <ng-container *ngTemplateOutlet="defaultSideMenuRef"></ng-container>
   </div>
 
   <!-- Page Content -->
@@ -66,4 +64,14 @@
     [showParentIcon]="false"
     [itemCssClass]="'m-nav-item'"
   ></x-navigator>
+</ng-template>
+
+<ng-template #toolbarEndSlotButtonsTemplateRef>
+  <x-button
+    [type]="'icon'"
+    [color]="'cb-inherit'"
+    (click)="handleMoreButtonClicked()"
+  >
+    <x-icon [name]="'menu_vertical'" [color]="'light'"></x-icon>
+  </x-button>
 </ng-template>

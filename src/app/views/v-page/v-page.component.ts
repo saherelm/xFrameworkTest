@@ -6,14 +6,14 @@ import {
   ViewChild,
   ElementRef,
   TemplateRef,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import {
   XColor,
   notValue,
   XStandardType,
   XOneOrManyType,
-  XColorIdentifier
+  XColorIdentifier,
 } from 'x-framework-core';
 import { Observable } from 'rxjs';
 import {
@@ -33,7 +33,7 @@ import {
   XSideSlotIdentifier,
   XSideTypeIdentifier,
   XTitleSlotIdentifier,
-  XContentSlotIdentifier
+  XContentSlotIdentifier,
 } from 'x-framework-components';
 import { MenuController } from '@ionic/angular';
 import { X_CONFIG } from '../../config/x-config';
@@ -47,7 +47,7 @@ import { NavPageItems } from '../../config/page.config';
   // tslint:disable-next-line:component-selector
   selector: 'v-page',
   templateUrl: './v-page.component.html',
-  styleUrls: ['./v-page.component.scss']
+  styleUrls: ['./v-page.component.scss'],
 })
 export class VPageComponent extends XPageComponent {
   //
@@ -78,6 +78,26 @@ export class VPageComponent extends XPageComponent {
     return this.TOOLBAR_CONTENT_TEMPLATE;
   }
 
+  private TOOLBAR_END_SLOT_TEMPLATE: TemplateRef<any>;
+
+  /**
+   * the toolbar end slot content ...
+   */
+  @ViewChild('toolbarEndSlotButtonsTemplateRef', { static: false })
+  set toolbarEndSlotButtonsTemplate(v: TemplateRef<any>) {
+    //
+    if (isNullOrUndefined(v)) {
+      return;
+    }
+
+    //
+    this.TOOLBAR_END_SLOT_TEMPLATE = v;
+  }
+
+  get toolbarEndSlotButtonsTemplate() {
+    return this.TOOLBAR_END_SLOT_TEMPLATE;
+  }
+
   //
   navPages = NavPageItems;
 
@@ -99,7 +119,7 @@ export class VPageComponent extends XPageComponent {
 
   //
   @Input()
-  toolbarColor: XStandardType<XColor> = XColor.Light;
+  toolbarColor: XStandardType<XColor> = XColor.Primary;
   //#endregion
 
   //
@@ -190,7 +210,7 @@ export class VPageComponent extends XPageComponent {
   //#region Footer Props ...
   //
   @Input()
-  footerColor: XStandardType<XColor> = XColor.Light;
+  footerColor: XStandardType<XColor> = XColor.Medium;
   //#endregion
 
   //
@@ -242,21 +262,27 @@ export class VPageComponent extends XPageComponent {
 
   //
   //#region LifeCycle ...
-  // tslint:disable-next-line:use-lifecycle-interface
-  async ngAfterViewInit() {
-    super.ngAfterViewInit();
+  async afterViewInit() {
+    super.afterViewInit();
 
     //
-    // await this.handleHasSideEffect();
     this.managerService.dispatchResizeEvent();
   }
 
-  // tslint:disable-next-line:use-lifecycle-interface
-  ngAfterViewChecked() {
-    super.ngAfterViewChecked();
+  afterViewChecked() {
+    super.afterViewChecked();
 
     //
     this.changeDetector.detectChanges();
+  }
+
+  async onChange(changeKeys: string[]) {
+    super.onChange(changeKeys);
+
+    //
+    if (changeKeys.includes('hasSide')) {
+      await this.handleHasSideEffect();
+    }
   }
   //#endregion
 
@@ -267,7 +293,7 @@ export class VPageComponent extends XPageComponent {
 
     //
     //#region Register ManagerService Loading Handler ...
-    this.managerService.isLoading$.subscribe(isLoading => {
+    this.managerService.isLoading$.subscribe((isLoading) => {
       this.toolbarShowProgressBar = isLoading;
     });
     //#endregion
@@ -276,13 +302,12 @@ export class VPageComponent extends XPageComponent {
 
   //
   //#region Handlers ...
-  async onChange(changeKeys: string[]) {
-    super.onChange(changeKeys);
+  //#endregion
 
-    //
-    if (changeKeys.includes('hasSide')) {
-      await this.handleHasSideEffect();
-    }
+  //
+  //#region UI Handlers ...
+  handleMoreButtonClicked() {
+    console.log('handleMoreButtonClicked');
   }
   //#endregion
 
