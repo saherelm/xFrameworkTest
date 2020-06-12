@@ -75,6 +75,10 @@ export enum AppResourceIDs {
   //#region Slotter ...
   slotter = 'slotter',
   slotter_description = 'slotter_description',
+
+  //
+  vertical = 'vertical',
+  horizontal = 'horizontal',
   //#endregion
   //#endregion
 
@@ -331,6 +335,16 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'slotter_description',
     value: 'مستندات مربوط به مولفه جورچین',
+  },
+
+  //
+  {
+    id: 'vertical',
+    value: 'عمودی',
+  },
+  {
+    id: 'horizontal',
+    value: 'افقی',
   },
   //#endregion
   //#endregion
@@ -676,6 +690,16 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'slotter_description',
     value: 'Slotter Component Documentation',
+  },
+
+  //
+  {
+    id: 'vertical',
+    value: 'Vertical',
+  },
+  {
+    id: 'horizontal',
+    value: 'Horizontal',
   },
   //#endregion
   //#endregion

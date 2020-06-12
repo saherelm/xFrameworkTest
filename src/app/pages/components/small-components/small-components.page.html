@@ -46,8 +46,8 @@
       ></x-markdown>
 
       <x-button
-        [color]="'primary'"
         [type]="ButtonTypes.Raised"
+        [color]="ColorNames.Primary"
         class="ion-margin-horizontal"
         (click)="handleButtonClicked()"
         [title]="ResourceIDs.temp_label"
@@ -62,10 +62,10 @@
       ></x-markdown>
 
       <x-button
-        [color]="'secondary'"
         [foregroundColor]="true"
         [type]="ButtonTypes.Raised"
         class="ion-margin-horizontal"
+        [color]="ColorNames.Secondary"
         (click)="handleButtonClicked()"
         [title]="ResourceIDs.temp_label"
       ></x-button>
@@ -79,8 +79,8 @@
       ></x-markdown>
 
       <x-button
-        [color]="'tertiary'"
         [type]="ButtonTypes.Icon"
+        [color]="ColorNames.Tertiary"
         class="ion-margin-horizontal"
         (click)="handleButtonClicked()"
       >
@@ -90,8 +90,8 @@
       <!-- Actions -->
       <div x-panel-actions>
         <a
-          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
           target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
           >{{resourceProvider(ResourceIDs.documentation)}}</a
         >
       </div>
@@ -123,18 +123,42 @@
       ></x-markdown>
 
       <x-button
-        [color]="'primary'"
         [type]="ButtonTypes.Raised"
         [title]="ResourceIDs.alert"
         (click)="handleShowAlert()"
+        [color]="ColorNames.Primary"
+        class="ion-margin-horizontal"
+      ></x-button>
+
+      <br />
+      <br />
+      <!-- Propt Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="promptContent"
+      ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="promptSample1"
+      ></x-markdown>
+
+      <x-button
+        [type]="ButtonTypes.Raised"
+        [title]="ResourceIDs.prompt"
+        (click)="handleShowPrompt()"
+        [color]="ColorNames.Tertiary"
         class="ion-margin-horizontal"
       ></x-button>
 
       <!-- Actions -->
       <div x-panel-actions>
         <a
-          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
           target="_blank"
+          href="https://docs.x-framework.ir/x-framework-services/injectables/XDialogService.html#presentAlert"
           >{{resourceProvider(ResourceIDs.documentation)}}</a
         >
       </div>
@@ -157,11 +181,26 @@
         [content]="notificationContent"
       ></x-markdown>
 
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="notificationSample1"
+      ></x-markdown>
+
+      <x-button
+        [type]="ButtonTypes.Raised"
+        [color]="ColorNames.Danger"
+        class="ion-margin-horizontal"
+        (click)="handleShowNotification()"
+        [title]="ResourceIDs.notification"
+      ></x-button>
+
       <!-- Actions -->
       <div x-panel-actions>
         <a
-          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
           target="_blank"
+          href="https://docs.x-framework.ir/x-framework-services/injectables/XNotificationService.html"
           >{{resourceProvider(ResourceIDs.documentation)}}</a
         >
       </div>
@@ -184,11 +223,60 @@
         [content]="spinnerContent"
       ></x-markdown>
 
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="spinnerSample1"
+      ></x-markdown>
+
+      <!-- Bubbles -->
+      <x-spinner
+        [color]="ColorNames.Primary"
+        [name]="SpinnerNames.Bubbles"
+      ></x-spinner>
+
+      <!-- Circles -->
+      <x-spinner
+        [name]="SpinnerNames.Circles"
+        [color]="ColorNames.Secondary"
+      ></x-spinner>
+
+      <!-- Tertiary -->
+      <x-spinner
+        [color]="ColorNames.Tertiary"
+        [name]="SpinnerNames.Circular"
+      ></x-spinner>
+
+      <!-- Dark -->
+      <x-spinner
+        [color]="ColorNames.Dark"
+        [name]="SpinnerNames.Crescent"
+      ></x-spinner>
+
+      <!-- Warning -->
+      <x-spinner
+        [color]="ColorNames.Warning"
+        [name]="SpinnerNames.Dots"
+      ></x-spinner>
+
+      <!-- Danger -->
+      <x-spinner
+        [color]="ColorNames.Danger"
+        [name]="SpinnerNames.Lines"
+      ></x-spinner>
+
+      <!-- Success -->
+      <x-spinner
+        [color]="ColorNames.Success"
+        [name]="SpinnerNames.LinesSmall"
+      ></x-spinner>
+
       <!-- Actions -->
       <div x-panel-actions>
         <a
-          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
           target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/components/XSpinnerComponent.html"
           >{{resourceProvider(ResourceIDs.documentation)}}</a
         >
       </div>
@@ -211,38 +299,19 @@
         [content]="loadingContent"
       ></x-markdown>
 
-      <!-- Actions -->
-      <div x-panel-actions>
-        <a
-          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
-          target="_blank"
-          >{{resourceProvider(ResourceIDs.documentation)}}</a
-        >
-      </div>
-    </x-panel>
-
-    <!-- Prompt -->
-    <x-panel [id]="'Prompt'" [hasCustomActions]="true">
-      <!-- Title and Description -->
-      <div x-panel-title>
-        {{ resourceProvider(ResourceIDs.prompt) }}
-      </div>
-      <div x-panel-description>
-        {{ resourceProvider(ResourceIDs.prompt_description) }}
-      </div>
-
-      <!-- Description -->
-      <x-markdown
-        [mode]="'preview'"
-        [hasToolbar]="false"
-        [content]="promptContent"
-      ></x-markdown>
+      <x-button
+        [type]="ButtonTypes.Raised"
+        class="ion-margin-horizontal"
+        [color]="ColorNames.Secondary"
+        (click)="handleShowLoading()"
+        [title]="ResourceIDs.loading"
+      ></x-button>
 
       <!-- Actions -->
       <div x-panel-actions>
         <a
-          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
           target="_blank"
+          href="https://docs.x-framework.ir/x-framework-services/injectables/XDialogService.html#presentLoading"
           >{{resourceProvider(ResourceIDs.documentation)}}</a
         >
       </div>
@@ -265,11 +334,26 @@
         [content]="pickerContent"
       ></x-markdown>
 
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="pickerSample1"
+      ></x-markdown>
+
+      <x-button
+        [type]="ButtonTypes.Raised"
+        class="ion-margin-horizontal"
+        [color]="ColorNames.Primary"
+        (click)="handleShowSelect()"
+        [title]="ResourceIDs.picker"
+      ></x-button>
+
       <!-- Actions -->
       <div x-panel-actions>
         <a
-          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
           target="_blank"
+          href="https://docs.x-framework.ir/x-framework-services/injectables/XDialogService.html#presentPicker"
           >{{resourceProvider(ResourceIDs.documentation)}}</a
         >
       </div>
@@ -292,11 +376,62 @@
         [content]="slotterContent"
       ></x-markdown>
 
+      <br />
+      <br />
+      <h4>{{ resourceProvider(ResourceIDs.horizontal) }}</h4>
+
+      <!-- Sample 1 -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="slotterSample1"
+      ></x-markdown>
+      <br />
+      <br />
+      <x-slotter [layout]="SlotLayout.HORIZONTAL">
+        <x-slot [name]="SlotNames.START" [cssClass]="'ion-text-start'">
+          Start
+        </x-slot>
+        <x-slot [name]="SlotNames.CENTER" [cssClass]="'ion-text-center'">
+          Center
+        </x-slot>
+        <x-slot [name]="SlotNames.END" [cssClass]="'ion-text-end'">
+          End
+        </x-slot>
+      </x-slotter>
+
+      <br />
+      <br />
+      <!-- Vertical -->
+      <h4>{{resourceProvider(ResourceIDs.vertical)}}</h4>
+
+      <!-- Sample 1 -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="slotterSample2"
+      ></x-markdown>
+      <br />
+      <br />
+      <x-slotter [layout]="SlotLayout.VERTICAL">
+        <x-slot [name]="SlotNames.TOP" [cssClass]="'ion-text-center'">
+          Top
+        </x-slot>
+        <x-slot [name]="SlotNames.CENTER" [cssClass]="'ion-text-center'">
+          Center
+        </x-slot>
+        <x-slot [name]="SlotNames.BOTTOM" [cssClass]="'ion-text-center'">
+          Bottom
+        </x-slot>
+      </x-slotter>
+
       <!-- Actions -->
       <div x-panel-actions>
         <a
-          href="https://docs.x-framework.ir/x-framework-components/components/XButtonComponent.html"
           target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/modules/XSlotterModule.html"
           >{{resourceProvider(ResourceIDs.documentation)}}</a
         >
       </div>
