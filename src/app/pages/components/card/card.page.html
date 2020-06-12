@@ -4,4 +4,83 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
+  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+    <!-- Content -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('content')"
+    ></x-markdown>
+
+    <!-- Actions -->
+    <div actions>
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XCardComponent.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
+
+  <x-markdown
+    [mode]="'preview'"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [isPageMarkdown]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <x-card
+    [showHeader]="true"
+    [isPageCard]="true"
+    [showFooter]="true"
+    [showContent]="true"
+    [showActions]="true"
+    [color]="ColorNames.Tertiary"
+    [title]="resourceProvider(ResourceIDs.app_name)"
+    [subTitle]="resourceProvider(ResourceIDs.company)"
+  >
+    <div header>
+      {{resourceProvider(ResourceIDs.header)}}
+    </div>
+
+    <div content>
+      {{resourceProvider(ResourceIDs.temp_label)}}
+    </div>
+
+    <div actions>
+      {{resourceProvider(ResourceIDs.actions)}}
+    </div>
+
+    <div footer>
+      {{resourceProvider(ResourceIDs.footer)}}
+    </div>
+  </x-card>
+
+  <x-markdown
+    [mode]="'preview'"
+    [content]="sample2"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [isPageMarkdown]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <x-card
+    [showHeader]="true"
+    [isPageCard]="true"
+    [showContent]="true"
+    [color]="ColorNames.Medium"
+    [imageUrl]="'/assets/image/logo.png'"
+    [avatarUrl]="'/assets/image/logo.png'"
+    [title]="resourceProvider(ResourceIDs.app_name)"
+    [subTitle]="resourceProvider(ResourceIDs.company)"
+  >
+    <div content>
+      {{resourceProvider(ResourceIDs.temp_label)}}
+    </div>
+  </x-card>
 </v-page>

@@ -114,4 +114,8 @@ body {
     bottom: 8px;
   }
   background-color: black;
+
+  .x-header {
+    direction: var(--ui-direction) !important;
+  }
 }

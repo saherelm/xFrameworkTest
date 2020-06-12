@@ -3,6 +3,7 @@ import { XTranslationItem } from 'x-framework-core';
 export enum AppResourceIDs {
   //
   //#region Global ...
+  sample = 'sample',
   temp_label = 'temp_label',
   documentation = 'documentation',
 
@@ -90,6 +91,11 @@ export enum AppResourceIDs {
   //#region Card ...
   card = 'card',
   card_description = 'card_description',
+
+  //
+  header = 'header',
+  actions = 'actions',
+  footer = 'footer',
   //#endregion
 
   //
@@ -190,6 +196,10 @@ export enum AppResourceIDs {
 export const FaCustomLocales: XTranslationItem[] = [
   //
   //#region Global ...
+  {
+    id: 'sample',
+    value: 'نمونه',
+  },
   {
     id: 'temp_label',
     value: 'برچسب پیش فرض',
@@ -372,6 +382,20 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'card_description',
     value: 'مستندات مربوط به مولفه کارت',
+  },
+
+  //
+  {
+    id: 'header',
+    value: 'ناحیه فوقانی',
+  },
+  {
+    id: 'actions',
+    value: 'فعالیت ها و فرمان ها',
+  },
+  {
+    id: 'footer',
+    value: 'ناحیه تحتانی',
   },
   //#endregion
 
@@ -556,6 +580,10 @@ export const EnCustomLocales: XTranslationItem[] = [
   //
   //#region Global ...
   {
+    id: 'sample',
+    value: 'Sample',
+  },
+  {
     id: 'temp_label',
     value: 'Default Label',
   },
@@ -737,6 +765,20 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'card_description',
     value: 'Card Component Documentation',
+  },
+
+  //
+  {
+    id: 'header',
+    value: 'Header',
+  },
+  {
+    id: 'actions',
+    value: 'Actions',
+  },
+  {
+    id: 'footer',
+    value: 'Footer',
   },
   //#endregion
 

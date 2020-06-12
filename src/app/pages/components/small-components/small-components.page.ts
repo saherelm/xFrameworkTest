@@ -369,7 +369,7 @@ export class SmallComponentsPage extends VPageComponent {
     const result = this[`${varName}`];
 
     //
-    return result;
+    return result || '';
   }
 
   //
