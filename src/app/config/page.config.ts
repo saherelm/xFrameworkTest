@@ -17,8 +17,16 @@ export enum HomeRoutes {
 export enum ComponentsRoutes {
   Default = 'components',
   Components = 'components',
-  Button = 'button',
+  SmallComponents = 'small-components',
+  Card = 'card',
   Icon = 'icon',
+  Counter = 'counter',
+  Fab = 'fab',
+  FileUpload = 'file-upload',
+  Form = 'form',
+  Grid = 'grid',
+  List = 'list',
+  Map = 'map',
 }
 
 export enum AppRoutes {
@@ -38,8 +46,16 @@ export enum PageName {
 
   //
   Components = AppRoutes.Components,
-  Button = ComponentsRoutes.Button,
+  SmallComponents = ComponentsRoutes.SmallComponents,
+  Card = ComponentsRoutes.Card,
   Icon = ComponentsRoutes.Icon,
+  Counter = ComponentsRoutes.Counter,
+  Fab = ComponentsRoutes.Fab,
+  FileUpload = ComponentsRoutes.FileUpload,
+  Form = ComponentsRoutes.Form,
+  Grid = ComponentsRoutes.Grid,
+  List = ComponentsRoutes.List,
+  Map = ComponentsRoutes.Map,
 }
 
 export type PageNames = keyof typeof PageName;
@@ -83,13 +99,23 @@ export const PageIndex: PageIndexType = {
     icon: XIconNames.home,
     childs: [
       //
-      // Button ...
+      // SmallComponents ...
       {
-        id: PageName.Button.toString(),
-        name: PageName.Button.toString(),
-        title: AppResourceIDs.button,
-        description: AppResourceIDs.button_description,
-        route: `${AppRoutes.Components}/${ComponentsRoutes.Button}`,
+        id: PageName.SmallComponents.toString(),
+        name: PageName.SmallComponents.toString(),
+        title: AppResourceIDs.small_components,
+        description: AppResourceIDs.small_components_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.SmallComponents}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Card ...
+      {
+        id: PageName.Card.toString(),
+        name: PageName.Card.toString(),
+        title: AppResourceIDs.card,
+        description: AppResourceIDs.card_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Card}`,
         icon: XIconNames.list,
       },
       //
@@ -100,6 +126,76 @@ export const PageIndex: PageIndexType = {
         title: AppResourceIDs.icon,
         description: AppResourceIDs.icon_description,
         route: `${AppRoutes.Components}/${ComponentsRoutes.Icon}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Counter ...
+      {
+        id: PageName.Counter.toString(),
+        name: PageName.Counter.toString(),
+        title: AppResourceIDs.counter,
+        description: AppResourceIDs.counter_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Counter}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Fab ...
+      {
+        id: PageName.Fab.toString(),
+        name: PageName.Fab.toString(),
+        title: AppResourceIDs.fab,
+        description: AppResourceIDs.fab_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Fab}`,
+        icon: XIconNames.list,
+      },
+      //
+      // FileUpload ...
+      {
+        id: PageName.FileUpload.toString(),
+        name: PageName.FileUpload.toString(),
+        title: AppResourceIDs.file_upload,
+        description: AppResourceIDs.file_upload_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.FileUpload}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Form ...
+      {
+        id: PageName.Form.toString(),
+        name: PageName.Form.toString(),
+        title: AppResourceIDs.form,
+        description: AppResourceIDs.form_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Form}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Grid ...
+      {
+        id: PageName.Grid.toString(),
+        name: PageName.Grid.toString(),
+        title: AppResourceIDs.grid,
+        description: AppResourceIDs.grid_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Grid}`,
+        icon: XIconNames.list,
+      },
+      //
+      // List ...
+      {
+        id: PageName.List.toString(),
+        name: PageName.List.toString(),
+        title: AppResourceIDs.list,
+        description: AppResourceIDs.list_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.List}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Map ...
+      {
+        id: PageName.Map.toString(),
+        name: PageName.Map.toString(),
+        title: AppResourceIDs.map,
+        description: AppResourceIDs.map_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Map}`,
         icon: XIconNames.list,
       },
     ],
@@ -115,8 +211,16 @@ export const Pages = {
 
   //
   Components: PageIndex.Components,
-  Button: PageIndex.Components.childs[0],
-  Icon: PageIndex.Components.childs[1],
+  SmallComponents: PageIndex.Components.childs[0],
+  Card: PageIndex.Components.childs[1],
+  Icon: PageIndex.Components.childs[2],
+  Counter: PageIndex.Components.childs[3],
+  Fab: PageIndex.Components.childs[4],
+  FileUpload: PageIndex.Components.childs[5],
+  Form: PageIndex.Components.childs[6],
+  Grid: PageIndex.Components.childs[7],
+  List: PageIndex.Components.childs[8],
+  Map: PageIndex.Components.childs[9],
 };
 
 //
@@ -161,24 +265,116 @@ export const NavPageItems: XNavigatorListItem[] = [
     description: Pages.Components.description,
     childs: [
       //
-      // Button ...
+      // SmallComponents ...
       {
         id: '20',
-        data: Pages.Button,
-        title: Pages.Button.title,
+        data: Pages.SmallComponents,
+        title: Pages.SmallComponents.title,
         routerDirection: 'root',
-        href: ['/', Pages.Components.route, ComponentsRoutes.Button.toString()],
-        description: Pages.Button.description,
+        href: [
+          '/',
+          Pages.Components.route,
+          ComponentsRoutes.SmallComponents.toString(),
+        ],
+        description: Pages.SmallComponents.description,
+      },
+      //
+      // Card ...
+      {
+        id: '21',
+        data: Pages.Card,
+        title: Pages.Card.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Card.toString()],
+        description: Pages.Card.description,
       },
       //
       // Icon ...
       {
-        id: '21',
+        id: '22',
         data: Pages.Icon,
         title: Pages.Icon.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Icon.toString()],
         description: Pages.Icon.description,
+      },
+      //
+      // Counter ...
+      {
+        id: '23',
+        data: Pages.Counter,
+        title: Pages.Counter.title,
+        routerDirection: 'root',
+        href: [
+          '/',
+          Pages.Components.route,
+          ComponentsRoutes.Counter.toString(),
+        ],
+        description: Pages.Counter.description,
+      },
+      //
+      // Fab ...
+      {
+        id: '24',
+        data: Pages.Fab,
+        title: Pages.Fab.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Fab.toString()],
+        description: Pages.Fab.description,
+      },
+      //
+      // FileUpload ...
+      {
+        id: '25',
+        data: Pages.FileUpload,
+        title: Pages.FileUpload.title,
+        routerDirection: 'root',
+        href: [
+          '/',
+          Pages.Components.route,
+          ComponentsRoutes.FileUpload.toString(),
+        ],
+        description: Pages.FileUpload.description,
+      },
+      //
+      // Form ...
+      {
+        id: '26',
+        data: Pages.Form,
+        title: Pages.Form.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Form.toString()],
+        description: Pages.Form.description,
+      },
+      //
+      // Grid ...
+      {
+        id: '27',
+        data: Pages.Grid,
+        title: Pages.Grid.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Grid.toString()],
+        description: Pages.Grid.description,
+      },
+      //
+      // List ...
+      {
+        id: '28',
+        data: Pages.List,
+        title: Pages.List.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.List.toString()],
+        description: Pages.List.description,
+      },
+      //
+      // Map ...
+      {
+        id: '29',
+        data: Pages.Map,
+        title: Pages.Map.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Map.toString()],
+        description: Pages.Map.description,
       },
     ],
   },
