@@ -31,6 +31,17 @@ export class SmallComponentsPage extends VPageComponent {
   //#endregion
 
   //
+  // Content ...
+  readonly content = `
+  # مولفه های جزئی
+
+  مولفه هایی هستند که بسیار جزئی و پرکاربرد هستند و شامل پیکربندی های پیچیده نیستند.
+  این مولفه ها را بسادگی می توان مورد بهره برداری قرار داد.
+
+  در ادامه فهرستی از این مولفه ها بهمراه مستندات مربوط به هریک به تفکیک ارائه می گردد:
+  `;
+
+  //
   async handleButtonClicked() {
     await this.managerService.notificationService.presentSuccessNotification({
       message: this.resourceProvider(AppResourceIDs.temp_label),

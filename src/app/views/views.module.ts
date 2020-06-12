@@ -33,6 +33,7 @@ import {
   XFileDropAreaModule,
   XBaseComponentModule,
   XExpandableListModule,
+  XExpandablePanelModule,
   XFrameworkComponentsModule,
 } from 'x-framework-components';
 import { NgModule } from '@angular/core';
@@ -99,6 +100,7 @@ import { VPageComponent } from './v-page/v-page.component';
     XFileDropAreaModule,
     XTabNavigatorModule,
     XExpandableListModule,
+    XExpandablePanelModule,
   ],
   exports: [
     //
@@ -145,6 +147,7 @@ import { VPageComponent } from './v-page/v-page.component';
     XFileDropAreaModule,
     XTabNavigatorModule,
     XExpandableListModule,
+    XExpandablePanelModule,
 
     //
     VPageComponent,

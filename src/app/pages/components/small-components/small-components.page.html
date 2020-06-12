@@ -4,19 +4,47 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
-  <div class="content-container">
-    <x-button
-      [color]="'primary'"
-      class="ion-margin-horizontal"
-      (click)="handleButtonClicked()"
-      [title]="ResourceIDs.temp_label"
-    ></x-button>
+  <!-- Content -->
+  <x-markdown
+    [mode]="'preview'"
+    [content]="content"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [isPageMarkdown]="true"
+  ></x-markdown>
 
-    <x-button
-      [color]="'danger'"
-      class="ion-margin-horizontal"
-      [title]="ResourceIDs.temp_label"
-      (click)="handleButtonClicked()"
-    ></x-button>
-  </div>
+  <!-- Expandable Panel -->
+  <x-expandable-panel
+    [isAccordion]="true"
+    [isPagePanel]="true"
+    [wrapWithCard]="true"
+  >
+    <!-- Spinner -->
+    <x-panel [id]="'Spinner'">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.button) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.button_description) }}
+      </div>
+
+      <!-- Content -->
+      <div>
+        <x-button
+          [color]="'primary'"
+          class="ion-margin-horizontal"
+          (click)="handleButtonClicked()"
+          [title]="ResourceIDs.temp_label"
+        ></x-button>
+
+        <x-button
+          [color]="'danger'"
+          class="ion-margin-horizontal"
+          [title]="ResourceIDs.temp_label"
+          (click)="handleButtonClicked()"
+        ></x-button>
+      </div>
+    </x-panel>
+  </x-expandable-panel>
 </v-page>
