@@ -6,6 +6,7 @@ export enum AppResourceIDs {
   sample = 'sample',
   temp_label = 'temp_label',
   documentation = 'documentation',
+  default_loading = 'default_loading',
 
   //
   english = 'english',
@@ -207,6 +208,10 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'documentation',
     value: 'مستندات',
+  },
+  {
+    id: 'default_loading',
+    value: 'در حال بارگزاری'
   },
 
   //
@@ -590,6 +595,10 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'documentation',
     value: 'Documentation',
+  },
+  {
+    id: 'default_loading',
+    value: 'Loading'
   },
 
   //

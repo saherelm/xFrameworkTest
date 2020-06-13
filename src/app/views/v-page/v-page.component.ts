@@ -435,7 +435,6 @@ export class VPageComponent extends XPageComponent {
             }
 
             //
-            console.log('selectedLocale: ', selectedLocale);
             await this.managerService.settingsService.changeLocale(
               selectedLocale
             );

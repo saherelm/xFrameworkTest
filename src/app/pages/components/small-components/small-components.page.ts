@@ -30,6 +30,8 @@ export class SmallComponentsPage extends VPageComponent {
   //#endregion
 
   //
+  //#region Contents Info ...
+  //
   // Prepare All Resource IDs ...
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
@@ -134,11 +136,11 @@ export class SmallComponentsPage extends VPageComponent {
     'await this.managerService.dialogService.presentAlert(' +
     '{' +
     'header: AppResourceIDs.alert, ' +
-    "subHeader: 'sub title', " +
-    "message: 'dialog message', " +
+    'subHeader: \'sub title\', ' +
+    'message: \'dialog message\', ' +
     'buttons: [ ' +
     '{' +
-    "text: 'OK', " +
+    'text: \'OK\', ' +
     'role: XModalButtonRole.Selected, ' +
     'handler: () => {} ' +
     '}]});' +
@@ -157,22 +159,22 @@ export class SmallComponentsPage extends VPageComponent {
     '```' +
     'await this.managerService.dialogService.presentAlert(' +
     '{ ' +
-    "header: 'عنوان', " +
-    "subHeader: 'توضیحات', " +
-    "message: 'نام شما چیست ؟', " +
+    'header: \'عنوان\', ' +
+    'subHeader: \'توضیحات\', ' +
+    'message: \'نام شما چیست ؟\', ' +
     'inputs: [ ' +
     '{ ' +
-    "type: 'text', " +
-    "name: 'name', " +
-    "label: 'نام', " +
-    "placeholder: 'نام و نام خانوادگی ...', " +
+    'type: \'text\', ' +
+    'name: \'name\', ' +
+    'label: \'نام\', ' +
+    'placeholder: \'نام و نام خانوادگی ...\', ' +
     '}, ' +
     '], ' +
     'buttons: [ ' +
     '{ ' +
-    "text: 'ثبت', " +
+    'text: \'ثبت\', ' +
     'role: XModalButtonRole.Selected, ' +
-    "cssClass: ['btn-selected'], " +
+    'cssClass: [\'btn-selected\'], ' +
     'handler: async (value) => { ' +
     'if (value && value.name && !isNullOrEmptyString(value.name)) { ' +
     'await this.managerService.notificationService.presentInfoNotification( ' +
@@ -185,9 +187,9 @@ export class SmallComponentsPage extends VPageComponent {
     '} ' +
     '}, ' +
     '{ ' +
-    "text: 'لغو', " +
+    'text: \'لغو\', ' +
     'role: XModalButtonRole.Cancel, ' +
-    "cssClass: ['btn-cancel'], " +
+    'cssClass: [\'btn-cancel\'], ' +
     'handler: () => { ' +
     '}, ' +
     '}, ' +
@@ -260,36 +262,36 @@ export class SmallComponentsPage extends VPageComponent {
     '{' +
     'buttons: [' +
     '{' +
-    "text: 'Ok'," +
+    'text: \'Ok\',' +
     'role: XModalButtonRole.Selected,' +
-    "cssClass: ['btn-selected']," +
+    'cssClass: [\'btn-selected\'],' +
     'handler: (value) => {' +
-    "console.log('OK Clicked ...', value);" +
+    'console.log(\'OK Clicked ...\', value);' +
     '},' +
     '},' +
     '{' +
-    "text: 'Cancel'," +
+    'text: \'Cancel\',' +
     'role: XModalButtonRole.Cancel,' +
-    "cssClass: ['btn-cancel']," +
+    'cssClass: [\'btn-cancel\'],' +
     'handler: () => {' +
-    "console.log('Cancel Clicked ...');" +
+    'console.log(\'Cancel Clicked ...\');' +
     '},' +
     '},' +
     '],' +
     'columns: [' +
     '{' +
-    "name: 'Col_1'," +
+    'name: \'Col_1\',' +
     'options: [' +
     '{' +
-    "text: 'S 1'," +
+    'text: \'S 1\',' +
     'value: 1,' +
     '},' +
     '{' +
-    "text: 'S 2'," +
+    'text: \'S 2\',' +
     'value: 2,' +
     '},' +
     '{' +
-    "text: 'S 3'," +
+    'text: \'S 3\',' +
     'value: 3,' +
     '},' +
     '{' +
@@ -345,6 +347,7 @@ export class SmallComponentsPage extends VPageComponent {
     '    </x-slot>' +
     '  </x-slotter>' +
     '```';
+  //#endregion
 
   //
   // Provide content based on current locale ...
@@ -454,7 +457,7 @@ export class SmallComponentsPage extends VPageComponent {
   async handleShowLoading() {
     //
     const loading = await this.managerService.dialogService.presentLoading({
-      message: this.resourceProvider(AppResourceIDs.temp_label),
+      message: this.resourceProvider(AppResourceIDs.default_loading),
       spinner: this.SpinnerNames.LinesSmall,
     });
 

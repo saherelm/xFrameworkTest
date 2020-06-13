@@ -3,6 +3,7 @@ import {
   hasChild,
   XResourceIDs,
   isNullOrEmptyString,
+  XSpinner,
 } from 'x-framework-core';
 import { Component } from '@angular/core';
 import { XIconNames, XListItem } from 'x-framework-components';
@@ -36,6 +37,10 @@ export class IconPage extends VPageComponent {
   //
   // Color Names ...
   readonly ColorNames = Object.assign({}, XColor);
+
+  //
+  // Spinner Names ...
+  readonly SpinnerNames = Object.assign({}, XSpinner);
 
   //
   IconNames = Object.assign({}, XIconNames);
@@ -98,10 +103,9 @@ export class IconPage extends VPageComponent {
   //#region UI Handlers ...
   async handleIconSelected(item: XListItem<string>) {
     //
-    const iconCode = `\<x-icon name=\'${item.data}\'\>\<\/x-icon\>`;
-    console.log(iconCode);
+    const iconCode = `&lt;x-icon name='${item.data}'&gt;&lt;/x-icon&gt;`;
     await this.managerService.notificationService.presentInfoNotification({
-      message: iconCode.toString(),
+      message: iconCode,
       dissmissable: true,
       opt: {
         duration: 4000,
@@ -122,7 +126,10 @@ export class IconPage extends VPageComponent {
   //#region Private ...
   private async prepareIconListItems() {
     //
-    const loading = await this.managerService.dialogService.presentLoading({});
+    const loading = await this.managerService.dialogService.presentLoading({
+      message: this.resourceProvider(AppResourceIDs.default_loading),
+      spinner: this.SpinnerNames.LinesSmall,
+    });
 
     //
     this.iconListItems = [];
