@@ -1,8 +1,13 @@
+import {
+  XColor,
+  hasChild,
+  XResourceIDs,
+  isNullOrEmptyString,
+} from 'x-framework-core';
 import { Component } from '@angular/core';
-import { hasChild, XResourceIDs } from 'x-framework-core';
+import { XIconNames, XListItem } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import { XIconNames, XListItem } from 'x-framework-components';
 
 @Component({
   selector: 'app-icon',
@@ -29,10 +34,25 @@ export class IconPage extends VPageComponent {
   );
 
   //
+  // Color Names ...
+  readonly ColorNames = Object.assign({}, XColor);
+
+  //
   IconNames = Object.assign({}, XIconNames);
   iconList = Object.keys(this.IconNames);
   iconListItems: XListItem<string>[] = [];
   //#endregion
+
+  readonly contentFa = `
+  # ${this.toolbarTitle}
+
+  این مولفه جهت نمایش شمایل های مختلف بکار میرود.
+  `;
+  readonly contentEn = `
+  # ${this.toolbarTitle}
+
+  this Component used for show an icon.
+  `;
 
   //
   //#region LifeCycle ...
@@ -43,8 +63,58 @@ export class IconPage extends VPageComponent {
 
   //
   //#region UI Providers ...
+  //
+  // Provide content based on current locale ...
+  getContent(title: string) {
+    //
+    if (isNullOrEmptyString(title)) {
+      return '';
+    }
+
+    //
+    const currentLocale = this.managerService.currentLocale;
+
+    //
+    const varName =
+      title +
+      (currentLocale === 'en-US'
+        ? 'En'
+        : currentLocale === 'fa-IR'
+        ? 'Fa'
+        : '');
+
+    const result = this[`${varName}`];
+
+    //
+    return result || '';
+  }
+
   canShowIconList() {
     return hasChild(this.iconListItems);
+  }
+  //#endregion
+
+  //
+  //#region UI Handlers ...
+  async handleIconSelected(item: XListItem<string>) {
+    //
+    const iconCode = `'<x-icon name='${item.data}'></x-icon>'`;
+    console.log(iconCode);
+    await this.managerService.notificationService.presentInfoNotification({
+      message: iconCode.toString(),
+      dissmissable: true,
+      opt: {
+        duration: 4000,
+        buttons: [
+          {
+            text: this.resourceProvider(XResourceIDs.dismiss),
+            icon: this.IconNames.cancel,
+            side: 'end',
+            role: 'cancel',
+          },
+        ],
+      },
+    });
   }
   //#endregion
 

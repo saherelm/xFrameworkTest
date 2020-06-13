@@ -4,31 +4,53 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
-  <!-- List Actions -->
-  <x-actions
-    [showSearchBar]="true"
-    [showActionBar]="false"
-    [listComponent]="listPresenter"
-    (queryChange)="listPresenter.filterItems($event)"
-  >
-  </x-actions>
+  <!-- Content -->
+  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+    <!-- Content -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('content')"
+    ></x-markdown>
 
-  <!-- Icons List -->
-  <x-list
-    #listPresenter
-    [isPageList]="true"
-    [wrapWithCard]="true"
-    [items]="iconListItems"
-    [itemTemplate]="iconTemplate"
-    [cardTitle]="resourceProvider(ResourceIDs.icon_list)"
-  >
-  </x-list>
+    <!-- Actions -->
+    <div actions>
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XIconComponent.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
+
+  <!-- Icon List -->
+  <x-card [isPageCard]="true" [title]="resourceProvider(ResourceIDs.icon_list)">
+    <!-- List Actions -->
+    <x-actions
+      [showSearchBar]="true"
+      [showActionBar]="false"
+      [listComponent]="listPresenter"
+      [searchBarColor]="ColorNames.Tertiary"
+      (queryChange)="listPresenter.filterItems($event)"
+    >
+    </x-actions>
+
+    <!-- Icons List -->
+    <x-list
+      #listPresenter
+      [items]="iconListItems"
+      [clickableItems]="true"
+      [itemTemplate]="iconTemplate"
+      (itemSelected)="handleIconSelected($event)"
+    >
+    </x-list>
+  </x-card>
 </v-page>
 
 <!-- Icon Template Ref -->
 <ng-template #iconTemplate let-item>
   <div class="cb-inherit ion-text-center">
-    <x-icon [name]="item.data" [color]="'tertiary'"></x-icon>
+    <x-icon [name]="item.data" [color]="ColorNames.Tertiary"></x-icon>
     {{ item.data }}
   </div>
 </ng-template>

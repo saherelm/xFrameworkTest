@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { XResourceIDs, XColor, isNullOrEmptyString } from 'x-framework-core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
+import { XResourceIDs, XColor, isNullOrEmptyString } from 'x-framework-core';
 
 @Component({
   selector: 'app-card',
@@ -34,9 +34,6 @@ export class CardPage extends VPageComponent {
 
   //
   // Content ...
-  readonly documentation = `[${this.resourceProvider(
-    AppResourceIDs.documentation
-  )}](https://docs.x-framework.ir/x-framework-components/components/XCardComponent.html)`;
   readonly contentFa = `
   # ${this.toolbarTitle}
 
