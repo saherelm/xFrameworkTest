@@ -4,4 +4,89 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
+  <!-- Content -->
+  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+    <!-- Content -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('content')"
+    ></x-markdown>
+
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample2"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample3"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample4"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-counter
+      #counter
+      [stopValue]="0"
+      [startValue]="180"
+      [currentValue]="150"
+      [cssClass]="'ion-text-center'"
+      [type]="CounterTypes.CountDown"
+      [displayPattern]="getCounterMessage"
+      (counterStop)="handleCounterStop($event)"
+      (counterTtick)="handleCounterTick($event)"
+      (counterStart)="handleCounterStart($event)"
+    ></x-counter>
+
+    <x-slotter [layout]="SlotLayout.HORIZONTAL">
+      <x-slot [name]="SlotNames.START" [cssClass]="'ion-text-start'">
+        <x-button
+          (click)="counter.start()"
+          [title]="ResourceIDs.start"
+          [color]="ColorNames.Tertiary"
+        ></x-button>
+      </x-slot>
+
+      <x-slot [name]="SlotNames.CENTER" [cssClass]="'ion-text-center'">
+        <x-button
+          (click)="counter.pause()"
+          [title]="ResourceIDs.pause"
+          [color]="ColorNames.Warning"
+        ></x-button>
+      </x-slot>
+
+      <x-slot [name]="SlotNames.END" [cssClass]="'ion-text-end'">
+        <x-button
+          [title]="ResourceIDs.reset"
+          [color]="ColorNames.Danger"
+          (click)="counter.startValue = 180; counter.stopValue= 0; counter.currentValue = 0; counter.start()"
+        ></x-button>
+      </x-slot>
+    </x-slotter>
+
+    <!-- Actions -->
+    <div actions>
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XCounterComponent.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
 </v-page>

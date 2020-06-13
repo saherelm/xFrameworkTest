@@ -111,6 +111,9 @@ export enum AppResourceIDs {
   //#region Counter ...
   counter = 'counter',
   counter_description = 'counter_description',
+
+  //
+  pause = 'pause',
   //#endregion
 
   //
@@ -431,6 +434,12 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'counter_description',
     value: 'مستندات مربوط به مولفه شمارنده',
+  },
+
+  //
+  {
+    id: 'pause',
+    value: 'توقف'
   },
   //#endregion
 
@@ -818,6 +827,12 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'counter_description',
     value: 'Counter Component Documentation',
+  },
+
+  //
+  {
+    id: 'pause',
+    value: 'Pause'
   },
   //#endregion
 
