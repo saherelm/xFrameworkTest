@@ -98,7 +98,7 @@ export class IconPage extends VPageComponent {
   //#region UI Handlers ...
   async handleIconSelected(item: XListItem<string>) {
     //
-    const iconCode = `'<x-icon name='${item.data}'></x-icon>'`;
+    const iconCode = `\<x-icon name=\'${item.data}\'\>\<\/x-icon\>`;
     console.log(iconCode);
     await this.managerService.notificationService.presentInfoNotification({
       message: iconCode.toString(),
