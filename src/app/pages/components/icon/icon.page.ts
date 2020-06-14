@@ -103,6 +103,7 @@ export class IconPage extends VPageComponent {
   //#region UI Handlers ...
   async handleIconSelected(item: XListItem<string>) {
     //
+    // text: this.resourceProvider(XResourceIDs.dismiss),
     const iconCode = `&lt;x-icon name='${item.data}'&gt;&lt;/x-icon&gt;`;
     await this.managerService.notificationService.presentInfoNotification({
       message: iconCode,
@@ -111,8 +112,7 @@ export class IconPage extends VPageComponent {
         duration: 4000,
         buttons: [
           {
-            text: this.resourceProvider(XResourceIDs.dismiss),
-            icon: this.IconNames.cancel,
+            icon: this.IconNames.close,
             side: 'end',
             role: 'cancel',
           },
