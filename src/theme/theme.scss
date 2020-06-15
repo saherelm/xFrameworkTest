@@ -129,11 +129,15 @@ x-card.v-card,
   .x-title {
     margin-bottom: 8px;
     font-size: 16px !important;
+
+    color: var(--x-color-primary-tint-contrast);
   }
 
   .x-sub-title {
     margin-bottom: 0;
     font-size: 12px !important;
+
+    color: var(--x-color-primary-tint-contrast);
   }
 
   mat-card {
@@ -150,8 +154,11 @@ x-card.v-card,
 
   mat-card-header {
     @include transition-duration();
+
+    //
     background-color: var(--x-color-primary-tint);
 
+    //
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
   }
