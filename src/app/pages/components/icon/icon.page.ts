@@ -104,13 +104,27 @@ export class IconPage extends VPageComponent {
   async handleIconSelected(item: XListItem<string>) {
     //
     // text: this.resourceProvider(XResourceIDs.dismiss),
-    const iconCode = `&lt;x-icon name='${item.data}'&gt;&lt;/x-icon&gt;`;
+    const iconText = `&lt;x-icon name='${item.data}'&gt;&lt;/x-icon&gt;`;
+    const iconCode = `<x-icon name='${item.data}'></x-icon>`;
     await this.managerService.notificationService.presentInfoNotification({
-      message: iconCode,
+      message: iconText,
       dissmissable: true,
       opt: {
         duration: 4000,
         buttons: [
+          {
+            icon: this.IconNames.clipboard,
+            side: 'end',
+            role: 'set',
+            handler: () => {
+              //
+              console.log(iconCode);
+              const isSaved = this.managerService.saveToClipboard(iconCode);
+              if (isSaved) {
+                this.managerService.notificationService.presentDefaultSuccessNotification();
+              }
+            }
+          },
           {
             icon: this.IconNames.close,
             side: 'end',
