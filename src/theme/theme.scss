@@ -168,3 +168,25 @@ x-card.v-card.v-no-margin-card,
   }
 }
 //#endregion
+
+//
+//#region Fab ...
+x-fab {
+  ion-fab {
+    //
+    position: fixed !important;
+    margin-top: calc(var(--content-offset-bottom) * -1);
+    margin-bottom: calc(var(--content-offset-bottom) * -1);
+
+    //
+    transition: transform 500ms ease 0s, opacity 250ms ease 0s;
+  }
+
+  //
+  &.start-scroll {
+    ion-fab {
+      transform: translateY(200px) scale3d(0, 0, 0) !important;
+    }
+  }
+}
+//#endregion
