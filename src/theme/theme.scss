@@ -119,3 +119,52 @@ body {
     direction: var(--ui-direction) !important;
   }
 }
+
+//
+//#region Card ..
+$border-radius: 8px;
+
+x-card.v-card,
+.v-card > x-card {
+  .x-title {
+    margin-bottom: 8px;
+    font-size: 16px !important;
+  }
+
+  .x-sub-title {
+    margin-bottom: 0;
+    font-size: 12px !important;
+  }
+
+  mat-card {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+
+  mat-card.mobile {
+    .mat-card-header {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  mat-card-header {
+    @include transition-duration();
+    background-color: var(--x-color-primary-tint);
+
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+
+  mat-card-header:hover {
+    background-color: var(--x-color-primary-shade);
+  }
+}
+
+x-card.v-card.v-no-margin-card,
+.v-card.v-no-margin-card > x-card {
+  mat-card-content {
+    padding: 0 !important;
+  }
+}
+//#endregion

@@ -1,7 +1,46 @@
 <v-page
-  [hasSide]="true"
-  [toolbarTitle]="toolbarTitle"
+  [actions]="actions"
+  [provideScrollEvents]="true"
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
+  (scrolledEvent)="handleScrolledEvent($event)"
 >
+  <ng-container *ngFor="let id of ids">
+    <ng-container
+      *ngTemplateOutlet="contentRef; context: {$implicit: id}"
+    ></ng-container>
+  </ng-container>
 </v-page>
+
+<!-- Template Content -->
+<ng-template #contentRef let-id>
+  <x-card
+    [showHeader]="true"
+    [isPageCard]="true"
+    [showActions]="true"
+    [title]="'Title ' + id"
+    [subTitle]="'SubTitle ' + id"
+    class="v-card v-no-marigin-card"
+  >
+    <!-- Content -->
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam
+      inventore, optio obcaecati, harum temporibus accusamus voluptatem,
+      sapiente corporis expedita ipsum quos enim odio adipisci! At praesentium
+      hic quaerat ad mollitia.
+    </p>
+
+    <!-- Actions -->
+    <div actions>
+      <!-- Like -->
+      <x-button [type]="ButtonTypes.Icon">
+        <x-icon [name]="IconNames.liked" [color]="ColorNames.Danger"></x-icon>
+      </x-button>
+
+      <!-- Share -->
+      <x-button [type]="ButtonTypes.Icon">
+        <x-icon [name]="IconNames.share" [color]="ColorNames.Danger"></x-icon>
+      </x-button>
+    </div>
+  </x-card>
+</ng-template>
