@@ -123,7 +123,7 @@ export class IconPage extends VPageComponent {
               if (isSaved) {
                 this.managerService.notificationService.presentDefaultSuccessNotification();
               }
-            }
+            },
           },
           {
             icon: this.IconNames.close,
@@ -160,6 +160,7 @@ export class IconPage extends VPageComponent {
 
       //
       this.iconListItems.push(li);
+      this.detectChanges();
     });
 
     //

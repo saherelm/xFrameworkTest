@@ -12,16 +12,16 @@ import {
   XColor,
   assign,
   XParam,
+  XLocale,
   notValue,
+  isFunction,
   XResourceIDs,
+  XPickerColumn,
   XStandardType,
   XOneOrManyType,
   XColorIdentifier,
-  isFunction,
-  XPickerColumn,
-  XPickerColumnOption,
   XModalButtonRole,
-  XLocale,
+  XPickerColumnOption,
 } from 'x-framework-core';
 import { Observable } from 'rxjs';
 import {
@@ -50,9 +50,9 @@ import { MenuController } from '@ionic/angular';
 import { X_CONFIG } from '../../config/x-config';
 import { XConfig } from '../../config/app-config';
 import { ViewportRuler } from '@angular/cdk/overlay';
-import { isNullOrUndefined, hasChild } from 'x-framework-core';
 import { XManagerService } from 'x-framework-services';
 import { NavPageItems } from '../../config/page.config';
+import { isNullOrUndefined, hasChild } from 'x-framework-core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -164,7 +164,7 @@ export class VPageComponent extends XPageComponent {
   toolbarShowLogo: XStandardType<boolean> = true;
 
   @Input()
-  toolbarLogoUrl: XStandardType<string> = '/assets/image/logo.png';
+  toolbarLogoUrl: XStandardType<string> = './assets/image/logo.png';
   //#endregion
 
   //
@@ -209,7 +209,13 @@ export class VPageComponent extends XPageComponent {
   //#endregion
 
   //
-  //#region Ion Content Scrolling Handlers ...
+  //#region Scrolling Handlers ...
+  @Input()
+  provideScrollEvents: XStandardType<boolean> = true;
+
+  @Input()
+  scrollBehaviour: XOneOrManyType<string> = ['x-fab'];
+
   @Input()
   scrollStartClasses: XOneOrManyType<string> = 'start-scroll';
 

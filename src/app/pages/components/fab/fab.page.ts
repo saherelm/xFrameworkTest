@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { XResourceIDs, XColor, isNullOrEmptyString } from 'x-framework-core';
-import { VPageComponent } from '../../../views/v-page/v-page.component';
-import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import {
   XFabItem,
   XIconNames,
+  XButtonType,
   XFabVerticalSlot,
   XFabHorizontalSlot,
-  XButtonType,
 } from 'x-framework-components';
+import { Component } from '@angular/core';
+import { VPageComponent } from '../../../views/v-page/v-page.component';
+import { AppResourceIDs } from 'src/app/config/app.localization.config';
+import { XResourceIDs, XColor, isNullOrEmptyString } from 'x-framework-core';
 
 @Component({
   selector: 'app-fab',
@@ -21,13 +21,13 @@ export class FabPage extends VPageComponent {
   //#region Props ...
   //
   //#region Page Props ...
+  toolbarShowSubTitle = true;
   titleRes = AppResourceIDs.fab;
   toolbarTitle = this.resourceProvider(this.titleRes);
   toolbarSubTitle = this.resourceProvider(AppResourceIDs.fab_description);
-  toolbarShowSubTitle = true;
 
   //
-  ids = Array.from(Array(50).keys());
+  ids = Array.from(Array(25).keys());
   //#endregion
 
   //
@@ -128,10 +128,6 @@ export class FabPage extends VPageComponent {
 
     //
     return result || '';
-  }
-
-  handleScrolledEvent(event: any) {
-    console.log('Scroll Event: ', event);
   }
   //#endregion
 }

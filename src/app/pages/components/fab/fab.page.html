@@ -1,9 +1,7 @@
 <v-page
   [actions]="actions"
-  [provideScrollEvents]="true"
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
-  (scrolledEvent)="handleScrolledEvent($event)"
 >
   <ng-container *ngFor="let id of ids">
     <ng-container
@@ -21,6 +19,7 @@
     [title]="'Title ' + id"
     [subTitle]="'SubTitle ' + id"
     class="v-card v-no-marigin-card"
+    [avatarUrl]="'/assets/icon/favicon.png'"
   >
     <!-- Content -->
     <p>
