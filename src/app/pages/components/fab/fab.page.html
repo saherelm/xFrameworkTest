@@ -3,6 +3,26 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
+  <!-- Content -->
+  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+    <!-- Content -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('content')"
+    ></x-markdown>
+
+    <!-- Actions -->
+    <div actions>
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XIconComponent.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
+
+  <!-- Cards -->
   <ng-container *ngFor="let id of ids">
     <ng-container
       *ngTemplateOutlet="contentRef; context: {$implicit: id}"
