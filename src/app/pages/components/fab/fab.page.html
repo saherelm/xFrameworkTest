@@ -119,6 +119,31 @@
     ></x-fab>
   </x-card>
 
+  <!-- Descriptions -->
+  <x-card
+    [isPageCard]="true"
+    [showActions]="true"
+    [showHeader]="true"
+    [color]="ColorNames.Light"
+    [title]="resourceProvider(ResourceIDs.description)"
+  >
+    <!-- Descriptions -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('descriptions')"
+    ></x-markdown>
+
+    <!-- Actions -->
+    <div actions>
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XPageComponent.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
+
   <!-- Cards -->
   <ng-container *ngFor="let id of ids">
     <ng-container

@@ -241,6 +241,62 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'upload',
         value: 'بارگزاری',
       },
+      {
+        id: 'continue',
+        value: 'ادامه',
+      },
+      {
+        id: 'finish',
+        value: 'پایان',
+      },
+      {
+        id: 'enable',
+        value: 'فعال',
+      },
+      {
+        id: 'disable',
+        value: 'غیر فعال',
+      },
+      {
+        id: 'all',
+        value: 'همه',
+      },
+      {
+        id: 'new',
+        value: 'جدید',
+      },
+      {
+        id: 'add',
+        value: 'افزودن',
+      },
+      {
+        id: 'update',
+        value: 'بروز رسانی',
+      },
+      {
+        id: 'details',
+        value: 'جزئیات',
+      },
+      {
+        id: 'translation',
+        value: 'ترجمه',
+      },
+      {
+        id: 'download',
+        value: 'دریافت',
+      },
+      {
+        id: 'list',
+        value: 'فهرست',
+      },
+      {
+        id: 'options',
+        value: 'انتخاب ها',
+      },
+      {
+        id: 'descriptions',
+        value: 'توضیحات',
+      },
       //#endregion
 
       //
@@ -551,9 +607,66 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'selected_location',
         value: 'Selected Location',
       },
+      //
       {
         id: 'upload',
         value: 'Upload',
+      },
+      {
+        id: 'continue',
+        value: 'Continue',
+      },
+      {
+        id: 'finish',
+        value: 'Finish',
+      },
+      {
+        id: 'enable',
+        value: 'Enable',
+      },
+      {
+        id: 'disable',
+        value: 'Disable',
+      },
+      {
+        id: 'all',
+        value: 'All',
+      },
+      {
+        id: 'new',
+        value: 'New',
+      },
+      {
+        id: 'add',
+        value: 'Add',
+      },
+      {
+        id: 'update',
+        value: 'Update',
+      },
+      {
+        id: 'details',
+        value: 'Details',
+      },
+      {
+        id: 'translation',
+        value: 'Translation',
+      },
+      {
+        id: 'download',
+        value: 'Download',
+      },
+      {
+        id: 'list',
+        value: 'List',
+      },
+      {
+        id: 'options',
+        value: 'Options',
+      },
+      {
+        id: 'descriptions',
+        value: 'Description',
       },
       //#endregion
 

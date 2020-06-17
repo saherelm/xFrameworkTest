@@ -148,6 +148,19 @@ export class FabPage extends VPageComponent {
     '```';
 
   //
+  readonly descriptionsFa = `
+    در ادامه نمونه ای از بکارگیری دکمه های شناور ارائه می گردد که در مولفه صفحه و بعنوان یکی از اجزاء آن ارائه شده است.
+
+    برای آشنایی بیشتر می توانید به مستندات مولفه صفحه مراجعه کنید.
+    `;
+
+  readonly descriptionsEn = `
+    in the following example you will see an implementation of Fab component which provides as a part of Page component.
+
+    for more information you can see Page component documentations.
+    `;
+
+  //
   actions: XFabItem = {
     //
     id: 'edit_profile',
