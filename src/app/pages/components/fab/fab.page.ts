@@ -42,6 +42,8 @@ export class FabPage extends VPageComponent {
   //
   // Color Names ...
   readonly ColorNames = Object.assign({}, XColor);
+
+  //
   readonly IconNames = Object.assign({}, XIconNames);
   readonly ButtonTypes = Object.assign({}, XButtonType);
 
@@ -149,14 +151,12 @@ export class FabPage extends VPageComponent {
 
   //
   readonly descriptionsFa = `
-    در ادامه نمونه ای از بکارگیری دکمه های شناور ارائه می گردد که در مولفه صفحه و بعنوان یکی از اجزاء آن ارائه شده است.
-
+  در ادامه نمونه ای از بکارگیری دکمه های شناور ارائه می گردد که در مولفه صفحه و بعنوان یکی از اجزاء آن ارائه شده است.
     برای آشنایی بیشتر می توانید به مستندات مولفه صفحه مراجعه کنید.
     `;
 
   readonly descriptionsEn = `
     in the following example you will see an implementation of Fab component which provides as a part of Page component.
-
     for more information you can see Page component documentations.
     `;
 

@@ -1,9 +1,9 @@
 import {
   XColor,
+  XSpinner,
   hasChild,
   XResourceIDs,
   isNullOrEmptyString,
-  XSpinner,
 } from 'x-framework-core';
 import { Component } from '@angular/core';
 import { XIconNames, XListItem } from 'x-framework-components';

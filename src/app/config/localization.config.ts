@@ -16,7 +16,7 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       // TODO: Customize this ...
       {
         id: 'app_name',
-        value: 'فریمورک ایکس',
+        value: 'چارچوب ایکس',
       },
       //
       // TODO: Customize this ...

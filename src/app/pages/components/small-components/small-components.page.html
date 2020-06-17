@@ -324,6 +324,38 @@
       </div>
     </x-panel>
 
+    <!-- Thumbnail -->
+    <x-panel [id]="'thumbnail'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.thumbnail_component) }}
+      </div>
+      <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.thumbnail_description) }}
+      </div>
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('thumbnailContent')"
+      ></x-markdown>
+
+      <x-thumbnail
+        class="x-thumb"
+        [identifier]="fileUrl"
+        [type]="ThumbnailTypes.CUSTOM"
+      >
+      </x-thumbnail>
+
+      <x-thumbnail
+        class="x-thumb"
+        [identifier]="fileUrl"
+        [type]="ThumbnailTypes.GENERAL"
+      >
+      </x-thumbnail>
+    </x-panel>
+
     <!-- Picker -->
     <x-panel [id]="'Picker'" [hasCustomActions]="true">
       <!-- Title and Description -->

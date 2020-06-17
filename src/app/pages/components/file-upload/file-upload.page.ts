@@ -1,5 +1,37 @@
-import { Component } from '@angular/core';
-import { XResourceIDs } from 'x-framework-core';
+import {
+  Inject,
+  Component,
+  ViewChild,
+  Renderer2,
+  ElementRef,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  XColor,
+  toArray,
+  isArray,
+  hasChild,
+  getArrayOf,
+  XResourceIDs,
+  XExceptionIDs,
+  isExtensionOk,
+  getImageDimensions,
+  isNullOrEmptyString,
+} from 'x-framework-core';
+import {
+  XIconNames,
+  XSlotName,
+  XSlotLayout,
+  XFileStatus,
+  XButtonType,
+  XDialogResult,
+  XImageCropperService,
+} from 'x-framework-components';
+import { MenuController } from '@ionic/angular';
+import { X_CONFIG } from 'src/app/config/x-config';
+import { XConfig } from 'src/app/config/app-config';
+import { ViewportRuler } from '@angular/cdk/overlay';
+import { XManagerService } from 'x-framework-services';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
@@ -23,10 +55,388 @@ export class FileUploadPage extends VPageComponent {
   //#endregion
 
   //
+  //#region image cropper props ...
+  readonly SlotNames = Object.assign({}, XSlotName);
+  readonly SlotLayout = Object.assign({}, XSlotLayout);
+  readonly ButtonTypes = Object.assign({}, XButtonType);
+
+  //
+  @ViewChild('fileInput', { static: false })
+  private fileInputRef!: ElementRef;
+
+  //
+  //#region Selected File ...
+  private SELECTED_FILE: File;
+
+  set file(v: File) {
+    //
+    this.SELECTED_FILE = v;
+
+    //
+    if (!v) {
+      return;
+    }
+
+    //
+    getImageDimensions(v).then((dimension) => {
+      if (dimension) {
+        //
+        this.selectedFileWidth = dimension.width;
+        this.selectedFileHeight = dimension.height;
+
+        //
+        this.detectChanges();
+      }
+    });
+  }
+
+  get file() {
+    return this.SELECTED_FILE;
+  }
+
+  //
+  selectedFileWidth = 0;
+  selectedFileHeight = 0;
+
+  //
+  preparedMaxAllowedFileSize = this.config.maxProfileImageSize;
+  preparedAllowedExtensions = this.config.allowedImageExtensions;
+  //#endregion
+
+  //
   // Prepare All Resource IDs ...
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
   );
+
+  //
+  readonly ColorNames = Object.assign({}, XColor);
+  readonly IconNames = Object.assign({}, XIconNames);
+  //#endregion
+
+  //
+  // Content ...
+  readonly contentFa = `
+  # ${this.resourceProvider(this.ResourceIDs.file_components)}
+  در این کتابخانه مجموعه ای از مولفه ها جهت سهولت کار با فایل ها ارائه شده است که در ادامه به بررسی هر یک بتفصیل پرداخته خواهد شد:
+`;
+
+  readonly contentEn = `
+  # ${this.toolbarTitle}
+  `;
+
+  readonly fileDropAreaContentFa = `
+  # ${this.resourceProvider(this.ResourceIDs.file_drop_area_component)}
+  این مولفه جهت فراهم کردن فضایی برای کشیدن فایل ها و رها کردن آن ها در فضای مناسب مورد استفاده قرار می گیرد.
+  `;
+
+  //
+  readonly fileDropAreaSample1 =
+    '```' +
+    '<x-file-drop-area ' +
+    '  [wrapWithCard]="true" ' +
+    '  [isPageFileDropArea]="true" ' +
+    '  [supportsMultipleFiles]="true" ' +
+    '  (filesChangeEmiter)="handleFilesChanged($event)" ' +
+    '></x-file-drop-area> ' +
+    '```';
+
+  readonly imageCropperContentFa = `
+  # ${this.resourceProvider(this.ResourceIDs.image_cropper_component)}
+  این مولفه جهت فراهم کردن امکانات بریدن تصاویر کاربرد دارد که مهمترین مورد کاربرد آن در تصاویر پروفایل است.
+  `;
+
+  //
+  readonly sample1 = '```' + '```';
+
+  //
+  //#region Constructor ...
+  constructor(
+    public element: ElementRef,
+    public renderer: Renderer2,
+    public ruler: ViewportRuler,
+    public menuController: MenuController,
+    public managerService: XManagerService,
+    public changeDetector: ChangeDetectorRef,
+    @Inject(X_CONFIG) public config: XConfig,
+    public imageCropperService: XImageCropperService
+  ) {
+    super(
+      element,
+      renderer,
+      ruler,
+      menuController,
+      managerService,
+      changeDetector,
+      config
+    );
+  }
+  //#endregion
+
+  //
+  //#region UI Providers ...
+  //
+  // Provide content based on current locale ...
+  getContent(title: string) {
+    //
+    if (isNullOrEmptyString(title)) {
+      return '';
+    }
+
+    //
+    const currentLocale = this.managerService.currentLocale;
+
+    //
+    const varName =
+      title +
+      (currentLocale === 'en-US'
+        ? 'En'
+        : currentLocale === 'fa-IR'
+        ? 'Fa'
+        : '');
+
+    const result = this[`${varName}`];
+
+    //
+    return result || '';
+  }
+
+  croppableImage() {
+    return (
+      this.file &&
+      this.selectedFileWidth > 0 &&
+      this.selectedFileHeight > 0 &&
+      this.selectedFileWidth >= this.config.minAllowedImageSize &&
+      this.selectedFileHeight >= this.config.minAllowedImageSize
+    );
+  }
+  //#endregion
+
+  //
+  //#region UI Handlers ...
+  //
+  async handleFilesChanged(files: File | File[]) {
+    //
+    console.log('files changed: ', files);
+
+    //
+    await this.managerService.notificationService.presentInfoNotification({
+      message: `Selected File(s): ${toArray(files).length}`,
+      dissmissable: true,
+    });
+  }
+
+  //
+  handleFilesSelected() {
+    //
+    if (!this.fileInputRef) {
+      return;
+    }
+
+    //
+    const fileInput = this.fileInputRef.nativeElement;
+    if (!fileInput || !fileInput.files) {
+      return;
+    }
+
+    //
+    const files = getArrayOf<File>(fileInput.files);
+
+    //
+    if (!files || files.length === 0) {
+      return;
+    }
+
+    //
+    const file = files[0];
+    if (!file) {
+      return;
+    }
+
+    //
+    fileInput.value = null;
+
+    //
+    this.handleFileDropped(files);
+  }
+
+  //
+  async handleFileDropped(files: File | File[]) {
+    //
+    if (!files) {
+      return;
+    }
+
+    //
+    this.loading = true;
+
+    //
+    let file: File;
+    if (!isArray(files) && files instanceof File) {
+      file = files as File;
+    } else {
+      //
+      const filesArr = files as File[];
+      if (hasChild(filesArr)) {
+        file = filesArr[0];
+      }
+    }
+
+    //
+    this.loading = false;
+
+    //
+    if (!file) {
+      return;
+    }
+
+    //
+    const status = this.getFileStatus(file);
+    if (status !== XFileStatus.OK) {
+      this.loading = false;
+      this.handleFileStatus(status);
+      return;
+    }
+
+    //
+    this.file = file;
+  }
+
+  //
+  handleLoadCropper() {
+    this.imageCropperService.showCropper(this.file);
+
+    //
+    const s = this.applyTakeUntilWrapper(
+      this.imageCropperService.onResult.asObservable()
+    ).subscribe((res) => {
+      //
+      if (res.result === XDialogResult.Ok && res.file) {
+        //
+        this.file = null;
+        setTimeout(() => {
+          this.file = res.file;
+        }, 100);
+      }
+
+      //
+      s.unsubscribe();
+    });
+  }
+
+  //
+  handleClearFile() {
+    //
+    this.file = null;
+    this.selectedFileWidth = 0;
+    this.selectedFileHeight = 0;
+  }
+
+  selectFile() {
+    //
+    if (!this.fileInputRef || !this.fileInputRef.nativeElement) {
+      return;
+    }
+
+    //
+    this.fileInputRef.nativeElement.click();
+  }
+  //#endregion
+
+  //
+  //#region Private ...
+  //
+  //#region File Selection Policies ...
+  private isExtensionOk(file: File) {
+    //
+    if (!file) {
+      return false;
+    }
+
+    //
+    if (!hasChild(this.preparedAllowedExtensions)) {
+      return true;
+    }
+
+    //
+    const result = isExtensionOk(file, this.preparedAllowedExtensions);
+    return result;
+  }
+
+  private isMaxAllowedFileSizeOk(file: File) {
+    //
+    const result =
+      this.preparedMaxAllowedFileSize && this.preparedMaxAllowedFileSize > 0
+        ? file.size <= this.preparedMaxAllowedFileSize
+        : true;
+
+    //
+    return result;
+  }
+
+  private getFileStatus(file: File) {
+    //
+    // Check Not Empty File ...
+    if (!file || file.size === 0) {
+      return XFileStatus.EMPTY;
+    }
+
+    //
+    // Check File Extension Validation ...
+    if (!this.isExtensionOk(file)) {
+      return XFileStatus.NOT_ALLOWED_TYPE;
+    }
+
+    //
+    // Check File Size Ok ...
+    if (!this.isMaxAllowedFileSizeOk(file)) {
+      return XFileStatus.SIZE_EXCEEDED;
+    }
+
+    //
+    // Everythings Ok ...
+    return XFileStatus.OK;
+  }
+
+  private handleFileStatus(status: XFileStatus) {
+    //
+    let exception: XExceptionIDs = null;
+    switch (status) {
+      //
+      case XFileStatus.EMPTY:
+        exception = this.ExceptionIDs.EmptyFile;
+        break;
+
+      //
+      case XFileStatus.NOT_ALLOWED_TYPE:
+        exception = this.ExceptionIDs.InavlidFile;
+        break;
+
+      //
+      case XFileStatus.SIZE_EXCEEDED:
+        exception = this.ExceptionIDs.MaxFileSizeExceeded;
+        break;
+
+      //
+      case XFileStatus.MAX_ALLOWED_SIZE_REACHED:
+        exception = this.ExceptionIDs.MaxFilesSizeExceeded;
+        break;
+
+      //
+      case XFileStatus.MAX_ALLOWED_FILES_REACHED:
+        exception = this.ExceptionIDs.MaxAllowedFilesExceeded;
+        break;
+    }
+
+    //
+    if (exception) {
+      this.managerService.notificationService.presentErrorNotification({
+        exception,
+        dissmissable: true,
+      });
+    }
+  }
+  //#endregion
   //#endregion
 }

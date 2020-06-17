@@ -10,6 +10,11 @@ export enum AppResourceIDs {
   copy_to_clipboard = 'copy_to_clipboard',
 
   //
+  file_components = 'file_components',
+  image_cropper_component = 'image_cropper_component',
+  file_drop_area_component = 'file_drop_area_component',
+
+  //
   english = 'english',
   persian = 'persian',
   //#endregion
@@ -64,6 +69,12 @@ export enum AppResourceIDs {
   //#region Loading ...
   loading = 'loading',
   loading_description = 'loading_description',
+  //#endregion
+
+  //
+  //#region Thumbnail ...
+  thumbnail_component = 'thumbnail_component',
+  thumbnail_description = 'thumbnail_description',
   //#endregion
 
   //
@@ -224,6 +235,20 @@ export const FaCustomLocales: XTranslationItem[] = [
 
   //
   {
+    id: 'file_components',
+    value: 'مولفه های مربوط به فایل',
+  },
+  {
+    id: 'image_cropper_component',
+    value: 'مولفه برش تصویر',
+  },
+  {
+    id: 'file_drop_area_component',
+    value: 'مولفه جایگذاری فایل',
+  },
+
+  //
+  {
     id: 'persian',
     value: 'فارسی',
   },
@@ -336,6 +361,18 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'loading_description',
     value: 'مستندات مربوط به مولفه بارگزاری',
+  },
+  //#endregion
+
+  //
+  //#region Thumbnail ...
+  {
+    id: 'thumbnail_component',
+    value: 'تصویر بند انگشتی',
+  },
+  {
+    id: 'thumbnail_description',
+    value: 'مستندات مربوط به مولفه بند انگشتی',
   },
   //#endregion
 
@@ -621,6 +658,21 @@ export const EnCustomLocales: XTranslationItem[] = [
 
   //
   {
+    id: 'file_components',
+    value: 'File Components',
+  },
+  ,
+  {
+    id: 'image_cropper_component',
+    value: 'Image Cropper Component',
+  },
+  {
+    id: 'file_drop_area_component',
+    value: 'File Drop Area Component',
+  },
+
+  //
+  {
     id: 'persian',
     value: 'Persian',
   },
@@ -733,6 +785,18 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'loading_description',
     value: 'Loading Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Thumbnail ...
+  {
+    id: 'thumbnail_component',
+    value: 'Thumbnail',
+  },
+  {
+    id: 'thumbnail_description',
+    value: 'Thumbnail Component Documentation',
   },
   //#endregion
 

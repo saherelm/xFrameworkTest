@@ -1,3 +1,33 @@
-.content-container {
-  margin: 24px;
+.thumbnail-wrapper {
+  margin-top: 6px;
+}
+
+$size: 64px !important;
+:host-context(::ng-deep.thumbnail ::ng-deep.x-item) {
+  width: $size;
+  min-width: $size;
+
+  height: $size;
+  min-height: $size;
+}
+
+:host-context(::ng-deep.thumbnail) {
+  img {
+    border-radius: 50% !important;
+  }
+}
+
+:host-context(::ng-deep.full-height) {
+  height: 100%;
+}
+
+.avatar-actions {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  * {
+    flex: auto;
+  }
 }
