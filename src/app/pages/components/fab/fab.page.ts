@@ -2,6 +2,8 @@ import {
   XFabItem,
   XIconNames,
   XButtonType,
+  XFabButtonSize,
+  XFabButtonSide,
   XFabVerticalSlot,
   XFabHorizontalSlot,
 } from 'x-framework-components';
@@ -42,31 +44,107 @@ export class FabPage extends VPageComponent {
   readonly ColorNames = Object.assign({}, XColor);
   readonly IconNames = Object.assign({}, XIconNames);
   readonly ButtonTypes = Object.assign({}, XButtonType);
+
+  //
+  readonly FabButtonSizes = Object.assign({}, XFabButtonSize);
+  readonly FabButtonSides = Object.assign({}, XFabButtonSide);
+  readonly FabVerticalSlots = Object.assign({}, XFabVerticalSlot);
+  readonly FabHorizontalSlots = Object.assign({}, XFabHorizontalSlot);
   //#endregion
 
   //
   // Content ...
   readonly contentFa = `
   # ${this.toolbarTitle}
+
+  این مولفه جهت ارائه مجموعه ای از فعالیت های مرتبط با یکدیگر در موارد لزوم مورد استفاده قرار می گیرد.
   `;
   readonly contentEn = `
   # ${this.toolbarTitle}
+
+  this components usually used for present a group of related actions together in where we want.
   `;
 
   //
   readonly sample1 =
     '```' +
-    '<x-counter ' +
-    '  #counter ' +
-    '  [stopValue]="0" ' +
-    '  [startValue]="180" ' +
-    '  [currentValue]="150" ' +
-    '  [type]="CounterTypes.CountDown" ' +
-    '  [displayPattern]="getCounterMessage" ' +
-    '  (counterStop)="handleCounterStop($event)" ' +
-    '  (counterTtick)="handleCounterTick($event)" ' +
-    '  (counterStart)="handleCounterStart($event)" ' +
-    '></x-counter> ' +
+    '<x-fab ' +
+    '  [item]="{ ' +
+    // tslint:disable-next-line:quotemark
+    "  id: 'fab_1', " +
+    '  fixed: true, ' +
+    '  icon: IconNames.menu_vertical, ' +
+    '  size: FabButtonSizes.REGULAR, ' +
+    '  color: ColorNames.Tertiary, ' +
+    '  vertical: FabVerticalSlots.CENTER, ' +
+    '  horizontal: FabHorizontalSlots.CENTER, ' +
+    '  childs: [ ' +
+    '  { ' +
+    // tslint:disable-next-line:quotemark
+    "    id: 'fab_child_1', " +
+    '    index: 0, ' +
+    '    icon: IconNames.phone, ' +
+    '    side: FabButtonSides.TOP, ' +
+    '    size: FabButtonSizes.MINI, ' +
+    '    color: ColorNames.Success, ' +
+    '    tooltip: ResourceIDs.temp_label, ' +
+    '    handler: fabHandler ' +
+    '  }, ' +
+    '  { ' +
+    // tslint:disable-next-line:quotemark
+    "    id: 'fab_child_2', " +
+    '    index: 1, ' +
+    '    icon: IconNames.mail, ' +
+    '    side: FabButtonSides.BOTTOM, ' +
+    '    size: FabButtonSizes.MINI, ' +
+    '    color: ColorNames.Primary, ' +
+    '    tooltip: ResourceIDs.temp_label, ' +
+    '    handler: fabHandler ' +
+    '  }, ' +
+    '  { ' +
+    // tslint:disable-next-line:quotemark
+    "    id: 'fab_child_3', " +
+    '    index: 2, ' +
+    '    icon: IconNames.share, ' +
+    '    side: FabButtonSides.START, ' +
+    '    size: FabButtonSizes.MINI, ' +
+    '    color: ColorNames.Medium, ' +
+    '    tooltip: ResourceIDs.temp_label, ' +
+    '    handler: fabHandler ' +
+    '  }, ' +
+    '  { ' +
+    // tslint:disable-next-line:quotemark
+    "    id: 'fab_child_3_1', " +
+    '    index: 3, ' +
+    '    icon: IconNames.avatars, ' +
+    '    side: FabButtonSides.START, ' +
+    '    size: FabButtonSizes.MINI, ' +
+    '    color: ColorNames.Secondary, ' +
+    '    tooltip: ResourceIDs.temp_label, ' +
+    '    handler: fabHandler ' +
+    '  }, ' +
+    '  { ' +
+    // tslint:disable-next-line:quotemark
+    "    id: 'fab_child_4', " +
+    '    index: 4, ' +
+    '    icon: IconNames.web, ' +
+    '    side: FabButtonSides.END, ' +
+    '    size: FabButtonSizes.MINI, ' +
+    '    color: ColorNames.Danger, ' +
+    '    tooltip: ResourceIDs.temp_label, ' +
+    '    handler: fabHandler ' +
+    '  } ' +
+    '  ] ' +
+    '}" ' +
+    '></x-fab> ' +
+    '```';
+
+  //
+  readonly sample2 =
+    '```' +
+    'fabHandler = async (id?: string) => { ' +
+    '  await this.handleNotifyFab(id); ' +
+    '};   ' +
     '```';
 
   //
@@ -95,10 +173,7 @@ export class FabPage extends VPageComponent {
 
     //
     handler: async (id?: string) => {
-      await this.managerService.notificationService.presentInfoNotification({
-        message: `Clicked Fab Id: ${id}`,
-        dissmissable: true,
-      });
+      await this.handleNotifyFab(id);
     },
   };
 
@@ -128,6 +203,20 @@ export class FabPage extends VPageComponent {
 
     //
     return result || '';
+  }
+
+  fabHandler = async (id?: string) => {
+    await this.handleNotifyFab(id);
+  };
+  //#endregion
+
+  //
+  //#region UI Handlers ...
+  async handleNotifyFab(id?: string) {
+    await this.managerService.notificationService.presentInfoNotification({
+      message: `Clicked Fab Id: ${id}`,
+      dissmissable: true,
+    });
   }
   //#endregion
 }
