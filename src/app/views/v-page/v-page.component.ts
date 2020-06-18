@@ -336,7 +336,7 @@ export class VPageComponent extends XPageComponent {
           slot: 'start',
           onlyIcon: false,
           handler: async () => {
-            await this.handleChangeLocation();
+            await this.handleChangeLocale();
           },
         },
       ],
@@ -396,7 +396,7 @@ export class VPageComponent extends XPageComponent {
     }
   }
 
-  private async handleChangeLocation() {
+  private async handleChangeLocale() {
     //
     const currentLocale = this.managerService.currentLocale;
     const availableLanguages = this.config.availableLanguages.map((ai) => {
@@ -442,7 +442,8 @@ export class VPageComponent extends XPageComponent {
 
             //
             await this.managerService.settingsService.changeLocale(
-              selectedLocale
+              selectedLocale,
+              true
             );
           },
         },
