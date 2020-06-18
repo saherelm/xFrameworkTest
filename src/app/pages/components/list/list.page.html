@@ -13,11 +13,68 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <!-- Samples -->
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample2"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample3"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <!-- Action Presenter -->
+    <x-actions
+      [hasDelete]="true"
+      [hasSelectAll]="true"
+      [showSearchBar]="true"
+      [showActionBar]="true"
+      [hasDeselectAll]="true"
+      [hasInverseSelection]="true"
+      [listComponent]="listPresenter"
+      [actionBarColor]="ColorNames.Dark"
+      [searchBarColor]="ColorNames.Dark"
+      (removeItems)="handleRemoveItems($event)"
+      (queryChange)="listPresenter.filterItems($event)"
+    >
+    </x-actions>
+
+    <!-- List Presenter -->
+    <x-list
+      #listPresenter
+      [showDivider]="false"
+      [clickableItems]="true"
+      [selectableItems]="true"
+      [items]="templListItems"
+      [enableReordering]="true"
+      [itemTemplate]="listItemRef"
+      [color]="ColorNames.Tertiary"
+      (refresh)="handleRefreshList()"
+    >
+    </x-list>
+
     <!-- Actions -->
     <div actions>
-      <a target="_blank" href=""
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/modules/XListModule.html"
         >{{resourceProvider(ResourceIDs.documentation)}}</a
       >
     </div>
   </x-card>
 </v-page>
+
+<!-- List Item Template -->
+<ng-template #listItemRef let-item>
+  <span>{{item.data}}</span>
+</ng-template>
