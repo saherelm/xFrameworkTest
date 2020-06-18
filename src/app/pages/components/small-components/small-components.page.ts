@@ -8,12 +8,7 @@ import {
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import {
-  XButtonType,
-  XSlotName,
-  XSlotLayout,
-  XThumbnailType,
-} from 'x-framework-components';
+import { XSlotName, XButtonType, XSlotLayout } from 'x-framework-components';
 
 @Component({
   selector: 'app-small-components',
@@ -253,19 +248,6 @@ export class SmallComponentsPage extends VPageComponent {
     '      // This is for Sample tests ... ' +
     '      loading.dismiss(); ' +
     '```';
-
-  //
-  // Thumbnail ...
-  readonly ThumbnailTypes = Object.assign({}, XThumbnailType);
-
-  readonly thumbnailContentFa = `
-  این مولفه جهت نمایش تصاویر بند انگشتی و یا تعیین نوع فایل در حالت عمومی کاربرد دارد.
-  `;
-  readonly thumbnailContentEn = `
-  this component used to show a thumbnail of an image or file general types.
-  `;
-
-  readonly fileUrl = this.managerService.getFullUrl('/assets/icon/favicon.png');
 
   //
   // Picker Content ...

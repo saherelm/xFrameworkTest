@@ -36,12 +36,14 @@ export class MapPage extends VPageComponent {
   //
   // Content ...
   readonly contentFa = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  این مولفه جهت نمایش نقشه و مکان یابی بکار می رود
+  `;
 
   readonly contentEn = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  this component used to show map and locating map.
+  `;
 
   //
   readonly sample1 = '```' + '```';

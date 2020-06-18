@@ -22,7 +22,7 @@ export enum ComponentsRoutes {
   Icon = 'icon',
   Counter = 'counter',
   Fab = 'fab',
-  FileUpload = 'file-upload',
+  FileComponents = 'file-components',
   Form = 'form',
   Grid = 'grid',
   List = 'list',
@@ -51,7 +51,7 @@ export enum PageName {
   Icon = ComponentsRoutes.Icon,
   Counter = ComponentsRoutes.Counter,
   Fab = ComponentsRoutes.Fab,
-  FileUpload = ComponentsRoutes.FileUpload,
+  FileComponents = ComponentsRoutes.FileComponents,
   Form = ComponentsRoutes.Form,
   Grid = ComponentsRoutes.Grid,
   List = ComponentsRoutes.List,
@@ -149,13 +149,13 @@ export const PageIndex: PageIndexType = {
         icon: XIconNames.list,
       },
       //
-      // FileUpload ...
+      // FileComponents ...
       {
-        id: PageName.FileUpload.toString(),
-        name: PageName.FileUpload.toString(),
-        title: AppResourceIDs.file_upload,
-        description: AppResourceIDs.file_upload_description,
-        route: `${AppRoutes.Components}/${ComponentsRoutes.FileUpload}`,
+        id: PageName.FileComponents.toString(),
+        name: PageName.FileComponents.toString(),
+        title: AppResourceIDs.file_components,
+        description: AppResourceIDs.file_components_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.FileComponents}`,
         icon: XIconNames.list,
       },
       //
@@ -332,7 +332,7 @@ export const NavPageItems: XNavigatorListItem[] = [
         href: [
           '/',
           Pages.Components.route,
-          ComponentsRoutes.FileUpload.toString(),
+          ComponentsRoutes.FileComponents.toString(),
         ],
         description: Pages.FileUpload.description,
       },

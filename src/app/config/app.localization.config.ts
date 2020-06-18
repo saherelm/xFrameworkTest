@@ -10,11 +10,6 @@ export enum AppResourceIDs {
   copy_to_clipboard = 'copy_to_clipboard',
 
   //
-  file_components = 'file_components',
-  image_cropper_component = 'image_cropper_component',
-  file_drop_area_component = 'file_drop_area_component',
-
-  //
   english = 'english',
   persian = 'persian',
   //#endregion
@@ -136,6 +131,18 @@ export enum AppResourceIDs {
 
   //
   //#region FileUpload ...
+  file_components = 'file_components',
+  file_components_description = 'file_components_description',
+
+  //
+  image_cropper = 'image_cropper',
+  image_cropper_description = 'image_cropper_description',
+
+  //
+  file_drop_area = 'file_drop_area',
+  file_drop_area_description = 'file_drop_area_description',
+
+  //
   file_upload = 'file_upload',
   file_upload_description = 'file_upload_description',
   //#endregion
@@ -231,20 +238,6 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'copy_to_clipboard',
     value: 'ثبت در حافظه موقت',
-  },
-
-  //
-  {
-    id: 'file_components',
-    value: 'مولفه های مربوط به فایل',
-  },
-  {
-    id: 'image_cropper_component',
-    value: 'مولفه برش تصویر',
-  },
-  {
-    id: 'file_drop_area_component',
-    value: 'مولفه جایگذاری فایل',
   },
 
   //
@@ -500,6 +493,36 @@ export const FaCustomLocales: XTranslationItem[] = [
   //
   //#region FileUpload ...
   {
+    id: 'file_components',
+    value: 'مولفه های مرتبط با فایل',
+  },
+  {
+    id: 'file_components_description',
+    value: 'مستندات مربوط به مولفه های مرتبط با فایل',
+  },
+
+  //
+  {
+    id: 'image_cropper',
+    value: 'برشگر تصویر',
+  },
+  {
+    id: 'image_cropper_description',
+    value: 'مستندات مربوط به برشگر تصویر',
+  },
+
+  //
+  {
+    id: 'file_drop_area',
+    value: 'جایگذاری فایل',
+  },
+  {
+    id: 'file_drop_area_description',
+    value: 'مستندات مربوط به مولفه جایگذاری فایل',
+  },
+
+  //
+  {
     id: 'file_upload',
     value: 'بارگزاری فایل',
   },
@@ -654,21 +677,6 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'copy_to_clipboard',
     value: 'Copy to Clipboard',
-  },
-
-  //
-  {
-    id: 'file_components',
-    value: 'File Components',
-  },
-  ,
-  {
-    id: 'image_cropper_component',
-    value: 'Image Cropper Component',
-  },
-  {
-    id: 'file_drop_area_component',
-    value: 'File Drop Area Component',
   },
 
   //
@@ -923,6 +931,36 @@ export const EnCustomLocales: XTranslationItem[] = [
 
   //
   //#region FileUpload ...
+  {
+    id: 'file_components',
+    value: 'Files Related Components',
+  },
+  {
+    id: 'file_components_description',
+    value: 'Files Related Components Documentation',
+  },
+
+  //
+  {
+    id: 'image_cropper',
+    value: 'Image Cropper',
+  },
+  {
+    id: 'image_cropper_description',
+    value: 'Image Cropper Documentation',
+  },
+
+  //
+  {
+    id: 'file_drop_area',
+    value: 'File Drop Area',
+  },
+  {
+    id: 'file_drop_area_description',
+    value: 'File Drop Area Documentation',
+  },
+
+  //
   {
     id: 'file_upload',
     value: 'FileUpload',

@@ -1,0 +1,60 @@
+:host-context(::ng-deep.mat-expansion-panel-header) {
+  //
+  color: var(--x-color-tertiary-contrast) !important;
+  background-color: var(--x-color-tertiary) !important;
+
+  //
+  * {
+    color: var(--x-color-tertiary-contrast) !important;
+  }
+}
+
+//
+$size: 64px !important;
+.thumbnail-wrapper {
+  margin-top: 6px;
+  height: $size;
+}
+
+:host-context(::ng-deep.thumbnail ::ng-deep.x-item) {
+  width: $size;
+  min-width: $size;
+  max-width: $size;
+
+  height: $size;
+  min-height: $size;
+  max-height: $size;
+}
+
+:host-context(::ng-deep.thumbnail) {
+  img {
+    border-radius: 50% !important;
+  }
+}
+
+.avatar-actions {
+  //
+  @extend .thumbnail-wrapper;
+
+  //
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  //
+  * {
+    flex: auto;
+    margin: {
+      top: auto;
+      bottom: auto;
+    }
+
+    //
+    * {
+      margin: {
+        left: 3px;
+        right: 3px;
+      }
+    }
+  }
+}

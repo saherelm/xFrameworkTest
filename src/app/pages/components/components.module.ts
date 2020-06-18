@@ -10,8 +10,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CounterPage } from './counter/counter.page';
 import { ViewsModule } from 'src/app/views/views.module';
-import { FileUploadPage } from './file-upload/file-upload.page';
 import { BaseRoutes, ComponentsRoutes } from 'src/app/config/page.config';
+import { FileComponentsPage } from './file-components/file-components.page';
 import { SmallComponentsPage } from './small-components/small-components.page';
 
 @NgModule({
@@ -45,8 +45,8 @@ import { SmallComponentsPage } from './small-components/small-components.page';
         component: FabPage,
       },
       {
-        path: ComponentsRoutes.FileUpload,
-        component: FileUploadPage,
+        path: ComponentsRoutes.FileComponents,
+        component: FileComponentsPage,
       },
       {
         path: ComponentsRoutes.Form,
@@ -67,16 +67,16 @@ import { SmallComponentsPage } from './small-components/small-components.page';
     ]),
   ],
   declarations: [
-    SmallComponentsPage,
+    FabPage,
+    MapPage,
     CardPage,
     IconPage,
-    CounterPage,
-    FabPage,
-    FileUploadPage,
     FormPage,
     GridPage,
     ListPage,
-    MapPage,
+    CounterPage,
+    SmallComponentsPage,
+    FileComponentsPage,
   ],
 })
 export class ComponentsPageModule {}

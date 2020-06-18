@@ -13,9 +13,29 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <!-- Sample -->
+    <x-map
+      [zoom]="8"
+      [showZoom]="true"
+      [latitude]="35.84"
+      [showRotate]="true"
+      [showLocate]="true"
+      [longitude]="50.9391"
+      [showSearchBar]="true"
+      [showZoomSlider]="true"
+      [locateAfterInit]="true"
+      [showClearMarker]="true"
+      [showGoMarkedPlace]="true"
+      style="width: 100%; height: 500px;"
+      [searchBarColor]="ColorNames.Tertiary"
+      [searchResultListColor]="ColorNames.Primary"
+    ></x-map>
+
     <!-- Actions -->
     <div actions>
-      <a target="_blank" href=""
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XMapComponent.html"
         >{{resourceProvider(ResourceIDs.documentation)}}</a
       >
     </div>

@@ -26,9 +26,9 @@
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.button) }}
       </div>
-      <div x-panel-description>
+      <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.button_description) }}
-      </div>
+      </div> -->
 
       <!-- Description -->
       <x-markdown
@@ -103,9 +103,9 @@
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.alert) }}
       </div>
-      <div x-panel-description>
+      <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.alert_description) }}
-      </div>
+      </div> -->
 
       <!-- Description -->
       <x-markdown
@@ -170,9 +170,9 @@
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.notification) }}
       </div>
-      <div x-panel-description>
+      <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.notification_description) }}
-      </div>
+      </div> -->
 
       <!-- Description -->
       <x-markdown
@@ -212,9 +212,9 @@
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.spinner) }}
       </div>
-      <div x-panel-description>
+      <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.spinner_description) }}
-      </div>
+      </div> -->
 
       <!-- Description -->
       <x-markdown
@@ -288,9 +288,9 @@
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.loading) }}
       </div>
-      <div x-panel-description>
+      <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.loading_description) }}
-      </div>
+      </div> -->
 
       <!-- Description -->
       <x-markdown
@@ -324,47 +324,15 @@
       </div>
     </x-panel>
 
-    <!-- Thumbnail -->
-    <x-panel [id]="'thumbnail'" [hasCustomActions]="true">
-      <!-- Title and Description -->
-      <div x-panel-title>
-        {{ resourceProvider(ResourceIDs.thumbnail_component) }}
-      </div>
-      <div x-panel-description>
-        {{ resourceProvider(ResourceIDs.thumbnail_description) }}
-      </div>
-
-      <!-- Description -->
-      <x-markdown
-        [mode]="'preview'"
-        [hasToolbar]="false"
-        [content]="getContent('thumbnailContent')"
-      ></x-markdown>
-
-      <x-thumbnail
-        class="x-thumb"
-        [identifier]="fileUrl"
-        [type]="ThumbnailTypes.CUSTOM"
-      >
-      </x-thumbnail>
-
-      <x-thumbnail
-        class="x-thumb"
-        [identifier]="fileUrl"
-        [type]="ThumbnailTypes.GENERAL"
-      >
-      </x-thumbnail>
-    </x-panel>
-
     <!-- Picker -->
     <x-panel [id]="'Picker'" [hasCustomActions]="true">
       <!-- Title and Description -->
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.picker) }}
       </div>
-      <div x-panel-description>
+      <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.picker_description) }}
-      </div>
+      </div> -->
 
       <!-- Description -->
       <x-markdown
@@ -404,9 +372,9 @@
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.slotter) }}
       </div>
-      <div x-panel-description>
+      <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.slotter_description) }}
-      </div>
+      </div> -->
 
       <!-- Description -->
       <x-markdown

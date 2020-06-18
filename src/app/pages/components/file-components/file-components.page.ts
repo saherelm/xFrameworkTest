@@ -25,6 +25,7 @@ import {
   XFileStatus,
   XButtonType,
   XDialogResult,
+  XThumbnailType,
   XImageCropperService,
 } from 'x-framework-components';
 import { MenuController } from '@ionic/angular';
@@ -36,12 +37,12 @@ import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
 @Component({
-  selector: 'app-file-upload',
-  templateUrl: './file-upload.page.html',
-  styleUrls: ['./file-upload.page.scss'],
+  selector: 'app-file-components',
+  templateUrl: './file-components.page.html',
+  styleUrls: ['./file-components.page.scss'],
 })
 // tslint:disable-next-line:component-class-suffix
-export class FileUploadPage extends VPageComponent {
+export class FileComponentsPage extends VPageComponent {
   //
   //#region Props ...
   //
@@ -123,12 +124,48 @@ export class FileUploadPage extends VPageComponent {
 `;
 
   readonly contentEn = `
-  # ${this.toolbarTitle}
+  # ${this.resourceProvider(this.ResourceIDs.file_components)}
+  this framework provides several components to make working with files so easy. in the following section they will be documented:
   `;
 
+  //
+  // Thumbnail ...
+  readonly ThumbnailTypes = Object.assign({}, XThumbnailType);
+
+  readonly thumbnailContentFa = `
+  این مولفه جهت نمایش تصاویر بند انگشتی و یا تعیین نوع فایل در حالت عمومی کاربرد دارد.
+  `;
+  readonly thumbnailContentEn = `
+  this component used to show a thumbnail of an image or file general types.
+  `;
+
+  readonly fileUrl = this.managerService.getFullUrl('/assets/icon/favicon.png');
+
+  readonly thumbnailSample1 =
+    '```' +
+    '<x-thumbnail ' +
+    '  [identifier]="fileUrl" ' +
+    '  [type]="ThumbnailTypes.CUSTOM" ' +
+    '> ' +
+    '</x-thumbnail>   ' +
+    '```';
+
+  readonly thumbnailSample2 =
+    '```' +
+    '<x-thumbnail ' +
+    '  [identifier]="fileUrl" ' +
+    '  [type]="ThumbnailTypes.GENERAL" ' +
+    '> ' +
+    '</x-thumbnail> ' +
+    '```';
+
+  //
+  // File Drop Area ...
   readonly fileDropAreaContentFa = `
-  # ${this.resourceProvider(this.ResourceIDs.file_drop_area_component)}
   این مولفه جهت فراهم کردن فضایی برای کشیدن فایل ها و رها کردن آن ها در فضای مناسب مورد استفاده قرار می گیرد.
+  `;
+  readonly fileDropAreaContentEn = `
+  this component use to provide an area for dropping file(s)
   `;
 
   //
@@ -143,12 +180,109 @@ export class FileUploadPage extends VPageComponent {
     '```';
 
   readonly imageCropperContentFa = `
-  # ${this.resourceProvider(this.ResourceIDs.image_cropper_component)}
   این مولفه جهت فراهم کردن امکانات بریدن تصاویر کاربرد دارد که مهمترین مورد کاربرد آن در تصاویر پروفایل است.
+  `;
+  readonly imageCropperContentEn = `
+  this component use to provide a way to cropping images before upload them, usually used for avatars.
   `;
 
   //
-  readonly sample1 = '```' + '```';
+  readonly imageCropperSample1 =
+    '```' +
+    '<div class="container"> ' +
+    '  <!-- File Upload Input --> ' +
+    '  <input ' +
+    '    hidden ' +
+    '    #fileInput ' +
+    '    type="file" ' +
+    '    multiple="false" ' +
+    '    (change)="handleFilesSelected()" ' +
+    '    [disabled]="isLoading || uiDisabled" ' +
+    '  /> ' +
+    ' ' +
+    '  <x-button ' +
+    '    (click)="selectFile()" ' +
+    '    [type]="ButtonTypes.Raised" ' +
+    '    [color]="ColorNames.Primary" ' +
+    '    [title]="resourceProvider(ResourceIDs.select) + \' \' + resourceProvider(ResourceIDs.avatar)" ' +
+    '  > ' +
+    '  </x-button> ' +
+    ' ' +
+    '  <!-- Wrapper of Thumbnail --> ' +
+    '  <div class="thumbnail-wrapper" *ngIf="file"> ' +
+    '    <x-slotter ' +
+    '      [hasCenterSlot]="false" ' +
+    '      [layout]="SlotLayout.HORIZONTAL" ' +
+    '      [startTopSlotCssClass]="\'ion-text-start\'" ' +
+    '      [endBottomSlotCssClass]="\'ion-text-center\'" ' +
+    '    > ' +
+    '      <x-slot [name]="SlotNames.START"> ' +
+    '        <div> ' +
+    '          <x-thumbnail ' +
+    '            class="x-thumb" ' +
+    '            [identifier]="file" ' +
+    '            [loading]="isLoading" ' +
+    '            [cssClass]="\'thumbnail\'" ' +
+    '            [uiDisabled]="uiDisabled" ' +
+    '            [type]="ThumbnailTypes.CUSTOM" ' +
+    '          > ' +
+    '          </x-thumbnail> ' +
+    '        </div> ' +
+    '      </x-slot> ' +
+    ' ' +
+    '      <x-slot [name]="SlotNames.END"> ' +
+    '        <div class="avatar-actions ion-text-end"> ' +
+    '          <div> ' +
+    '            <x-button ' +
+    '              *ngIf="croppableImage()" ' +
+    '              [type]="ButtonTypes.Icon" ' +
+    '              (click)="handleLoadCropper()" ' +
+    '              [color]="ColorNames.Secondary" ' +
+    '              [matTooltip]="resourceProvider(ResourceIDs.crop)" ' +
+    '            > ' +
+    '              <x-icon [name]="IconNames.crop"></x-icon> ' +
+    '            </x-button> ' +
+    ' ' +
+    '            <x-button ' +
+    '              [type]="ButtonTypes.Icon" ' +
+    '              (click)="handleClearFile()" ' +
+    '              [color]="ColorNames.Warning" ' +
+    '              [matTooltip]="resourceProvider(ResourceIDs.clear)" ' +
+    '            > ' +
+    '              <x-icon ' +
+    '                [name]="IconNames.clear" ' +
+    '                [color]="ColorNames.Light" ' +
+    '              ></x-icon> ' +
+    '            </x-button> ' +
+    '          </div> ' +
+    '        </div> ' +
+    '      </x-slot> ' +
+    '    </x-slotter> ' +
+    '  </div> ' +
+    '</div> ' +
+    '```';
+
+  //
+  // File Upload ...
+  readonly fileUploadContentFa = `
+  از این مولفه جهت مدیریت بارگزاری فایل ها استفاده می شود
+  `;
+
+  readonly fileUploadContentEn = `
+  use this component to manage how files uploaded.
+  `;
+
+  readonly fileUploadSample1 =
+    '```' +
+    '<x-file-upload ' +
+    '  [canDrop]="isNotMobileUi$ | async" ' +
+    '  (fileChange)="handleFileChanged($event)" ' +
+    '  [maxAllowedSize]="config.maxAllowedSize" ' +
+    '  [maxAllowedFiles]="config.maxUploadFiles" ' +
+    '  [minAllowedFileSize]="config.minAllowedFileSize" ' +
+    '  [maxAllowedFileSize]="config.maxAllowedFileSize" ' +
+    '></x-file-upload> ' +
+    '```';
 
   //
   //#region Constructor ...
@@ -341,6 +475,12 @@ export class FileUploadPage extends VPageComponent {
 
     //
     this.fileInputRef.nativeElement.click();
+  }
+
+  //
+  // File Upload ...
+  async handleFileChanged(files: File[]) {
+    console.log('files: ', files);
   }
   //#endregion
 

@@ -1,0 +1,260 @@
+<v-page
+  [hasSide]="true"
+  [toolbarTitle]="toolbarTitle"
+  [toolbarSubTitle]="toolbarSubTitle"
+  [toolbarShowSubTitle]="toolbarShowSubTitle"
+>
+  <!-- Content -->
+  <x-markdown
+    [mode]="'preview'"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [isPageMarkdown]="true"
+    [content]="getContent('content')"
+  ></x-markdown>
+
+  <!-- Expandable Panel -->
+  <x-expandable-panel
+    [isAccordion]="true"
+    [isPagePanel]="true"
+    [wrapWithCard]="true"
+    [selected]="'thumbnail'"
+  >
+    <!-- Thumbnail -->
+    <x-panel [id]="'thumbnail'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.thumbnail_component) }}
+      </div>
+      <!-- <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.thumbnail_description) }}
+      </div> -->
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('thumbnailContent')"
+      ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="thumbnailSample1"
+      ></x-markdown>
+
+      <x-thumbnail [identifier]="fileUrl" [type]="ThumbnailTypes.CUSTOM">
+      </x-thumbnail>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="thumbnailSample2"
+      ></x-markdown>
+
+      <x-thumbnail [identifier]="fileUrl" [type]="ThumbnailTypes.GENERAL">
+      </x-thumbnail>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/components/XThumbnailComponent.html"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- File Drop Area -->
+    <x-panel [id]="'file_drop_area'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.file_drop_area) }}
+      </div>
+      <!-- <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.file_drop_area_description) }}
+      </div> -->
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('fileDropAreaContent')"
+      ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="fileDropAreaSample1"
+      ></x-markdown>
+
+      <!-- File Drop Area -->
+      <x-file-drop-area
+        [supportsMultipleFiles]="true"
+        (filesChangeEmiter)="handleFilesChanged($event)"
+      ></x-file-drop-area>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/components/XFileDropAreaComponent.html"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- Image Cropper -->
+    <x-panel [id]="'iamge_cropper'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.image_cropper) }}
+      </div>
+      <!-- <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.image_cropper_description) }}
+      </div> -->
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('imageCropperContent')"
+      ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="imageCropperSample1"
+      ></x-markdown>
+
+      <div class="container">
+        <!-- File Upload Input -->
+        <input
+          hidden
+          #fileInput
+          type="file"
+          multiple="false"
+          (change)="handleFilesSelected()"
+          [disabled]="isLoading || uiDisabled"
+        />
+
+        <x-button
+          (click)="selectFile()"
+          [type]="ButtonTypes.Raised"
+          [color]="ColorNames.Primary"
+          [title]="resourceProvider(ResourceIDs.select) + ' ' + resourceProvider(ResourceIDs.avatar)"
+        >
+        </x-button>
+
+        <!-- Wrapper of Thumbnail -->
+        <div class="thumbnail-wrapper" *ngIf="file">
+          <x-slotter
+            [hasCenterSlot]="false"
+            [layout]="SlotLayout.HORIZONTAL"
+            [startTopSlotCssClass]="'ion-text-start'"
+            [endBottomSlotCssClass]="['ion-text-center']"
+          >
+            <x-slot [name]="SlotNames.START">
+              <div>
+                <x-thumbnail
+                  class="x-thumb"
+                  [identifier]="file"
+                  [loading]="isLoading"
+                  [cssClass]="'thumbnail'"
+                  [uiDisabled]="uiDisabled"
+                  [type]="ThumbnailTypes.CUSTOM"
+                >
+                </x-thumbnail>
+              </div>
+            </x-slot>
+
+            <x-slot [name]="SlotNames.END">
+              <div class="avatar-actions ion-text-end">
+                <div>
+                  <x-button
+                    *ngIf="croppableImage()"
+                    [type]="ButtonTypes.Icon"
+                    (click)="handleLoadCropper()"
+                    [color]="ColorNames.Secondary"
+                    [matTooltip]="resourceProvider(ResourceIDs.crop)"
+                  >
+                    <x-icon [name]="IconNames.crop"></x-icon>
+                  </x-button>
+
+                  <x-button
+                    [type]="ButtonTypes.Icon"
+                    (click)="handleClearFile()"
+                    [color]="ColorNames.Warning"
+                    [matTooltip]="resourceProvider(ResourceIDs.clear)"
+                  >
+                    <x-icon
+                      [name]="IconNames.clear"
+                      [color]="ColorNames.Light"
+                    ></x-icon>
+                  </x-button>
+                </div>
+              </div>
+            </x-slot>
+          </x-slotter>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/modules/XImageCropperModule.html"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- File Upload -->
+    <x-panel [id]="'file_upload'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.file_upload) }}
+      </div>
+      <!-- <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.file_upload_description) }}
+      </div> -->
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('fileUploadContent')"
+      ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="fileUploadSample1"
+      ></x-markdown>
+
+      <!-- Sample -->
+      <x-file-upload
+        [canDrop]="isNotMobileUi$ | async"
+        (fileChange)="handleFileChanged($event)"
+        [maxAllowedSize]="config.maxAllowedSize"
+        [maxAllowedFiles]="config.maxUploadFiles"
+        [minAllowedFileSize]="config.minAllowedFileSize"
+        [maxAllowedFileSize]="config.maxAllowedFileSize"
+      ></x-file-upload>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/modules/XFileUploadModule.html"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+  </x-expandable-panel>
+</v-page>
