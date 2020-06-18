@@ -46,7 +46,25 @@ export class MapPage extends VPageComponent {
   `;
 
   //
-  readonly sample1 = '```' + '```';
+  readonly sample1 =
+    '```' +
+    '<x-map ' +
+    '  [zoom]="8" ' +
+    '  [showZoom]="true" ' +
+    '  [latitude]="35.84" ' +
+    '  [showRotate]="true" ' +
+    '  [showLocate]="true" ' +
+    '  [longitude]="50.9391" ' +
+    '  [showSearchBar]="true" ' +
+    '  [showZoomSlider]="true" ' +
+    '  [locateAfterInit]="true" ' +
+    '  [showClearMarker]="true" ' +
+    '  [showGoMarkedPlace]="true" ' +
+    '  style="width: 100%; height: 400px;" ' +
+    '  [searchBarColor]="ColorNames.Tertiary" ' +
+    '  [searchResultListColor]="ColorNames.Primary" ' +
+    '></x-map>   ' +
+    '```';
 
   //
   //#region UI Providers ...

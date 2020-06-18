@@ -13,6 +13,13 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
     <!-- Sample -->
     <x-map
       [zoom]="8"
@@ -26,7 +33,7 @@
       [locateAfterInit]="true"
       [showClearMarker]="true"
       [showGoMarkedPlace]="true"
-      style="width: 100%; height: 500px;"
+      style="width: 100%; height: 400px;"
       [searchBarColor]="ColorNames.Tertiary"
       [searchResultListColor]="ColorNames.Primary"
     ></x-map>
