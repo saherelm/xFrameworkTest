@@ -52,7 +52,7 @@ export class ListPage extends VPageComponent {
 
   //
   readonly sample1 =
-    '```' +
+    '```typescript' +
     `
   tempList = Array.from(Array(25).keys());
   templListItems: XListItem<string>[] = this.tempList.map((i) => {
@@ -99,7 +99,7 @@ export class ListPage extends VPageComponent {
 
   //
   readonly sample2 =
-    '```' +
+    '```html' +
     `
     <x-actions
       [hasDelete]="true"

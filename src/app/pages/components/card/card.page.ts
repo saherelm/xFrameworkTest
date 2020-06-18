@@ -36,66 +36,68 @@ export class CardPage extends VPageComponent {
   // Content ...
   readonly contentFa = `
   # ${this.toolbarTitle}
-
-  این مولفه جهت نمایش یک جزء از اجزای تشکیل دهنده یک صفحه بکار میرود.
+این مولفه جهت نمایش یک جزء از اجزای تشکیل دهنده یک صفحه بکار میرود.
 
   این مولفه می تواند بسته به ابعاد مختلف صفحه واکنش نشان دهد و خود را مطابق کند.
   `;
   readonly contentEn = `
   # ${this.toolbarTitle}
-
-  this component use to present a part of a page.
+this component use to present a part of a page.
 
   this component can adapt itself based on screen size.
   `;
 
   //
   readonly sample1 =
-    '```' +
-    '<x-card ' +
-    '  [showHeader]="true" ' +
-    '  [isPageCard]="true" ' +
-    '  [showFooter]="true" ' +
-    '  [showContent]="true" ' +
-    '  [showActions]="true" ' +
-    '  [color]="ColorNames.Tertiary" ' +
-    '  [title]="resourceProvider(ResourceIDs.app_name)" ' +
-    '  [subTitle]="resourceProvider(ResourceIDs.company)" ' +
-    '> ' +
-    '  <div header> ' +
-    '    {{resourceProvider(ResourceIDs.header)}} ' +
-    '  </div> ' +
-    ' ' +
-    '  <div content> ' +
-    '    {{resourceProvider(ResourceIDs.temp_label)}} ' +
-    '  </div> ' +
-    ' ' +
-    '  <div actions> ' +
-    '    {{resourceProvider(ResourceIDs.actions)}} ' +
-    '  </div> ' +
-    ' ' +
-    '  <div footer> ' +
-    '    {{resourceProvider(ResourceIDs.footer)}} ' +
-    '  </div> ' +
-    '</x-card> ' +
+    '```html' +
+    `
+<x-card
+  [showHeader]="true"
+  [isPageCard]="true"
+  [showFooter]="true"
+  [showContent]="true"
+  [showActions]="true"
+  [color]="ColorNames.Tertiary"
+  [title]="resourceProvider(ResourceIDs.app_name)"
+  [subTitle]="resourceProvider(ResourceIDs.company)"
+>
+  <div header>
+    {{resourceProvider(ResourceIDs.header)}}
+  </div>
+
+  <div content>
+    {{resourceProvider(ResourceIDs.temp_label)}}
+  </div>
+
+  <div actions>
+    {{resourceProvider(ResourceIDs.actions)}}
+  </div>
+
+  <div footer>
+    {{resourceProvider(ResourceIDs.footer)}}
+  </div>
+</x-card>
+` +
     '```';
 
   readonly sample2 =
     '```' +
-    '<x-card ' +
-    '  [showHeader]="true" ' +
-    '  [isPageCard]="true" ' +
-    '  [showContent]="true" ' +
-    '  [color]="ColorNames.Medium" ' +
-    '  [imageUrl]="\'/assets/image/logo.png\'" ' +
-    '  [avatarUrl]="\'/assets/image/logo.png\'" ' +
-    '  [title]="resourceProvider(ResourceIDs.app_name)" ' +
-    '  [subTitle]="resourceProvider(ResourceIDs.company)" ' +
-    '> ' +
-    '  <div content> ' +
-    '    {{resourceProvider(ResourceIDs.temp_label)}} ' +
-    '  </div> ' +
-    '</x-card>  ' +
+    `
+  <x-card
+    [showHeader]="true"
+    [isPageCard]="true"
+    [showContent]="true"
+    [color]="ColorNames.Medium"
+    [imageUrl]="\'/assets/image/logo.png\'"
+    [avatarUrl]="\'/assets/image/logo.png\'"
+    [title]="resourceProvider(ResourceIDs.app_name)"
+    [subTitle]="resourceProvider(ResourceIDs.company)"
+  >
+    <div content>
+      {{resourceProvider(ResourceIDs.temp_label)}}
+    </div>
+  </x-card>
+  ` +
     '```';
 
   //

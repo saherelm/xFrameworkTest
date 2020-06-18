@@ -78,39 +78,52 @@ export class SmallComponentsPage extends VPageComponent {
   //
   // Button Sample 1 ...
   readonly buttonSample1 =
-    '```' +
-    '<x-button [color]="\'primary\'" ' +
-    '[type]="ButtonTypes.Raised"  ' +
-    'class="ion-margin-horizontal"  ' +
-    '(click)="handleButtonClicked()"  ' +
-    '[title]="ResourceIDs.temp_label">  ' +
-    '</x-button>' +
+    '```html' +
+    `
+  <x-button
+    [color]="\'primary\'"
+    [type]="ButtonTypes.Raised"
+    class="ion-margin-horizontal"
+    (click)="handleButtonClicked()"
+    [title]="ResourceIDs.temp_label">
+  </x-button>
+  ` +
     '```';
 
   //
   // Button Sample 1 ...
   readonly buttonSample2 =
-    '```' +
-    '<x-button [color]="\'secondary\'" ' +
-    '[foregroundColor]="true" ' +
-    '[type]="ButtonTypes.Raised" ' +
-    'class="ion-margin-horizontal" ' +
-    '(click)="handleButtonClicked()" ' +
-    '[title]="ResourceIDs.temp_label"> ' +
-    '</x-button>' +
+    '```html' +
+    `
+  <x-button
+    [color]="\'secondary\'"
+    [foregroundColor]="true"
+    [type]="ButtonTypes.Raised"
+    class="ion-margin-horizontal"
+    (click)="handleButtonClicked()"
+    [title]="ResourceIDs.temp_label">
+  </x-button
+  ` +
     '```';
 
   //
   // Button Sample 1 ...
   readonly buttonSample3 =
-    '```' +
-    '<x-button [color]="\'tertiary\'" ' +
-    '[type]="ButtonTypes.Icon" ' +
-    'class="ion-margin-horizontal" ' +
-    '(click)="handleButtonClicked()" ' +
-    '[title]="ResourceIDs.temp_label"> ' +
-    '  <x-icon [name]="\'list\'" [color]="\'light\'"></x-icon>' +
-    '</x-button>' +
+    '```html' +
+    `
+  <x-button
+    [color]="\'tertiary\'"
+    [type]="ButtonTypes.Icon"
+    class="ion-margin-horizontal"
+    (click)="handleButtonClicked()"
+    [title]="ResourceIDs.temp_label"
+  >
+    <x-icon
+      [name]="\'list\'"
+      [color]="\'light\'">
+    </x-icon>
+  </x-button>
+  ` +
     '```';
 
   //
@@ -132,18 +145,25 @@ export class SmallComponentsPage extends VPageComponent {
   `;
 
   readonly alertSample1 =
-    '```' +
-    'await this.managerService.dialogService.presentAlert(' +
-    '{' +
-    'header: AppResourceIDs.alert, ' +
-    "subHeader: 'sub title', " +
-    "message: 'dialog message', " +
-    'buttons: [ ' +
-    '{' +
-    "text: 'OK', " +
-    'role: XModalButtonRole.Selected, ' +
-    'handler: () => {} ' +
-    '}]});' +
+    '```typescript' +
+    `
+//
+await this.managerService
+.dialogService
+.presentAlert({
+  header: AppResourceIDs.alert,
+  subHeader: 'sub title',
+  message: 'message',
+  buttons: [
+    {
+      text: 'OK',
+      role: XModalButtonRole
+      .Selected,
+      handler: () => {},
+    },
+  ],
+});
+  ` +
     '```';
 
   //
@@ -156,45 +176,65 @@ export class SmallComponentsPage extends VPageComponent {
   `;
 
   readonly promptSample1 =
-    '```' +
-    'await this.managerService.dialogService.presentAlert(' +
-    '{ ' +
-    "header: 'عنوان', " +
-    "subHeader: 'توضیحات', " +
-    "message: 'نام شما چیست ؟', " +
-    'inputs: [ ' +
-    '{ ' +
-    "type: 'text', " +
-    "name: 'name', " +
-    "label: 'نام', " +
-    "placeholder: 'نام و نام خانوادگی ...', " +
-    '}, ' +
-    '], ' +
-    'buttons: [ ' +
-    '{ ' +
-    "text: 'ثبت', " +
-    'role: XModalButtonRole.Selected, ' +
-    "cssClass: ['btn-selected'], " +
-    'handler: async (value) => { ' +
-    'if (value && value.name && !isNullOrEmptyString(value.name)) { ' +
-    'await this.managerService.notificationService.presentInfoNotification( ' +
-    '{ ' +
-    'message: value.name, ' +
-    'dissmissable: true ' +
-    '} ' +
-    '); ' +
-    '} ' +
-    '} ' +
-    '}, ' +
-    '{ ' +
-    "text: 'لغو', " +
-    'role: XModalButtonRole.Cancel, ' +
-    "cssClass: ['btn-cancel'], " +
-    'handler: () => { ' +
-    '}, ' +
-    '}, ' +
-    '], ' +
-    '}); ' +
+    '```typescript' +
+    `
+//
+await this.managerService
+.dialogService
+.presentAlert({
+  header: 'عنوان',
+  subHeader: 'توضیحات',
+  message: 'نام شما چیست ؟',
+  inputs: [
+    {
+      type: 'text',
+      name: 'name',
+      label: 'نام',
+      placeholder:
+        'نام و نام خانوادگی ...',
+    },
+  ],
+  buttons: [
+    {
+      text: 'ثبت',
+      role: XModalButtonRole
+      .Selected,
+      cssClass: ['btn-selected'],
+      handler: async (value) => {
+        //
+        console.log(
+          'OK Clicked ...', value
+          );
+
+        //
+        if (value &&
+            value.name &&
+            !isNullOrEmptyString(
+              value.name)) {
+          await this.managerService
+          .notificationService
+          .presentInfoNotification(
+            {
+              message: value.name,
+              dissmissable: true,
+            }
+          );
+        }
+      },
+    },
+    {
+      text: 'لغو',
+      role: XModalButtonRole.Cancel,
+      cssClass: ['btn-cancel'],
+      handler: () => {
+        console.log(
+          'Cancel Clicked ...'
+          );
+      },
+    },
+  ],
+});
+  ` +
     '```';
 
   //
@@ -207,12 +247,16 @@ export class SmallComponentsPage extends VPageComponent {
   `;
 
   readonly notificationSample1 =
-    '```' +
-    'await this.managerService.notificationService.presentDangerNotification(' +
-    '{ ' +
-    'message: XResourceIDs.error, ' +
-    'dissmissable: true' +
-    '});' +
+    '```typescript' +
+    `
+//
+await this.managerService
+.notificationService
+.presentDangerNotification({
+  message: XResourceIDs.error,
+  dissmissable: true,
+});
+` +
     '```';
 
   //
@@ -222,9 +266,13 @@ export class SmallComponentsPage extends VPageComponent {
   readonly spinnerContentEn = `this Components used to act as indicator of another Components`;
 
   readonly spinnerSample1 =
-    '```' +
-    '<x-spinner [color]="ColorNames.Primary" [name]="SpinnerNames.Circular">' +
-    '</x-spinner>' +
+    '```html' +
+    ` +
+<x-spinner
+  [color]="ColorNames.Primary"
+  [name]="SpinnerNames.Circular">
+</x-spinner>
+` +
     '```';
 
   //
@@ -234,19 +282,28 @@ export class SmallComponentsPage extends VPageComponent {
   `;
   readonly loadingContentEn = `this Component used when we have to stop application process until an action finished.`;
   readonly loadingSample1 =
-    '```' +
-    '      // ' +
-    '      const loading = await this.managerService.dialogService.presentLoading({ ' +
-    '        message: this.resourceProvider(AppResourceIDs.temp_label), ' +
-    '        spinner: this.SpinnerNames.LinesSmall, ' +
-    '      }); ' +
-    '   ' +
-    '      // ' +
-    '      // TODO: Do Actions ... ' +
-    '   ' +
-    '      // ' +
-    '      // This is for Sample tests ... ' +
-    '      loading.dismiss(); ' +
+    '```typescript' +
+    `
+//
+const loading = await this
+.managerService
+.dialogService
+.presentLoading({
+  message: this
+  .resourceProvider(
+    AppResourceIDs.temp_label
+  ),
+  spinner: this
+  .SpinnerNames.LinesSmall,
+});
+
+//
+// TODO: Do Actions ...
+
+//
+// This is for Sample tests ...
+loading.dismiss();
+` +
     '```';
 
   //
@@ -257,50 +314,86 @@ export class SmallComponentsPage extends VPageComponent {
   readonly pickerContentEn = `select on or more item from a collection of items is the main used case of this Component.`;
 
   readonly pickerSample1 =
-    '```' +
-    'await this.managerService.dialogService.presentPicker(' +
-    '{' +
-    'buttons: [' +
-    '{' +
-    "text: 'Ok'," +
-    'role: XModalButtonRole.Selected,' +
-    "cssClass: ['btn-selected']," +
-    'handler: (value) => {' +
-    "console.log('OK Clicked ...', value);" +
-    '},' +
-    '},' +
-    '{' +
-    "text: 'Cancel'," +
-    'role: XModalButtonRole.Cancel,' +
-    "cssClass: ['btn-cancel']," +
-    'handler: () => {' +
-    "console.log('Cancel Clicked ...');" +
-    '},' +
-    '},' +
-    '],' +
-    'columns: [' +
-    '{' +
-    "name: 'Col_1'," +
-    'options: [' +
-    '{' +
-    "text: 'S 1'," +
-    'value: 1,' +
-    '},' +
-    '{' +
-    "text: 'S 2'," +
-    'value: 2,' +
-    '},' +
-    '{' +
-    "text: 'S 3'," +
-    'value: 3,' +
-    '},' +
-    '{' +
-    '...' +
-    '},' +
-    '],' +
-    '}' +
-    '],' +
-    '}); ' +
+    '```typescript' +
+    `
+//
+await this
+.managerService
+.dialogService
+.presentPicker({
+  buttons: [
+    {
+      text: 'Ok',
+      role: XModalButtonRole
+      .Selected,
+      cssClass: ['btn-selected'],
+      handler: (value) => {
+        console.log(
+          'OK Clicked ...', value
+        );
+      },
+    },
+    {
+      text: 'Cancel',
+      role: XModalButtonRole
+      .Cancel,
+      cssClass: ['btn-cancel'],
+      handler: () => {
+        console.log(
+          'Cancel Clicked ...'
+        );
+      },
+    },
+  ],
+  columns: [
+    {
+      name: 'Col_1',
+      options: [
+        {
+          text: 'S 1',
+          value: 1,
+        },
+        {
+          text: 'S 2',
+          value: 2,
+        },
+        {
+          text: 'S 3',
+          value: 3,
+        },
+        {
+          text: 'S 4',
+          value: 4,
+        },
+        {
+          text: 'S 5',
+          value: 5,
+        },
+        {
+          text: 'S 6',
+          value: 6,
+        },
+        {
+          text: 'S 7',
+          value: 7,
+        },
+        {
+          text: 'S 8',
+          value: 8,
+        },
+        {
+          text: 'S 9',
+          value: 9,
+        },
+        {
+          text: 'S 10',
+          value: 10,
+        },
+      ],
+    },
+  ],
+});
+` +
     '```';
 
   //
@@ -319,33 +412,59 @@ export class SmallComponentsPage extends VPageComponent {
   `;
 
   readonly slotterSample1 =
-    '```' +
-    '<x-slotter [layout]="SlotLayout.HORIZONTAL">' +
-    '  <x-slot [name]="SlotNames.START" [cssClass]="\'ion-text-start\'">' +
-    '    Start' +
-    '  </x-slot>' +
-    '  <x-slot [name]="SlotNames.CENTER" [cssClass]="\'ion-text-center\'">' +
-    '    Center' +
-    '  </x-slot>' +
-    '  <x-slot [name]="SlotNames.END" [cssClass]="\'ion-text-end\'">' +
-    '    End' +
-    '  </x-slot>' +
-    '</x-slotter>' +
+    '```html' +
+    `
+<x-slotter
+  [layout]="SlotLayout.HORIZONTAL"
+>
+  <x-slot
+    [name]="SlotNames.START"
+    [cssClass]="\'ion-text-start\'"
+  >
+    Start
+  </x-slot>
+  <x-slot
+    [name]="SlotNames.CENTER"
+    [cssClass]="\'ion-text-center\'"
+  >
+    Center
+  </x-slot>
+  <x-slot
+    [name]="SlotNames.END"
+    [cssClass]="\'ion-text-end\'"
+  >
+    End
+  </x-slot>
+</x-slotter>
+` +
     '```';
 
   readonly slotterSample2 =
-    '```' +
-    '  <x-slotter [layout]="SlotLayout.VERTICAL">' +
-    '    <x-slot [name]="SlotNames.TOP" [cssClass]="\'ion-text-center\'">' +
-    '      Top' +
-    '    </x-slot>' +
-    '    <x-slot [name]="SlotNames.CENTER" [cssClass]="\'ion-text-center\'">' +
-    '      Center' +
-    '    </x-slot>' +
-    '    <x-slot [name]="SlotNames.BOTTOM" [cssClass]="\'ion-text-center\'">' +
-    '      Bottom' +
-    '    </x-slot>' +
-    '  </x-slotter>' +
+    '```html' +
+    `
+<x-slotter
+  [layout]="SlotLayout.VERTICAL"
+>
+  <x-slot
+    [name]="SlotNames.TOP"
+    [cssClass]="\'ion-text-center\'"
+  >
+    Top
+  </x-slot>
+  <x-slot
+    [name]="SlotNames.CENTER"
+    [cssClass]="\'ion-text-center\'"
+  >
+    Center
+  </x-slot>
+  <x-slot
+    [name]="SlotNames.BOTTOM"
+    [cssClass]="\'ion-text-center\'"
+  >
+    Bottom
+  </x-slot>
+</x-slotter>
+` +
     '```';
   //#endregion
 
