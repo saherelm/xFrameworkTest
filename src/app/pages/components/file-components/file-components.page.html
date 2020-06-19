@@ -151,7 +151,7 @@
         </x-button>
 
         <!-- Wrapper of Thumbnail -->
-        <div class="thumbnail-wrapper" *ngIf="file">
+        <div *ngIf="file" class="thumbnail-wrapper">
           <x-slotter
             [hasCenterSlot]="false"
             [layout]="SlotLayout.HORIZONTAL"

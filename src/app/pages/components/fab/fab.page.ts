@@ -69,84 +69,82 @@ export class FabPage extends VPageComponent {
 
   //
   readonly sample1 =
-    '```' +
-    '<x-fab ' +
-    '  [item]="{ ' +
-    // tslint:disable-next-line:quotemark
-    "  id: 'fab_1', " +
-    '  fixed: true, ' +
-    '  icon: IconNames.menu_vertical, ' +
-    '  size: FabButtonSizes.REGULAR, ' +
-    '  color: ColorNames.Tertiary, ' +
-    '  vertical: FabVerticalSlots.CENTER, ' +
-    '  horizontal: FabHorizontalSlots.CENTER, ' +
-    '  childs: [ ' +
-    '  { ' +
-    // tslint:disable-next-line:quotemark
-    "    id: 'fab_child_1', " +
-    '    index: 0, ' +
-    '    icon: IconNames.phone, ' +
-    '    side: FabButtonSides.TOP, ' +
-    '    size: FabButtonSizes.MINI, ' +
-    '    color: ColorNames.Success, ' +
-    '    tooltip: ResourceIDs.temp_label, ' +
-    '    handler: fabHandler ' +
-    '  }, ' +
-    '  { ' +
-    // tslint:disable-next-line:quotemark
-    "    id: 'fab_child_2', " +
-    '    index: 1, ' +
-    '    icon: IconNames.mail, ' +
-    '    side: FabButtonSides.BOTTOM, ' +
-    '    size: FabButtonSizes.MINI, ' +
-    '    color: ColorNames.Primary, ' +
-    '    tooltip: ResourceIDs.temp_label, ' +
-    '    handler: fabHandler ' +
-    '  }, ' +
-    '  { ' +
-    // tslint:disable-next-line:quotemark
-    "    id: 'fab_child_3', " +
-    '    index: 2, ' +
-    '    icon: IconNames.share, ' +
-    '    side: FabButtonSides.START, ' +
-    '    size: FabButtonSizes.MINI, ' +
-    '    color: ColorNames.Medium, ' +
-    '    tooltip: ResourceIDs.temp_label, ' +
-    '    handler: fabHandler ' +
-    '  }, ' +
-    '  { ' +
-    // tslint:disable-next-line:quotemark
-    "    id: 'fab_child_3_1', " +
-    '    index: 3, ' +
-    '    icon: IconNames.avatars, ' +
-    '    side: FabButtonSides.START, ' +
-    '    size: FabButtonSizes.MINI, ' +
-    '    color: ColorNames.Secondary, ' +
-    '    tooltip: ResourceIDs.temp_label, ' +
-    '    handler: fabHandler ' +
-    '  }, ' +
-    '  { ' +
-    // tslint:disable-next-line:quotemark
-    "    id: 'fab_child_4', " +
-    '    index: 4, ' +
-    '    icon: IconNames.web, ' +
-    '    side: FabButtonSides.END, ' +
-    '    size: FabButtonSizes.MINI, ' +
-    '    color: ColorNames.Danger, ' +
-    '    tooltip: ResourceIDs.temp_label, ' +
-    '    handler: fabHandler ' +
-    '  } ' +
-    '  ] ' +
-    '}" ' +
-    '></x-fab> ' +
+    '```html' +
+    `
+<x-fab
+  [item]="{
+  id: 'fab_1',
+  fixed: true,
+  icon: IconNames.menu_vertical,
+  size: FabButtonSizes.REGULAR,
+  color: ColorNames.Tertiary,
+  vertical: FabVerticalSlots.CENTER,
+  horizontal: FabHorizontalSlots.CENTER,
+  childs: [
+  {
+    id: 'fab_child_1',
+    index: 0,
+    icon: IconNames.phone,
+    side: FabButtonSides.TOP,
+    size: FabButtonSizes.MINI,
+    color: ColorNames.Success,
+    tooltip: ResourceIDs.temp_label,
+    handler: fabHandler
+  },
+  {
+    id: 'fab_child_2',
+    index: 1,
+    icon: IconNames.mail,
+    side: FabButtonSides.BOTTOM,
+    size: FabButtonSizes.MINI,
+    color: ColorNames.Primary,
+    tooltip: ResourceIDs.temp_label,
+    handler: fabHandler
+  },
+  {
+    id: 'fab_child_3',
+    index: 2,
+    icon: IconNames.share,
+    side: FabButtonSides.START,
+    size: FabButtonSizes.MINI,
+    color: ColorNames.Medium,
+    tooltip: ResourceIDs.temp_label,
+    handler: fabHandler
+  },
+  {
+    id: 'fab_child_3_1',
+    index: 3,
+    icon: IconNames.avatars,
+    side: FabButtonSides.START,
+    size: FabButtonSizes.MINI,
+    color: ColorNames.Secondary,
+    tooltip: ResourceIDs.temp_label,
+    handler: fabHandler
+  },
+  {
+    id: 'fab_child_4',
+    index: 4,
+    icon: IconNames.web,
+    side: FabButtonSides.END,
+    size: FabButtonSizes.MINI,
+    color: ColorNames.Danger,
+    tooltip: ResourceIDs.temp_label,
+    handler: fabHandler
+  }
+  ]
+}"
+></x-fab>
+` +
     '```';
 
   //
   readonly sample2 =
-    '```' +
-    'fabHandler = async (id?: string) => { ' +
-    '  await this.handleNotifyFab(id); ' +
-    '};   ' +
+    '```typescript' +
+    `
+fabHandler = async (id?: string) => {
+  await this.handleNotifyFab(id);
+};
+` +
     '```';
 
   //

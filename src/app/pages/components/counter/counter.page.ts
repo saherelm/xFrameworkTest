@@ -58,56 +58,74 @@ export class CounterPage extends VPageComponent {
   readonly contentFa = `
   # ${this.toolbarTitle}
 
-  همانطور که از نامش پیداست
+  این مولفه در مواردی که قصد داریم مدت زمان معینی را برای ادامه یا انجام کاری در نظر بگیریم مورد استفاده قرار می گیرد.
   `;
   readonly contentEn = `
   # ${this.toolbarTitle}
+  this component used when we need to wait specific time for continue or doing an action.
   `;
 
   //
   readonly sample1 =
-    '```' +
-    '<x-counter ' +
-    '  #counter ' +
-    '  [stopValue]="0" ' +
-    '  [startValue]="180" ' +
-    '  [currentValue]="150" ' +
-    '  [type]="CounterTypes.CountDown" ' +
-    '  [displayPattern]="getCounterMessage" ' +
-    '  (counterStop)="handleCounterStop($event)" ' +
-    '  (counterTtick)="handleCounterTick($event)" ' +
-    '  (counterStart)="handleCounterStart($event)" ' +
-    '></x-counter> ' +
+    '```html' +
+    `
+<x-counter
+  #counter
+  [stopValue]="0"
+  [startValue]="180"
+  [currentValue]="150"
+  [type]="CounterTypes
+    .CountDown"
+  [displayPattern]="
+    getCounterMessage"
+  (counterStop)="
+    handleCounterStop($event)"
+  (counterTtick)="
+    handleCounterTick($event)"
+  (counterStart)="
+    handleCounterStart($event)"
+></x-counter>
+` +
     '```';
 
   //
   readonly sample2 =
-    '```' +
-    '<x-button ' +
-    '  (click)="counter.start()" ' +
-    '  [title]="ResourceIDs.start" ' +
-    '  [color]="ColorNames.Tertiary" ' +
-    '></x-button> ' +
+    '```html' +
+    `
+<x-button
+  (click)="counter.start()"
+  [title]="ResourceIDs.start"
+  [color]="ColorNames.Tertiary"
+></x-button>
+` +
     '```';
 
   //
   readonly sample3 =
-    '```' +
-    '<x-button ' +
-    '  (click)="counter.pause()" ' +
-    '  [title]="ResourceIDs.pause" ' +
-    '  [color]="ColorNames.Warning" ' +
-    '></x-button> ' +
+    '```html' +
+    `
+<x-button
+  (click)="counter.pause()"
+  [title]="ResourceIDs.pause"
+  [color]="ColorNames.Warning"
+></x-button>
+` +
     '```';
 
   //
   readonly sample4 =
-    '```' +
-    '<x-button ' +
-    '  [title]="ResourceIDs.reset" ' +
-    '  [color]="ColorNames.Danger" ' +
-    '  (click)="counter.startValue = 180; counter.stopValue= 0; counter.currentValue = 0; counter.start()" ' +
-    '></x-button> ' +
+    '```html' +
+    `
+<x-button
+  [title]="ResourceIDs.reset"
+  [color]="ColorNames.Danger"
+  (click)="
+    counter.startValue = 180;
+    counter.stopValue= 0;
+    counter.currentValue = 0;
+    counter.start()"
+></x-button>
+` +
     '```';
 
   //

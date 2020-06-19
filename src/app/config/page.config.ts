@@ -96,7 +96,7 @@ export const PageIndex: PageIndexType = {
     title: AppResourceIDs.components,
     description: AppResourceIDs.components_description,
     route: AppRoutes.Components.toString(),
-    icon: XIconNames.home,
+    icon: XIconNames.explorer,
     childs: [
       //
       // SmallComponents ...

@@ -6,9 +6,19 @@ import {
   isNullOrEmptyString,
 } from 'x-framework-core';
 import { Component } from '@angular/core';
-import { XIconNames, XListItem } from 'x-framework-components';
+import {
+  XIconNames,
+  XListItem,
+  XModelConfig,
+  XModelPropPresentType,
+  XModelPropAppearance,
+} from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
+
+interface IconsListPresentation {
+  show: boolean;
+}
 
 @Component({
   selector: 'app-icon',
@@ -59,11 +69,85 @@ export class IconPage extends VPageComponent {
   this Component used for show an icon.
   `;
 
+  readonly sample1 =
+    '```html' +
+    `
+<x-icon
+  [foregroundColor]="true"
+  [name]="IconNames.business"
+  [color]="ColorNames.Success"
+>
+</x-icon>
+` +
+    '```';
+
+  readonly sample2 =
+    '```html' +
+    `
+<x-icon
+  [clickable]="true"
+  [name]="IconNames.home"
+  [foregroundColor]="false"
+  [color]="ColorNames.Dark"
+  (clicked)="managerService
+    .notificationService
+      .presentInfoNotification({
+    message: 'icon clicked ...',
+    dissmissable: true
+  })"
+>
+</x-icon>
+` +
+    '```';
+
+  //
+  showIconList = false;
+  modelConfig: XModelConfig<IconsListPresentation> = {
+    model: { show: false },
+    props: [
+      {
+        //
+        index: 0,
+
+        //
+        propName: 'show',
+        type: XModelPropPresentType.CheckBox,
+        appearance: XModelPropAppearance.Fill,
+
+        //
+        config: [false],
+        label: `${this.resourceProvider(
+          this.ResourceIDs.show
+        )} ${this.resourceProvider(this.ResourceIDs.icon_list)}`,
+
+        //
+        checkedChanged: async (checked: boolean) => {
+          //
+          if (!hasChild(this.iconListItems)) {
+            //
+            const loading = await this.managerService.dialogService.presentLoading(
+              {
+                message: this.resourceProvider(AppResourceIDs.default_loading),
+                spinner: this.SpinnerNames.LinesSmall,
+              }
+            );
+
+            //
+            await this.prepareIconListItems();
+
+            //
+            await loading.dismiss();
+          }
+
+          //
+          this.showIconList = checked;
+        },
+      },
+    ],
+  };
+
   //
   //#region LifeCycle ...
-  async afterViewInit() {
-    await this.prepareIconListItems();
-  }
   //#endregion
 
   //
@@ -140,31 +224,16 @@ export class IconPage extends VPageComponent {
   //#region Private ...
   private async prepareIconListItems() {
     //
-    const loading = await this.managerService.dialogService.presentLoading({
-      message: this.resourceProvider(AppResourceIDs.default_loading),
-      spinner: this.SpinnerNames.LinesSmall,
-    });
-
-    //
-    this.iconListItems = [];
-    if (!hasChild(this.iconList)) {
-      return;
-    }
-
-    //
-    this.iconList.forEach((i) => {
+    this.iconListItems = this.iconList.map((i) => {
       //
       const li: XListItem<string> = {
         data: i,
       };
 
       //
-      this.iconListItems.push(li);
-      this.detectChanges();
+      return li;
     });
-
-    //
-    loading.dismiss();
+    this.detectChanges();
   }
   //#endregion
 }

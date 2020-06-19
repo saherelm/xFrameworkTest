@@ -142,21 +142,25 @@ export class FileComponentsPage extends VPageComponent {
   readonly fileUrl = this.managerService.getFullUrl('/assets/icon/favicon.png');
 
   readonly thumbnailSample1 =
-    '```' +
-    '<x-thumbnail ' +
-    '  [identifier]="fileUrl" ' +
-    '  [type]="ThumbnailTypes.CUSTOM" ' +
-    '> ' +
-    '</x-thumbnail>   ' +
+    '```html' +
+    `
+<x-thumbnail
+  [identifier]="fileUrl"
+  [type]="ThumbnailTypes.CUSTOM"
+>
+</x-thumbnail>
+` +
     '```';
 
   readonly thumbnailSample2 =
-    '```' +
-    '<x-thumbnail ' +
-    '  [identifier]="fileUrl" ' +
-    '  [type]="ThumbnailTypes.GENERAL" ' +
-    '> ' +
-    '</x-thumbnail> ' +
+    '```html' +
+    `
+<x-thumbnail
+  [identifier]="fileUrl"
+  [type]="ThumbnailTypes.GENERAL"
+>
+</x-thumbnail>
+` +
     '```';
 
   //
@@ -170,13 +174,16 @@ export class FileComponentsPage extends VPageComponent {
 
   //
   readonly fileDropAreaSample1 =
-    '```' +
-    '<x-file-drop-area ' +
-    '  [wrapWithCard]="true" ' +
-    '  [isPageFileDropArea]="true" ' +
-    '  [supportsMultipleFiles]="true" ' +
-    '  (filesChangeEmiter)="handleFilesChanged($event)" ' +
-    '></x-file-drop-area> ' +
+    '```html' +
+    `
+<x-file-drop-area
+  [wrapWithCard]="true"
+  [isPageFileDropArea]="true"
+  [supportsMultipleFiles]="true"
+  (filesChangeEmiter)="
+    handleFilesChanged($event)"
+></x-file-drop-area>
+` +
     '```';
 
   readonly imageCropperContentFa = `
@@ -188,78 +195,112 @@ export class FileComponentsPage extends VPageComponent {
 
   //
   readonly imageCropperSample1 =
-    '```' +
-    '<div class="container"> ' +
-    '  <!-- File Upload Input --> ' +
-    '  <input ' +
-    '    hidden ' +
-    '    #fileInput ' +
-    '    type="file" ' +
-    '    multiple="false" ' +
-    '    (change)="handleFilesSelected()" ' +
-    '    [disabled]="isLoading || uiDisabled" ' +
-    '  /> ' +
-    ' ' +
-    '  <x-button ' +
-    '    (click)="selectFile()" ' +
-    '    [type]="ButtonTypes.Raised" ' +
-    '    [color]="ColorNames.Primary" ' +
-    '    [title]="resourceProvider(ResourceIDs.select) + \' \' + resourceProvider(ResourceIDs.avatar)" ' +
-    '  > ' +
-    '  </x-button> ' +
-    ' ' +
-    '  <!-- Wrapper of Thumbnail --> ' +
-    '  <div class="thumbnail-wrapper" *ngIf="file"> ' +
-    '    <x-slotter ' +
-    '      [hasCenterSlot]="false" ' +
-    '      [layout]="SlotLayout.HORIZONTAL" ' +
-    '      [startTopSlotCssClass]="\'ion-text-start\'" ' +
-    '      [endBottomSlotCssClass]="\'ion-text-center\'" ' +
-    '    > ' +
-    '      <x-slot [name]="SlotNames.START"> ' +
-    '        <div> ' +
-    '          <x-thumbnail ' +
-    '            class="x-thumb" ' +
-    '            [identifier]="file" ' +
-    '            [loading]="isLoading" ' +
-    '            [cssClass]="\'thumbnail\'" ' +
-    '            [uiDisabled]="uiDisabled" ' +
-    '            [type]="ThumbnailTypes.CUSTOM" ' +
-    '          > ' +
-    '          </x-thumbnail> ' +
-    '        </div> ' +
-    '      </x-slot> ' +
-    ' ' +
-    '      <x-slot [name]="SlotNames.END"> ' +
-    '        <div class="avatar-actions ion-text-end"> ' +
-    '          <div> ' +
-    '            <x-button ' +
-    '              *ngIf="croppableImage()" ' +
-    '              [type]="ButtonTypes.Icon" ' +
-    '              (click)="handleLoadCropper()" ' +
-    '              [color]="ColorNames.Secondary" ' +
-    '              [matTooltip]="resourceProvider(ResourceIDs.crop)" ' +
-    '            > ' +
-    '              <x-icon [name]="IconNames.crop"></x-icon> ' +
-    '            </x-button> ' +
-    ' ' +
-    '            <x-button ' +
-    '              [type]="ButtonTypes.Icon" ' +
-    '              (click)="handleClearFile()" ' +
-    '              [color]="ColorNames.Warning" ' +
-    '              [matTooltip]="resourceProvider(ResourceIDs.clear)" ' +
-    '            > ' +
-    '              <x-icon ' +
-    '                [name]="IconNames.clear" ' +
-    '                [color]="ColorNames.Light" ' +
-    '              ></x-icon> ' +
-    '            </x-button> ' +
-    '          </div> ' +
-    '        </div> ' +
-    '      </x-slot> ' +
-    '    </x-slotter> ' +
-    '  </div> ' +
-    '</div> ' +
+    '```html' +
+    `
+<div class="container">
+  <input
+    hidden
+    #fileInput
+    type="file"
+    multiple="false"
+    (change)="
+      handleFilesSelected()"
+    [disabled]="
+      isLoading || uiDisabled"
+  />
+
+  <x-button
+    (click)="selectFile()"
+    [type]="ButtonTypes.Raised"
+    [color]="ColorNames.Primary"
+    [title]="
+    resourceProvider(
+        ResourceIDs.select)
+      + \' \' +
+      resourceProvider(
+          ResourceIDs.avatar)"
+  >
+  </x-button>
+
+  <div
+    *ngIf="file"
+    class="thumbnail-wrapper"
+  >
+    <x-slotter
+      [hasCenterSlot]="false"
+      [layout]="
+        SlotLayout.HORIZONTAL"
+      [startTopSlotCssClass]="
+        \'ion-text-start\'"
+      [endBottomSlotCssClass]="
+        \'ion-text-center\'"
+    >
+      <x-slot
+        [name]="SlotNames.START">
+        <div>
+          <x-thumbnail
+            class="x-thumb"
+            [identifier]="file"
+            [loading]="isLoading"
+            [cssClass]="\'thumbnail\'"
+            [uiDisabled]="uiDisabled"
+            [type]="
+              ThumbnailTypes.CUSTOM"
+          >
+          </x-thumbnail>
+        </div>
+      </x-slot>
+
+      <x-slot [name]="SlotNames.END">
+        <div
+          class="
+            avatar-actions
+            ion-text-end">
+          <div>
+            <x-button
+              *ngIf="
+                croppableImage()"
+              [type]="
+                ButtonTypes.Icon"
+              (click)="
+                handleLoadCropper()"
+              [color]="
+                ColorNames.Secondary"
+              [matTooltip]="
+                resourceProvider(
+                  ResourceIDs.crop)"
+            >
+              <x-icon
+                [name]="
+                  IconNames.crop">
+              </x-icon>
+            </x-button>
+
+            <x-button
+              [type]="
+                ButtonTypes.Icon"
+              (click)="
+                handleClearFile()"
+              [color]="
+                ColorNames.Warning"
+              [matTooltip]="
+                resourceProvider(
+                  ResourceIDs.clear)"
+            >
+              <x-icon
+                [name]="
+                  IconNames.clear"
+                [color]="
+                  ColorNames.Light"
+              ></x-icon>
+            </x-button>
+          </div>
+        </div>
+      </x-slot>
+    </x-slotter>
+  </div>
+</div>
+` +
     '```';
 
   //
@@ -273,15 +314,23 @@ export class FileComponentsPage extends VPageComponent {
   `;
 
   readonly fileUploadSample1 =
-    '```' +
-    '<x-file-upload ' +
-    '  [canDrop]="isNotMobileUi$ | async" ' +
-    '  (fileChange)="handleFileChanged($event)" ' +
-    '  [maxAllowedSize]="config.maxAllowedSize" ' +
-    '  [maxAllowedFiles]="config.maxUploadFiles" ' +
-    '  [minAllowedFileSize]="config.minAllowedFileSize" ' +
-    '  [maxAllowedFileSize]="config.maxAllowedFileSize" ' +
-    '></x-file-upload> ' +
+    '```html' +
+    `
+<x-file-upload
+  [canDrop]="
+    isNotMobileUi$ | async"
+  (fileChange)="
+    handleFileChanged($event)"
+  [maxAllowedSize]="
+    config.maxAllowedSize"
+  [maxAllowedFiles]="
+    config.maxUploadFiles"
+  [minAllowedFileSize]="
+    config.minAllowedFileSize"
+  [maxAllowedFileSize]="
+    config.maxAllowedFileSize"
+></x-file-upload>
+` +
     '```';
 
   //

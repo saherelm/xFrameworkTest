@@ -13,6 +13,46 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <!-- Sample -->
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-icon
+      [foregroundColor]="true"
+      [name]="IconNames.business"
+      [color]="ColorNames.Success"
+    >
+    </x-icon>
+
+    <!-- Sample -->
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample2"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-icon
+      [clickable]="true"
+      [name]="IconNames.home"
+      [foregroundColor]="false"
+      [color]="ColorNames.Dark"
+      (clicked)="managerService.notificationService.presentInfoNotification({
+        message: 'icon clicked ...',
+        dissmissable: true
+      })"
+    >
+    </x-icon>
+
+    <br />
+    <br />
+
+    <x-form [modelConfig]="modelConfig"> </x-form>
+
     <!-- Actions -->
     <div actions>
       <a
@@ -24,7 +64,11 @@
   </x-card>
 
   <!-- Icon List -->
-  <x-card [isPageCard]="true" [title]="resourceProvider(ResourceIDs.icon_list)">
+  <x-card
+    [isPageCard]="true"
+    *ngIf="showIconList"
+    [title]="resourceProvider(ResourceIDs.icon_list)"
+  >
     <!-- List Actions -->
     <x-actions
       [showSearchBar]="true"

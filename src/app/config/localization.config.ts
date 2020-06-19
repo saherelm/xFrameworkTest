@@ -201,6 +201,14 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         value: 'ارسال',
       },
       {
+        id: 'show',
+        value: 'نمایش دادن',
+      },
+      {
+        id: 'hide',
+        value: 'پنهان کردن',
+      },
+      {
         id: 'search',
         value: 'جستجو',
       },
@@ -569,6 +577,14 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'send',
         value: 'Send',
+      },
+      {
+        id: 'show',
+        value: 'Show',
+      },
+      {
+        id: 'hide',
+        value: 'Hide',
       },
       {
         id: 'search',

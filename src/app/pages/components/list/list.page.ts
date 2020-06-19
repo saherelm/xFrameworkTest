@@ -54,8 +54,11 @@ export class ListPage extends VPageComponent {
   readonly sample1 =
     '```typescript' +
     `
-  tempList = Array.from(Array(25).keys());
-  templListItems: XListItem<string>[] = this.tempList.map((i) => {
+tempList = Array
+  .from(Array(25).keys());
+
+templListItems: XListItem<string>[] =
+  this.tempList.map((i) => {
     const li: XListItem<string> = {
       data: \`Item \${i.toString()}\`,
       slideOptions: [
@@ -67,10 +70,11 @@ export class ListPage extends VPageComponent {
           slot: 'end',
           handler: () => {
             //
-            this.managerService.notificationService
+            this.managerService
+              .notificationService
               .presentDangerNotification({
-              message: \`remove: \${i}\`,
-              dissmissable: true,
+                message: \`remove: \${i}\`,
+                dissmissable: true,
             });
           },
         },
@@ -82,54 +86,54 @@ export class ListPage extends VPageComponent {
           slot: 'start',
           handler: () => {
             //
-            this.managerService.notificationService
+            this.managerService
+              .notificationService
               .presentInfoNotification({
-              message: \`edit: \${i}\`,
-              dissmissable: true,
+                message: \`edit: \${i}\`,
+                dissmissable: true,
             });
           },
         },
       ],
-    };
+  };
 
-    return li;
-  });
-  ` +
+  return li;
+});
+` +
     '```';
 
   //
   readonly sample2 =
     '```html' +
     `
-    <x-actions
-      [hasDelete]="true"
-      [hasSelectAll]="true"
-      [showSearchBar]="true"
-      [showActionBar]="true"
-      [hasDeselectAll]="true"
-      [hasInverseSelection]="true"
-      [listComponent]="listPresenter"
-      [actionBarColor]="ColorNames.Dark"
-      [searchBarColor]="ColorNames.Dark"
-      (removeItems)="handleRemoveItems(\$event)"
-      (queryChange)="listPresenter.filterItems(\$event)"
-    >
-    </x-actions>
-  ` +
-    `
-    <x-list
-      #listPresenter
-      [showDivider]="false"
-      [clickableItems]="true"
-      [selectableItems]="true"
-      [items]="templListItems"
-      [enableReordering]="true"
-      [itemTemplate]="listItemRef"
-      [color]="ColorNames.Tertiary"
-      (refresh)="handleRefreshList()"
-    >
-    </x-list>
-  ` +
+<x-actions
+  [hasDelete]="true"
+  [hasSelectAll]="true"
+  [showSearchBar]="true"
+  [showActionBar]="true"
+  [hasDeselectAll]="true"
+  [hasInverseSelection]="true"
+  [listComponent]="listPresenter"
+  [actionBarColor]="ColorNames.Dark"
+  [searchBarColor]="ColorNames.Dark"
+  (removeItems)="handleRemoveItems(\$event)"
+  (queryChange)="listPresenter.filterItems(\$event)"
+>
+</x-actions>
+
+<x-list
+  #listPresenter
+  [showDivider]="false"
+  [clickableItems]="true"
+  [selectableItems]="true"
+  [items]="templListItems"
+  [enableReordering]="true"
+  [itemTemplate]="listItemRef"
+  [color]="ColorNames.Tertiary"
+  (refresh)="handleRefreshList()"
+>
+</x-list>
+` +
     '```';
 
   readonly sample3 =
