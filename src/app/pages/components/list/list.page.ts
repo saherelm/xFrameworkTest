@@ -117,7 +117,8 @@ templListItems: XListItem<string>[] =
   [actionBarColor]="ColorNames.Dark"
   [searchBarColor]="ColorNames.Dark"
   (removeItems)="handleRemoveItems(\$event)"
-  (queryChange)="listPresenter.filterItems(\$event)"
+  (queryChange)="listPresenter
+    .filterItems(\$event)"
 >
 </x-actions>
 
@@ -139,63 +140,67 @@ templListItems: XListItem<string>[] =
   readonly sample3 =
     '```typescript' +
     `
-  handleRefreshList() {
-    this.prepareListItems();
-  }
-  ` +
-    `
-  handleRemoveItems(request: XBaseRangeRequestDto<string>) {
+handleRefreshList() {
+  this.prepareListItems();
+}
+
+handleRemoveItems(request:
+    XBaseRangeRequestDto<string>) {
+  //
+  this.templListItems = this
+    .templListItems.filter(
+      (li) => !request.items
+        .includes(li.data)
+  );
+}
+
+private prepareListItems() {
+  this.templListItems = this
+    .tempList.map((i) => {
     //
-    this.templListItems = this.templListItems.filter(
-      (li) => !request.items.includes(li.data)
-    );
-  }
-  ` +
-    `
-  private prepareListItems() {
-    this.templListItems = this.tempList.map((i) => {
-      //
-      const li: XListItem<string> = {
-        data: \`Item $\{i.toString()}\`,
-        slideOptions: [
-          {
-            id: 'remove',
-            icon: this.IconNames.remove,
-            color: this.ColorNames.Danger,
-            onlyIcon: true,
-            slot: 'end',
-            handler: () => {
-              //
-              this.managerService.notificationService
-                .presentDangerNotification({
+    const li: XListItem<string> = {
+      data: \`Item $\{i.toString()}\`,
+      slideOptions: [
+        {
+          id: 'remove',
+          icon: this.IconNames.remove,
+          color: this.ColorNames.Danger,
+          onlyIcon: true,
+          slot: 'end',
+          handler: () => {
+            //
+            this.managerService
+              .notificationService
+              .presentDangerNotification({
                 message: \`remove: \${i}\`,
                 dissmissable: true,
-              });
-            },
+            });
           },
-          {
-            id: 'edit',
-            icon: this.IconNames.edit,
-            color: this.ColorNames.Warning,
-            onlyIcon: true,
-            slot: 'start',
-            handler: () => {
-              //
-              this.managerService.notificationService
-                .presentInfoNotification({
+        },
+        {
+          id: 'edit',
+          icon: this.IconNames.edit,
+          color: this.ColorNames.Warning,
+          onlyIcon: true,
+          slot: 'start',
+          handler: () => {
+            //
+            this.managerService
+              .notificationService
+              .presentInfoNotification({
                 message: \`edit: \${i}\`,
                 dissmissable: true,
-              });
-            },
+            });
           },
-        ],
-      };
+        },
+      ],
+    };
 
-      //
-      return li;
-    });
-  }
-  ` +
+    //
+    return li;
+  });
+}
+` +
     '```';
 
   //

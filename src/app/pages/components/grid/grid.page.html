@@ -15,9 +15,63 @@
 
     <!-- Actions -->
     <div actions>
-      <a target="_blank" href=""
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XGridComponent.html"
         >{{resourceProvider(ResourceIDs.documentation)}}</a
       >
     </div>
   </x-card>
+
+  <!-- Samples -->
+  <x-markdown
+    [mode]="'preview'"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [isPageMarkdown]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <x-grid
+    [isPageGrid]="true"
+    [wrapWithCard]="true"
+    [items]="templGridItems"
+    [selectableItems]="true"
+    [itemTemplate]="gridItemRef"
+    [type]="GridPresentTypes.AsFlex"
+    (itemSelected)="handleGridItemSelected($event)"
+  >
+  </x-grid>
+
+  <x-markdown
+    [mode]="'preview'"
+    [content]="sample2"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [isPageMarkdown]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <x-grid
+    [cols]="4"
+    [isPageGrid]="true"
+    [wrapWithCard]="true"
+    [items]="templGridItems"
+    [selectableItems]="true"
+    [itemTemplate]="gridItemRef"
+    [type]="GridPresentTypes.AsGrid"
+    (itemSelected)="handleGridItemSelected($event)"
+  >
+  </x-grid>
 </v-page>
+
+<!-- Grid Item Template -->
+<ng-template #gridItemRef let-item>
+  <div>
+    {{ item.data }}
+    <!-- <span>{{ item.data }}</span> -->
+  </div>
+</ng-template>

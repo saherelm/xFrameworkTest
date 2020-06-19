@@ -47,10 +47,10 @@ export class FileComponentsPage extends VPageComponent {
   //#region Props ...
   //
   //#region Page Props ...
-  titleRes = AppResourceIDs.file_upload;
+  titleRes = AppResourceIDs.file_components;
   toolbarTitle = this.resourceProvider(this.titleRes);
   toolbarSubTitle = this.resourceProvider(
-    AppResourceIDs.file_upload_description
+    AppResourceIDs.file_components_description
   );
   toolbarShowSubTitle = true;
   //#endregion

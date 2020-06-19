@@ -1,0 +1,23 @@
+<v-page
+  [hasSide]="true"
+  [toolbarTitle]="toolbarTitle"
+  [toolbarSubTitle]="toolbarSubTitle"
+  [toolbarShowSubTitle]="toolbarShowSubTitle"
+>
+  <!-- Content -->
+  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+    <!-- Content -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('content')"
+    ></x-markdown>
+
+    <!-- Actions -->
+    <div actions>
+      <a target="_blank" href=""
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
+</v-page>
