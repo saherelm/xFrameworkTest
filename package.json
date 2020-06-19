@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prepareDependencies": "npm i -s .././pack/x-framework-core-0.0.1.tgz .././pack/x-framework-services-0.0.1.tgz .././pack/x-framework-components-0.0.1.tgz",
+    "removeDependencies": "npm uninstall x-framework-components x-framework-services x-framework-core",
+    "installDependencies": "npm i -s .././pack/x-framework-core-0.0.1.tgz .././pack/x-framework-services-0.0.1.tgz .././pack/x-framework-components-0.0.1.tgz",
+    "prepareDependencies": "npm run removeDependencies && npm run installDependencies",
     "serveXFrameworkProject": "npm run prepareDependencies && ng serve -o"
   },
   "private": true,

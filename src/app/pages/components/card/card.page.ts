@@ -58,43 +58,54 @@ this component use to present a part of a page.
   [showContent]="true"
   [showActions]="true"
   [color]="ColorNames.Tertiary"
-  [title]="resourceProvider(ResourceIDs.app_name)"
-  [subTitle]="resourceProvider(ResourceIDs.company)"
+  [title]="resourceProvider(
+    ResourceIDs.app_name)"
+  [subTitle]="resourceProvider(
+    ResourceIDs.company)"
 >
   <div header>
-    {{resourceProvider(ResourceIDs.header)}}
+    {{resourceProvider(
+      ResourceIDs.header)}}
   </div>
 
   <div content>
-    {{resourceProvider(ResourceIDs.temp_label)}}
+    {{resourceProvider(
+      ResourceIDs.temp_label)}}
   </div>
 
   <div actions>
-    {{resourceProvider(ResourceIDs.actions)}}
+    {{resourceProvider(
+      ResourceIDs.actions)}}
   </div>
 
   <div footer>
-    {{resourceProvider(ResourceIDs.footer)}}
+    {{resourceProvider(
+      ResourceIDs.footer)}}
   </div>
 </x-card>
 ` +
     '```';
 
   readonly sample2 =
-    '```' +
+    '```html' +
     `
   <x-card
     [showHeader]="true"
     [isPageCard]="true"
     [showContent]="true"
     [color]="ColorNames.Medium"
-    [imageUrl]="\'/assets/image/logo.png\'"
-    [avatarUrl]="\'/assets/image/logo.png\'"
-    [title]="resourceProvider(ResourceIDs.app_name)"
-    [subTitle]="resourceProvider(ResourceIDs.company)"
+    [imageUrl]="
+      \'/assets/image/logo.png\'"
+    [avatarUrl]="
+      \'/assets/image/logo.png\'"
+    [title]="resourceProvider(
+      ResourceIDs.app_name)"
+    [subTitle]="resourceProvider(
+      ResourceIDs.company)"
   >
     <div content>
-      {{resourceProvider(ResourceIDs.temp_label)}}
+      {{resourceProvider(
+        ResourceIDs.temp_label)}}
     </div>
   </x-card>
   ` +

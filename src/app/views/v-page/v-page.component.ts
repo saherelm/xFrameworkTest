@@ -46,6 +46,7 @@ import {
   XTitleSlotIdentifier,
   XContentSlotIdentifier,
 } from 'x-framework-components';
+import { map } from 'rxjs/operators';
 import { MenuController } from '@ionic/angular';
 import { X_CONFIG } from '../../config/x-config';
 import { XConfig } from '../../config/app-config';
@@ -189,7 +190,7 @@ export class VPageComponent extends XPageComponent {
 
   //
   @Input()
-  menuState: XStandardType<XMenuState> = XMenuState.Opened;
+  menuState: XStandardType<XMenuState>;
 
   //
   @Input()
@@ -279,6 +280,15 @@ export class VPageComponent extends XPageComponent {
 
   //
   //#region LifeCycle ...
+  onInit() {
+    super.onInit();
+
+    //
+    this.menuState = this.isMobileUi$.pipe(
+      map((isMobile) => (isMobile ? XMenuState.WillClose : XMenuState.Opened))
+    );
+  }
+
   async afterViewInit() {
     super.afterViewInit();
 
