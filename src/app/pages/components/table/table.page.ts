@@ -15,9 +15,9 @@ export class TablePage extends VPageComponent {
   //#region Props ...
   //
   //#region Page Props ...
-  titleRes = AppResourceIDs.map;
+  titleRes = AppResourceIDs.table;
   toolbarTitle = this.resourceProvider(this.titleRes);
-  toolbarSubTitle = this.resourceProvider(AppResourceIDs.map_description);
+  toolbarSubTitle = this.resourceProvider(AppResourceIDs.table_description);
   toolbarShowSubTitle = true;
   //#endregion
 

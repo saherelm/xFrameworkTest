@@ -5,19 +5,21 @@ import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.page.html',
-  styleUrls: ['./map.page.scss'],
+  selector: 'app-expandable-panel',
+  templateUrl: './expandable-panel.page.html',
+  styleUrls: ['./expandable-panel.page.scss'],
 })
 // tslint:disable-next-line:component-class-suffix
-export class MapPage extends VPageComponent {
+export class ExpandablePanelPage extends VPageComponent {
   //
   //#region Props ...
   //
   //#region Page Props ...
-  titleRes = AppResourceIDs.map;
+  titleRes = AppResourceIDs.expandable_panel;
   toolbarTitle = this.resourceProvider(this.titleRes);
-  toolbarSubTitle = this.resourceProvider(AppResourceIDs.map_description);
+  toolbarSubTitle = this.resourceProvider(
+    AppResourceIDs.expandable_panel_description
+  );
   toolbarShowSubTitle = true;
   //#endregion
 

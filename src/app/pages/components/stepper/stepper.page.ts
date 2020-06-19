@@ -15,9 +15,9 @@ export class StepperPage extends VPageComponent {
   //#region Props ...
   //
   //#region Page Props ...
-  titleRes = AppResourceIDs.map;
+  titleRes = AppResourceIDs.stepper;
   toolbarTitle = this.resourceProvider(this.titleRes);
-  toolbarSubTitle = this.resourceProvider(AppResourceIDs.map_description);
+  toolbarSubTitle = this.resourceProvider(AppResourceIDs.stepper_description);
   toolbarShowSubTitle = true;
   //#endregion
 

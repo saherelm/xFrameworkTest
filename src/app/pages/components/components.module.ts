@@ -6,13 +6,22 @@ import { GridPage } from './grid/grid.page';
 import { ListPage } from './list/list.page';
 import { IconPage } from './icon/icon.page';
 import { CardPage } from './card/card.page';
+import { PagePage } from './page/page.page';
+import { TabsPage } from './tabs/tabs.page';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TablePage } from './table/table.page';
+import { SliderPage } from './slider/slider.page';
 import { CounterPage } from './counter/counter.page';
+import { StepperPage } from './stepper/stepper.page';
+import { MarkdownPage } from './markdown/markdown.page';
 import { ViewsModule } from 'src/app/views/views.module';
+import { TabNavigatorPage } from './tab-navigator/tab-navigator.page';
 import { BaseRoutes, ComponentsRoutes } from 'src/app/config/page.config';
 import { FileComponentsPage } from './file-components/file-components.page';
+import { ExpandableListPage } from './expandable-list/expandable-list.page';
 import { SmallComponentsPage } from './small-components/small-components.page';
+import { ExpandablePanelPage } from './expandable-panel/expandable-panel.page';
 
 @NgModule({
   imports: [
@@ -64,6 +73,42 @@ import { SmallComponentsPage } from './small-components/small-components.page';
         path: ComponentsRoutes.Map,
         component: MapPage,
       },
+      {
+        path: ComponentsRoutes.MarkDown,
+        component: MarkdownPage,
+      },
+      {
+        path: ComponentsRoutes.ExpandableList,
+        component: ExpandableListPage,
+      },
+      {
+        path: ComponentsRoutes.ExpandablePanel,
+        component: ExpandablePanelPage,
+      },
+      {
+        path: ComponentsRoutes.Slider,
+        component: SliderPage,
+      },
+      {
+        path: ComponentsRoutes.Stepper,
+        component: StepperPage,
+      },
+      {
+        path: ComponentsRoutes.Tabs,
+        component: TabsPage,
+      },
+      {
+        path: ComponentsRoutes.Table,
+        component: TablePage,
+      },
+      {
+        path: ComponentsRoutes.Page,
+        component: PagePage,
+      },
+      {
+        path: ComponentsRoutes.TabNavigator,
+        component: TabNavigatorPage,
+      },
     ]),
   ],
   declarations: [
@@ -73,10 +118,19 @@ import { SmallComponentsPage } from './small-components/small-components.page';
     IconPage,
     FormPage,
     GridPage,
+    PagePage,
     ListPage,
+    TabsPage,
+    TablePage,
+    SliderPage,
+    StepperPage,
     CounterPage,
-    SmallComponentsPage,
+    MarkdownPage,
+    TabNavigatorPage,
+    ExpandableListPage,
     FileComponentsPage,
+    SmallComponentsPage,
+    ExpandablePanelPage,
   ],
 })
 export class ComponentsPageModule {}

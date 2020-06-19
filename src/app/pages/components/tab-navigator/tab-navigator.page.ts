@@ -5,19 +5,21 @@ import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
 
 @Component({
-  selector: 'app-slider',
-  templateUrl: './slider.page.html',
-  styleUrls: ['./slider.page.scss'],
+  selector: 'app-tab-navigator',
+  templateUrl: './tab-navigator.page.html',
+  styleUrls: ['./tab-navigator.page.scss'],
 })
 // tslint:disable-next-line:component-class-suffix
-export class SliderPage extends VPageComponent {
+export class TabNavigatorPage extends VPageComponent {
   //
   //#region Props ...
   //
   //#region Page Props ...
-  titleRes = AppResourceIDs.slider;
+  titleRes = AppResourceIDs.tab_navigator;
   toolbarTitle = this.resourceProvider(this.titleRes);
-  toolbarSubTitle = this.resourceProvider(AppResourceIDs.slider_description);
+  toolbarSubTitle = this.resourceProvider(
+    AppResourceIDs.tab_navigator_description
+  );
   toolbarShowSubTitle = true;
   //#endregion
 

@@ -178,6 +178,18 @@ export enum AppResourceIDs {
   //#endregion
 
   //
+  //#region ExpandableList ...
+  expandable_list = 'expandable_list',
+  expandable_list_description = 'expandable_list_description',
+  //#endregion
+
+  //
+  //#region ExpandableList ...
+  expandable_panel = 'expandable_panel',
+  expandable_panel_description = 'expandable_panel_description',
+  //#endregion
+
+  //
   //#region Slider ...
   slider = 'slider',
   slider_description = 'slider_description',
@@ -190,28 +202,28 @@ export enum AppResourceIDs {
   //#endregion
 
   //
-  //#region Table ...
-  table = 'table',
-  table_description = 'table_description',
-  //#endregion
-
-  //
   //#region Tabs ...
   tabs = 'tabs',
   tabs_description = 'tabs_description',
   //#endregion
 
   //
-  //#region TabNavigation ...
-  tab_navigation = 'tab_navigation',
-  tab_navigation_description = 'tab_navigation_description',
+  //#region Table ...
+  table = 'table',
+  table_description = 'table_description',
   //#endregion
 
-  // //
-  // //#region Table ...
-  // fab = 'fab',
-  // fab_description = 'fab_description',
-  // //#endregion
+  //
+  //#region Table ...
+  page = 'page',
+  page_description = 'page_description',
+  //#endregion
+
+  //
+  //#region TabNavigation ...
+  tab_navigator = 'tab_navigator',
+  tab_navigator_description = 'tab_navigator_description',
+  //#endregion
   //#endregion
 }
 
@@ -593,6 +605,30 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
+  //#region ExpandableList ...
+  {
+    id: 'expandable_list',
+    value: 'فهرست باز شوند',
+  },
+  {
+    id: 'expandable_list_description',
+    value: 'مستندات مربوط به مولفه فهرست باز شونده',
+  },
+  //#endregion
+
+  //
+  //#region ExpandableList ...
+  {
+    id: 'expandable_panel',
+    value: 'قطعه بازشونده',
+  },
+  {
+    id: 'expandable_panel_description',
+    value: 'مستندات مربوط به مولفه قطعه بازشونده',
+  },
+  //#endregion
+
+  //
   //#region Slider ...
   {
     id: 'slider',
@@ -617,18 +653,6 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
-  //#region Table ...
-  {
-    id: 'table',
-    value: 'جدول',
-  },
-  {
-    id: 'table_description',
-    value: 'مستندات مربوط به مولفه جدول',
-  },
-  //#endregion
-
-  //
   //#region Tabs ...
   {
     id: 'tabs',
@@ -641,14 +665,38 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
-  //#region TabNavigation ...
+  //#region Table ...
   {
-    id: 'tab_navigation',
-    value: 'برگه های پیمایش',
+    id: 'table',
+    value: 'جدول',
   },
   {
-    id: 'tab_navigation_description',
-    value: 'مستندات مربوط به مولفه برگه های پیمایش',
+    id: 'table_description',
+    value: 'مستندات مربوط به مولفه جدول',
+  },
+  //#endregion
+
+  //
+  //#region Page ...
+  {
+    id: 'page',
+    value: 'صفحه',
+  },
+  {
+    id: 'page_description',
+    value: 'مستندات مربوط به مولفه صفحه',
+  },
+  //#endregion
+
+  //
+  //#region TabNavigation ...
+  {
+    id: 'tab_navigator',
+    value: 'پیمایشگر برگه',
+  },
+  {
+    id: 'tab_navigator_description',
+    value: 'مستندات مربوط به مولفه پیمایشگر برگه',
   },
   //#endregion
   //#endregion
@@ -1032,6 +1080,30 @@ export const EnCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
+  //#region ExpandableList ...
+  {
+    id: 'expandable_list',
+    value: 'Expandable List',
+  },
+  {
+    id: 'expandable_list_description',
+    value: 'Expandable List Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region ExpandableList ...
+  {
+    id: 'expandable_panel',
+    value: 'Expandable Panel',
+  },
+  {
+    id: 'expandable_panel_description',
+    value: 'Expandable Panel Component Documentation',
+  },
+  //#endregion
+
+  //
   //#region Slider ...
   {
     id: 'slider',
@@ -1056,18 +1128,6 @@ export const EnCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
-  //#region Table ...
-  {
-    id: 'table',
-    value: 'Table',
-  },
-  {
-    id: 'table_description',
-    value: 'Table Component Documentation',
-  },
-  //#endregion
-
-  //
   //#region Tabs ...
   {
     id: 'tabs',
@@ -1080,14 +1140,38 @@ export const EnCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
-  //#region TabNavigation ...
+  //#region Table ...
   {
-    id: 'tab_navigation',
-    value: 'TabNavigation',
+    id: 'table',
+    value: 'Table',
   },
   {
-    id: 'tab_navigation_description',
-    value: 'TabNavigation Component Documentation',
+    id: 'table_description',
+    value: 'Table Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Page ...
+  {
+    id: 'page',
+    value: 'Page',
+  },
+  {
+    id: 'page_description',
+    value: 'Page Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region TabNavigation ...
+  {
+    id: 'tab_navigator',
+    value: 'Tab Navigator',
+  },
+  {
+    id: 'tab_navigator_description',
+    value: 'Tab Navigator Component Documentation',
   },
   //#endregion
   //#endregion

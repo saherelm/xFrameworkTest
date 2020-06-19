@@ -27,6 +27,15 @@ export enum ComponentsRoutes {
   Grid = 'grid',
   List = 'list',
   Map = 'map',
+  MarkDown = 'markdown',
+  ExpandableList = 'expandable-list',
+  ExpandablePanel = 'expandable-panel',
+  Slider = 'slider',
+  Stepper = 'stepper',
+  Tabs = 'tabs',
+  Table = 'table',
+  Page = 'page',
+  TabNavigator = 'tab-navigator',
 }
 
 export enum AppRoutes {
@@ -56,6 +65,16 @@ export enum PageName {
   Grid = ComponentsRoutes.Grid,
   List = ComponentsRoutes.List,
   Map = ComponentsRoutes.Map,
+  //
+  MarkDown = ComponentsRoutes.MarkDown,
+  ExpandableList = ComponentsRoutes.ExpandableList,
+  ExpandablePanel = ComponentsRoutes.ExpandablePanel,
+  Slider = ComponentsRoutes.Slider,
+  Stepper = ComponentsRoutes.Stepper,
+  Tabs = ComponentsRoutes.Tabs,
+  Table = ComponentsRoutes.Table,
+  Page = ComponentsRoutes.Page,
+  TabNavigator = ComponentsRoutes.TabNavigator,
 }
 
 export type PageNames = keyof typeof PageName;
@@ -198,6 +217,96 @@ export const PageIndex: PageIndexType = {
         route: `${AppRoutes.Components}/${ComponentsRoutes.Map}`,
         icon: XIconNames.list,
       },
+      //
+      // MarkDown ...
+      {
+        id: PageName.MarkDown.toString(),
+        name: PageName.MarkDown.toString(),
+        title: AppResourceIDs.markdown,
+        description: AppResourceIDs.markdown_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.MarkDown}`,
+        icon: XIconNames.list,
+      },
+      //
+      // ExpandableList ...
+      {
+        id: PageName.ExpandableList.toString(),
+        name: PageName.ExpandableList.toString(),
+        title: AppResourceIDs.expandable_list,
+        description: AppResourceIDs.expandable_list_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.ExpandableList}`,
+        icon: XIconNames.list,
+      },
+      //
+      // ExpandablePanel ...
+      {
+        id: PageName.ExpandablePanel.toString(),
+        name: PageName.ExpandablePanel.toString(),
+        title: AppResourceIDs.expandable_panel,
+        description: AppResourceIDs.expandable_panel_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.ExpandablePanel}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Slider ...
+      {
+        id: PageName.Slider.toString(),
+        name: PageName.Slider.toString(),
+        title: AppResourceIDs.slider,
+        description: AppResourceIDs.slider_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Slider}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Stepper ...
+      {
+        id: PageName.Stepper.toString(),
+        name: PageName.Stepper.toString(),
+        title: AppResourceIDs.stepper,
+        description: AppResourceIDs.stepper_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Stepper}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Tabs ...
+      {
+        id: PageName.Tabs.toString(),
+        name: PageName.Tabs.toString(),
+        title: AppResourceIDs.tabs,
+        description: AppResourceIDs.tabs_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Tabs}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Table ...
+      {
+        id: PageName.Table.toString(),
+        name: PageName.Table.toString(),
+        title: AppResourceIDs.table,
+        description: AppResourceIDs.tabs_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Table}`,
+        icon: XIconNames.list,
+      },
+      //
+      // Page ...
+      {
+        id: PageName.Page.toString(),
+        name: PageName.Page.toString(),
+        title: AppResourceIDs.page,
+        description: AppResourceIDs.page_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.Page}`,
+        icon: XIconNames.list,
+      },
+      //
+      // TabNavigator ...
+      {
+        id: PageName.TabNavigator.toString(),
+        name: PageName.TabNavigator.toString(),
+        title: AppResourceIDs.tab_navigator,
+        description: AppResourceIDs.tab_navigator_description,
+        route: `${AppRoutes.Components}/${ComponentsRoutes.TabNavigator}`,
+        icon: XIconNames.list,
+      },
     ],
   },
 };
@@ -221,6 +330,17 @@ export const Pages = {
   Grid: PageIndex.Components.childs[7],
   List: PageIndex.Components.childs[8],
   Map: PageIndex.Components.childs[9],
+
+  //
+  MarkDown: PageIndex.Components.childs[10],
+  ExpandableList: PageIndex.Components.childs[11],
+  ExpandablePanel: PageIndex.Components.childs[12],
+  Slider: PageIndex.Components.childs[13],
+  Stepper: PageIndex.Components.childs[14],
+  Tabs: PageIndex.Components.childs[15],
+  Table: PageIndex.Components.childs[16],
+  Page: PageIndex.Components.childs[17],
+  TabNavigator: PageIndex.Components.childs[18],
 };
 
 //
@@ -375,6 +495,116 @@ export const NavPageItems: XNavigatorListItem[] = [
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Map.toString()],
         description: Pages.Map.description,
+      },
+      //
+      // MarkDown ...
+      {
+        id: '30',
+        data: Pages.MarkDown,
+        title: Pages.MarkDown.title,
+        routerDirection: 'root',
+        href: [
+          '/',
+          Pages.Components.route,
+          ComponentsRoutes.MarkDown.toString(),
+        ],
+        description: Pages.MarkDown.description,
+      },
+      //
+      // ExpandableList ...
+      {
+        id: '31',
+        data: Pages.ExpandableList,
+        title: Pages.ExpandableList.title,
+        routerDirection: 'root',
+        href: [
+          '/',
+          Pages.Components.route,
+          ComponentsRoutes.ExpandableList.toString(),
+        ],
+        description: Pages.ExpandableList.description,
+      },
+      //
+      // ExpandablePanel ...
+      {
+        id: '32',
+        data: Pages.ExpandablePanel,
+        title: Pages.ExpandablePanel.title,
+        routerDirection: 'root',
+        href: [
+          '/',
+          Pages.Components.route,
+          ComponentsRoutes.ExpandablePanel.toString(),
+        ],
+        description: Pages.ExpandablePanel.description,
+      },
+      //
+      // Slider ...
+      {
+        id: '33',
+        data: Pages.Slider,
+        title: Pages.Slider.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Slider.toString()],
+        description: Pages.Slider.description,
+      },
+      //
+      // Stepper ...
+      {
+        id: '34',
+        data: Pages.Stepper,
+        title: Pages.Stepper.title,
+        routerDirection: 'root',
+        href: [
+          '/',
+          Pages.Components.route,
+          ComponentsRoutes.Stepper.toString(),
+        ],
+        description: Pages.Stepper.description,
+      },
+      //
+      // Tabs ...
+      {
+        id: '35',
+        data: Pages.Tabs,
+        title: Pages.Tabs.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Tabs.toString()],
+        description: Pages.Tabs.description,
+      },
+      //
+      // Table ...
+      {
+        id: '36',
+        data: Pages.Table,
+        title: Pages.Table.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Table.toString()],
+        description: Pages.Table.description,
+      },
+      //
+      // Page ...
+      {
+        id: '37',
+        data: Pages.Page,
+        title: Pages.Page.title,
+        routerDirection: 'root',
+        href: ['/', Pages.Components.route, ComponentsRoutes.Page.toString()],
+        description: Pages.Page.description,
+      },
+      //
+      // TabNavigator ...
+      {
+        id: '38',
+        data: Pages.TabNavigator,
+        title: Pages.TabNavigator.title,
+        routerDirection: 'root',
+        href: [
+          '/',
+          Pages.Components.route,
+          ComponentsRoutes.TabNavigator.toString(),
+        ],
+        description: Pages.TabNavigator.description,
       },
     ],
   },
