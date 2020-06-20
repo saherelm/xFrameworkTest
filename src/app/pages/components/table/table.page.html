@@ -13,9 +13,46 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <!-- Samples -->
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample2"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-table
+      [showHeader]="true"
+      [showSearchBar]="true"
+      [showPaginator]="true"
+      [showActionBar]="true"
+      [selectableRows]="true"
+      [color]="ColorNames.Medium"
+      [properties]="tempTableProps"
+      [headerColor]="ColorNames.Dark"
+      [actionBarColor]="ColorNames.Primary"
+      [searchBarColor]="ColorNames.Primary"
+      [paginatorColor]="ColorNames.Primary"
+      (rowSelected)="handleRowSelected($event)"
+      [searchBarPosition]="TableItemPositions.TOP"
+      [actionBarPosition]="TableItemPositions.TOP"
+      [paginatorPosition]="TableItemPositions.BOTTOM"
+      (rowSelectionChanged)="handleRowSelectionChanged($event)"
+    >
+    </x-table>
+
     <!-- Actions -->
     <div actions>
-      <a target="_blank" href=""
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XTableComponent.html"
         >{{resourceProvider(ResourceIDs.documentation)}}</a
       >
     </div>

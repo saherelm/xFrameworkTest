@@ -608,7 +608,7 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#region ExpandableList ...
   {
     id: 'expandable_list',
-    value: 'فهرست باز شوند',
+    value: 'فهرست باز شونده',
   },
   {
     id: 'expandable_list_description',
