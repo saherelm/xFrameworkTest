@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { XIconNames } from 'x-framework-components';
+import { XSliderAnimation } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
@@ -34,17 +35,72 @@ export class SliderPage extends VPageComponent {
   //#endregion
 
   //
-  // Content ...
-  readonly contentFa = `
-  # ${this.toolbarTitle}
-  `;
-
-  readonly contentEn = `
-  # ${this.toolbarTitle}
-  `;
+  readonly SliderAnimations = Object.assign({}, XSliderAnimation);
 
   //
-  readonly sample1 = '```' + '```';
+  // Content ...
+  readonly contentFa = `
+# ${this.toolbarTitle}
+این مولفه جهت نمایش محتوا بصورت کادر های لغزنده بکار می رود.
+`;
+
+  readonly contentEn = `
+# ${this.toolbarTitle}
+this Component used to provide Slideable Content's.
+`;
+
+  //
+  readonly sample1 =
+    '```html' +
+    `
+<x-slider
+  [options]="{
+  lazy: true,
+  zoom: true,
+  autoplay: true,
+  initialSlide: 0,
+  grabCursor: true,
+  autoHeight: true,
+  slidesPerView: 1,
+  loadPrevNext: true,
+  preventClicks: false,
+  speed: 400,
+  pagination: true
+}"
+  [animation]="SliderAnimations.Cube"
+>
+  <x-slide>
+    <ng-container
+      *ngTemplateOutlet="slideRef">
+    </ng-container>
+  </x-slide>
+
+  <x-slide>
+    <ng-container
+      *ngTemplateOutlet="slideRef">
+    </ng-container>
+  </x-slide>
+
+  <x-slide>
+    <ng-container
+      *ngTemplateOutlet="slideRef">
+    </ng-container>
+  </x-slide>
+
+  <x-slide>
+    <ng-container
+      *ngTemplateOutlet="slideRef">
+    </ng-container>
+  </x-slide>
+
+  <x-slide>
+    <ng-container
+      *ngTemplateOutlet="slideRef">
+    </ng-container>
+  </x-slide>
+</x-slider>
+` +
+    '```';
 
   //
   //#region UI Providers ...

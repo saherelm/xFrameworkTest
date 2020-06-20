@@ -13,11 +13,65 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <!-- Sample -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="sample1"
+    ></x-markdown>
+
+    <x-slider
+      [options]="{
+      lazy: true,
+      zoom: true,
+      autoplay: true,
+      initialSlide: 0,
+      grabCursor: true,
+      autoHeight: true,
+      slidesPerView: 1,
+      loadPrevNext: true,
+      preventClicks: false,
+      speed: 400,
+      pagination: true
+    }"
+      [animation]="SliderAnimations.Cube"
+    >
+      <x-slide>
+        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+      </x-slide>
+
+      <x-slide>
+        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+      </x-slide>
+
+      <x-slide>
+        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+      </x-slide>
+
+      <x-slide>
+        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+      </x-slide>
+
+      <x-slide>
+        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+      </x-slide>
+    </x-slider>
+
     <!-- Actions -->
     <div actions>
-      <a target="_blank" href=""
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/modules/XSliderModule.html"
         >{{resourceProvider(ResourceIDs.documentation)}}</a
       >
     </div>
   </x-card>
 </v-page>
+
+<ng-template #slideRef>
+  <div class="slide-content">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas eum odit
+    labore magnam accusantium assumenda error voluptatem ad cumque velit? Eos
+    expedita minus doloremque error iste nam commodi aspernatur repellendus.
+  </div>
+</ng-template>
