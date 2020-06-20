@@ -13,9 +13,80 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <!-- Samples -->
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-tabs
+      #xTabs
+      [startIndex]="1"
+      [swipable]="true"
+      [loopTabs]="false"
+      [dynamicHeight]="false"
+      [color]="ColorNames.Dark"
+      [alignTabs]="TabAligns.START"
+      [headerPosition]="TabsHeaderPositions.BELOW"
+    >
+      <x-tab>
+        <div x-tab-label>
+          Tab 1
+        </div>
+        <div class="tab-wrapper" [xColor]="ColorNames.Danger">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
+          similique reiciendis vero vel. Et, in nemo. Sapiente doloremque
+          provident ex dolore, expedita totam ipsam architecto vero mollitia
+          magni. Corporis, dolore.
+        </div>
+      </x-tab>
+
+      <x-tab>
+        <div x-tab-label>
+          Tab 2
+        </div>
+
+        <div class="tab-wrapper" [xColor]="ColorNames.Secondary">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
+          similique reiciendis vero vel. Et, in nemo. Sapiente doloremque
+          provident ex dolore, expedita totam ipsam architecto vero mollitia
+          magni. Corporis, dolore.
+        </div>
+      </x-tab>
+
+      <x-tab>
+        <div x-tab-label>
+          Tab 3
+        </div>
+
+        <div class="tab-wrapper" [xColor]="ColorNames.Warning">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
+          similique reiciendis vero vel. Et, in nemo. Sapiente doloremque
+          provident ex dolore, expedita totam ipsam architecto vero mollitia
+          magni. Corporis, dolore.
+        </div>
+      </x-tab>
+
+      <x-tab>
+        <div x-tab-label>
+          Tab 4
+        </div>
+
+        <div class="tab-wrapper" [xColor]="color">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis similique
+          reiciendis vero vel. Et, in nemo. Sapiente doloremque provident ex dolore,
+          expedita totam ipsam architecto vero mollitia magni. Corporis, dolore.
+        </div>
+      </x-tab>
+    </x-tabs>
+
     <!-- Actions -->
     <div actions>
-      <a target="_blank" href=""
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/modules/XTabsModule.html"
         >{{resourceProvider(ResourceIDs.documentation)}}</a
       >
     </div>

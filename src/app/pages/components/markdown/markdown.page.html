@@ -8,14 +8,42 @@
   <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
     <!-- Content -->
     <x-markdown
-      [mode]="'preview'"
       [hasToolbar]="false"
+      [mode]="MarkdownModes.PREVIEW"
       [content]="getContent('content')"
+    ></x-markdown>
+
+    <x-markdown
+      [hasToolbar]="false"
+      [content]="sample1"
+      [cssClass]="'code-block'"
+      [mode]="MarkdownModes.PREVIEW"
+    ></x-markdown>
+
+    <x-markdown
+      [mode]="MarkdownModes.BOTH"
+      [(content)]="sampleContent1"
+      [toolbarColor]="ColorNames.Dark"
+    ></x-markdown>
+
+    <x-markdown
+      [hasToolbar]="false"
+      [content]="sample2"
+      [cssClass]="'code-block'"
+      [mode]="MarkdownModes.PREVIEW"
+    ></x-markdown>
+
+    <x-markdown
+      [hasToolbar]="false"
+      [content]="sampleContent2"
+      [mode]="MarkdownModes.PREVIEW"
     ></x-markdown>
 
     <!-- Actions -->
     <div actions>
-      <a target="_blank" href=""
+      <a
+        target="_blank"
+        href="https://docs.x-framework.ir/x-framework-components/components/XMarkdownComponent.html"
         >{{resourceProvider(ResourceIDs.documentation)}}</a
       >
     </div>

@@ -36,12 +36,12 @@ export class SliderPage extends VPageComponent {
   //
   // Content ...
   readonly contentFa = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  `;
 
   readonly contentEn = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  `;
 
   //
   readonly sample1 = '```' + '```';

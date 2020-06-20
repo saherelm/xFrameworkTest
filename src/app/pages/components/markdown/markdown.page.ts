@@ -3,6 +3,7 @@ import { XIconNames } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
+import { XMarkdownMode } from 'x-framework-components';
 
 @Component({
   selector: 'app-markdown',
@@ -34,17 +35,49 @@ export class MarkdownPage extends VPageComponent {
   //#endregion
 
   //
-  // Content ...
-  readonly contentFa = `
-    # ${this.toolbarTitle}
-    `;
-
-  readonly contentEn = `
-    # ${this.toolbarTitle}
-    `;
+  readonly MarkdownModes = Object.assign({}, XMarkdownMode);
 
   //
-  readonly sample1 = '```' + '```';
+  // Content ...
+  readonly contentFa = `
+  # ${this.toolbarTitle}
+  `;
+
+  readonly contentEn = `
+  # ${this.toolbarTitle}
+  `;
+
+  //
+  readonly sample1 = '```html' + `
+<x-markdown
+  [mode]="MarkdownModes.BOTH"
+  [(content)]="sampleContent1"
+  [toolbarColor]="ColorNames.Dark"
+></x-markdown>
+` + '```';
+readonly sample2 = '```html' + `
+<x-markdown
+  [hasToolbar]="false"
+  [content]="sampleContent2"
+  [mode]="MarkdownModes.PREVIEW"
+></x-markdown>
+` + '```';
+
+  //
+  sampleContent1 = `
+  ## Todo example
+
+  - Variable binding
+  - Code refactor
+  - Write more unit tests
+  - Module configuration for markdown settings
+  - Module configuration for prismjs settings
+  `;
+
+  readonly sampleContent2 = `
+  ## Todo example
+  this is only a preview sample of markdown.
+  `;
 
   //
   //#region UI Providers ...
