@@ -25,6 +25,9 @@ export class ToolsPage extends VPageComponent {
   toolbarTitle = this.resourceProvider(this.titleRes);
   toolbarSubTitle = this.resourceProvider(AppResourceIDs.tools_description);
   toolbarShowSubTitle = true;
+
+  //
+  readonly ColorNames = Object.assign({}, XColor);
   //#endregion
 
   actionBarItems: XActionBarItem[] = [
@@ -36,9 +39,6 @@ export class ToolsPage extends VPageComponent {
 
       //
       index: 0,
-
-      //
-      color: XColor.Light,
     },
     //
     // Select All ...
@@ -68,5 +68,12 @@ export class ToolsPage extends VPageComponent {
       index: 3,
     },
   ];
+  //#endregion
+
+  //
+  //#region UI Handlers ...
+  handleActionFired(event: any) {
+    console.log('ActionFired: ', event);
+  }
   //#endregion
 }
