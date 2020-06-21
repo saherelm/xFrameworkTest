@@ -66,11 +66,16 @@
 </ng-template>
 
 <ng-template #defaultSideMenuRef>
-  <x-navigator
-    [pages]="navPages"
+  <!--
     [closeSiblings]="false"
-    [showParentIcon]="false"
     [itemCssClass]="'m-nav-item'"
+    [showParentIcon]="false"
+  -->
+
+  <!-- {{ navPages | json }} -->
+
+  <x-navigator
+    [items]="navPages"
   ></x-navigator>
 </ng-template>
 
