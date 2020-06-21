@@ -1,5 +1,6 @@
-import { XIconNames, XNavigatorListItem, XPage } from 'x-framework-components';
+import { XPage } from 'x-framework-core';
 import { AppResourceIDs } from './app.localization.config';
+import { XIconNames, XNavigatorListItem } from 'x-framework-components';
 
 //
 //#region Route Config ...
@@ -350,7 +351,7 @@ export const NavPageItems: XNavigatorListItem[] = [
   //#region Home ...
   {
     id: '1',
-    data: Pages.Home,
+    // data: Pages.Home,
     title: Pages.Home.title,
     routerDirection: 'root',
     //
@@ -362,7 +363,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Tools ...
       {
         id: '10',
-        data: Pages.Tools,
+        // data: Pages.Tools,
         title: Pages.Tools.title,
         routerDirection: 'root',
         href: ['/', Pages.Home.route, HomeRoutes.Tools.toString()],
@@ -376,7 +377,7 @@ export const NavPageItems: XNavigatorListItem[] = [
   //#region Components ...
   {
     id: '2',
-    data: Pages.Components,
+    // data: Pages.Components,
     title: Pages.Components.title,
     routerDirection: 'root',
     //
@@ -388,7 +389,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // SmallComponents ...
       {
         id: '20',
-        data: Pages.SmallComponents,
+        // data: Pages.SmallComponents,
         title: Pages.SmallComponents.title,
         routerDirection: 'root',
         href: [
@@ -402,7 +403,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Card ...
       {
         id: '21',
-        data: Pages.Card,
+        // data: Pages.Card,
         title: Pages.Card.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Card.toString()],
@@ -412,7 +413,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Icon ...
       {
         id: '22',
-        data: Pages.Icon,
+        // data: Pages.Icon,
         title: Pages.Icon.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Icon.toString()],
@@ -422,7 +423,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Counter ...
       {
         id: '23',
-        data: Pages.Counter,
+        // data: Pages.Counter,
         title: Pages.Counter.title,
         routerDirection: 'root',
         href: [
@@ -436,7 +437,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Fab ...
       {
         id: '24',
-        data: Pages.Fab,
+        // data: Pages.Fab,
         title: Pages.Fab.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Fab.toString()],
@@ -446,7 +447,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // FileUpload ...
       {
         id: '25',
-        data: Pages.FileUpload,
+        // data: Pages.FileUpload,
         title: Pages.FileUpload.title,
         routerDirection: 'root',
         href: [
@@ -460,7 +461,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Form ...
       {
         id: '26',
-        data: Pages.Form,
+        // data: Pages.Form,
         title: Pages.Form.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Form.toString()],
@@ -470,7 +471,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Grid ...
       {
         id: '27',
-        data: Pages.Grid,
+        // data: Pages.Grid,
         title: Pages.Grid.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Grid.toString()],
@@ -480,7 +481,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // List ...
       {
         id: '28',
-        data: Pages.List,
+        // data: Pages.List,
         title: Pages.List.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.List.toString()],
@@ -490,7 +491,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Map ...
       {
         id: '29',
-        data: Pages.Map,
+        // data: Pages.Map,
         title: Pages.Map.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Map.toString()],
@@ -500,7 +501,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // MarkDown ...
       {
         id: '30',
-        data: Pages.MarkDown,
+        // data: Pages.MarkDown,
         title: Pages.MarkDown.title,
         routerDirection: 'root',
         href: [
@@ -514,7 +515,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // ExpandableList ...
       {
         id: '31',
-        data: Pages.ExpandableList,
+        // data: Pages.ExpandableList,
         title: Pages.ExpandableList.title,
         routerDirection: 'root',
         href: [
@@ -528,7 +529,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // ExpandablePanel ...
       {
         id: '32',
-        data: Pages.ExpandablePanel,
+        // data: Pages.ExpandablePanel,
         title: Pages.ExpandablePanel.title,
         routerDirection: 'root',
         href: [
@@ -542,7 +543,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Slider ...
       {
         id: '33',
-        data: Pages.Slider,
+        // data: Pages.Slider,
         title: Pages.Slider.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Slider.toString()],
@@ -552,7 +553,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Stepper ...
       {
         id: '34',
-        data: Pages.Stepper,
+        // data: Pages.Stepper,
         title: Pages.Stepper.title,
         routerDirection: 'root',
         href: [
@@ -566,7 +567,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Tabs ...
       {
         id: '35',
-        data: Pages.Tabs,
+        // data: Pages.Tabs,
         title: Pages.Tabs.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Tabs.toString()],
@@ -576,7 +577,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Table ...
       {
         id: '36',
-        data: Pages.Table,
+        // data: Pages.Table,
         title: Pages.Table.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Table.toString()],
@@ -586,7 +587,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // Page ...
       {
         id: '37',
-        data: Pages.Page,
+        // data: Pages.Page,
         title: Pages.Page.title,
         routerDirection: 'root',
         href: ['/', Pages.Components.route, ComponentsRoutes.Page.toString()],
@@ -596,7 +597,7 @@ export const NavPageItems: XNavigatorListItem[] = [
       // TabNavigator ...
       {
         id: '38',
-        data: Pages.TabNavigator,
+        // data: Pages.TabNavigator,
         title: Pages.TabNavigator.title,
         routerDirection: 'root',
         href: [
@@ -609,5 +610,18 @@ export const NavPageItems: XNavigatorListItem[] = [
     ],
   },
   //#endregion
+
+  //
+  // Test ...
+  {
+    id: '1',
+    // data: Pages.Home,
+    title: Pages.Home.title,
+    routerDirection: 'root',
+    //
+    // Comment this for Prevent Routing Change ...
+    href: ['/', Pages.Home.route],
+    description: Pages.Home.description,
+  },
 ];
 //#endregion
