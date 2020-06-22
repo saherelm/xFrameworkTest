@@ -68,6 +68,8 @@
 <ng-template #defaultSideMenuRef>
   <x-navigator
     [items]="navPages"
+    [closeSiblings]="true"
+    [parentItemColor]="'primary-shade'"
   ></x-navigator>
 </ng-template>
 

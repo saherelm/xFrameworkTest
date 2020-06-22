@@ -22,6 +22,8 @@ import {
   XColorIdentifier,
   XModalButtonRole,
   XPickerColumnOption,
+  getXColorName,
+  XColorBrightnessLevel,
 } from 'x-framework-core';
 import { Observable } from 'rxjs';
 import {
@@ -228,7 +230,7 @@ export class VPageComponent extends XPageComponent {
   //#region Footer Props ...
   //
   @Input()
-  footerColor: XStandardType<XColor> = XColor.Medium;
+  footerColor: XStandardType<XColorIdentifier> = XColor.Medium;
   //#endregion
 
   //
