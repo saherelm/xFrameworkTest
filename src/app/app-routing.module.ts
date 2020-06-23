@@ -7,20 +7,20 @@ const routes: Routes = [
   // Default ...
   {
     path: BaseRoutes.Default,
-    redirectTo: Pages.Home.route,
+    redirectTo: Pages.Home.baseRoute,
     pathMatch: 'full',
   },
   //
   // Home ...
   {
-    path: Pages.Home.route,
+    path: Pages.Home.baseRoute,
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
   //
   // Components ...
   {
-    path: Pages.Components.route,
+    path: Pages.Components.baseRoute,
     loadChildren: () =>
       import('./pages/components/components.module').then(
         (m) => m.ComponentsPageModule
