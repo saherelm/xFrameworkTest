@@ -69,11 +69,13 @@
   <x-navigator
     [items]="navPages"
     [closeSiblings]="true"
-    [showChildIcon]="false"
-    [parentExpandedColor]="'light'"
-    [childItemColor]="'primary-tint'"
-    [parentHighlightColor]="'light'"
+    [showChildIcon]="true"
+    [openAllParents]="true"
+    [parentExpandedColor]="'dark'"
+    [childItemColor]="'primary'"
+    [parentHighlightColor]="'warning'"
     [parentItemColor]="'primary-shade'"
+    [childActiveColor]="'tertiary-shade'"
     [parentIndicatorColor]="'light-shade'"
     [childHighlightColor]="'tertiary-shade'"
   ></x-navigator>
