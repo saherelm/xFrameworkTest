@@ -38,12 +38,14 @@ export class ExpandablePanelPage extends VPageComponent {
   //
   // Content ...
   readonly contentFa = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  این مولفه جهت گروه بندی محتوای قابل ارائه در یک نمایه بکار می رود.
+  `;
 
   readonly contentEn = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  this component used to Grouped representable contents in a View.
+  `;
 
   //
   readonly sample1 = '```' + '```';

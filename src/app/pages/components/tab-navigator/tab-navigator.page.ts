@@ -38,12 +38,14 @@ export class TabNavigatorPage extends VPageComponent {
   //
   // Content ...
   readonly contentFa = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  این مولفه زمانی کاربرد دارد که قصد داریم صفحاتی را در غالب نمایه ای مبتنی بر برگه ها دسته بندی کرده و نمایش دهیم.
+  `;
 
   readonly contentEn = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  this component used to group Pages in a Tabbed template and show them.
+  `;
 
   //
   readonly sample1 = '```' + '```';

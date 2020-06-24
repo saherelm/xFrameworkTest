@@ -38,11 +38,13 @@ export class ExpandableListPage extends VPageComponent {
   //
   // Content ...
   readonly contentFa = `
-    # ${this.toolbarTitle}
+  # ${this.toolbarTitle}
+  از این مولفه در مواقعی استفاده می شود که قصد داریم مجموعه هایی از اطلاعات را در گروه های مختلف دسته بندی کرده و نمایش دهیم.
     `;
 
   readonly contentEn = `
-    # ${this.toolbarTitle}
+  # ${this.toolbarTitle}
+  this component used to show a collection of data sets in a grouped structure.
     `;
 
   //

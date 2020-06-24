@@ -36,12 +36,16 @@ export class FormPage extends VPageComponent {
   //
   // Content ...
   readonly contentFa = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  فرم ها بستر دریافت اطلاعات از کاربر هستند.
+  این مولفه امکانات لازم برای تسهیل فرایند ایجاد فرم ها را فراهم می کند.
+  `;
 
   readonly contentEn = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  Forms used to get data from users.
+  this Component provides usefull tools to make form creation easy.
+  `;
 
   //
   readonly sample1 = '```' + '```';

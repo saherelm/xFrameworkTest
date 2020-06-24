@@ -18,6 +18,7 @@
       [mode]="'preview'"
       [hasToolbar]="false"
       [content]="sample1"
+      [cssClass]="'code-block'"
     ></x-markdown>
 
     <x-slider
@@ -34,7 +35,7 @@
       speed: 400,
       pagination: true
     }"
-      [animation]="SliderAnimations.Cube"
+      [animation]="SliderAnimations.Coverflow"
     >
       <x-slide>
         <ng-container *ngTemplateOutlet="slideRef"></ng-container>

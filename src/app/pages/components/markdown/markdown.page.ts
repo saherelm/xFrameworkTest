@@ -41,27 +41,35 @@ export class MarkdownPage extends VPageComponent {
   // Content ...
   readonly contentFa = `
   # ${this.toolbarTitle}
+  این مولفه جهت دریافت و نمایش اطلاعات مبتنی بر شیوه نشانه گذاری داده ها موسوم به مارک داون (MarkDown) کاربرد دارد.
   `;
 
   readonly contentEn = `
   # ${this.toolbarTitle}
+  this component used to get and show MarkDown based Data's.
   `;
 
   //
-  readonly sample1 = '```html' + `
+  readonly sample1 =
+    '```html' +
+    `
 <x-markdown
   [mode]="MarkdownModes.BOTH"
   [(content)]="sampleContent1"
   [toolbarColor]="ColorNames.Dark"
 ></x-markdown>
-` + '```';
-readonly sample2 = '```html' + `
+` +
+    '```';
+  readonly sample2 =
+    '```html' +
+    `
 <x-markdown
   [hasToolbar]="false"
   [content]="sampleContent2"
   [mode]="MarkdownModes.PREVIEW"
 ></x-markdown>
-` + '```';
+` +
+    '```';
 
   //
   sampleContent1 = `

@@ -36,12 +36,18 @@ export class PagePage extends VPageComponent {
   //
   // Content ...
   readonly contentFa = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  این مولفه یکی از پرکاربرد ترین مولفه های ارائه شده توسط این چارچوب است و برای ارائه یکا صفحه مجزا در یک برنامه کاربردی کاربرد دارد.
+
+  صفحه حاضر و تمام صفحاتی که در این مستند مرور کرده اید با بهره گیری از این مولفه ایجاد شده اند.
+  `;
 
   readonly contentEn = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  this is a most common component's of this Framework and used to provide an stand alone Page in an Application.
+
+  this page and all pages you explored until now created useing this Component.
+  `;
 
   //
   readonly sample1 = '```' + '```';

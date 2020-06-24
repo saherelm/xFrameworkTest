@@ -36,12 +36,14 @@ export class StepperPage extends VPageComponent {
   //
   // Content ...
   readonly contentFa = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  از این مولفه جهت دریافت یا نمایش اطلاعات در گام های مختلف از کاربر استفاده می گردد.
+  `;
 
   readonly contentEn = `
-    # ${this.toolbarTitle}
-    `;
+  # ${this.toolbarTitle}
+  this component used to get or show data to user in several steps.
+  `;
 
   //
   readonly sample1 = '```' + '```';
