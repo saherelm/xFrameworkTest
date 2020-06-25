@@ -1,5 +1,6 @@
 import {
   Inject,
+  NgZone,
   Component,
   ViewChild,
   Renderer2,
@@ -336,6 +337,7 @@ export class FileComponentsPage extends VPageComponent {
   //
   //#region Constructor ...
   constructor(
+    public zone: NgZone,
     public element: ElementRef,
     public renderer: Renderer2,
     public ruler: ViewportRuler,
@@ -346,6 +348,7 @@ export class FileComponentsPage extends VPageComponent {
     public imageCropperService: XImageCropperService
   ) {
     super(
+      zone,
       element,
       renderer,
       ruler,

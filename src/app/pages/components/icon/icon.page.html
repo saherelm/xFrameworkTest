@@ -5,7 +5,7 @@
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
   <!-- Content -->
-  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
     <!-- Content -->
     <x-markdown
       [mode]="'preview'"
@@ -65,19 +65,20 @@
 
   <!-- Icon List -->
   <x-card
-    [isPageCard]="true"
+    [isInPage]="true"
     *ngIf="showIconList"
     [title]="resourceProvider(ResourceIDs.icon_list)"
   >
     <!-- List Actions -->
-    <x-actions
+    <!-- TODO: Fix this ... -->
+    <!-- <x-actions
       [showSearchBar]="true"
       [showActionBar]="false"
       [listComponent]="listPresenter"
       [searchBarColor]="ColorNames.Tertiary"
       (queryChange)="listPresenter.filterItems($event)"
     >
-    </x-actions>
+    </x-actions> -->
 
     <!-- Icons List -->
     <x-list

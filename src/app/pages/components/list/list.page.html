@@ -5,7 +5,7 @@
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
   <!-- Content -->
-  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
     <!-- Content -->
     <x-markdown
       [mode]="'preview'"
@@ -34,7 +34,8 @@
     ></x-markdown>
 
     <!-- Action Presenter -->
-    <x-actions
+    <!-- TODO: Fix this ... -->
+    <!-- <x-actions
       [hasDelete]="true"
       [hasSelectAll]="true"
       [showSearchBar]="true"
@@ -47,7 +48,7 @@
       (removeItems)="handleRemoveItems($event)"
       (queryChange)="listPresenter.filterItems($event)"
     >
-    </x-actions>
+    </x-actions> -->
 
     <!-- List Presenter -->
     <x-list

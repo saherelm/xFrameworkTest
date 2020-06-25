@@ -4,7 +4,7 @@
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
   <!-- Content -->
-  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
     <!-- Content -->
     <x-markdown
       [mode]="'preview'"
@@ -23,7 +23,7 @@
   </x-card>
 
   <x-card
-    [isPageCard]="true"
+    [isInPage]="true"
     [showHeader]="true"
     [showActions]="true"
     [color]="ColorNames.Light"
@@ -44,7 +44,7 @@
     ></x-markdown>
   </x-card>
 
-  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
     <br />
     <br />
     <br />
@@ -121,7 +121,7 @@
 
   <!-- Descriptions -->
   <x-card
-    [isPageCard]="true"
+    [isInPage]="true"
     [showActions]="true"
     [showHeader]="true"
     [color]="ColorNames.Light"
@@ -156,7 +156,7 @@
 <ng-template #contentRef let-id>
   <x-card
     [showHeader]="true"
-    [isPageCard]="true"
+    [isInPage]="true"
     [showActions]="true"
     [title]="'Title ' + id"
     [subTitle]="'SubTitle ' + id"

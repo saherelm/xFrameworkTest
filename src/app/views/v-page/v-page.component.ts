@@ -1,6 +1,7 @@
 import {
   Input,
   Inject,
+  NgZone,
   Renderer2,
   Component,
   ViewChild,
@@ -258,6 +259,7 @@ export class VPageComponent extends XPageComponent {
   //
   //#region Constructor ...
   constructor(
+    public zone: NgZone,
     public element: ElementRef,
     public renderer: Renderer2,
     public ruler: ViewportRuler,
@@ -267,6 +269,7 @@ export class VPageComponent extends XPageComponent {
     @Inject(X_CONFIG) public config: XConfig
   ) {
     super(
+      zone,
       renderer,
       element,
       ruler,

@@ -5,7 +5,7 @@
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
   <!-- Content -->
-  <x-card [isPageCard]="true" [showActions]="true" [color]="ColorNames.Light">
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
     <!-- Content -->
     <x-markdown
       [mode]="'preview'"
@@ -35,7 +35,7 @@
 
   <x-card
     [showHeader]="true"
-    [isPageCard]="true"
+    [isInPage]="true"
     [showFooter]="true"
     [showContent]="true"
     [showActions]="true"
@@ -72,7 +72,7 @@
 
   <x-card
     [showHeader]="true"
-    [isPageCard]="true"
+    [isInPage]="true"
     [showContent]="true"
     [color]="ColorNames.Medium"
     [imageUrl]="'/assets/image/logo.png'"
