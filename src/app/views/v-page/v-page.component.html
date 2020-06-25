@@ -68,15 +68,11 @@
 <ng-template #defaultSideMenuRef>
   <x-navigator
     [items]="navPages"
+    [showChildIcon]="true"
     [closeSiblings]="false"
-    [showChildIcon]="false"
-    [openAllParents]="true"
-    [parentExpandedColor]="'dark'"
-    [childItemColor]="'primary'"
-    [parentHighlightColor]="'warning'"
-    [parentItemColor]="'primary-shade'"
-    [childActiveColor]="'tertiary-shade'"
-    [childHighlightColor]="'tertiary-shade'"
+    [childColor]="'medium'"
+    [highlightColor]="'light'"
+    [disableParentRouting]="true"
   ></x-navigator>
 </ng-template>
 

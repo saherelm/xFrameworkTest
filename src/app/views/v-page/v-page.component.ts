@@ -7,6 +7,7 @@ import {
   ElementRef,
   TemplateRef,
   ChangeDetectorRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import {
   XColor,
@@ -62,6 +63,7 @@ import { isNullOrUndefined, hasChild } from 'x-framework-core';
   selector: 'v-page',
   templateUrl: './v-page.component.html',
   styleUrls: ['./v-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VPageComponent extends XPageComponent {
   //
