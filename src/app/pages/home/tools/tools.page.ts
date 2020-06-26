@@ -1,10 +1,3 @@
-import {
-  XActionBarItem,
-  defaultActionBarRemoveItem,
-  defaultActionBarSelectAllItem,
-  defaultActionBarDeSelectAllItem,
-  defaultActionBarInverseSelectionItem,
-} from 'x-framework-components';
 import { XColor } from 'x-framework-core';
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -29,51 +22,5 @@ export class ToolsPage extends VPageComponent {
   //
   readonly ColorNames = Object.assign({}, XColor);
   //#endregion
-
-  actionBarItems: XActionBarItem[] = [
-    //
-    // Remove ...
-    {
-      //
-      ...defaultActionBarRemoveItem,
-
-      //
-      index: 0,
-    },
-    //
-    // Select All ...
-    {
-      //
-      ...defaultActionBarSelectAllItem,
-
-      //
-      index: 1,
-    },
-    //
-    // Inverse Selection ...
-    {
-      //
-      ...defaultActionBarInverseSelectionItem,
-
-      //
-      index: 2,
-    },
-    //
-    // De Select All ...
-    {
-      //
-      ...defaultActionBarDeSelectAllItem,
-
-      //
-      index: 3,
-    },
-  ];
-  //#endregion
-
-  //
-  //#region UI Handlers ...
-  handleActionFired(event: any) {
-    console.log('ActionFired: ', event);
-  }
   //#endregion
 }

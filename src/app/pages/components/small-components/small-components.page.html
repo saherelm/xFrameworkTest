@@ -33,6 +33,8 @@
         {{ resourceProvider(ResourceIDs.button_description) }}
       </div> -->
 
+      <br />
+
       <!-- Description -->
       <x-markdown
         [mode]="'preview'"
@@ -110,12 +112,20 @@
         {{ resourceProvider(ResourceIDs.action_bar_description) }}
       </div> -->
 
+      <br />
+
       <!-- Description -->
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
         [content]="getContent('actionBarContent')"
       ></x-markdown>
+
+      <x-action-bar
+        [color]="ColorNames.Dark"
+        [actions]="actionBarItems"
+        (actionFired)="handleActionFired($event)"
+      ></x-action-bar>
 
       <!-- Actions -->
       <div x-panel-actions>
@@ -136,6 +146,8 @@
       <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.search_bar_description) }}
       </div> -->
+
+      <br />
 
       <!-- Description -->
       <x-markdown
@@ -163,6 +175,8 @@
       <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.alert_description) }}
       </div> -->
+
+      <br />
 
       <!-- Description -->
       <x-markdown
@@ -328,6 +342,8 @@
         {{ resourceProvider(ResourceIDs.notification_description) }}
       </div> -->
 
+      <br />
+
       <!-- Description -->
       <x-markdown
         [mode]="'preview'"
@@ -369,6 +385,8 @@
       <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.spinner_description) }}
       </div> -->
+
+      <br />
 
       <!-- Description -->
       <x-markdown
@@ -446,6 +464,8 @@
         {{ resourceProvider(ResourceIDs.loading_description) }}
       </div> -->
 
+      <br />
+
       <!-- Description -->
       <x-markdown
         [mode]="'preview'"
@@ -488,6 +508,8 @@
         {{ resourceProvider(ResourceIDs.picker_description) }}
       </div> -->
 
+      <br />
+
       <!-- Description -->
       <x-markdown
         [mode]="'preview'"
@@ -529,6 +551,8 @@
       <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.slotter_description) }}
       </div> -->
+
+      <br />
 
       <!-- Description -->
       <x-markdown

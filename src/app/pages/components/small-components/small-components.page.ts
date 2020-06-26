@@ -1,15 +1,24 @@
 import {
   XColor,
   XSpinner,
+  XActionType,
   XResourceIDs,
   XModalButtonRole,
   isNullOrEmptyString,
-  XActionType,
 } from 'x-framework-core';
+import {
+  XSlotName,
+  XButtonType,
+  XSlotLayout,
+  XActionBarItem,
+  defaultActionBarRemoveItem,
+  defaultActionBarSelectAllItem,
+  defaultActionBarDeSelectAllItem,
+  defaultActionBarInverseSelectionItem,
+} from 'x-framework-components';
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import { XSlotName, XButtonType, XSlotLayout } from 'x-framework-components';
 import { SampleModalComponent } from './sample-modal/sample-modal.component';
 
 @Component({
@@ -130,6 +139,45 @@ export class SmallComponentsPage extends VPageComponent {
 
   //
   // ActionBar Content ...
+  actionBarItems: XActionBarItem[] = [
+    //
+    // Remove ...
+    {
+      //
+      ...defaultActionBarRemoveItem,
+
+      //
+      index: 0,
+    },
+    //
+    // Select All ...
+    {
+      //
+      ...defaultActionBarSelectAllItem,
+
+      //
+      index: 1,
+    },
+    //
+    // Inverse Selection ...
+    {
+      //
+      ...defaultActionBarInverseSelectionItem,
+
+      //
+      index: 2,
+    },
+    //
+    // De Select All ...
+    {
+      //
+      ...defaultActionBarDeSelectAllItem,
+
+      //
+      index: 3,
+    },
+  ];
+
   readonly actionBarContentFa = `
 این مولفه جهت ارائه مجموعه ای از فرمان های عملیاتی در یک واسط کاربری یکپارچه بکار می رود
 `;
@@ -609,7 +657,10 @@ await this
 ` +
     '```';
   //#endregion
+  //#endregion
 
+  //
+  //#region UI Providers ...
   //
   // Provide content based on current locale ...
   getContent(title: string) {
@@ -635,12 +686,27 @@ await this
     //
     return result || '';
   }
+  //#endregion
 
+  //
+  //#region UI Handlers ...
   //
   async handleButtonClicked() {
     await this.managerService.notificationService.presentSuccessNotification({
       message: this.resourceProvider(AppResourceIDs.temp_label),
       dissmissable: true,
+    });
+  }
+
+  //
+  async handleActionFired(event: string) {
+    //
+    await this.managerService.notificationService.presentXNotification({
+      message: `Action Fired: ${event}`,
+      dissmissable: true,
+      opt: {
+        color: XColor.Dark,
+      },
     });
   }
 
@@ -874,4 +940,5 @@ await this
       ],
     });
   }
+  //#endregion
 }
