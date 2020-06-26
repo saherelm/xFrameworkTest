@@ -43,6 +43,18 @@ export enum AppResourceIDs {
   //#endregion
 
   //
+  //#region ActionBar ...
+  action_bar = 'action_bar',
+  action_bar_description = 'action_bar_description',
+  //#endregion
+
+  //
+  //#region SearchBar ...
+  search_bar = 'search_bar',
+  search_bar_description = 'search_bar_description',
+  //#endregion
+
+  //
   //#region Alert ...
   alert = 'alert',
   alert_description = 'alert_description',
@@ -318,6 +330,30 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'button_description',
     value: 'مستندات مربوط به مولفه دکمه',
+  },
+  //#endregion
+
+  //
+  //#region ActionBar ...
+  {
+    id: 'action_bar',
+    value: 'میله فرمان',
+  },
+  {
+    id: 'action_bar_description',
+    value: 'مستندات مربوط به مولفه میله فرمان',
+  },
+  //#endregion
+
+  //
+  //#region SearchBar ...
+  {
+    id: 'search_bar',
+    value: 'میله جستجو',
+  },
+  {
+    id: 'search_bar_description',
+    value: 'مستندات مربوط به مولفه میله جستجو',
   },
   //#endregion
 
@@ -793,6 +829,30 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'button_description',
     value: 'Button Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region ActionBar ...
+  {
+    id: 'action_bar',
+    value: 'ActionBar',
+  },
+  {
+    id: 'action_bar_description',
+    value: 'ActionBar Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region SearchBar ...
+  {
+    id: 'search_bar',
+    value: 'SearchBar',
+  },
+  {
+    id: 'search_bar_description',
+    value: 'SearchBar Component Documentation',
   },
   //#endregion
 

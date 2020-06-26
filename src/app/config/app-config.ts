@@ -1,11 +1,11 @@
+import {
+  DefaultLocale,
+  AvailableTranslationResources,
+} from './localization.config';
 import { XFrameworkCoreConfig } from 'x-framework-core';
 import { NotificationAudioSources } from './audio.config';
 import { XFrameworkServicesConfig } from 'x-framework-services';
 import { XFrameworkComponentsConfig } from 'x-framework-components';
-import {
-  AvailableTranslationResources,
-  DefaultLocale,
-} from './localization.config';
 
 // tslint:disable-next-line:no-empty-interface
 export interface AppConfig {}
@@ -23,7 +23,13 @@ export type XConfig = XFrameworkCoreConfig &
   AppConfig;
 export type XSharedConfig = Partial<XConfig>;
 
-export const xFrameworkCoreSharedConfig: XFrameworkComponentsSharedConfig = {
+export const xFrameworkCoreSharedConfig: XFrameworkCoreSharedConfig = {};
+
+export const xFrameworkServicesSharedConfig: XFrameworkServicesSharedConfig = {};
+
+export const xFrameworkComponentsSharedConfig: XFrameworkComponentsSharedConfig = {};
+
+export const xAppSharedConfig: XAppSharedConfig = {
   //
   // App Info ...
   appInstanceName: 'xFrameworkTestApp',
@@ -71,13 +77,10 @@ export const xFrameworkCoreSharedConfig: XFrameworkComponentsSharedConfig = {
   //
   defaultPageSize: 20,
   pageSizes: [10, 20, 40, 50, 100, 200],
+
+  //
+  defaultSearchDebounceTime: 500,
 };
-
-export const xFrameworkServicesSharedConfig: XFrameworkServicesSharedConfig = {};
-
-export const xFrameworkComponentsSharedConfig: XFrameworkComponentsSharedConfig = {};
-
-export const xAppSharedConfig: XAppSharedConfig = {};
 
 export const xSharedConfig: XSharedConfig = {
   ...xFrameworkCoreSharedConfig,

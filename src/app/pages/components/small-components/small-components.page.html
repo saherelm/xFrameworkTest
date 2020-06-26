@@ -100,6 +100,60 @@
       </div>
     </x-panel>
 
+    <!-- ActionBar -->
+    <x-panel [id]="'ActionBar'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.action_bar) }}
+      </div>
+      <!-- <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.action_bar_description) }}
+      </div> -->
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('actionBarContent')"
+      ></x-markdown>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/components/XActionBarComponent.html"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
+    <!-- SearchBar -->
+    <x-panel [id]="'SearchBar'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.search_bar) }}
+      </div>
+      <!-- <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.search_bar_description) }}
+      </div> -->
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('searchBarContent')"
+      ></x-markdown>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/components/XSearchBarComponent.html"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
+
     <!-- Alert -->
     <x-panel [id]="'Alert'" [hasCustomActions]="true">
       <!-- Title and Description -->
@@ -133,8 +187,25 @@
         class="ion-margin-horizontal"
       ></x-button>
 
+      <!-- Sample2 -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="alertSample2"
+      ></x-markdown>
+
+      <x-button
+        [type]="ButtonTypes.Raised"
+        [title]="ResourceIDs.alert"
+        (click)="handleShowNativeAlert()"
+        [color]="ColorNames.Tertiary"
+        class="ion-margin-horizontal"
+      ></x-button>
+
       <br />
       <br />
+
       <!-- Propt Description -->
       <x-markdown
         [mode]="'preview'"
@@ -156,6 +227,46 @@
         [color]="ColorNames.Tertiary"
         class="ion-margin-horizontal"
       ></x-button>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="promptSample2"
+      ></x-markdown>
+
+      <x-button
+        [type]="ButtonTypes.Raised"
+        [title]="ResourceIDs.prompt"
+        (click)="handleShowNativePrompt()"
+        [color]="ColorNames.Primary"
+        class="ion-margin-horizontal"
+      ></x-button>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="promptSample3"
+      ></x-markdown>
+
+      <x-button
+        [type]="ButtonTypes.Raised"
+        [title]="ResourceIDs.prompt"
+        [color]="ColorNames.Primary"
+        class="ion-margin-horizontal"
+        (click)="handleShowActionModal()"
+      ></x-button>
+
+      <!-- Present Modal -->
+      <!-- Present PopOver -->
+      <!-- <x-button
+        [type]="ButtonTypes.Raised"
+        [title]="ResourceIDs.prompt"
+        [color]="ColorNames.Primary"
+        class="ion-margin-horizontal"
+        (click)="handleShowActionModal()"
+      ></x-button> -->
 
       <!-- Actions -->
       <div x-panel-actions>

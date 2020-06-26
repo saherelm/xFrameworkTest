@@ -4,6 +4,7 @@ import {
   XResourceIDs,
   XModalButtonRole,
   isNullOrEmptyString,
+  XActionType,
 } from 'x-framework-core';
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -127,6 +128,24 @@ export class SmallComponentsPage extends VPageComponent {
     '```';
 
   //
+  // ActionBar Content ...
+  readonly actionBarContentFa = `
+این مولفه جهت ارائه مجموعه ای از فرمان های عملیاتی در یک واسط کاربری یکپارچه بکار می رود
+`;
+  readonly actionBarContentEn = `
+this Component used to represent a Collection of Action Buttons in an integrated interface.
+`;
+
+  //
+  // SearchBar Content ...
+  readonly searchBarContentFa = `
+این مولفه جهت ارائه امکانات جستجو در اطلاعات بکار می رود.
+`;
+  readonly searchBarContentEn = `
+this component provide a Search interface.
+`;
+
+  //
   // Alert Content ...
   readonly alertContentFa = `
   این مولفه زمانی کاربرد دارد که قصد داریم پیام خاصی را به کاربر نمایش دهیم.
@@ -164,6 +183,16 @@ await this.managerService
   ],
 });
   ` +
+    '```';
+
+  readonly alertSample2 =
+    '```typescript' +
+    `
+this.managerService
+  .dialogService
+  .nativeAlert(this
+    .ResourceIDs.temp_label);
+` +
     '```';
 
   //
@@ -235,6 +264,70 @@ await this.managerService
   ],
 });
   ` +
+    '```';
+
+  readonly promptSample2 =
+    '```typescript' +
+    `
+  this.managerService.dialogService
+  .nativeConfirm(
+    this.ResourceIDs.temp_label)
+  .subscribe((res) => {
+    this.managerService
+      .notificationService
+      .presentInfoNotification({
+      message: \`\${res}\`,
+      dissmissable: true,
+    });
+  });
+` +
+    '```';
+
+  readonly promptSample3 =
+    '```typescript' +
+    `
+//
+await this.managerService
+  .dialogService
+  .presentActionModal({
+  type: XActionType.System,
+  playSound: true,
+  header: XResourceIDs.are_you_sure,
+  buttons: [
+    {
+      text: XResourceIDs.yes,
+      role: XModalButtonRole
+        .Selected,
+      handler: async () => {
+        await this.managerService
+          .notificationService
+          .presentSuccessNotification(
+          {
+            message:
+              'Yes Selected ...',
+            dissmissable: true,
+          }
+        );
+      },
+    },
+    {
+      text: XResourceIDs.no,
+      role: XModalButtonRole.Cancel,
+      handler: async () => {
+        await this.managerService
+          .notificationService
+          .presentDangerNotification(
+          {
+            message:
+              'No Selected ...',
+            dissmissable: true,
+          }
+        );
+      },
+    },
+  ],
+});
+` +
     '```';
 
   //
@@ -519,6 +612,10 @@ await this
     });
   }
 
+  handleShowNativeAlert() {
+    this.managerService.dialogService.nativeAlert(this.ResourceIDs.temp_label);
+  }
+
   async handleShowPrompt() {
     //
     await this.managerService.dialogService.presentAlert({
@@ -559,6 +656,53 @@ await this
           cssClass: ['btn-cancel'],
           handler: () => {
             console.log('Cancel Clicked ...');
+          },
+        },
+      ],
+    });
+  }
+
+  handleShowNativePrompt() {
+    //
+    this.managerService.dialogService
+      .nativeConfirm(this.ResourceIDs.temp_label)
+      .subscribe((res) => {
+        this.managerService.notificationService.presentInfoNotification({
+          message: `${res}`,
+          dissmissable: true,
+        });
+      });
+  }
+
+  async handleShowActionModal() {
+    //
+    await this.managerService.dialogService.presentActionModal({
+      type: XActionType.System,
+      playSound: true,
+      header: XResourceIDs.are_you_sure,
+      buttons: [
+        {
+          text: XResourceIDs.yes,
+          role: XModalButtonRole.Selected,
+          handler: async () => {
+            await this.managerService.notificationService.presentSuccessNotification(
+              {
+                message: 'Yes Selected ...',
+                dissmissable: true,
+              }
+            );
+          },
+        },
+        {
+          text: XResourceIDs.no,
+          role: XModalButtonRole.Cancel,
+          handler: async () => {
+            await this.managerService.notificationService.presentDangerNotification(
+              {
+                message: 'No Selected ...',
+                dissmissable: true,
+              }
+            );
           },
         },
       ],

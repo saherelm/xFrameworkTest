@@ -118,6 +118,10 @@ body {
   word-break: normal;
   background-color: black;
 
+  //
+  overflow: hidden;
+
+  //
   .x-header {
     direction: var(--ui-direction) !important;
   }
