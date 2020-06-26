@@ -19,6 +19,8 @@
     [isAccordion]="true"
     [wrapWithCard]="true"
     [selected]="'thumbnail'"
+    [headerColor]="ColorNames.Tertiary"
+    [headerHighlightColor]="ColorNames.Dark"
   >
     <!-- Thumbnail -->
     <x-panel [id]="'thumbnail'" [hasCustomActions]="true">
@@ -29,6 +31,8 @@
       <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.thumbnail_description) }}
       </div> -->
+
+      <br />
 
       <!-- Description -->
       <x-markdown
@@ -77,6 +81,8 @@
         {{ resourceProvider(ResourceIDs.file_drop_area_description) }}
       </div> -->
 
+      <br />
+
       <!-- Description -->
       <x-markdown
         [mode]="'preview'"
@@ -116,6 +122,8 @@
       <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.image_cropper_description) }}
       </div> -->
+
+      <br />
 
       <!-- Description -->
       <x-markdown
@@ -222,6 +230,8 @@
       <!-- <div x-panel-description>
         {{ resourceProvider(ResourceIDs.file_upload_description) }}
       </div> -->
+
+      <br />
 
       <!-- Description -->
       <x-markdown
