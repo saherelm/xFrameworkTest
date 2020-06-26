@@ -19,9 +19,8 @@
     [isAccordion]="true"
     [wrapWithCard]="true"
     [selected]="'Button'"
-    [multiExpanded]="true"
     [headerColor]="'tertiary'"
-    [headerHighlightColor]="'tertiary-shade'"
+    [headerHighlightColor]="'dark'"
   >
     <!-- Button -->
     <x-panel [id]="'Button'" [hasCustomActions]="true">
@@ -121,6 +120,13 @@
         [content]="getContent('actionBarContent')"
       ></x-markdown>
 
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="actionBarSample1"
+      ></x-markdown>
+
       <x-action-bar
         [color]="ColorNames.Dark"
         [actions]="actionBarItems"
@@ -155,6 +161,22 @@
         [hasToolbar]="false"
         [content]="getContent('searchBarContent')"
       ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="searchBarSample1"
+      ></x-markdown>
+
+      <x-search-bar
+        value="test"
+        [color]="ColorNames.Dark"
+        [enterKeyHint]="'search'"
+        [searchInputColor]="'dark-tint'"
+        (queryChange)="handleQueryChanged($event)"
+      >
+      </x-search-bar>
 
       <!-- Actions -->
       <div x-panel-actions>

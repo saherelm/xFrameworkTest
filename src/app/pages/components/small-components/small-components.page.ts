@@ -185,6 +185,19 @@ export class SmallComponentsPage extends VPageComponent {
 this Component used to represent a Collection of Action Buttons in an integrated interface.
 `;
 
+  readonly actionBarSample1 =
+    '```html' +
+    `
+<x-action-bar
+  [color]="ColorNames.Dark"
+  [actions]="actionBarItems"
+  (actionFired)="
+    handleActionFired($event)"
+>
+</x-action-bar>
+` +
+    '```';
+
   //
   // SearchBar Content ...
   readonly searchBarContentFa = `
@@ -193,6 +206,22 @@ this Component used to represent a Collection of Action Buttons in an integrated
   readonly searchBarContentEn = `
 this component provide a Search interface.
 `;
+
+  readonly searchBarSample1 =
+    '```html' +
+    `
+<x-search-bar
+  value="test"
+  [color]="ColorNames.Dark"
+  [enterKeyHint]="'search'"
+  [searchInputColor]="
+    'dark-tint'"
+  (queryChange)="
+    handleQueryChanged($event)"
+>
+</x-search-bar>
+` +
+    '```';
 
   //
   // Alert Content ...
@@ -938,6 +967,19 @@ await this
           ],
         },
       ],
+    });
+  }
+
+  async handleQueryChanged(query: string) {
+    //
+    if (isNullOrEmptyString(query)) {
+      return;
+    }
+
+    //
+    await this.managerService.notificationService.presentSuccessNotification({
+      message: `Search Query: ${query}`,
+      dissmissable: true,
     });
   }
   //#endregion
