@@ -106,24 +106,11 @@ templListItems: XListItem<string>[] =
   readonly sample2 =
     '```html' +
     `
-<x-actions
-  [hasDelete]="true"
-  [hasSelectAll]="true"
-  [showSearchBar]="true"
-  [showActionBar]="true"
-  [hasDeselectAll]="true"
-  [hasInverseSelection]="true"
-  [listComponent]="listPresenter"
-  [actionBarColor]="ColorNames.Dark"
-  [searchBarColor]="ColorNames.Dark"
-  (removeItems)="handleRemoveItems(\$event)"
-  (queryChange)="listPresenter
-    .filterItems(\$event)"
->
-</x-actions>
-
 <x-list
   #listPresenter
+  [stickyToolbar]="true"
+  [showActionBar]="true"
+  [showSearchBar]="true"
   [showDivider]="false"
   [clickableItems]="true"
   [selectableItems]="true"
@@ -132,6 +119,10 @@ templListItems: XListItem<string>[] =
   [itemTemplate]="listItemRef"
   [color]="ColorNames.Tertiary"
   (refresh)="handleRefreshList()"
+  [actionBarColor]="ColorNames.Dark"
+  [searchBarColor]="ColorNames.Dark"
+  [searchBarInputColor]="ColorNames.Dark"
+  (removeItems)="handleRemoveItems($event)"
 >
 </x-list>
 ` +
