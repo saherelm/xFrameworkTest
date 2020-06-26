@@ -33,26 +33,11 @@
       [cssClass]="'code-block'"
     ></x-markdown>
 
-    <!-- Action Presenter -->
-    <!-- TODO: Fix this ... -->
-    <!-- <x-actions
-      [hasDelete]="true"
-      [hasSelectAll]="true"
-      [showSearchBar]="true"
-      [showActionBar]="true"
-      [hasDeselectAll]="true"
-      [hasInverseSelection]="true"
-      [listComponent]="listPresenter"
-      [actionBarColor]="ColorNames.Dark"
-      [searchBarColor]="ColorNames.Dark"
-      (removeItems)="handleRemoveItems($event)"
-      (queryChange)="listPresenter.filterItems($event)"
-    >
-    </x-actions> -->
-
     <!-- List Presenter -->
     <x-list
       #listPresenter
+      [showActionBar]="true"
+      [showSearchBar]="true"
       [showDivider]="false"
       [clickableItems]="true"
       [selectableItems]="true"
@@ -61,6 +46,10 @@
       [itemTemplate]="listItemRef"
       [color]="ColorNames.Tertiary"
       (refresh)="handleRefreshList()"
+      [actionBarColor]="ColorNames.Dark"
+      [searchBarColor]="ColorNames.Dark"
+      [searchBarInputColor]="ColorNames.Dark"
+      (removeItems)="handleRemoveItems($event)"
     >
     </x-list>
 

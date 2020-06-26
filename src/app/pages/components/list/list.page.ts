@@ -218,10 +218,11 @@ private prepareListItems() {
           slot: 'end',
           handler: () => {
             //
-            this.managerService.notificationService.presentDangerNotification({
-              message: `remove: ${i}`,
-              dissmissable: true,
-            });
+            this.managerService.dialogService.presentAreYouSureYesNoDialog(
+              () => {
+                this.handleRemoveItems({ items: [li.data] });
+              }
+            );
           },
         },
         {
@@ -287,6 +288,12 @@ private prepareListItems() {
     this.templListItems = this.templListItems.filter(
       (li) => !request.items.includes(li.data)
     );
+
+    //
+    this.managerService.notificationService.presentSuccessNotification({
+      message: `${request.items.length} item(s) removed ...`,
+      dissmissable: true,
+    });
   }
   //#endregion
 
