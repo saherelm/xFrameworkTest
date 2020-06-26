@@ -258,15 +258,55 @@
         (click)="handleShowActionModal()"
       ></x-button>
 
-      <!-- Present Modal -->
-      <!-- Present PopOver -->
-      <!-- <x-button
+      <br />
+      <br />
+
+      <!-- Modal -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('modalContent')"
+      ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="modalSample1"
+      ></x-markdown>
+
+      <x-button
         [type]="ButtonTypes.Raised"
-        [title]="ResourceIDs.prompt"
+        [title]="ResourceIDs.alert"
         [color]="ColorNames.Primary"
         class="ion-margin-horizontal"
-        (click)="handleShowActionModal()"
-      ></x-button> -->
+        (click)="handleShowModal()"
+      ></x-button>
+
+      <br />
+      <br />
+
+      <!-- PopOver -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('popOverContent')"
+      ></x-markdown>
+
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [cssClass]="'code-block'"
+        [content]="popOverSample1"
+      ></x-markdown>
+
+      <x-button
+        [type]="ButtonTypes.Raised"
+        [title]="ResourceIDs.alert"
+        [color]="ColorNames.Primary"
+        class="ion-margin-horizontal"
+        (click)="handleShowPopOver($event)"
+      ></x-button>
 
       <!-- Actions -->
       <div x-panel-actions>

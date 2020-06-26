@@ -22,6 +22,7 @@ import { FileComponentsPage } from './file-components/file-components.page';
 import { ExpandableListPage } from './expandable-list/expandable-list.page';
 import { SmallComponentsPage } from './small-components/small-components.page';
 import { ExpandablePanelPage } from './expandable-panel/expandable-panel.page';
+import { SampleModalComponent } from './small-components/sample-modal/sample-modal.component';
 
 @NgModule({
   imports: [
@@ -131,6 +132,10 @@ import { ExpandablePanelPage } from './expandable-panel/expandable-panel.page';
     FileComponentsPage,
     SmallComponentsPage,
     ExpandablePanelPage,
+
+    //
+    SampleModalComponent,
   ],
+  entryComponents: [SampleModalComponent],
 })
 export class ComponentsPageModule {}

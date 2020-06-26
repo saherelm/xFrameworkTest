@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XSlotName, XButtonType, XSlotLayout } from 'x-framework-components';
+import { SampleModalComponent } from './sample-modal/sample-modal.component';
 
 @Component({
   selector: 'app-small-components',
@@ -326,6 +327,54 @@ await this.managerService
       },
     },
   ],
+});
+` +
+    '```';
+
+  readonly modalContentFa = `
+برخی اوقات احتیاج داریم که یک مولفه مجزا در انگولار را بعنوان یک کادر محاوره به کاربر نمایش دهیم.
+`;
+
+  readonly modalContentEn = `
+some times we had to show an angular component as a dialog to user.
+`;
+
+  readonly modalSample1 =
+    '```typescript' +
+    `
+const modal = await this
+  .managerService
+  .dialogService
+  .presentModal({
+    component:
+      SampleModalComponent,
+    componentProps: {
+      context: 'Show Modal',
+    },
+});
+` +
+    '```';
+
+  readonly popOverContentFa = `
+برخی اوقات احتیاج داریم که یک مولفه مجزا در انگولار را بعنوان منوی زمینه به کاربر نمایش دهیم.
+`;
+  readonly popOverContentEn = `
+some times we had to show an angular component as a context menu to user.
+`;
+
+  readonly popOverSample1 =
+    '```typescript' +
+    `
+const popOver = await this
+  .managerService
+  .dialogService
+  .presentPopover({
+    event,
+    component:
+      SampleModalComponent,
+    componentProps: {
+      context: 'Show PopOver',
+    },
 });
 ` +
     '```';
@@ -706,6 +755,27 @@ await this
           },
         },
       ],
+    });
+  }
+
+  async handleShowModal() {
+    //
+    const modal = await this.managerService.dialogService.presentModal({
+      component: SampleModalComponent,
+      componentProps: {
+        context: 'Show Modal',
+      },
+    });
+  }
+
+  async handleShowPopOver(event: any) {
+    //
+    const popOver = await this.managerService.dialogService.presentPopover({
+      event,
+      component: SampleModalComponent,
+      componentProps: {
+        context: 'Show PopOver',
+      },
     });
   }
 
