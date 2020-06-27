@@ -108,6 +108,7 @@ templListItems: XListItem<string>[] =
     `
 <x-list
   #listPresenter
+  [showToolbar]="true"
   [stickyToolbar]="true"
   [showActionBar]="true"
   [showSearchBar]="true"
