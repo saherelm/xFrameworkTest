@@ -13,6 +13,38 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample2"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
+    <x-expandable-list
+      [items]="listItems"
+      [closeSiblings]="true"
+      [supportRouting]="false"
+      [showChildDetailIcon]="true"
+      [showParentDetailIcon]="true"
+      [startupState]="'expand-all'"
+      [disableParentRouting]="false"
+      [dividerColor]="ColorNames.Danger"
+      [childColor]="ColorNames.Secondary"
+      [parentColor]="ColorNames.Tertiary"
+      [highlightColor]="ColorNames.Success"
+      [parentActiveColor]="ColorNames.Danger"
+      [childActiveColor]="ColorNames.Warning"
+      (itemSelected)="handleItemSelected($event)"
+    >
+    </x-expandable-list>
+
     <!-- Actions -->
     <div actions>
       <a

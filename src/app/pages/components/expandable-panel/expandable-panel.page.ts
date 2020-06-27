@@ -48,7 +48,54 @@ export class ExpandablePanelPage extends VPageComponent {
   `;
 
   //
-  readonly sample1 = '```' + '```';
+  readonly sample1 = '```html' + `
+<x-expandable-panel
+  [isAccordion]="true"
+  [selected]="'First'"
+  [headerColor]="ColorNames.Tertiary"
+  [headerHighlightColor]="ColorNames.Warning"
+>
+  <x-panel [id]="'First'" [hasNext]="true" [hasCustomActions]="true">
+  <div x-panel-title>
+    Title 1
+  </div>
+
+  <div x-panel-description>
+    Description 1
+  </div>
+
+  Content 1
+
+  <div actions>
+    Custom Actions 1
+  </div>
+  </x-panel>
+
+  <x-panel [id]="'Second'" [hasNext]="true" [hasPrev]="true" [hasReset]="true">
+  <div x-panel-title>
+    Title 2
+  </div>
+
+  <div x-panel-description>
+    Description 2
+  </div>
+
+  Content 2
+  </x-panel>
+
+  <x-panel [id]="'Third'" [hasPrev]="true" [hasReset]="true">
+  <div x-panel-title>
+    Title 3
+  </div>
+
+  <div x-panel-description>
+    Description 3
+  </div>
+
+  Content 3
+  </x-panel>
+</x-expandable-panel>
+` + '```';
 
   //
   //#region UI Providers ...

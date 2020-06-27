@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
-import { XIconNames } from 'x-framework-components';
+import { XIconNames, XExpandableListItem } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
+import {
+  XResourceIDs,
+  isNullOrEmptyString,
+  XColor,
+  random,
+} from 'x-framework-core';
 
 @Component({
   selector: 'app-expandable-list',
@@ -36,6 +41,31 @@ export class ExpandableListPage extends VPageComponent {
   //#endregion
 
   //
+  tempList = Array.from(Array(5).keys());
+  tempChilds = Array.from(Array(2).keys());
+  listItems: XExpandableListItem<string>[] = this.tempList.map((i) => {
+    //
+    const li: XExpandableListItem<string> = {
+      ...this.toListItem(i),
+      childs:
+        random(0, 1) === 0
+          ? undefined
+          : this.tempChilds.map((c) => {
+              //
+              const cLi: XExpandableListItem<string> = {
+                ...this.toListItem(c, i.toString()),
+              };
+
+              //
+              return cLi;
+            }),
+    };
+
+    //
+    return li;
+  });
+
+  //
   // Content ...
   readonly contentFa = `
   # ${this.toolbarTitle}
@@ -48,7 +78,47 @@ export class ExpandableListPage extends VPageComponent {
     `;
 
   //
-  readonly sample1 = '```' + '```';
+  readonly sample1 =
+    '```html' +
+    `
+<x-expandable-list
+  [items]="listItems"
+  [closeSiblings]="true"
+  [supportRouting]="false"
+  [showChildDetailIcon]="true"
+  [showParentDetailIcon]="true"
+  [startupState]="'expand-all'"
+  [disableParentRouting]="false"
+  [dividerColor]="ColorNames.Danger"
+  [childColor]="ColorNames.Secondary"
+  [parentColor]="ColorNames.Tertiary"
+  [highlightColor]="ColorNames.Success"
+  [parentActiveColor]="ColorNames.Danger"
+  [childActiveColor]="ColorNames.Warning"
+  (itemSelected)="handleItemSelected($event)"
+>
+</x-expandable-list>
+` +
+    '```';
+
+  //
+  readonly sample2 =
+    '```typescript' +
+    `
+async handleItemSelected(item: XExpandableListItem<any>) {
+  //
+  if (!item) {
+    return;
+  }
+
+  //
+  await this.managerService.notificationService.presentSuccessNotification({
+    message: \`item \${item.id} Selected ...\`,
+    dissmissable: true,
+  });
+}
+  ` +
+    '```';
 
   //
   //#region UI Providers ...
@@ -78,4 +148,27 @@ export class ExpandableListPage extends VPageComponent {
     return result || '';
   }
   //#endregion
+
+  async handleItemSelected(item: XExpandableListItem<any>) {
+    //
+    if (!item) {
+      return;
+    }
+
+    //
+    await this.managerService.notificationService.presentSuccessNotification({
+      message: `item ${item.id} Selected ...`,
+      dissmissable: true,
+    });
+  }
+
+  private toListItem(data: any, prefix?: string) {
+    return {
+      id: `${prefix ? prefix + '_' : ''}${data}`,
+      data: `Item ${prefix ? prefix + '_' : ''}${data}`,
+      opened: random(0, 1) === 0 ? true : false,
+      title: `Title ${prefix ? prefix + '_' : ''}${data}`,
+      description: `Description ${prefix ? prefix + '_' : ''}${data}`,
+    } as XExpandableListItem<any>;
+  }
 }

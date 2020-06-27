@@ -13,6 +13,14 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="sample1"
+      [cssClass]="'code-block'"
+    >
+    </x-markdown>
+
     <x-expandable-panel
       [isAccordion]="true"
       [selected]="'First'"
@@ -35,7 +43,12 @@
         </div>
       </x-panel>
 
-      <x-panel [id]="'Second'" [hasNext]="true" [hasPrev]="true" [hasReset]="true">
+      <x-panel
+        [id]="'Second'"
+        [hasNext]="true"
+        [hasPrev]="true"
+        [hasReset]="true"
+      >
         <div x-panel-title>
           Title 2
         </div>
