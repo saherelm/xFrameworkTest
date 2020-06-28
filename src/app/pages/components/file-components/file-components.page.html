@@ -249,7 +249,11 @@
 
       <!-- Sample -->
       <x-file-upload
+        [color]="'dark-tint'"
         [canDrop]="isNotMobileUi$ | async"
+        [actionBarColor]="ColorNames.Dark"
+        [searchBarColor]="ColorNames.Dark"
+        [searchBarInputColor]="ColorNames.Dark"
         (fileChange)="handleFileChanged($event)"
         [maxAllowedSize]="config.maxAllowedSize"
         [maxAllowedFiles]="config.maxUploadFiles"
