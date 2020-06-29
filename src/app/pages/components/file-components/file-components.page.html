@@ -254,11 +254,13 @@
         [actionBarColor]="ColorNames.Dark"
         [searchBarColor]="ColorNames.Dark"
         [searchBarInputColor]="ColorNames.Dark"
+        [emp]
         (fileChange)="handleFileChanged($event)"
         [maxAllowedSize]="config.maxAllowedSize"
         [maxAllowedFiles]="config.maxUploadFiles"
         [minAllowedFileSize]="config.minAllowedFileSize"
         [maxAllowedFileSize]="config.maxAllowedFileSize"
+        (actionBarActionFired)="handleActionFired($event)"
       ></x-file-upload>
 
       <!-- Actions -->

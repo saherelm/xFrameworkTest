@@ -534,6 +534,18 @@ export class FileComponentsPage extends VPageComponent {
   async handleFileChanged(files: File[]) {
     console.log('files: ', files);
   }
+
+  //
+  async handleActionFired(name: string) {
+    //
+    await this.managerService.notificationService.presentXNotification({
+      message: `Action Fired: ${name}`,
+      dissmissable: true,
+      opt: {
+        color: XColor.Dark,
+      },
+    });
+  }
   //#endregion
 
   //
