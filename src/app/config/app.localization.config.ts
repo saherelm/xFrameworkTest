@@ -105,6 +105,12 @@ export enum AppResourceIDs {
   vertical = 'vertical',
   horizontal = 'horizontal',
   //#endregion
+
+  //
+  //#region Empty Component ...
+  empty_component = 'empty_component',
+  empty_component_description = 'empty_component_description',
+  //#endregion
   //#endregion
 
   //
@@ -460,6 +466,18 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'horizontal',
     value: 'افقی',
+  },
+  //#endregion
+
+  //
+  //#region Empty Component ...
+  {
+    id: 'empty_component',
+    value: 'محتوای خالی',
+  },
+  {
+    id: 'empty_component_description',
+    value: 'مستندات مربوط به مولفه محتوای خالی',
   },
   //#endregion
   //#endregion
@@ -959,6 +977,18 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'horizontal',
     value: 'Horizontal',
+  },
+  //#endregion
+
+  //
+  //#region Empty Component ...
+  {
+    id: 'empty_component',
+    value: 'Empty',
+  },
+  {
+    id: 'empty_component_description',
+    value: 'Empty Component Documentation',
   },
   //#endregion
   //#endregion

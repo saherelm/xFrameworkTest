@@ -685,6 +685,30 @@ await this
 </x-slotter>
 ` +
     '```';
+
+  //
+  // Empty Component ...
+  readonly emptyContentFa = `
+از این مولفه جهت اطلاع رسانی در خصوص عدم وجود مورد یا مواردی که کاربر از منابع درخواست کرده است استفاده می گیرد.
+`;
+  readonly emptyContentEn = `
+this component used when user requet item(s) from resources and the result is empty.
+`;
+
+  readonly emptySample1 = '```html' +
+`
+<x-empty
+  [hasRefresh]="true"
+  [foregroundColor]="false"
+  [color]="ColorNames.Dark"
+  (refresh)="handleRefreshEmpty()"
+  [foregroundMessageColor]="false"
+  [messageColor]="ColorNames.Dark"
+  [refreshButtonColor]="ColorNames.Dark"
+  [foregroundRefreshButtonColor]="false"
+></x-empty>
+` + '```';
+
   //#endregion
   //#endregion
 
@@ -979,6 +1003,13 @@ await this
     //
     await this.managerService.notificationService.presentSuccessNotification({
       message: `Search Query: ${query}`,
+      dissmissable: true,
+    });
+  }
+
+  async handleRefreshEmpty() {
+    await this.managerService.notificationService.presentWarningNotification({
+      message: 'Refresh in Empty Clicked ...',
       dissmissable: true,
     });
   }

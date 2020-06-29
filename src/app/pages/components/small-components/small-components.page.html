@@ -643,5 +643,53 @@
         >
       </div>
     </x-panel>
+
+    <!-- Empty -->
+    <x-panel [id]="'Empty'" [hasCustomActions]="true">
+      <!-- Title and Description -->
+      <div x-panel-title>
+        {{ resourceProvider(ResourceIDs.empty_component) }}
+      </div>
+      <!-- <div x-panel-description>
+        {{ resourceProvider(ResourceIDs.empty_component_description) }}
+      </div> -->
+
+      <br />
+
+      <!-- Description -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="getContent('emptyContent')"
+      ></x-markdown>
+
+      <!-- Sample -->
+      <x-markdown
+        [mode]="'preview'"
+        [hasToolbar]="false"
+        [content]="emptySample1"
+        [cssClass]="'code-block'"
+      ></x-markdown>
+
+      <x-empty
+        [hasRefresh]="true"
+        [foregroundColor]="false"
+        [color]="ColorNames.Dark"
+        (refresh)="handleRefreshEmpty()"
+        [foregroundMessageColor]="false"
+        [messageColor]="ColorNames.Dark"
+        [refreshButtonColor]="ColorNames.Dark"
+        [foregroundRefreshButtonColor]="false"
+      ></x-empty>
+
+      <!-- Actions -->
+      <div x-panel-actions>
+        <a
+          target="_blank"
+          href="https://docs.x-framework.ir/x-framework-components/components/XEmptyComponent.html"
+          >{{resourceProvider(ResourceIDs.documentation)}}</a
+        >
+      </div>
+    </x-panel>
   </x-expandable-panel>
 </v-page>
