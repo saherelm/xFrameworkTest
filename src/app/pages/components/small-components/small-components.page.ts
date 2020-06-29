@@ -19,7 +19,7 @@ import {
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import { SampleModalComponent } from './sample-modal/sample-modal.component';
+import { SampleModalComponent, XModalContext } from './sample-modal/sample-modal.component';
 
 @Component({
   selector: 'app-small-components',
@@ -882,7 +882,7 @@ this component used when user requet item(s) from resources and the result is em
     const modal = await this.managerService.dialogService.presentModal({
       component: SampleModalComponent,
       componentProps: {
-        context: 'Show Modal',
+        context: XModalContext.Modal,
       },
     });
   }
@@ -893,7 +893,7 @@ this component used when user requet item(s) from resources and the result is em
       event,
       component: SampleModalComponent,
       componentProps: {
-        context: 'Show PopOver',
+        context: XModalContext.PopOver,
       },
     });
   }

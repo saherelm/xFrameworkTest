@@ -249,10 +249,14 @@
 
       <!-- Sample -->
       <x-file-upload
+        [showEmpty]="true"
         [color]="'dark-tint'"
+        [emptyColor]="ColorNames.Dark"
+        [hasRefreshWhenEmpty]="false"
         [canDrop]="isNotMobileUi$ | async"
         [actionBarColor]="ColorNames.Dark"
         [searchBarColor]="ColorNames.Dark"
+        [emptyMessageColor]="ColorNames.Dark"
         [searchBarInputColor]="ColorNames.Dark"
         (fileChange)="handleFileChanged($event)"
         [maxAllowedSize]="config.maxAllowedSize"
