@@ -251,8 +251,9 @@
       <x-file-upload
         [showEmpty]="true"
         [color]="'dark-tint'"
-        [emptyColor]="ColorNames.Dark"
         [hasRefreshWhenEmpty]="false"
+        [listEnableReordering]="true"
+        [emptyColor]="ColorNames.Dark"
         [canDrop]="isNotMobileUi$ | async"
         [actionBarColor]="ColorNames.Dark"
         [searchBarColor]="ColorNames.Dark"
