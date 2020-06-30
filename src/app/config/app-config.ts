@@ -23,13 +23,7 @@ export type XConfig = XFrameworkCoreConfig &
   AppConfig;
 export type XSharedConfig = Partial<XConfig>;
 
-export const xFrameworkCoreSharedConfig: XFrameworkCoreSharedConfig = {};
-
-export const xFrameworkServicesSharedConfig: XFrameworkServicesSharedConfig = {};
-
-export const xFrameworkComponentsSharedConfig: XFrameworkComponentsSharedConfig = {};
-
-export const xAppSharedConfig: XAppSharedConfig = {
+export const xFrameworkCoreSharedConfig: XFrameworkCoreSharedConfig = {
   //
   // App Info ...
   appInstanceName: 'xFrameworkTestApp',
@@ -77,10 +71,23 @@ export const xAppSharedConfig: XAppSharedConfig = {
   //
   defaultPageSize: 20,
   pageSizes: [10, 20, 40, 50, 100, 200],
+};
+
+export const xFrameworkServicesSharedConfig: XFrameworkServicesSharedConfig = {};
+
+export const xFrameworkComponentsSharedConfig: XFrameworkComponentsSharedConfig = {
+  //
+  // File Config ...
+  minAllowedFileSize: 512,
+  maxAllowedFileSize: 20971520,
+  maxAllowedSize: 966367641,
+  maxUploadFiles: 10,
 
   //
   defaultSearchDebounceTime: 500,
 };
+
+export const xAppSharedConfig: XAppSharedConfig = {};
 
 export const xSharedConfig: XSharedConfig = {
   ...xFrameworkCoreSharedConfig,
