@@ -1,8 +1,20 @@
 import { Component } from '@angular/core';
-import { XIconNames } from 'x-framework-components';
+import {
+  XIconNames,
+  XFormConfig,
+  XFormUpdateOn,
+  XFormControlType,
+} from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
+
+interface XFormModel {
+  firstName: string;
+  lastName: string;
+  brithDate: Date;
+  phoneNumber: string;
+}
 
 @Component({
   selector: 'app-form',
@@ -49,6 +61,51 @@ export class FormPage extends VPageComponent {
 
   //
   readonly sample1 = '```' + '```';
+
+  //
+  xFormConfig: XFormConfig<XFormModel> = {
+    name: 'PersonalForm',
+    model: {
+      firstName: 'Hadi',
+      lastName: 'Khazaee Asl',
+    },
+    updateOn: XFormUpdateOn.CHANGE,
+    controls: [
+      {
+        index: 0,
+        propName: 'firstName',
+        type: {
+          type: XFormControlType.Text,
+        },
+        appearance: {
+          label: 'First Name',
+          icons: {
+            suffix: {
+              name: this.IconNames.first_name,
+              applyStateColor: true,
+            },
+          },
+        },
+      },
+      {
+        index: 1,
+        propName: 'lastName',
+        type: {
+          type: XFormControlType.Text,
+        },
+        appearance: {
+          label: 'Last Name',
+          tooltip: 'Insert your Last Name here ...',
+          icons: {
+            suffix: {
+              name: this.IconNames.first_name,
+              applyStateColor: true,
+            },
+          },
+        },
+      },
+    ],
+  };
 
   //
   //#region UI Providers ...

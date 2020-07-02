@@ -6,13 +6,7 @@ import {
   isNullOrEmptyString,
 } from 'x-framework-core';
 import { Component } from '@angular/core';
-import {
-  XIconNames,
-  XListItem,
-  XModelConfig,
-  XModelPropPresentType,
-  XModelPropAppearance,
-} from 'x-framework-components';
+import { XIconNames, XListItem } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
@@ -102,49 +96,49 @@ export class IconPage extends VPageComponent {
 
   //
   showIconList = false;
-  modelConfig: XModelConfig<IconsListPresentation> = {
-    model: { show: false },
-    props: [
-      {
-        //
-        index: 0,
+  // modelConfig: XModelConfig<IconsListPresentation> = {
+  //   model: { show: false },
+  //   props: [
+  //     {
+  //       //
+  //       index: 0,
 
-        //
-        propName: 'show',
-        type: XModelPropPresentType.CheckBox,
-        appearance: XModelPropAppearance.Fill,
+  //       //
+  //       propName: 'show',
+  //       type: XModelPropPresentType.CheckBox,
+  //       appearance: XModelPropAppearance.Fill,
 
-        //
-        config: [false],
-        label: `${this.resourceProvider(
-          this.ResourceIDs.show
-        )} ${this.resourceProvider(this.ResourceIDs.icon_list)}`,
+  //       //
+  //       config: [false],
+  //       label: `${this.resourceProvider(
+  //         this.ResourceIDs.show
+  //       )} ${this.resourceProvider(this.ResourceIDs.icon_list)}`,
 
-        //
-        checkedChanged: async (checked: boolean) => {
-          //
-          if (!hasChild(this.iconListItems)) {
-            //
-            const loading = await this.managerService.dialogService.presentLoading(
-              {
-                message: this.resourceProvider(AppResourceIDs.default_loading),
-                spinner: this.SpinnerNames.LinesSmall,
-              }
-            );
+  //       //
+  //       checkedChanged: async (checked: boolean) => {
+  //         //
+  //         if (!hasChild(this.iconListItems)) {
+  //           //
+  //           const loading = await this.managerService.dialogService.presentLoading(
+  //             {
+  //               message: this.resourceProvider(AppResourceIDs.default_loading),
+  //               spinner: this.SpinnerNames.LinesSmall,
+  //             }
+  //           );
 
-            //
-            await this.prepareIconListItems();
+  //           //
+  //           await this.prepareIconListItems();
 
-            //
-            await loading.dismiss();
-          }
+  //           //
+  //           await loading.dismiss();
+  //         }
 
-          //
-          this.showIconList = checked;
-        },
-      },
-    ],
-  };
+  //         //
+  //         this.showIconList = checked;
+  //       },
+  //     },
+  //   ],
+  // };
 
   //
   //#region LifeCycle ...
