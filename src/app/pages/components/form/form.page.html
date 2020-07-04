@@ -13,7 +13,7 @@
       [content]="getContent('content')"
     ></x-markdown>
 
-    <x-form [formConfig]="xFormConfig"></x-form>
+    <x-form *ngIf="xFormConfig" [formConfig]="xFormConfig"></x-form>
 
     <!-- Actions -->
     <div actions>
@@ -25,3 +25,7 @@
     </div>
   </x-card>
 </v-page>
+
+<ng-template #nameAutoCompleteRef let-item>
+  {{ item.data }}
+</ng-template>
