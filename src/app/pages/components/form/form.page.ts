@@ -4,6 +4,7 @@ import {
   isNullOrEmptyString,
   XColorWithBrightness,
   toNormalString,
+  hasChild,
 } from 'x-framework-core';
 import { Subject, BehaviorSubject } from 'rxjs';
 import {
@@ -51,7 +52,7 @@ export class FormPage extends VPageComponent {
   );
 
   //
-  readonly ColorNames = Object.assign({}, XColor);
+  readonly ColorNames = Object.assign({}, XColorWithBrightness);
   readonly IconNames = Object.assign({}, XIconNames);
   //#endregion
 
@@ -93,12 +94,11 @@ export class FormPage extends VPageComponent {
   }
 
   //
-  private nameAutoCompleteQuery = '';
-  private autoCompleteItems: XListItem<string>[] = ['HADI'].map((i) => {
-    return {
-      data: i,
-    } as XListItem<string>;
-  });
+  private firstNameAutoCompleteIsOpened = false;
+  private firstNameAutoCompleteQuery = '';
+  private firstNameAutoCompleteItems: XListItem<
+    string
+  >[] = this.getFirstNameAutoCompleteItems();
 
   //
   nameStrings: string[] = [
@@ -244,27 +244,6 @@ export class FormPage extends VPageComponent {
 
   //
   //#region Private ...
-  private handleAutoCompleteNames() {
-    // //
-    // const q = toNormalString(v);
-    // if (q === nameAutoCompleteQuery) {
-    //   return [];
-    // }
-    // //
-    // nameAutoCompleteQuery = q;
-    // console.log('qqqq: ', q);
-    // //
-    // const filteredItems = this.nameStrings.filter(
-    //   (n) => toNormalString(n).includes(q) && toNormalString(n) !== q
-    // );
-    // console.log('filteredItems: ', filteredItems);
-    // if (this.hasChild(filteredItems)) {
-    //   return filteredItems;
-    // }
-    // //
-    // return [];
-  }
-
   private prepareFormConfig() {
     //
     this.xFormConfig = {
@@ -292,28 +271,31 @@ export class FormPage extends VPageComponent {
             //
             // TODO: Fix Form auto Complete ...
             autoComplete: {
+              opened: this.firstNameAutoCompleteIsOpened,
               itemTemplate: this.NAME_AUTO_CONMPLETE_REF,
               color: XColorWithBrightness.Tertiary,
               items: () => {
-                return this.autoCompleteItems;
+                return this.firstNameAutoCompleteItems;
               },
               //   onSelect: (item: string) => {
               //     console.log('auto complete selected: ', item);
               //   },
+              cssClass: ['x-auto-complete-margin'],
             },
           },
           eventHandlers: {
             onBlured: (name: any) => {
-              console.log('control: ', name, ', was blured ...');
+              // console.log('control: ', name, ', was blured ...');
             },
             onFocused: (name: any) => {
-              console.log('control: ', name, ', was focused ...');
+              // console.log('control: ', name, ', was focused ...');
             },
             statusChanged: (model: XFormControlStatusChangeEventModel) => {
-              console.log('status changed: ', model);
+              // console.log('status changed: ', model);
             },
-            valueChanged: (model: XFormControlValueChangeEventModel) => {
-              console.log('value changed: ', model);
+            valueChanged: async (model: XFormControlValueChangeEventModel) => {
+              // console.log('value changed: ', model);
+              await this.handleFilterAutoCompleteFirstName(model.value);
             },
           },
         },
@@ -351,6 +333,58 @@ export class FormPage extends VPageComponent {
         },
       ],
     };
+  }
+
+  private async handleFilterAutoCompleteFirstName(value: string) {
+    //
+    console.log('handle: ', value);
+    if (toNormalString(value) === this.firstNameAutoCompleteQuery) {
+      //
+      if (hasChild(this.firstNameAutoCompleteItems)) {
+        this.firstNameAutoCompleteIsOpened = true;
+      } else {
+        this.firstNameAutoCompleteIsOpened = false;
+      }
+
+      //
+      this.detectChanges();
+      return;
+    }
+
+    //
+    this.firstNameAutoCompleteQuery = toNormalString(value);
+    this.firstNameAutoCompleteItems = this.getFirstNameAutoCompleteItems();
+    console.log('firstNames: ', this.firstNameAutoCompleteItems);
+
+    //
+    if (hasChild(this.firstNameAutoCompleteItems)) {
+      this.firstNameAutoCompleteIsOpened = true;
+    } else {
+      this.firstNameAutoCompleteIsOpened = false;
+    }
+
+    //
+    this.detectChanges();
+  }
+
+  private getFirstNameAutoCompleteItems(): XListItem<string>[] {
+    //
+    if (isNullOrEmptyString(this.firstNameAutoCompleteQuery)) {
+      return [];
+    }
+
+    //
+    return this.nameStrings
+      .filter(
+        (n) =>
+          toNormalString(n).includes(this.firstNameAutoCompleteQuery) &&
+          toNormalString(n) !== this.firstNameAutoCompleteQuery
+      )
+      .map((i) => {
+        return {
+          data: i,
+        } as XListItem<string>;
+      });
   }
   //#endregion
 }
