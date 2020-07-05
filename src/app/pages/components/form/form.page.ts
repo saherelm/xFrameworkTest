@@ -249,95 +249,109 @@ export class FormPage extends VPageComponent {
     this.xFormConfig = {
       name: 'PersonalForm',
       model: {
-        firstName: 'Hadi',
+        // firstName: 'Hadi',
         lastName: 'Khazaee Asl',
       },
       updateOn: XFormUpdateOn.CHANGE,
-      controls: [
-        {
-          index: 0,
-          propName: 'firstName',
-          type: {
-            type: XFormControlType.Text,
-          },
-          appearance: {
-            label: 'First Name',
-            icons: {
-              suffix: {
-                name: this.IconNames.first_name,
-                applyStateColor: true,
-              },
-            },
-            //
-            // TODO: Fix Form auto Complete ...
-            autoComplete: {
-              opened: this.firstNameAutoCompleteIsOpened,
-              itemTemplate: this.NAME_AUTO_CONMPLETE_REF,
-              color: XColorWithBrightness.Tertiary,
-              items: () => {
-                return this.firstNameAutoCompleteItems;
-              },
-              //   onSelect: (item: string) => {
-              //     console.log('auto complete selected: ', item);
-              //   },
-              cssClass: ['x-auto-complete-margin'],
-            },
-          },
-          eventHandlers: {
-            onBlured: (name: any) => {
-              // console.log('control: ', name, ', was blured ...');
-            },
-            onFocused: (name: any) => {
-              // console.log('control: ', name, ', was focused ...');
-            },
-            statusChanged: (model: XFormControlStatusChangeEventModel) => {
-              // console.log('status changed: ', model);
-            },
-            valueChanged: async (model: XFormControlValueChangeEventModel) => {
-              // console.log('value changed: ', model);
-              await this.handleFilterAutoCompleteFirstName(model.value);
-            },
-          },
-        },
-        {
-          index: 1,
-          propName: 'lastName',
-          type: {
-            type: XFormControlType.Text,
-          },
-          appearance: {
-            label: 'Last Name',
-            tooltip: 'Insert your Last Name here ...',
-            icons: {
-              prefix: {
-                applyStateColor: true,
-                name: this.IconNames.first_name,
-                color: XColorWithBrightness.Dark,
-              },
-            },
-          },
-          eventHandlers: {
-            onBlured: (name: any) => {
-              console.log('control: ', name, ', was blured ...');
-            },
-            onFocused: (name: any) => {
-              console.log('control: ', name, ', was focused ...');
-            },
-            statusChanged: (model: XFormControlStatusChangeEventModel) => {
-              console.log('status changed: ', model);
-            },
-            valueChanged: (model: XFormControlValueChangeEventModel) => {
-              console.log('value changed: ', model);
-            },
-          },
-        },
-      ],
+      controls: [],
     };
+
+    //
+    this.xFormConfig.controls[0] = {
+      index: 0,
+      propName: 'firstName',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        label: 'First Name',
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (model: XFormControlStatusChangeEventModel) => {
+          // console.log('status changed: ', model);
+        },
+        valueChanged: async (model: XFormControlValueChangeEventModel) => {
+          //
+          console.log('value changed: ', model);
+          await this.handleFilterAutoCompleteFirstName(model.value);
+        },
+      },
+    };
+
+    //
+    this.addFirstNameAutoComplete();
+
+    //
+    this.xFormConfig.controls[1] = {
+      index: 1,
+      propName: 'lastName',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        label: 'Last Name',
+        tooltip: 'Insert your Last Name here ...',
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        // onBlured: (name: any) => {
+        //   console.log('control: ', name, ', was blured ...');
+        // },
+        // onFocused: (name: any) => {
+        //   console.log('control: ', name, ', was focused ...');
+        // },
+        // statusChanged: (model: XFormControlStatusChangeEventModel) => {
+        //   console.log('status changed: ', model);
+        // },
+        // valueChanged: (model: XFormControlValueChangeEventModel) => {
+        //   console.log('value changed: ', model);
+        // },
+      },
+    };
+  }
+
+  private addFirstNameAutoComplete() {
+    //
+    this.xFormConfig.controls[0].appearance.autoComplete = {
+      ...this.xFormConfig.controls[0].appearance.autoComplete,
+      //
+      opened: this.firstNameAutoCompleteIsOpened,
+      itemTemplate: this.NAME_AUTO_CONMPLETE_REF,
+      color: XColorWithBrightness.Tertiary,
+      items: () => {
+        return this.firstNameAutoCompleteItems;
+      },
+      //   onSelect: (item: string) => {
+      //     console.log('auto complete selected: ', item);
+      //   },
+      cssClass: ['x-auto-complete-margin'],
+    };
+
+    //
+    this.detectChanges();
   }
 
   private async handleFilterAutoCompleteFirstName(value: string) {
     //
-    console.log('handle: ', value);
     if (toNormalString(value) === this.firstNameAutoCompleteQuery) {
       //
       if (hasChild(this.firstNameAutoCompleteItems)) {
@@ -347,24 +361,21 @@ export class FormPage extends VPageComponent {
       }
 
       //
-      this.detectChanges();
+      this.addFirstNameAutoComplete();
       return;
     }
 
     //
     this.firstNameAutoCompleteQuery = toNormalString(value);
     this.firstNameAutoCompleteItems = this.getFirstNameAutoCompleteItems();
-    console.log('firstNames: ', this.firstNameAutoCompleteItems);
 
     //
-    if (hasChild(this.firstNameAutoCompleteItems)) {
-      this.firstNameAutoCompleteIsOpened = true;
-    } else {
-      this.firstNameAutoCompleteIsOpened = false;
-    }
+    this.firstNameAutoCompleteIsOpened = hasChild(
+      this.firstNameAutoCompleteItems
+    );
 
     //
-    this.detectChanges();
+    this.addFirstNameAutoComplete();
   }
 
   private getFirstNameAutoCompleteItems(): XListItem<string>[] {
