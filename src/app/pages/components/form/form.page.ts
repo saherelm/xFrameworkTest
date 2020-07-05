@@ -1,12 +1,11 @@
 import {
-  XColor,
+  nthItems,
+  hasChild,
+  toNormalString,
   XResourceIDs,
   isNullOrEmptyString,
   XColorWithBrightness,
-  toNormalString,
-  hasChild,
 } from 'x-framework-core';
-import { Subject, BehaviorSubject } from 'rxjs';
 import {
   XListItem,
   XIconNames,
@@ -15,6 +14,7 @@ import {
   XFormControlType,
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
+  XFormControlAutoCompleteConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -249,7 +249,7 @@ export class FormPage extends VPageComponent {
     this.xFormConfig = {
       name: 'PersonalForm',
       model: {
-        // firstName: 'Hadi',
+        firstName: 'Hadi',
         lastName: 'Khazaee Asl',
       },
       updateOn: XFormUpdateOn.CHANGE,
@@ -276,6 +276,7 @@ export class FormPage extends VPageComponent {
       eventHandlers: {
         onBlured: (name: any) => {
           console.log('control: ', name, ', was blured ...');
+          this.prepareFirstNameAutoComplete({ opened: false });
         },
         onFocused: (name: any) => {
           console.log('control: ', name, ', was focused ...');
@@ -292,7 +293,7 @@ export class FormPage extends VPageComponent {
     };
 
     //
-    this.addFirstNameAutoComplete();
+    this.prepareFirstNameAutoComplete();
 
     //
     this.xFormConfig.controls[1] = {
@@ -329,21 +330,41 @@ export class FormPage extends VPageComponent {
     };
   }
 
-  private addFirstNameAutoComplete() {
+  private prepareFirstNameAutoComplete(
+    dataProvider?: Partial<XFormControlAutoCompleteConfig>
+  ) {
     //
     this.xFormConfig.controls[0].appearance.autoComplete = {
       ...this.xFormConfig.controls[0].appearance.autoComplete,
       //
-      opened: this.firstNameAutoCompleteIsOpened,
-      itemTemplate: this.NAME_AUTO_CONMPLETE_REF,
-      color: XColorWithBrightness.Tertiary,
-      items: () => {
-        return this.firstNameAutoCompleteItems;
-      },
-      //   onSelect: (item: string) => {
-      //     console.log('auto complete selected: ', item);
-      //   },
-      cssClass: ['x-auto-complete-margin'],
+      opened:
+        dataProvider && dataProvider.opened
+          ? dataProvider.opened
+          : this.firstNameAutoCompleteIsOpened,
+      itemTemplate:
+        dataProvider && dataProvider.itemTemplate
+          ? dataProvider.itemTemplate
+          : this.NAME_AUTO_CONMPLETE_REF,
+      color:
+        dataProvider && dataProvider.color
+          ? dataProvider.color
+          : XColorWithBrightness.Tertiary,
+      items:
+        dataProvider && dataProvider.items
+          ? dataProvider.items
+          : () => {
+              return this.firstNameAutoCompleteItems;
+            },
+      onSelect:
+        dataProvider && dataProvider.onSelect
+          ? dataProvider.onSelect
+          : (item: string) => {
+              console.log('auto complete selected: ', item);
+            },
+      cssClass:
+        dataProvider && dataProvider.cssClass
+          ? dataProvider.cssClass
+          : ['x-auto-complete-margin'],
     };
 
     //
@@ -361,7 +382,7 @@ export class FormPage extends VPageComponent {
       }
 
       //
-      this.addFirstNameAutoComplete();
+      this.prepareFirstNameAutoComplete();
       return;
     }
 
@@ -375,7 +396,7 @@ export class FormPage extends VPageComponent {
     );
 
     //
-    this.addFirstNameAutoComplete();
+    this.prepareFirstNameAutoComplete();
   }
 
   private getFirstNameAutoCompleteItems(): XListItem<string>[] {
@@ -385,17 +406,25 @@ export class FormPage extends VPageComponent {
     }
 
     //
-    return this.nameStrings
-      .filter(
+    // Select Top 5 result of filtered Names ...
+    const selectedItems = nthItems(
+      0,
+      5,
+      this.nameStrings.filter(
         (n) =>
           toNormalString(n).includes(this.firstNameAutoCompleteQuery) &&
           toNormalString(n) !== this.firstNameAutoCompleteQuery
       )
-      .map((i) => {
-        return {
-          data: i,
-        } as XListItem<string>;
-      });
+    );
+    if (!hasChild(selectedItems)) {
+      return [];
+    }
+
+    return selectedItems.map((i) => {
+      return {
+        data: i,
+      } as XListItem<string>;
+    });
   }
   //#endregion
 }
