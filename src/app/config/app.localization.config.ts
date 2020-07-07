@@ -169,6 +169,12 @@ export enum AppResourceIDs {
   //#region Form ...
   form = 'form',
   form_description = 'form_description',
+
+  //
+  content = 'content',
+  content_type = 'content_type',
+  post = 'post',
+  news = 'news',
   //#endregion
 
   //
@@ -607,6 +613,24 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'form_description',
     value: 'مستندات مربوط به مولفه فرم',
+  },
+
+  //
+  {
+    id: 'content',
+    value: 'محتوا',
+  },
+  {
+    id: 'content_type',
+    value: 'نوع محتوا',
+  },
+  {
+    id: 'post',
+    value: 'مطلب',
+  },
+  {
+    id: 'news',
+    value: 'خبر',
   },
   //#endregion
 
@@ -1118,6 +1142,24 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'form_description',
     value: 'Form Component Documentation',
+  },
+
+  //
+  {
+    id: 'content',
+    value: 'Content',
+  },
+  {
+    id: 'content_type',
+    value: 'Content Type',
+  },
+  {
+    id: 'post',
+    value: 'Post',
+  },
+  {
+    id: 'news',
+    value: 'News',
   },
   //#endregion
 

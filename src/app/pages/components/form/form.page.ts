@@ -5,6 +5,8 @@ import {
   XResourceIDs,
   isNullOrEmptyString,
   XColorWithBrightness,
+  keys,
+  XContentType,
 } from 'x-framework-core';
 import {
   XListItem,
@@ -15,14 +17,26 @@ import {
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormControlAutoCompleteConfig,
+  XFormControlConfig,
+  XFormMarkdownControlConfig,
+  XMarkdownMode,
+  XFormSelectControlConfig,
+  XFormSelectControlOption,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
+enum ContentType {
+  POST = 'post',
+  NEWS = 'news',
+}
+
 interface XFormModel {
   firstName: string;
   lastName: string;
+  content: string;
+  contentType: ContentType;
   brithDate: Date;
   phoneNumber: string;
 }
@@ -94,6 +108,9 @@ export class FormPage extends VPageComponent {
   }
 
   //
+  readonly ContentTypes = Object.assign({}, ContentType);
+
+  //
   private firstNameAutoCompleteIsOpened = false;
   private firstNameAutoCompleteQuery = '';
   private firstNameAutoCompleteItems: XListItem<
@@ -101,7 +118,7 @@ export class FormPage extends VPageComponent {
   >[] = this.getFirstNameAutoCompleteItems();
 
   //
-  nameStrings: string[] = [
+  private nameStrings: string[] = [
     'Hadi',
     'Hamid',
     'Hesam',
@@ -257,6 +274,7 @@ export class FormPage extends VPageComponent {
     };
 
     //
+    // First Name ...
     this.xFormConfig.controls[0] = {
       index: 0,
       propName: 'firstName',
@@ -290,12 +308,13 @@ export class FormPage extends VPageComponent {
           await this.handleFilterAutoCompleteFirstName(model.value);
         },
       },
-    };
+    } as XFormControlConfig<XFormModel>;
 
     //
     this.prepareFirstNameAutoComplete();
 
     //
+    // Last Name ...
     this.xFormConfig.controls[1] = {
       index: 1,
       propName: 'lastName',
@@ -314,20 +333,75 @@ export class FormPage extends VPageComponent {
         },
       },
       eventHandlers: {
-        // onBlured: (name: any) => {
-        //   console.log('control: ', name, ', was blured ...');
-        // },
-        // onFocused: (name: any) => {
-        //   console.log('control: ', name, ', was focused ...');
-        // },
-        // statusChanged: (model: XFormControlStatusChangeEventModel) => {
-        //   console.log('status changed: ', model);
-        // },
-        // valueChanged: (model: XFormControlValueChangeEventModel) => {
-        //   console.log('value changed: ', model);
-        // },
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (model: XFormControlStatusChangeEventModel) => {
+          console.log('status changed: ', model);
+        },
+        valueChanged: (model: XFormControlValueChangeEventModel) => {
+          console.log('value changed: ', model);
+        },
       },
-    };
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Content ...
+    this.xFormConfig.controls[2] = {
+      index: 2,
+      propName: 'content',
+      type: {
+        type: XFormControlType.MarkDown,
+        config: {
+          hasToolbar: true,
+          mode: XMarkdownMode.BOTH,
+          toolbarColor: XColorWithBrightness.Dark,
+          contentChanged: (content: string) => {
+            console.log('markdown new content: ', content);
+          },
+        } as XFormMarkdownControlConfig,
+      },
+      appearance: {
+        label: AppResourceIDs.content,
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Content Type ...
+    this.xFormConfig.controls[3] = {
+      index: 3,
+      propName: 'contentType',
+      type: {
+        type: XFormControlType.Select,
+        config: {
+          multiple: true,
+          options: keys(this.ContentTypes).map((k) => {
+            return {
+              value: this.ContentTypes[k],
+              viewValue: this.resourceProvider(this.ContentTypes[k]),
+            } as XFormSelectControlOption<ContentType>;
+          }),
+        } as XFormSelectControlConfig,
+      },
+      appearance: {
+        label: AppResourceIDs.content_type,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.customers_club,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('content type value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
   }
 
   private prepareFirstNameAutoComplete(
