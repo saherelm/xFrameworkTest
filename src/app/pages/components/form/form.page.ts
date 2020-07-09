@@ -1,27 +1,27 @@
 import {
+  keys,
   nthItems,
   hasChild,
   toNormalString,
   XResourceIDs,
   isNullOrEmptyString,
   XColorWithBrightness,
-  keys,
-  XContentType,
 } from 'x-framework-core';
 import {
   XListItem,
   XIconNames,
   XFormConfig,
   XFormUpdateOn,
-  XFormControlType,
-  XFormControlValueChangeEventModel,
-  XFormControlStatusChangeEventModel,
-  XFormControlAutoCompleteConfig,
-  XFormControlConfig,
-  XFormMarkdownControlConfig,
   XMarkdownMode,
+  XFormControlType,
+  XFormControlConfig,
+  XFormRadioControlConfig,
   XFormSelectControlConfig,
   XFormSelectControlOption,
+  XFormMarkdownControlConfig,
+  XFormControlAutoCompleteConfig,
+  XFormControlValueChangeEventModel,
+  XFormControlStatusChangeEventModel,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -32,11 +32,17 @@ enum ContentType {
   NEWS = 'news',
 }
 
+enum ContentVisibility {
+  VISIBLE = 'visible',
+  HIDDEN = 'hidden',
+}
+
 interface XFormModel {
   firstName: string;
   lastName: string;
   content: string;
   contentType: ContentType;
+  visibility: ContentVisibility;
   brithDate: Date;
   phoneNumber: string;
 }
@@ -109,6 +115,7 @@ export class FormPage extends VPageComponent {
 
   //
   readonly ContentTypes = Object.assign({}, ContentType);
+  readonly ContentVisibilities = Object.assign({}, ContentVisibility);
 
   //
   private firstNameAutoCompleteIsOpened = false;
@@ -399,6 +406,39 @@ export class FormPage extends VPageComponent {
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('content type value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Content Visibility ...
+    this.xFormConfig.controls[4] = {
+      index: 4,
+      propName: 'visibility',
+      type: {
+        type: XFormControlType.Radio,
+        config: {
+          options: keys(this.ContentVisibilities).map((k) => {
+            return {
+              value: this.ContentVisibilities[k],
+              viewValue: this.resourceProvider(this.ContentVisibilities[k]),
+            } as XFormSelectControlOption<ContentType>;
+          }),
+        } as XFormRadioControlConfig,
+      },
+      appearance: {
+        label: AppResourceIDs.content_type,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.customers_club,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('content visibility value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;

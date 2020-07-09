@@ -175,6 +175,9 @@ export enum AppResourceIDs {
   content_type = 'content_type',
   post = 'post',
   news = 'news',
+  visibility = 'visibility',
+  visible = 'visible',
+  hidden = 'hidden',
   //#endregion
 
   //
@@ -631,6 +634,18 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'news',
     value: 'خبر',
+  },
+  {
+    id: 'visibility',
+    value: 'وضعیت نمایش',
+  },
+  {
+    id: 'visible',
+    value: 'قابل رویت',
+  },
+  {
+    id: 'hidden',
+    value: 'پنهان',
   },
   //#endregion
 
@@ -1160,6 +1175,18 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'news',
     value: 'News',
+  },
+  {
+    id: 'visibility',
+    value: 'Visibility',
+  },
+  {
+    id: 'visible',
+    value: 'Visible',
+  },
+  {
+    id: 'hidden',
+    value: 'Hidden',
   },
   //#endregion
 
