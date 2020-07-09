@@ -171,6 +171,10 @@ export enum AppResourceIDs {
   form_description = 'form_description',
 
   //
+  first_name = 'first_name',
+  last_name = 'last_name',
+
+  //
   content = 'content',
   content_type = 'content_type',
   post = 'post',
@@ -178,6 +182,9 @@ export enum AppResourceIDs {
   visibility = 'visibility',
   visible = 'visible',
   hidden = 'hidden',
+
+  //
+  publish = 'publish',
   //#endregion
 
   //
@@ -620,6 +627,15 @@ export const FaCustomLocales: XTranslationItem[] = [
 
   //
   {
+    id: 'first_name',
+    value: 'نام',
+  },
+  {
+    id: 'last_name',
+    value: 'نام خانوادگی',
+  },
+  //
+  {
     id: 'content',
     value: 'محتوا',
   },
@@ -635,6 +651,7 @@ export const FaCustomLocales: XTranslationItem[] = [
     id: 'news',
     value: 'خبر',
   },
+  //
   {
     id: 'visibility',
     value: 'وضعیت نمایش',
@@ -646,6 +663,11 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'hidden',
     value: 'پنهان',
+  },
+  //
+  {
+    id: 'publish',
+    value: 'منتشر شود',
   },
   //#endregion
 
@@ -1161,6 +1183,15 @@ export const EnCustomLocales: XTranslationItem[] = [
 
   //
   {
+    id: 'first_name',
+    value: 'First Name',
+  },
+  {
+    id: 'last_name',
+    value: 'Last Name',
+  },
+  //
+  {
     id: 'content',
     value: 'Content',
   },
@@ -1176,6 +1207,7 @@ export const EnCustomLocales: XTranslationItem[] = [
     id: 'news',
     value: 'News',
   },
+  //
   {
     id: 'visibility',
     value: 'Visibility',
@@ -1187,6 +1219,11 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'hidden',
     value: 'Hidden',
+  },
+  //
+  {
+    id: 'publish',
+    value: 'Publish',
   },
   //#endregion
 

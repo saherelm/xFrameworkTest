@@ -2,8 +2,8 @@ import {
   keys,
   nthItems,
   hasChild,
-  toNormalString,
   XResourceIDs,
+  toNormalString,
   isNullOrEmptyString,
   XColorWithBrightness,
 } from 'x-framework-core';
@@ -22,6 +22,7 @@ import {
   XFormControlAutoCompleteConfig,
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
+  XFormCheckBoxControlConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -43,6 +44,7 @@ interface XFormModel {
   content: string;
   contentType: ContentType;
   visibility: ContentVisibility;
+  publish: boolean;
   brithDate: Date;
   phoneNumber: string;
 }
@@ -289,7 +291,7 @@ export class FormPage extends VPageComponent {
         type: XFormControlType.Text,
       },
       appearance: {
-        label: 'First Name',
+        label: this.ResourceIDs.first_name,
         icons: {
           prefix: {
             applyStateColor: true,
@@ -329,7 +331,7 @@ export class FormPage extends VPageComponent {
         type: XFormControlType.Text,
       },
       appearance: {
-        label: 'Last Name',
+        label: this.ResourceIDs.last_name,
         tooltip: 'Insert your Last Name here ...',
         icons: {
           prefix: {
@@ -439,6 +441,36 @@ export class FormPage extends VPageComponent {
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('content visibility value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Publish ...
+    this.xFormConfig.controls[5] = {
+      index: 5,
+      propName: 'publish',
+      type: {
+        type: XFormControlType.CheckBox,
+        config: {
+          checkedChanged: (checked: boolean) => {
+            console.log('checked change: ', checked);
+          },
+        } as XFormCheckBoxControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.publish,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.customers_club,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('Publish value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;
