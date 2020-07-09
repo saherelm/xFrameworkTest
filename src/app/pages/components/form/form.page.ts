@@ -377,7 +377,7 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.Select,
         config: {
-          multiple: true,
+          multiple: false,
           options: keys(this.ContentTypes).map((k) => {
             return {
               value: this.ContentTypes[k],
