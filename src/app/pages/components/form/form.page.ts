@@ -19,10 +19,12 @@ import {
   XFormSelectControlConfig,
   XFormSelectControlOption,
   XFormMarkdownControlConfig,
+  XFormCheckBoxControlConfig,
+  XFormDatePickerControlConfig,
   XFormControlAutoCompleteConfig,
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
-  XFormCheckBoxControlConfig,
+  XFormDatePickerControlPickerPosition,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -471,6 +473,30 @@ export class FormPage extends VPageComponent {
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Publish value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // BrithDate ...
+    this.xFormConfig.controls[6] = {
+      index: 6,
+      propName: 'brithDate',
+      type: {
+        type: XFormControlType.Date,
+        config: {
+          applyStateColor: true,
+          toggleIcon: XIconNames.calendar,
+          iconColor: XColorWithBrightness.SuccessShade,
+          datePickerPosition: XFormDatePickerControlPickerPosition.Prefix,
+        } as XFormDatePickerControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.brithDate,
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('BirthDate value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;
