@@ -186,6 +186,7 @@ export enum AppResourceIDs {
   //
   publish = 'publish',
   brithDate = 'brithDate',
+  wedding_state = 'wedding_state',
   num_of_childs = 'num_of_childs',
   //#endregion
 
@@ -674,6 +675,10 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'brithDate',
     value: 'تاریخ تولد',
+  },
+  {
+    id: 'wedding_state',
+    value: 'وضعیت تاهل',
   },
   {
     id: 'num_of_childs',
@@ -1238,6 +1243,10 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'brithDate',
     value: 'BrithDate',
+  },
+  {
+    id: 'wedding_state',
+    value: 'Wedding State',
   },
   {
     id: 'num_of_childs',

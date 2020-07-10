@@ -49,6 +49,7 @@ interface XFormModel {
   visibility: ContentVisibility;
   publish: boolean;
   brithDate: Date;
+  weddingState: boolean;
   numberOfChilds: number;
   phoneNumber: string;
 }
@@ -504,9 +505,27 @@ export class FormPage extends VPageComponent {
     } as XFormControlConfig<XFormModel>;
 
     //
-    // Number Of Childs ...
+    // Wedding State ...
     this.xFormConfig.controls[7] = {
       index: 7,
+      propName: 'weddingState',
+      type: {
+        type: XFormControlType.Toggle,
+      },
+      appearance: {
+        label: this.ResourceIDs.wedding_state,
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('Wedding state value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Number Of Childs ...
+    this.xFormConfig.controls[8] = {
+      index: 8,
       propName: 'numberOfChilds',
       type: {
         type: XFormControlType.Range,
@@ -523,7 +542,7 @@ export class FormPage extends VPageComponent {
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
-          console.log('BirthDate value changed: ', value);
+          console.log('Number of Childs value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;
