@@ -25,6 +25,7 @@ import {
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormDatePickerControlPickerPosition,
+  XFormSliderControlConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -48,6 +49,7 @@ interface XFormModel {
   visibility: ContentVisibility;
   publish: boolean;
   brithDate: Date;
+  numberOfChilds: number;
   phoneNumber: string;
 }
 
@@ -70,7 +72,7 @@ export class FormPage extends VPageComponent {
 
   //
   // Prepare All Resource IDs ...
-  readonly ResourceIDs = Object.assign(
+  readonly ResourceIDs: any = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
   );
@@ -493,6 +495,31 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.brithDate,
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('BirthDate value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Number Of Childs ...
+    this.xFormConfig.controls[7] = {
+      index: 7,
+      propName: 'numberOfChilds',
+      type: {
+        type: XFormControlType.Range,
+        config: {
+          min: 0,
+          max: 15,
+          step: 1,
+          vertical: false,
+          thumbLabel: true,
+        } as XFormSliderControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.num_of_childs,
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
