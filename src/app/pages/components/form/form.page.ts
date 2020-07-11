@@ -6,6 +6,7 @@ import {
   toNormalString,
   isNullOrEmptyString,
   XColorWithBrightness,
+  toBoolean,
 } from 'x-framework-core';
 import {
   XListItem,
@@ -13,23 +14,27 @@ import {
   XFormConfig,
   XFormUpdateOn,
   XMarkdownMode,
+  XFormBaseAction,
   XFormControlType,
   XFormControlConfig,
+  XFormControlAction,
   XFormRadioControlConfig,
   XFormSelectControlConfig,
   XFormSelectControlOption,
+  XFormSliderControlConfig,
   XFormMarkdownControlConfig,
   XFormCheckBoxControlConfig,
   XFormDatePickerControlConfig,
   XFormControlAutoCompleteConfig,
+  XFormControlActionProviderModel,
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormDatePickerControlPickerPosition,
-  XFormSliderControlConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
+import { Subject } from 'rxjs';
 
 enum ContentType {
   POST = 'post',
@@ -123,6 +128,9 @@ export class FormPage extends VPageComponent {
   //
   readonly ContentTypes = Object.assign({}, ContentType);
   readonly ContentVisibilities = Object.assign({}, ContentVisibility);
+
+  //
+  readonly formActionProvider = new Subject<XFormControlActionProviderModel>();
 
   //
   private firstNameAutoCompleteIsOpened = false;
@@ -516,8 +524,9 @@ export class FormPage extends VPageComponent {
         label: this.ResourceIDs.wedding_state,
       },
       eventHandlers: {
-        valueChanged: (value: XFormControlValueChangeEventModel) => {
+        valueChanged: async (value: XFormControlValueChangeEventModel) => {
           console.log('Wedding state value changed: ', value);
+          this.handsleHasNumberOfChild(toBoolean(value.value));
         },
       },
     } as XFormControlConfig<XFormModel>;
@@ -528,7 +537,7 @@ export class FormPage extends VPageComponent {
       index: 8,
       propName: 'numberOfChilds',
       type: {
-        type: XFormControlType.Range,
+        type: XFormControlType.Hidden,
         config: {
           min: 0,
           max: 15,
@@ -643,6 +652,32 @@ export class FormPage extends VPageComponent {
         data: i,
       } as XListItem<string>;
     });
+  }
+
+  private handsleHasNumberOfChild(isMarried?: boolean) {
+    //
+    if (!this.xFormConfig.controls[8]) {
+      return;
+    }
+
+    //
+    const hasChildCount = toBoolean(isMarried);
+    if (!hasChildCount) {
+      //
+      this.xFormConfig.controls[8].type = {
+        ...this.xFormConfig.controls[8].type,
+        type: XFormControlType.Hidden,
+      };
+    } else {
+      //
+      this.xFormConfig.controls[8].type = {
+        ...this.xFormConfig.controls[8].type,
+        type: XFormControlType.Range,
+      };
+    }
+
+    //
+    this.detectChanges();
   }
   //#endregion
 }
