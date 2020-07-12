@@ -1,13 +1,14 @@
 import {
   keys,
-  nthItems,
   hasChild,
+  nthItems,
+  toBoolean,
   XResourceIDs,
   toNormalString,
   isNullOrEmptyString,
   XColorWithBrightness,
-  toBoolean,
 } from 'x-framework-core';
+import { Subject } from 'rxjs';
 import {
   XListItem,
   XIconNames,
@@ -34,7 +35,6 @@ import {
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import { Subject } from 'rxjs';
 
 enum ContentType {
   POST = 'post',
@@ -442,7 +442,7 @@ export class FormPage extends VPageComponent {
         } as XFormRadioControlConfig,
       },
       appearance: {
-        label: AppResourceIDs.content_type,
+        label: AppResourceIDs.visibility,
         icons: {
           prefix: {
             applyStateColor: true,
