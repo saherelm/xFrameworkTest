@@ -132,16 +132,18 @@
         [content]="getContent('imageCropperContent')"
       ></x-markdown>
 
+      <!--
       <x-markdown
         [mode]="'preview'"
         [hasToolbar]="false"
         [cssClass]="'code-block'"
         [content]="imageCropperSample1"
       ></x-markdown>
+      -->
 
-      <div class="container">
-        <!-- File Upload Input -->
-        <input
+      <!-- <div class="container"> -->
+      <!-- File Upload Input -->
+      <!-- <input
           hidden
           #fileInput
           type="file"
@@ -156,10 +158,10 @@
           [color]="ColorNames.Primary"
           [title]="resourceProvider(ResourceIDs.select) + ' ' + resourceProvider(ResourceIDs.avatar)"
         >
-        </x-button>
+        </x-button> -->
 
-        <!-- Wrapper of Thumbnail -->
-        <div *ngIf="file" class="thumbnail-wrapper">
+      <!-- Wrapper of Thumbnail -->
+      <!-- <div *ngIf="file" class="thumbnail-wrapper">
           <x-slotter
             [hasCenterSlot]="false"
             [layout]="SlotLayout.HORIZONTAL"
@@ -208,8 +210,12 @@
               </div>
             </x-slot>
           </x-slotter>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
+
+      <x-avatar-upload placeHolderAvatar="/assets/image/default-user-image.png">
+
+      </x-avatar-upload>
 
       <!-- Actions -->
       <div x-panel-actions>

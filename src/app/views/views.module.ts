@@ -33,6 +33,7 @@ import {
   XFileUploadModule,
   XTabNavigatorModule,
   XFileDropAreaModule,
+  XAvatarUploadModule,
   XBaseComponentModule,
   XExpandableListModule,
   XExpandablePanelModule,
@@ -103,6 +104,7 @@ import { VPageComponent } from './v-page/v-page.component';
     XFileUploadModule,
     XFileDropAreaModule,
     XTabNavigatorModule,
+    XAvatarUploadModule,
     XExpandableListModule,
     XExpandablePanelModule,
   ],
@@ -152,6 +154,7 @@ import { VPageComponent } from './v-page/v-page.component';
     XFileUploadModule,
     XFileDropAreaModule,
     XTabNavigatorModule,
+    XAvatarUploadModule,
     XExpandableListModule,
     XExpandablePanelModule,
 
