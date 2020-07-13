@@ -31,6 +31,7 @@ import {
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormDatePickerControlPickerPosition,
+  XFormAvatarUploadControlConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -56,6 +57,7 @@ interface XFormModel {
   brithDate: Date;
   weddingState: boolean;
   numberOfChilds: number;
+  avatar: File;
   phoneNumber: string;
 }
 
@@ -552,6 +554,30 @@ export class FormPage extends VPageComponent {
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Number of Childs value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Avatar ...
+    this.xFormConfig.controls[9] = {
+      index: 9,
+      propName: 'avatar',
+      type: {
+        type: XFormControlType.AvatarUpload,
+        config: {
+          color: XColorWithBrightness.Dark,
+          placeHolderAvatar: this.managerService.getFullUrl(
+            '/assets/image/default-user-image.png'
+          ),
+        } as XFormAvatarUploadControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.avatar,
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('Avatar value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;
