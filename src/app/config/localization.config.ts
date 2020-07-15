@@ -126,6 +126,18 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       //#endregion
 
       //
+      //#region Components ...
+      {
+        id: 'map_dialog_title',
+        value: 'نمایش موقعیت مکانی',
+      },
+      {
+        id: 'map_dialog_select_title',
+        value: 'انتخاب موقعیت جغرافیایی',
+      },
+      //#endregion
+
+      //
       //#region Verbs ...
       {
         id: 'dismiss',
@@ -500,6 +512,18 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'drag_drop_here',
         value: 'Drop File Here',
+      },
+      //#endregion
+
+      //
+      //#region Components ...
+      {
+        id: 'map_dialog_title',
+        value: 'Show Location',
+      },
+      {
+        id: 'map_dialog_select_title',
+        value: 'Select Location',
       },
       //#endregion
 
