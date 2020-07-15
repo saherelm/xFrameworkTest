@@ -292,6 +292,7 @@ export class FormPage extends VPageComponent {
       model: {
         firstName: 'Hadi',
         lastName: 'Khazaee Asl',
+        weddingState: true,
       },
       updateOn: XFormUpdateOn.CHANGE,
       controls: [],
@@ -566,7 +567,9 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.AvatarUpload,
         config: {
+          canDrop: true,
           color: XColorWithBrightness.Dark,
+          fileDropAreaColor: XColorWithBrightness.DarkTint,
           placeHolderAvatar: this.managerService.getFullUrl(
             '/assets/image/default-user-image.png'
           ),
