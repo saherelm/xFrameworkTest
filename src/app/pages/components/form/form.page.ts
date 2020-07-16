@@ -32,6 +32,7 @@ import {
   XFormControlStatusChangeEventModel,
   XFormDatePickerControlPickerPosition,
   XFormAvatarUploadControlConfig,
+  XFormMapControlConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -58,6 +59,7 @@ interface XFormModel {
   weddingState: boolean;
   numberOfChilds: number;
   avatar: File;
+  latLong: string;
   phoneNumber: string;
 }
 
@@ -581,6 +583,25 @@ export class FormPage extends VPageComponent {
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Avatar value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Map ...
+    this.xFormConfig.controls[10] = {
+      index: 10,
+      propName: 'latLong',
+      type: {
+        type: XFormControlType.Map,
+        config: {} as XFormMapControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.location,
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('Location value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;

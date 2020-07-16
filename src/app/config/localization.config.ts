@@ -94,6 +94,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'unknown',
         value: 'ناشناس',
       },
+      {
+        id: 'location',
+        value: 'موقعیت جغرافیای',
+      },
       //#endregion
 
       //
@@ -484,6 +488,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'unknown',
         value: 'Unknown',
+      },
+      {
+        id: 'location',
+        value: 'Location',
       },
       //#endregion
 
