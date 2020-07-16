@@ -20,12 +20,10 @@ import {
   XResourceIDs,
   XPickerColumn,
   XStandardType,
-  getXColorName,
   XOneOrManyType,
   XColorIdentifier,
   XModalButtonRole,
   XPickerColumnOption,
-  XColorBrightnessLevel,
 } from 'x-framework-core';
 import { Observable } from 'rxjs';
 import {
@@ -54,6 +52,7 @@ import { map } from 'rxjs/operators';
 import { MenuController } from '@ionic/angular';
 import { X_CONFIG } from '../../config/x-config';
 import { XConfig } from '../../config/app-config';
+import { PlatformLocation } from '@angular/common';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { XManagerService } from 'x-framework-services';
 import { NavPageItems } from '../../config/page.config';
@@ -266,7 +265,8 @@ export class VPageComponent extends XPageComponent {
     public menuController: MenuController,
     public managerService: XManagerService,
     public changeDetector: ChangeDetectorRef,
-    @Inject(X_CONFIG) public config: XConfig
+    @Inject(X_CONFIG) public config: XConfig,
+    public platformLocation: PlatformLocation
   ) {
     super(
       zone,
@@ -276,7 +276,8 @@ export class VPageComponent extends XPageComponent {
       menuController,
       managerService,
       changeDetector,
-      config
+      config,
+      platformLocation
     );
 
     //
