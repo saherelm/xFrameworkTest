@@ -15,24 +15,23 @@ import {
   XFormConfig,
   XFormUpdateOn,
   XMarkdownMode,
-  XFormBaseAction,
   XFormControlType,
   XFormControlConfig,
-  XFormControlAction,
+  XFormMapControlConfig,
   XFormRadioControlConfig,
   XFormSelectControlConfig,
   XFormSelectControlOption,
   XFormSliderControlConfig,
   XFormMarkdownControlConfig,
+  XFormMapControlPresentType,
   XFormCheckBoxControlConfig,
   XFormDatePickerControlConfig,
   XFormControlAutoCompleteConfig,
+  XFormAvatarUploadControlConfig,
   XFormControlActionProviderModel,
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormDatePickerControlPickerPosition,
-  XFormAvatarUploadControlConfig,
-  XFormMapControlConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -594,10 +593,31 @@ export class FormPage extends VPageComponent {
       propName: 'latLong',
       type: {
         type: XFormControlType.Map,
-        config: {} as XFormMapControlConfig,
+        config: {
+          zoom: 2,
+          showZoom: true,
+          canSelect: true,
+          showRotate: true,
+          showLocate: true,
+          showSearchBar: true,
+          showClearMarker: true,
+          showGoMarkedPlace: true,
+          searchBarColor: XColorWithBrightness.Dark,
+          progressBarColor: XColorWithBrightness.Warning,
+          presentType: XFormMapControlPresentType.WithDialog,
+        } as XFormMapControlConfig,
       },
       appearance: {
         label: this.ResourceIDs.location,
+        placeholder: this.ResourceIDs.location,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.locate,
+            color: XColorWithBrightness.SuccessShade,
+            tooltip: this.ResourceIDs.map_dialog_select_title,
+          },
+        },
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
