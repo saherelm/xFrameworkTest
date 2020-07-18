@@ -604,7 +604,7 @@ export class FormPage extends VPageComponent {
           showGoMarkedPlace: true,
           searchBarColor: XColorWithBrightness.Dark,
           progressBarColor: XColorWithBrightness.Warning,
-          presentType: XFormMapControlPresentType.WithDialog,
+          presentType: XFormMapControlPresentType.Both,
         } as XFormMapControlConfig,
       },
       appearance: {
