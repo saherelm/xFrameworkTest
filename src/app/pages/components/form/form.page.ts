@@ -291,8 +291,8 @@ export class FormPage extends VPageComponent {
     this.xFormConfig = {
       name: 'PersonalForm',
       model: {
-        firstName: 'Hadi',
-        lastName: 'Khazaee Asl',
+        firstName: 'Ali',
+        lastName: 'Akhavan',
         weddingState: true,
       },
       updateOn: XFormUpdateOn.CHANGE,
@@ -604,7 +604,7 @@ export class FormPage extends VPageComponent {
           showGoMarkedPlace: true,
           searchBarColor: XColorWithBrightness.Dark,
           progressBarColor: XColorWithBrightness.Warning,
-          presentType: XFormMapControlPresentType.Both,
+          presentType: XFormMapControlPresentType.WithoutDialog,
         } as XFormMapControlConfig,
       },
       appearance: {
