@@ -7,6 +7,7 @@ import {
   toNormalString,
   isNullOrEmptyString,
   XColorWithBrightness,
+  XOneOrManyType,
 } from 'x-framework-core';
 import { Subject } from 'rxjs';
 import {
@@ -32,6 +33,7 @@ import {
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormDatePickerControlPickerPosition,
+  XFormFileUploadControlConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -60,6 +62,7 @@ interface XFormModel {
   avatar: File;
   latLong: string;
   phoneNumber: string;
+  medias: XOneOrManyType<File>;
 }
 
 @Component({
@@ -604,8 +607,46 @@ export class FormPage extends VPageComponent {
           showGoMarkedPlace: true,
           searchBarColor: XColorWithBrightness.Dark,
           progressBarColor: XColorWithBrightness.Warning,
-          presentType: XFormMapControlPresentType.WithoutDialog,
+          presentType: XFormMapControlPresentType.WithDialog,
         } as XFormMapControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.location,
+        placeholder: this.ResourceIDs.location,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.locate,
+            color: XColorWithBrightness.SuccessShade,
+            tooltip: this.ResourceIDs.map_dialog_select_title,
+          },
+        },
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('Location value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Medias ...
+    this.xFormConfig.controls[11] = {
+      index: 11,
+      propName: 'medias',
+      type: {
+        type: XFormControlType.FileUpload,
+        config: {
+          color: XColorWithBrightness.Dark,
+          showList: true,
+          showEmpty: false,
+          showActionBar: true,
+          showSearchBar: true,
+          listStickyToolbar: true,
+          actionBarColor: XColorWithBrightness.Dark,
+          searchBarColor: XColorWithBrightness.Dark,
+          searchBarInputColor: XColorWithBrightness.DarkTint,
+        } as XFormFileUploadControlConfig,
       },
       appearance: {
         label: this.ResourceIDs.location,
