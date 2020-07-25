@@ -639,30 +639,23 @@ export class FormPage extends VPageComponent {
         config: {
           color: XColorWithBrightness.Dark,
           showList: true,
-          showEmpty: false,
+          showEmpty: true,
           showActionBar: true,
           showSearchBar: true,
           listStickyToolbar: true,
+          emptyColor: XColorWithBrightness.DarkTint,
           actionBarColor: XColorWithBrightness.Dark,
           searchBarColor: XColorWithBrightness.Dark,
+          emptyMessageColor: XColorWithBrightness.DarkTint,
           searchBarInputColor: XColorWithBrightness.DarkTint,
         } as XFormFileUploadControlConfig,
       },
       appearance: {
-        label: this.ResourceIDs.location,
-        placeholder: this.ResourceIDs.location,
-        icons: {
-          prefix: {
-            applyStateColor: true,
-            name: this.IconNames.locate,
-            color: XColorWithBrightness.SuccessShade,
-            tooltip: this.ResourceIDs.map_dialog_select_title,
-          },
-        },
+        label: this.ResourceIDs.medias,
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
-          console.log('Location value changed: ', value);
+          console.log('File Upload value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;

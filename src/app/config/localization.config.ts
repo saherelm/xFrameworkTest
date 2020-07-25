@@ -321,6 +321,15 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'descriptions',
         value: 'توضیحات',
       },
+      //
+      {
+        id: 'media',
+        value: 'رسانه',
+      },
+      {
+        id: 'medias',
+        value: 'رسانه ها',
+      },
       //#endregion
 
       //
@@ -715,6 +724,15 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'descriptions',
         value: 'Description',
+      },
+      //
+      {
+        id: 'media',
+        value: 'Media',
+      },
+      {
+        id: 'medias',
+        value: 'Medias',
       },
       //#endregion
 
