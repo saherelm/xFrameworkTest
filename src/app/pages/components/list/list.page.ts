@@ -5,7 +5,7 @@ import {
   XBaseRangeRequestDto,
 } from 'x-framework-core';
 import { Component } from '@angular/core';
-import { XIconNames, XListItem } from 'x-framework-components';
+import { XIconNames, XListItem, DefaultActionBarItemIds } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
@@ -237,6 +237,9 @@ private prepareListItems() {
     //
     return li;
   });
+
+  //
+  hideActions = []; // [DefaultActionBarItemIds.Remove];
 
   //
   //#region UI Providers ...
