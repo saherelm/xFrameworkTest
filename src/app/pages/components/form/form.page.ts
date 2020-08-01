@@ -5,9 +5,9 @@ import {
   toBoolean,
   XResourceIDs,
   toNormalString,
+  XOneOrManyType,
   isNullOrEmptyString,
   XColorWithBrightness,
-  XOneOrManyType,
 } from 'x-framework-core';
 import { Subject } from 'rxjs';
 import {
@@ -33,7 +33,6 @@ import {
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormDatePickerControlPickerPosition,
-  XFormFileUploadControlConfig,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -625,37 +624,6 @@ export class FormPage extends VPageComponent {
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Location value changed: ', value);
-        },
-      },
-    } as XFormControlConfig<XFormModel>;
-
-    //
-    // Medias ...
-    this.xFormConfig.controls[11] = {
-      index: 11,
-      propName: 'medias',
-      type: {
-        type: XFormControlType.FileUpload,
-        config: {
-          color: XColorWithBrightness.Dark,
-          showList: true,
-          showEmpty: true,
-          showActionBar: true,
-          showSearchBar: true,
-          listStickyToolbar: true,
-          emptyColor: XColorWithBrightness.DarkTint,
-          actionBarColor: XColorWithBrightness.Dark,
-          searchBarColor: XColorWithBrightness.Dark,
-          emptyMessageColor: XColorWithBrightness.DarkTint,
-          searchBarInputColor: XColorWithBrightness.DarkTint,
-        } as XFormFileUploadControlConfig,
-      },
-      appearance: {
-        label: this.ResourceIDs.medias,
-      },
-      eventHandlers: {
-        valueChanged: (value: XFormControlValueChangeEventModel) => {
-          console.log('File Upload value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;
