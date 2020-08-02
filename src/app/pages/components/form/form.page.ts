@@ -479,13 +479,6 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.publish,
-        icons: {
-          prefix: {
-            applyStateColor: true,
-            name: this.IconNames.customers_club,
-            color: XColorWithBrightness.SuccessShade,
-          },
-        },
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {

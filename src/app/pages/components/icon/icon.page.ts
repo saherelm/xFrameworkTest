@@ -1,12 +1,18 @@
 import {
-  XColor,
   XSpinner,
   hasChild,
   XResourceIDs,
   isNullOrEmptyString,
+  XColorWithBrightness,
 } from 'x-framework-core';
+import {
+  XIconNames,
+  XListItem,
+  XFormConfig,
+  XFormControlType,
+  XFormControlValueChangeEventModel,
+} from 'x-framework-components';
 import { Component } from '@angular/core';
-import { XIconNames, XListItem } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
@@ -36,11 +42,11 @@ export class IconPage extends VPageComponent {
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
-  );
+  ) as any;
 
   //
   // Color Names ...
-  readonly ColorNames = Object.assign({}, XColor);
+  readonly ColorNames = Object.assign({}, XColorWithBrightness);
 
   //
   // Spinner Names ...
@@ -96,49 +102,51 @@ export class IconPage extends VPageComponent {
 
   //
   showIconList = false;
-  // modelConfig: XModelConfig<IconsListPresentation> = {
-  //   model: { show: false },
-  //   props: [
-  //     {
-  //       //
-  //       index: 0,
+  iconListFormConfig: XFormConfig<IconsListPresentation> = {
+    name: 'IconListForm',
+    controls: [
+      {
+        index: 5,
+        propName: 'show',
+        type: {
+          type: XFormControlType.CheckBox,
+          config: {
+            checkedChanged: async (checked: boolean) => {
+              //
+              console.log('checked change: ', checked);
 
-  //       //
-  //       propName: 'show',
-  //       type: XModelPropPresentType.CheckBox,
-  //       appearance: XModelPropAppearance.Fill,
+              //
+              if (!hasChild(this.iconListItems)) {
+                //
+                const loading = await this.managerService.dialogService.presentLoading(
+                  {
+                    message: this.resourceProvider(
+                      AppResourceIDs.default_loading
+                    ),
+                    spinner: this.SpinnerNames.LinesSmall,
+                  }
+                );
 
-  //       //
-  //       config: [false],
-  //       label: `${this.resourceProvider(
-  //         this.ResourceIDs.show
-  //       )} ${this.resourceProvider(this.ResourceIDs.icon_list)}`,
+                //
+                await this.prepareIconListItems();
 
-  //       //
-  //       checkedChanged: async (checked: boolean) => {
-  //         //
-  //         if (!hasChild(this.iconListItems)) {
-  //           //
-  //           const loading = await this.managerService.dialogService.presentLoading(
-  //             {
-  //               message: this.resourceProvider(AppResourceIDs.default_loading),
-  //               spinner: this.SpinnerNames.LinesSmall,
-  //             }
-  //           );
+                //
+                await loading.dismiss();
+              }
 
-  //           //
-  //           await this.prepareIconListItems();
-
-  //           //
-  //           await loading.dismiss();
-  //         }
-
-  //         //
-  //         this.showIconList = checked;
-  //       },
-  //     },
-  //   ],
-  // };
+              //
+              this.showIconList = checked;
+            },
+          },
+        },
+        appearance: {
+          label: `${this.resourceProvider(
+            this.ResourceIDs.show
+          )} ${this.resourceProvider(this.ResourceIDs.icon_list)}`,
+        },
+      },
+    ],
+  };
 
   //
   //#region LifeCycle ...

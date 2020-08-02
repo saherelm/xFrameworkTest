@@ -51,7 +51,11 @@
     <br />
     <br />
 
-    <!-- <x-form [modelConfig]="modelConfig"> </x-form> -->
+    <x-form
+      [fillColor]="ColorNames.Dark"
+      [formConfig]="iconListFormConfig"
+      [regularColor]="ColorNames.Light"
+    ></x-form>
 
     <!-- Actions -->
     <div actions>
@@ -69,23 +73,18 @@
     *ngIf="showIconList"
     [title]="resourceProvider(ResourceIDs.icon_list)"
   >
-    <!-- List Actions -->
-    <!-- TODO: Fix this ... -->
-    <!-- <x-actions
-      [showSearchBar]="true"
-      [showActionBar]="false"
-      [listComponent]="listPresenter"
-      [searchBarColor]="ColorNames.Tertiary"
-      (queryChange)="listPresenter.filterItems($event)"
-    >
-    </x-actions> -->
-
     <!-- Icons List -->
     <x-list
       #listPresenter
-      [items]="iconListItems"
+      [showToolbar]="true"
+      [stickyToolbar]="true"
+      [showSearchBar]="true"
+      [showActionBar]="false"
       [clickableItems]="true"
+      [items]="iconListItems"
       [itemTemplate]="iconTemplate"
+      [searchBarColor]="ColorNames.Dark"
+      [searchBarInputColor]="ColorNames.Dark"
       (itemSelected)="handleIconSelected($event)"
     >
     </x-list>
