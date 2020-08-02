@@ -16,6 +16,7 @@ import { CounterPage } from './counter/counter.page';
 import { StepperPage } from './stepper/stepper.page';
 import { MarkdownPage } from './markdown/markdown.page';
 import { ViewsModule } from 'src/app/views/views.module';
+import { IntroductionPage } from './introduction/introduction.page';
 import { TabNavigatorPage } from './tab-navigator/tab-navigator.page';
 import { BaseRoutes, ComponentsRoutes } from 'src/app/config/page.config';
 import { FileComponentsPage } from './file-components/file-components.page';
@@ -33,6 +34,10 @@ import { SampleModalComponent } from './small-components/sample-modal/sample-mod
         path: BaseRoutes.Default,
         redirectTo: ComponentsRoutes.SmallComponents,
         pathMatch: 'full',
+      },
+      {
+        path: ComponentsRoutes.Introduction,
+        component: IntroductionPage,
       },
       {
         path: ComponentsRoutes.SmallComponents,
@@ -127,6 +132,7 @@ import { SampleModalComponent } from './small-components/sample-modal/sample-mod
     StepperPage,
     CounterPage,
     MarkdownPage,
+    IntroductionPage,
     TabNavigatorPage,
     ExpandableListPage,
     FileComponentsPage,

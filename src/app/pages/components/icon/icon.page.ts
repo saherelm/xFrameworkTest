@@ -10,7 +10,6 @@ import {
   XListItem,
   XFormConfig,
   XFormControlType,
-  XFormControlValueChangeEventModel,
 } from 'x-framework-components';
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';

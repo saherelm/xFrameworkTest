@@ -20,9 +20,33 @@ export enum AppResourceIDs {
   home_description = 'home_description',
 
   //
-  //#region Tools ...
-  tools = 'tools',
-  tools_description = 'tools_description',
+  //#region Intro ...
+  home_introduction = 'home_introduction',
+  home_introduction_description = 'home_introduction_description',
+  //#endregion
+  //#endregion
+
+  //
+  //#region Core ...
+  core = 'core',
+  core_description = 'core_description',
+
+  //
+  //#region Intro ...
+  core_introduction = 'core_introduction',
+  core_introduction_description = 'core_introduction_description',
+  //#endregion
+  //#endregion
+
+  //
+  //#region Services ...
+  services = 'services',
+  services_description = 'services_description',
+
+  //
+  //#region Intro ...
+  services_introduction = 'services_introduction',
+  services_introduction_description = 'services_introduction_description',
   //#endregion
   //#endregion
 
@@ -30,6 +54,12 @@ export enum AppResourceIDs {
   //#region Components ...
   components = 'components',
   components_description = 'components_description',
+
+  //
+  //#region Intro ...
+  components_introduction = 'components_introduction',
+  components_introduction_description = 'components_introduction_description',
+  //#endregion
 
   //
   //#region Small Components ...
@@ -304,28 +334,77 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#region Home ...
   {
     id: 'home',
-    value: 'فریم ورک ایکس',
+    value: 'خانه',
   },
   {
     id: 'home_description',
-    value: 'شرح امکانات موجود',
+    value: 'مرور کلیات',
   },
 
   //
-  //#region Tools ...
+  //#region Intro ...
   {
-    id: 'tools',
-    value: 'ابزارهای سودمند',
+    id: 'home_introduction',
+    value: 'مقدمه',
   },
   {
-    id: 'tools_description',
-    value: 'مستندات مربوط به ابزارهای سودمند موجود',
+    id: 'home_introduction_description',
+    value: 'آشنایی با چارچوب ایکس',
+  },
+  //#endregion
+  //#endregion
+
+  //
+  //#region Core ...
+  {
+    id: 'core',
+    value: 'هسته',
+  },
+  {
+    id: 'core_description',
+    value: 'مروری بر واحد هسته از چارچوب ایکس',
+  },
+
+  //
+  //#region Intro ...
+  {
+    id: 'core_introduction',
+    value: 'مقدمه',
+  },
+  {
+    id: 'core_introduction_description',
+    value: 'آشنایی با واحد هسته از چارچوب ایکس',
+  },
+  //#endregion
+  //#endregion
+
+  //
+  //#region Services ...
+  {
+    id: 'services',
+    value: 'خدمات',
+  },
+  {
+    id: 'services_description',
+    value: 'مروری بر واحد خدمات از چارچوب ایکس',
+  },
+
+  //
+  //#region Intro ...
+  {
+    id: 'services_introduction',
+    value: 'مقدمه',
+  },
+  {
+    id: 'services_introduction_description',
+    value: 'آشنایی با واحد خدمات از چارچوب ایکس',
   },
   //#endregion
   //#endregion
 
   //
   //#region Components ...
+  //
   {
     id: 'components',
     value: 'مولفه ها',
@@ -334,6 +413,18 @@ export const FaCustomLocales: XTranslationItem[] = [
     id: 'components_description',
     value: 'توضیح کامل مجموعه مولفه های ارائه شده توسط فریمورک ایکس',
   },
+
+  //
+  //#region Intro ...
+  {
+    id: 'components_introduction',
+    value: 'معرفی',
+  },
+  {
+    id: 'components_introduction_description',
+    value: 'آشنایی با ماژول مولفه ها',
+  },
+  //#endregion
 
   //
   //#region Small Components ...
@@ -872,22 +963,70 @@ export const EnCustomLocales: XTranslationItem[] = [
   //#region Home ...
   {
     id: 'home',
-    value: 'XFramework',
+    value: 'Home',
   },
   {
     id: 'home_description',
-    value: 'Describe available tools and options ...',
+    value: 'Overview of xFramework',
   },
 
   //
-  //#region Tools ...
+  //#region Intro ...
   {
-    id: 'tools',
-    value: 'Tools',
+    id: 'home_introduction',
+    value: 'Introduction',
   },
   {
-    id: 'tools_description',
-    value: 'Provided Tools Documentations',
+    id: 'home_introduction_description',
+    value: 'Introduction to xFramework',
+  },
+  //#endregion
+  //#endregion
+
+  //
+  //#region Core ...
+  {
+    id: 'core',
+    value: 'Core Module',
+  },
+  {
+    id: 'core_description',
+    value: 'Overview of xFramework Core Module',
+  },
+
+  //
+  //#region Intro ...
+  {
+    id: 'core_introduction',
+    value: 'Introduction',
+  },
+  {
+    id: 'core_introduction_description',
+    value: 'Introduction to xFramework Core Module',
+  },
+  //#endregion
+  //#endregion
+
+  //
+  //#region Services ...
+  {
+    id: 'services',
+    value: 'Services Module',
+  },
+  {
+    id: 'services_description',
+    value: 'Overview of xFramework Services Module',
+  },
+
+  //
+  //#region Intro ...
+  {
+    id: 'services_introduction',
+    value: 'Introduction',
+  },
+  {
+    id: 'services_introduction_description',
+    value: 'Introduction to xFramework Services Module',
   },
   //#endregion
   //#endregion
@@ -902,6 +1041,18 @@ export const EnCustomLocales: XTranslationItem[] = [
     id: 'components_description',
     value: 'Describe all provided Components in XFramework',
   },
+
+  //
+  //#region Intro ...
+  {
+    id: 'components_introduction',
+    value: 'Introduction',
+  },
+  {
+    id: 'components_introduction_description',
+    value: 'Introduction to xFramework Components Module',
+  },
+  //#endregion
 
   //
   //#region Small Components ...

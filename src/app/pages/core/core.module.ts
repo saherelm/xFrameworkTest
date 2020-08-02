@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ViewsModule } from '../../views/views.module';
-import { BaseRoutes, HomeRoutes } from 'src/app/config/page.config';
 import { IntroductionPage } from './introduction/introduction.page';
+import { BaseRoutes, ServicesRoutes } from 'src/app/config/page.config';
 
 @NgModule({
   imports: [
@@ -12,15 +12,15 @@ import { IntroductionPage } from './introduction/introduction.page';
     RouterModule.forChild([
       {
         path: BaseRoutes.Default,
-        redirectTo: HomeRoutes.Introduction,
+        redirectTo: ServicesRoutes.Introduction,
         pathMatch: 'full',
       },
       {
-        path: HomeRoutes.Introduction,
+        path: ServicesRoutes.Introduction,
         component: IntroductionPage,
       },
     ]),
   ],
   declarations: [IntroductionPage],
 })
-export class HomePageModule {}
+export class CorePageModule {}

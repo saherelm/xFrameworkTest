@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Pages, BaseRoutes } from './config/page.config';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   //
@@ -16,6 +16,22 @@ const routes: Routes = [
     path: Pages.Home.baseRoute,
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
+  },
+  //
+  // Core ...
+  {
+    path: Pages.Core.baseRoute,
+    loadChildren: () =>
+      import('./pages/core/core.module').then((m) => m.CorePageModule),
+  },
+  //
+  // Services ...
+  {
+    path: Pages.Services.baseRoute,
+    loadChildren: () =>
+      import('./pages/services/services.module').then(
+        (m) => m.ServicesPageModule
+      ),
   },
   //
   // Components ...

@@ -16,12 +16,25 @@ export enum BaseRoutes {
 export enum HomeRoutes {
   Default = 'home',
   Home = 'home',
-  Tools = 'tools',
+  Introduction = 'introduction',
+}
+
+export enum CoreRoutes {
+  Default = 'core',
+  Core = 'core',
+  Introduction = 'introduction',
+}
+
+export enum ServicesRoutes {
+  Default = 'services',
+  Services = 'services',
+  Introduction = 'introduction',
 }
 
 export enum ComponentsRoutes {
   Default = 'components',
   Components = 'components',
+  Introduction = 'introduction',
   SmallComponents = 'small-components',
   Card = 'card',
   Icon = 'icon',
@@ -46,6 +59,8 @@ export enum ComponentsRoutes {
 export enum AppRoutes {
   Default = BaseRoutes.Default,
   Home = HomeRoutes.Default,
+  Core = CoreRoutes.Default,
+  Services = ServicesRoutes.Default,
   Components = ComponentsRoutes.Default,
   Unknown = BaseRoutes.Unknown,
 }
@@ -55,11 +70,24 @@ export enum AppRoutes {
 //#region Page Configs ...
 export enum PageName {
   //
+  // Home ...
   Home = AppRoutes.Home,
-  Tools = HomeRoutes.Tools,
+  HomeIntoduction = HomeRoutes.Introduction,
 
   //
+  // Core ...
+  Core = AppRoutes.Core,
+  CoreIntoduction = CoreRoutes.Introduction,
+
+  //
+  // Services ...
+  Services = AppRoutes.Services,
+  ServicesIntoduction = ServicesRoutes.Introduction,
+
+  //
+  // Components ...
   Components = AppRoutes.Components,
+  ComponentsIntoduction = ComponentsRoutes.Introduction,
   SmallComponents = ComponentsRoutes.SmallComponents,
   Card = ComponentsRoutes.Card,
   Icon = ComponentsRoutes.Icon,
@@ -70,7 +98,6 @@ export enum PageName {
   Grid = ComponentsRoutes.Grid,
   List = ComponentsRoutes.List,
   Map = ComponentsRoutes.Map,
-  //
   MarkDown = ComponentsRoutes.MarkDown,
   ExpandableList = ComponentsRoutes.ExpandableList,
   ExpandablePanel = ComponentsRoutes.ExpandablePanel,
@@ -102,15 +129,63 @@ export const PageIndex: PageIndexType = {
     description: AppResourceIDs.home_description,
     childs: [
       //
-      // Tools ...
+      // Intoduction ...
       {
-        icon: XIconNames.list,
-        id: `${PageName.Tools}`,
-        name: `${PageName.Tools}`,
-        title: AppResourceIDs.tools,
-        baseRoute: `${HomeRoutes.Tools}`,
-        description: AppResourceIDs.tools_description,
-        route: ['/', `${AppRoutes.Home}`, `${HomeRoutes.Tools}`],
+        icon: XIconNames.guide,
+        id: `${PageName.HomeIntoduction}`,
+        name: `${PageName.HomeIntoduction}`,
+        title: AppResourceIDs.home_introduction,
+        baseRoute: `${HomeRoutes.Introduction}`,
+        description: AppResourceIDs.home_introduction_description,
+        route: ['/', `${AppRoutes.Home}`, `${HomeRoutes.Introduction}`],
+      },
+    ],
+  },
+
+  //
+  Core: {
+    icon: XIconNames.event,
+    id: `${PageName.Core}`,
+    name: `${PageName.Core}`,
+    title: AppResourceIDs.core,
+    baseRoute: `${AppRoutes.Core}`,
+    route: ['/', `${AppRoutes.Core}`],
+    description: AppResourceIDs.core_description,
+    childs: [
+      //
+      // Intoduction ...
+      {
+        icon: XIconNames.guide,
+        id: `${PageName.CoreIntoduction}`,
+        name: `${PageName.CoreIntoduction}`,
+        title: AppResourceIDs.core_introduction,
+        baseRoute: `${CoreRoutes.Introduction}`,
+        description: AppResourceIDs.core_introduction_description,
+        route: ['/', `${AppRoutes.Core}`, `${CoreRoutes.Introduction}`],
+      },
+    ],
+  },
+
+  //
+  Services: {
+    icon: XIconNames.job,
+    id: `${PageName.Services}`,
+    name: `${PageName.Services}`,
+    title: AppResourceIDs.services,
+    baseRoute: `${AppRoutes.Services}`,
+    route: ['/', `${AppRoutes.Services}`],
+    description: AppResourceIDs.services_description,
+    childs: [
+      //
+      // Intoduction ...
+      {
+        icon: XIconNames.guide,
+        id: `${PageName.ServicesIntoduction}`,
+        name: `${PageName.ServicesIntoduction}`,
+        title: AppResourceIDs.services_introduction,
+        baseRoute: `${ServicesRoutes.Introduction}`,
+        description: AppResourceIDs.services_introduction_description,
+        route: ['/', `${AppRoutes.Services}`, `${ServicesRoutes.Introduction}`],
       },
     ],
   },
@@ -125,6 +200,21 @@ export const PageIndex: PageIndexType = {
     route: ['/', `${AppRoutes.Components}`],
     description: AppResourceIDs.components_description,
     childs: [
+      //
+      // Intoduction ...
+      {
+        icon: XIconNames.guide,
+        id: `${PageName.ComponentsIntoduction}`,
+        name: `${PageName.ComponentsIntoduction}`,
+        title: AppResourceIDs.components_introduction,
+        baseRoute: `${ComponentsRoutes.Introduction}`,
+        description: AppResourceIDs.components_introduction_description,
+        route: [
+          '/',
+          `${AppRoutes.Components}`,
+          `${ComponentsRoutes.Introduction}`,
+        ],
+      },
       //
       // SmallComponents ...
       {
@@ -363,31 +453,38 @@ export const PageIndex: PageIndexType = {
 export const Pages = {
   //
   Home: PageIndex.Home,
-  Tools: PageIndex.Home.childs[0],
+  HomeIntroduction: PageIndex.Home.childs[0],
+
+  //
+  Core: PageIndex.Core,
+  CoreIntroduction: PageIndex.Core.childs[0],
+
+  //
+  Services: PageIndex.Services,
+  ServicesIntroduction: PageIndex.Services.childs[0],
 
   //
   Components: PageIndex.Components,
-  SmallComponents: PageIndex.Components.childs[0],
-  Card: PageIndex.Components.childs[1],
-  Icon: PageIndex.Components.childs[2],
-  Counter: PageIndex.Components.childs[3],
-  Fab: PageIndex.Components.childs[4],
-  FileUpload: PageIndex.Components.childs[5],
-  Form: PageIndex.Components.childs[6],
-  Grid: PageIndex.Components.childs[7],
-  List: PageIndex.Components.childs[8],
-  Map: PageIndex.Components.childs[9],
-
-  //
-  MarkDown: PageIndex.Components.childs[10],
-  ExpandableList: PageIndex.Components.childs[11],
-  ExpandablePanel: PageIndex.Components.childs[12],
-  Slider: PageIndex.Components.childs[13],
-  Stepper: PageIndex.Components.childs[14],
-  Tabs: PageIndex.Components.childs[15],
-  Table: PageIndex.Components.childs[16],
-  Page: PageIndex.Components.childs[17],
-  TabNavigator: PageIndex.Components.childs[18],
+  ComponentsIntroduction: PageIndex.Components.childs[0],
+  SmallComponents: PageIndex.Components.childs[1],
+  Card: PageIndex.Components.childs[2],
+  Icon: PageIndex.Components.childs[3],
+  Counter: PageIndex.Components.childs[4],
+  Fab: PageIndex.Components.childs[5],
+  FileUpload: PageIndex.Components.childs[6],
+  Form: PageIndex.Components.childs[7],
+  Grid: PageIndex.Components.childs[8],
+  List: PageIndex.Components.childs[9],
+  Map: PageIndex.Components.childs[10],
+  MarkDown: PageIndex.Components.childs[11],
+  ExpandableList: PageIndex.Components.childs[12],
+  ExpandablePanel: PageIndex.Components.childs[13],
+  Slider: PageIndex.Components.childs[14],
+  Stepper: PageIndex.Components.childs[15],
+  Tabs: PageIndex.Components.childs[16],
+  Table: PageIndex.Components.childs[17],
+  Page: PageIndex.Components.childs[18],
+  TabNavigator: PageIndex.Components.childs[19],
 };
 
 //
@@ -401,41 +498,24 @@ export const NavPageItems: XNavigatorListItem[] = [
   //#endregion
 
   //
+  //#region Core ...
+  {
+    ...toNavigatiorListItem(PageIndex.Core),
+  },
+  //#endregion
+
+  //
+  //#region Services ...
+  {
+    ...toNavigatiorListItem(PageIndex.Services),
+  },
+  //#endregion
+
+  //
   //#region Components ...
   {
     ...toNavigatiorListItem(PageIndex.Components),
   },
   //#endregion
-
-  //
-  // Test ...
-  // {
-  //   id: '3',
-  //   // data: Pages.Home,
-  //   title: Pages.Home.title,
-  //   routerDirection: 'root',
-  //   //
-  //   // Comment this for Prevent Routing Change ...
-  //   // href: Pages.Home.route,
-  //   description: Pages.Home.description,
-  //   childs: [
-  //     {
-  //       id: '31',
-  //       title: 'TEMP HEADER',
-  //       routerDirection: 'root',
-  //       childs: [
-  //         {
-  //           id: '311',
-  //           title: 'TEMP CHILD 1',
-  //           routerDirection: 'root',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: '4',
-  //   title: 'TEST',
-  // },
 ];
 //#endregion
