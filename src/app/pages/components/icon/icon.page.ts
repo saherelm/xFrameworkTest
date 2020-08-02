@@ -112,9 +112,6 @@ export class IconPage extends VPageComponent {
           config: {
             checkedChanged: async (checked: boolean) => {
               //
-              console.log('checked change: ', checked);
-
-              //
               if (!hasChild(this.iconListItems)) {
                 //
                 const loading = await this.managerService.dialogService.presentLoading(
