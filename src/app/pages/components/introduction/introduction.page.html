@@ -4,4 +4,22 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
+  <!-- Content -->
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
+    <!-- Content -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('content')"
+    ></x-markdown>
+
+    <!-- Actions -->
+    <div actions>
+      <a
+        target="_blank"
+        href="./assets/docs/x-framework-components/overview.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
 </v-page>

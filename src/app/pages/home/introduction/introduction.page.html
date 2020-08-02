@@ -4,4 +4,23 @@
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowSubTitle]="toolbarShowSubTitle"
 >
+  <!-- Content -->
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
+    <!-- Content -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('content')"
+    ></x-markdown>
+
+    <!-- Maintainer -->
+    <v-maintainer></v-maintainer>
+
+    <!-- Actions -->
+    <div actions>
+      <a target="_blank" href="./assets/docs/index.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
 </v-page>

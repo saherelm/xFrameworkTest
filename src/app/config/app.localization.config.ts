@@ -12,6 +12,10 @@ export enum AppResourceIDs {
   //
   english = 'english',
   persian = 'persian',
+
+  //
+  maintainer_title = 'maintainer_title',
+  maintainer_name = 'maintainer_name',
   //#endregion
 
   //
@@ -328,6 +332,16 @@ export const FaCustomLocales: XTranslationItem[] = [
     id: 'english',
     value: 'انگلیسی',
   },
+
+  //
+  {
+    id: 'maintainer_title',
+    value: 'طراح و توسعه دهنده:',
+  },
+  {
+    id: 'maintainer_name',
+    value: 'هادی خزاعی اصل',
+  },
   //#endregion
 
   //
@@ -418,11 +432,11 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#region Intro ...
   {
     id: 'components_introduction',
-    value: 'معرفی',
+    value: 'مقدمه',
   },
   {
     id: 'components_introduction_description',
-    value: 'آشنایی با ماژول مولفه ها',
+    value: 'آشنایی با واحد مولفه ها',
   },
   //#endregion
 
@@ -956,6 +970,16 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'english',
     value: 'English',
+  },
+
+  //
+  {
+    id: 'maintainer_title',
+    value: 'Design and Develop',
+  },
+  {
+    id: 'maintainer_name',
+    value: 'Hadi Khazaee Asl',
   },
   //#endregion
 

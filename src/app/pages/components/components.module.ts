@@ -32,7 +32,7 @@ import { SampleModalComponent } from './small-components/sample-modal/sample-mod
     RouterModule.forChild([
       {
         path: BaseRoutes.Default,
-        redirectTo: ComponentsRoutes.SmallComponents,
+        redirectTo: ComponentsRoutes.Introduction,
         pathMatch: 'full',
       },
       {

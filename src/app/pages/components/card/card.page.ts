@@ -25,7 +25,7 @@ export class CardPage extends VPageComponent {
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
-  );
+  ) as any;
 
   //
   // Color Names ...

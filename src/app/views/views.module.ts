@@ -44,9 +44,10 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VPageComponent } from './v-page/v-page.component';
+import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
 
 @NgModule({
-  declarations: [VPageComponent],
+  declarations: [VPageComponent, VMaintainerComponent],
   providers: [
     XManagerService,
     //
@@ -160,6 +161,7 @@ import { VPageComponent } from './v-page/v-page.component';
 
     //
     VPageComponent,
+    VMaintainerComponent,
   ],
 })
 export class ViewsModule {}
