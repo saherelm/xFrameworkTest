@@ -343,6 +343,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'descriptions',
         value: 'توضیحات',
       },
+
+      //
+      {
+        id: 'type',
+        value: 'نوع',
+      },
       //
       {
         id: 'media',
@@ -768,6 +774,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'descriptions',
         value: 'Description',
+      },
+
+      //
+      {
+        id: 'type',
+        value: 'Type',
       },
       //
       {

@@ -13,36 +13,8 @@
       [content]="getContent('content')"
     ></x-markdown>
 
-    <!-- Sample 1 -->
-    <x-stepper
-      [showLabel]="true"
-      [wrapWithCard]="true"
-      [cardTitle]="'Title'"
-      [isPageStepper]="true"
-      [labelPosition]="'bottom'"
-    >
-      <!-- Step 1 -->
-      <x-step [hasNext]="true" [disableNext]="xFormStepOne.status !== 'VALID'">
-        <div x-step-label>
-          Step ONe
-        </div>
+    <!-- Stepper Type -->
 
-        <x-form #xFormStepOne [modelConfig]="stepOneModelConfig"></x-form>
-      </x-step>
-
-      <!-- Step 2 -->
-      <x-step
-        [hasPrev]="true"
-        [hasReset]="true"
-        [disableReset]="xFormStepTwo.status !== 'VALID'"
-      >
-        <div x-step-label>
-          Step TWo
-        </div>
-
-        <x-form #xFormStepTwo [modelConfig]="stepTwoModelConfig"></x-form>
-      </x-step>
-    </x-stepper>
 
     <!-- Actions -->
     <div actions>
@@ -53,4 +25,35 @@
       >
     </div>
   </x-card>
+
+  <!-- Sample 1 -->
+  <x-stepper
+    [isInPage]="true"
+    [showLabel]="true"
+    [wrapWithCard]="true"
+    [cardTitle]="'Title'"
+    [labelPosition]="'bottom'"
+  >
+    <!-- Step 1 -->
+    <x-step [hasNext]="true" [disableNext]="!xFormStepOne.isStatusValid">
+      <div x-step-label>
+        Step ONe
+    </div>
+
+      <x-form #xFormStepOne [formConfig]="stepOneModelConfig" (statusChanged)="handleFormOneStatusChanged($event, xFormStepOne)"></x-form>
+    </x-step>
+
+    <!-- Step 2 -->
+    <x-step
+      [hasPrev]="true"
+      [hasReset]="true"
+      [disableReset]="xFormStepTwo.status !== 'VALID'"
+    >
+      <div x-step-label>
+        Step TWo
+      </div>
+
+      <x-form #xFormStepTwo [formConfig]="stepTwoModelConfig"></x-form>
+    </x-step>
+  </x-stepper>
 </v-page>

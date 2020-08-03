@@ -3,6 +3,10 @@ import {
   XIconNames,
   XFormConfig,
   XFormControlType,
+  XFormStatusChangeEventModel,
+  XFormComponent,
+  XStepperType,
+  XStepperTypeIdentifier,
 } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
@@ -18,6 +22,10 @@ interface StepTwo {
   id: number;
   userName: string;
   password: string;
+}
+
+interface StepperPresentationType {
+  type: XStepperTypeIdentifier;
 }
 
 @Component({
@@ -63,6 +71,31 @@ export class StepperPage extends VPageComponent {
 
   //
   readonly sample1 = '```' + '```';
+
+  //
+  readonly StepperTypes = Object.assign({}, XStepperType);
+
+  //
+  stepperPresentationTypes = []
+  stepperPresentationTypeFormConfig: XFormConfig<StepperPresentationType> = {
+    controls: [
+      //
+      // Id ...
+      {
+        index: 0,
+        propName: 'type',
+        type: {
+          type: XFormControlType.Select,
+          config: {
+
+          }
+        },
+        appearance: {
+          label: this.ResourceIDs.type,
+        },
+      },
+    ],
+  };
 
   //
   stepOneModelConfig: XFormConfig<StepOne> = {
@@ -176,6 +209,13 @@ export class StepperPage extends VPageComponent {
 
     //
     return result || '';
+  }
+
+  handleFormOneStatusChanged(
+    event: XFormStatusChangeEventModel,
+    form: XFormComponent
+  ) {
+    console.log('status changed: ', event, form.isStatusValid);
   }
   //#endregion
 }
