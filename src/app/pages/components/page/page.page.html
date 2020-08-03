@@ -13,6 +13,14 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <!-- Sample -->
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
     <!-- Actions -->
     <div actions>
       <a

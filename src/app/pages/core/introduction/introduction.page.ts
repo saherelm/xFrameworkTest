@@ -42,10 +42,16 @@ export class IntroductionPage extends VPageComponent {
   // Content ...
   readonly contentFa = `
   # ${this.toolbarTitle}
+این واحد شامل کلیه نیازمندی های پایه چارچوب است.
+
+برای آشنایی با اجزاء این واحد‌‌ مستندات آن را مورد مطالعه قرار دهید.
   `;
 
   readonly contentEn = `
   # ${this.toolbarTitle}
+this module contains all required dependencies for xFramework.
+
+for complete descriptions please read this module documentaions.
   `;
   //#endregion
 

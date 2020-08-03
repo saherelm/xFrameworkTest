@@ -1,8 +1,24 @@
 import { Component } from '@angular/core';
-import { XIconNames } from 'x-framework-components';
+import {
+  XIconNames,
+  XFormConfig,
+  XFormControlType,
+} from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
+
+interface StepOne {
+  id: number;
+  name: string;
+  family: string;
+}
+
+interface StepTwo {
+  id: number;
+  userName: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-stepper',
@@ -26,7 +42,7 @@ export class StepperPage extends VPageComponent {
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
-  );
+  ) as any;
 
   //
   readonly ColorNames = Object.assign({}, XColor);
@@ -47,6 +63,92 @@ export class StepperPage extends VPageComponent {
 
   //
   readonly sample1 = '```' + '```';
+
+  //
+  stepOneModelConfig: XFormConfig<StepOne> = {
+    name: 'StepOneForm',
+    controls: [
+      //
+      // Id ...
+      {
+        index: 0,
+        propName: 'id',
+        type: {
+          type: XFormControlType.Number,
+        },
+        appearance: {
+          label: this.ResourceIDs.id,
+        },
+      },
+      //
+      // Name ...
+      {
+        index: 1,
+        propName: 'name',
+        type: {
+          type: XFormControlType.Text,
+        },
+        appearance: {
+          label: this.ResourceIDs.first_name,
+        },
+      },
+      //
+      // Family ...
+      {
+        index: 2,
+        propName: 'family',
+        type: {
+          type: XFormControlType.Text,
+        },
+        appearance: {
+          label: this.ResourceIDs.last_name,
+        },
+      },
+    ],
+  };
+
+  //
+  stepTwoModelConfig: XFormConfig<StepTwo> = {
+    name: 'StepTwoForm',
+    controls: [
+      //
+      // Id ...
+      {
+        index: 0,
+        propName: 'id',
+        type: {
+          type: XFormControlType.Number,
+        },
+        appearance: {
+          label: this.ResourceIDs.id,
+        },
+      },
+      //
+      // Username ...
+      {
+        index: 1,
+        propName: 'userName',
+        type: {
+          type: XFormControlType.Text,
+        },
+        appearance: {
+          label: this.ResourceIDs.username,
+        },
+      },
+      //
+      // Password ...
+      {
+        index: 2,
+        propName: 'password',
+        type: {
+          type: XFormControlType.Password,
+        },
+        appearance: {
+          label: this.ResourceIDs.password,
+        },
+      },
+    ],
+  };
 
   //
   //#region UI Providers ...

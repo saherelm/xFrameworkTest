@@ -42,10 +42,18 @@ export class IntroductionPage extends VPageComponent {
   // Content ...
   readonly contentFa = `
   # ${this.toolbarTitle}
+
+این واحد در زمره اصلی ترین اجزاء چارچوب ایفای نقش می کند و شامل کلیه مولفه های بصری قابل استفاده در طراحی و پیاده سازی برنامه های کاربردی است.
+
+شناخت عمیق کلیه اجزاء این واحد در تسریع فرآیند توسعه بسیار لازم و ضروری است.
   `;
 
   readonly contentEn = `
   # ${this.toolbarTitle}
+
+this module is one of most important modules of xFramework and contains all provided UI Components which used to design and develop Applications.
+
+getting deep dive into all components of this module is very usefull to make easier the Design and Develop proccess of Applications.
   `;
   //#endregion
 

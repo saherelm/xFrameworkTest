@@ -42,6 +42,28 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'error',
         value: 'خطا',
       },
+
+      //
+      {
+        id: 'username',
+        value: 'نام کاربری',
+      },
+      {
+        id: 'password',
+        value: 'کلمه عبور',
+      },
+
+      //
+      {
+        id: 'first_name',
+        value: 'نام',
+      },
+      {
+        id: 'last_name',
+        value: 'نام خانوادگی',
+      },
+
+      //
       {
         id: 'verified',
         value: 'تایید شده',
@@ -446,6 +468,28 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'error',
         value: 'Error',
       },
+
+      //
+      {
+        id: 'username',
+        value: 'Username',
+      },
+      {
+        id: 'password',
+        value: 'Password',
+      },
+
+      //
+      {
+        id: 'first_name',
+        value: 'Firstname',
+      },
+      {
+        id: 'last_name',
+        value: 'Lastname',
+      },
+
+      //
       {
         id: 'verified',
         value: 'Verified',
