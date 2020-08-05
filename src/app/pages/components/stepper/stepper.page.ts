@@ -76,26 +76,26 @@ export class StepperPage extends VPageComponent {
   readonly StepperTypes = Object.assign({}, XStepperType);
 
   //
-  stepperPresentationTypes = []
-  stepperPresentationTypeFormConfig: XFormConfig<StepperPresentationType> = {
-    controls: [
-      //
-      // Id ...
-      {
-        index: 0,
-        propName: 'type',
-        type: {
-          type: XFormControlType.Select,
-          config: {
+  stepperPresentationTypes = [];
+  // stepperPresentationTypeFormConfig: XFormConfig<StepperPresentationType> = {
+  //   controls: [
+  //     //
+  //     // Id ...
+  //     {
+  //       index: 0,
+  //       propName: 'type',
+  //       type: {
+  //         type: XFormControlType.Select,
+  //         config: {
 
-          }
-        },
-        appearance: {
-          label: this.ResourceIDs.type,
-        },
-      },
-    ],
-  };
+  //         }
+  //       },
+  //       appearance: {
+  //         label: this.ResourceIDs.type,
+  //       },
+  //     },
+  //   ],
+  // };
 
   //
   stepOneModelConfig: XFormConfig<StepOne> = {

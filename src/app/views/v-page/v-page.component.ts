@@ -73,6 +73,12 @@ export class VPageComponent extends XPageComponent {
   isNotMobileUi$: Observable<boolean>;
 
   //
+  //#region CaptureMode ...
+  @Input()
+  enableCaptureMode: XStandardType<boolean> = false;
+  //#endregion
+
+  //
   //#region Page Props ...
   private TOOLBAR_CONTENT_TEMPLATE: TemplateRef<any>;
 
@@ -355,6 +361,19 @@ export class VPageComponent extends XPageComponent {
           onlyIcon: false,
           handler: async () => {
             await this.handleChangeLocale();
+          },
+        },
+        {
+          id: 'take_screenshot',
+          icon: XIconNames.crop,
+          title: XResourceIDs.take_screenshot,
+          color: XColor.Tertiary,
+          slot: 'start',
+          onlyIcon: false,
+          handler: async () => {
+            //
+            this.enableCaptureMode = true;
+            this.detectChanges();
           },
         },
       ],

@@ -84,6 +84,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'language',
         value: 'زبان',
       },
+
+      //
+      {
+        id: 'take_screenshot',
+        value: 'تصویر برداری ازمحیط',
+      },
       //#endregion
 
       //
@@ -515,6 +521,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'language',
         value: 'Language',
+      },
+
+      //
+      {
+        id: 'take_screenshot',
+        value: 'Take Screenshot',
       },
       //#endregion
 
