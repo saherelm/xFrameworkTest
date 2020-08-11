@@ -7,10 +7,16 @@ import {
   XFormComponent,
   XStepperType,
   XStepperTypeIdentifier,
+  XFormSelectControlOption,
 } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
+import {
+  XResourceIDs,
+  isNullOrEmptyString,
+  XColor,
+  keys,
+} from 'x-framework-core';
 
 interface StepOne {
   id: number;
@@ -73,29 +79,58 @@ export class StepperPage extends VPageComponent {
   readonly sample1 = '```' + '```';
 
   //
-  readonly StepperTypes = Object.assign({}, XStepperType);
+  currentStepperType: XStepperTypeIdentifier;
+  stepperPresentationTypes = [
+    `${XStepperType.VERTICAL}`,
+    `${XStepperType.HORIZONTAL}`,
+  ];
+  stepperPresentationTypeFormConfig: XFormConfig<StepperPresentationType> = {
+    name: 'Steper_Present_Type',
+    model: {
+      type: XStepperType.HORIZONTAL,
+    },
+    controls: [
+      //
+      // Id ...
+      {
+        index: 0,
+        propName: 'type',
+        type: {
+          type: XFormControlType.Select,
+          config: {
+            multiple: false,
+            options: this.stepperPresentationTypes.map((k) => {
+              return {
+                value: k,
+                viewValue: this.resourceProvider(k),
+              } as XFormSelectControlOption<XStepperTypeIdentifier>;
+            }),
+          },
+        },
+        appearance: {
+          label: this.ResourceIDs.type,
+        },
+        eventHandlers: {
+          valueChanged: (model) => {
+            //
+            if (!model || !model.value) {
+              return;
+            }
 
-  //
-  stepperPresentationTypes = [];
-  // stepperPresentationTypeFormConfig: XFormConfig<StepperPresentationType> = {
-  //   controls: [
-  //     //
-  //     // Id ...
-  //     {
-  //       index: 0,
-  //       propName: 'type',
-  //       type: {
-  //         type: XFormControlType.Select,
-  //         config: {
+            //
+            const type = model.value as XStepperTypeIdentifier;
+            if (!type) {
+              return;
+            }
 
-  //         }
-  //       },
-  //       appearance: {
-  //         label: this.ResourceIDs.type,
-  //       },
-  //     },
-  //   ],
-  // };
+            //
+            this.currentStepperType = type;
+            this.detectChanges();
+          },
+        },
+      },
+    ],
+  };
 
   //
   stepOneModelConfig: XFormConfig<StepOne> = {
