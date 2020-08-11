@@ -1,12 +1,14 @@
 import {
   Input,
   Inject,
+  Output,
   NgZone,
   Renderer2,
   Component,
   ViewChild,
   ElementRef,
   TemplateRef,
+  EventEmitter,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
@@ -76,6 +78,18 @@ export class VPageComponent extends XPageComponent {
   //#region CaptureMode ...
   @Input()
   enableCaptureMode: XStandardType<boolean> = false;
+
+  @Input()
+  downloadCapturedImage: XStandardType<boolean> = true;
+
+  @Input()
+  captureTopOffset: XStandardType<number> = 0;
+
+  @Input()
+  captureBottomOffset: XStandardType<number> = 0;
+
+  @Output()
+  imageCaptured = new EventEmitter<string | Blob>();
   //#endregion
 
   //
@@ -307,6 +321,14 @@ export class VPageComponent extends XPageComponent {
     super.afterViewInit();
 
     //
+    const showToolbar = await this.getValueAsync(this.showToolbar);
+    if (showToolbar) {
+      //
+      this.captureTopOffset = 0;
+      this.detectChanges();
+    }
+
+    //
     this.managerService.dispatchResizeEvent();
   }
 
@@ -413,6 +435,18 @@ export class VPageComponent extends XPageComponent {
     //
     // Run Handler ...
     await handler();
+  }
+
+  async handleImageCaptured(image: string | Blob) {
+    //
+    console.log('imageCaptured: ', image);
+
+    //
+    this.imageCaptured.emit(image);
+
+    //
+    this.enableCaptureMode = false;
+    this.detectChanges();
   }
   //#endregion
 
