@@ -6,10 +6,10 @@
 >
   <!-- Content -->
   <x-markdown
+    [isInPage]="true"
     [mode]="'preview'"
     [hasToolbar]="false"
     [wrapWithCard]="true"
-    [isInPage]="true"
     [content]="getContent('content')"
   ></x-markdown>
 
@@ -28,9 +28,6 @@
       <div x-panel-title>
         {{ resourceProvider(ResourceIDs.button) }}
       </div>
-      <!-- <div x-panel-description>
-        {{ resourceProvider(ResourceIDs.button_description) }}
-      </div> -->
 
       <br />
 

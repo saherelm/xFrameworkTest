@@ -47,7 +47,7 @@ export class SmallComponentsPage extends VPageComponent {
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
-  );
+  ) as any;
 
   //
   // Color Names ...

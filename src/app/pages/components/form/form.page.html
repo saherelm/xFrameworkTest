@@ -13,16 +13,6 @@
       [content]="getContent('content')"
     ></x-markdown>
 
-    <x-form
-      *ngIf="xFormConfig"
-      [formConfig]="xFormConfig"
-      [fillColor]="ColorNames.Dark"
-      [regularColor]="ColorNames.Light"
-      [activeColor]="ColorNames.Primary"
-      [actionProvider]="formActionProvider"
-      [invalidColor]="ColorNames.DangerShade"
-    ></x-form>
-
     <!-- Actions -->
     <div actions>
       <a
@@ -32,6 +22,38 @@
       >
     </div>
   </x-card>
+
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample2"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+  ></x-markdown>
+
+  <!-- Form -->
+  <x-form
+    [isInPage]="true"
+    *ngIf="xFormConfig"
+    [wrapWithCard]="true"
+    [formConfig]="xFormConfig"
+    [fillColor]="ColorNames.Dark"
+    [regularColor]="ColorNames.Light"
+    [activeColor]="ColorNames.Primary"
+    [actionProvider]="formActionProvider"
+    [invalidColor]="ColorNames.DangerShade"
+  ></x-form>
 </v-page>
 
 <ng-template #nameAutoCompleteRef let-item>

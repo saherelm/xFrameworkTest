@@ -48,7 +48,7 @@ export class TablePage extends VPageComponent {
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
-  );
+  ) as any;
 
   //
   readonly IconNames = Object.assign({}, XIconNames);

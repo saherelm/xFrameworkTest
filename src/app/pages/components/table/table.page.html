@@ -13,41 +13,6 @@
       [content]="getContent('content')"
     ></x-markdown>
 
-    <!-- Samples -->
-    <x-markdown
-      [mode]="'preview'"
-      [content]="sample1"
-      [hasToolbar]="false"
-      [cssClass]="'code-block'"
-    ></x-markdown>
-
-    <x-markdown
-      [mode]="'preview'"
-      [content]="sample2"
-      [hasToolbar]="false"
-      [cssClass]="'code-block'"
-    ></x-markdown>
-
-    <x-table
-      [showHeader]="true"
-      [showSearchBar]="true"
-      [showPaginator]="true"
-      [showActionBar]="true"
-      [selectableRows]="true"
-      [color]="ColorNames.Medium"
-      [properties]="tempTableProps"
-      [headerColor]="ColorNames.Dark"
-      [actionBarColor]="ColorNames.DarkShade"
-      [searchBarColor]="ColorNames.DarkShade"
-      [paginatorColor]="ColorNames.DarkShade"
-      (rowSelected)="handleRowSelected($event)"
-      [searchBarPosition]="TableItemPositions.TOP"
-      [actionBarPosition]="TableItemPositions.TOP"
-      [paginatorPosition]="TableItemPositions.BOTTOM"
-      (rowSelectionChanged)="handleRowSelectionChanged($event)"
-    >
-    </x-table>
-
     <!-- Actions -->
     <div actions>
       <a
@@ -57,4 +22,45 @@
       >
     </div>
   </x-card>
+
+  <!-- Samples -->
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+  ></x-markdown>
+
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample2"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+  ></x-markdown>
+
+  <x-table
+    [isInPage]="true"
+    [showHeader]="true"
+    [wrapWithCard]="true"
+    [showSearchBar]="true"
+    [showPaginator]="true"
+    [showActionBar]="true"
+    [selectableRows]="true"
+    [color]="ColorNames.Medium"
+    [properties]="tempTableProps"
+    [headerColor]="ColorNames.Dark"
+    [actionBarColor]="ColorNames.DarkShade"
+    [searchBarColor]="ColorNames.DarkShade"
+    [paginatorColor]="ColorNames.DarkShade"
+    (rowSelected)="handleRowSelected($event)"
+    [searchBarPosition]="TableItemPositions.TOP"
+    [actionBarPosition]="TableItemPositions.TOP"
+    [paginatorPosition]="TableItemPositions.BOTTOM"
+    (rowSelectionChanged)="handleRowSelectionChanged($event)"
+  >
+  </x-table>
 </v-page>

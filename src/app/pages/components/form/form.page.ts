@@ -108,7 +108,390 @@ export class FormPage extends VPageComponent {
   `;
 
   //
-  readonly sample1 = '```' + '```';
+  readonly sample1 =
+    '```html' +
+    `
+<x-form
+  [isInPage]="true"
+  *ngIf="xFormConfig"
+  [wrapWithCard]="true"
+  [formConfig]="xFormConfig"
+  [fillColor]="ColorNames.Dark"
+  [regularColor]="ColorNames.Light"
+  [activeColor]="ColorNames.Primary"
+  [actionProvider]="formActionProvider"
+  [invalidColor]="ColorNames.DangerShade"
+></x-form>
+  ` +
+    '```';
+  //
+  readonly sample2 =
+    '```typescript' +
+    `
+  //
+  xFormConfig: XFormConfig<XFormModel>;
+
+  //
+  private prepareFormConfig() {
+    //
+    this.xFormConfig = {
+      name: 'PersonalForm',
+      model: {
+        firstName: 'Ali',
+        lastName: 'Akhavan',
+        weddingState: true,
+      },
+      updateOn: XFormUpdateOn.CHANGE,
+      controls: [],
+    };
+
+    //
+    // First Name ...
+    this.xFormConfig.controls[0] = {
+      index: 0,
+      propName: 'firstName',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        label: this.ResourceIDs.first_name,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+          this.prepareFirstNameAutoComplete(
+            { opened: false }
+          );
+        },
+        onFocused: (name: any) => {
+          console.log(
+            'control: ', name, ', was focused ...');
+        },
+        statusChanged: (
+          model: XFormControlStatusChangeEventModel) => {
+          // console.log('status changed: ', model);
+        },
+        valueChanged: async (
+          model: XFormControlValueChangeEventModel) => {
+          //
+          console.log('value changed: ', model);
+          await this.handleFilterAutoCompleteFirstName(
+            model.value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    this.prepareFirstNameAutoComplete();
+
+    //
+    // Last Name ...
+    this.xFormConfig.controls[1] = {
+      index: 1,
+      propName: 'lastName',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        label: this.ResourceIDs.last_name,
+        tooltip: 'Insert your Last Name here ...',
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (
+          model: XFormControlStatusChangeEventModel) => {
+          console.log('status changed: ', model);
+        },
+        valueChanged: (
+          model: XFormControlValueChangeEventModel) => {
+          console.log('value changed: ', model);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Content ...
+    this.xFormConfig.controls[2] = {
+      index: 2,
+      propName: 'content',
+      type: {
+        type: XFormControlType.MarkDown,
+        config: {
+          hasToolbar: true,
+          mode: XMarkdownMode.BOTH,
+          toolbarColor: XColorWithBrightness.Dark,
+          contentChanged: (content: string) => {
+            console.log(
+              'markdown new content: ', content);
+          },
+        } as XFormMarkdownControlConfig,
+      },
+      appearance: {
+        label: AppResourceIDs.content,
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Content Type ...
+    this.xFormConfig.controls[3] = {
+      index: 3,
+      propName: 'contentType',
+      type: {
+        type: XFormControlType.Select,
+        config: {
+          multiple: false,
+          options: keys(this.ContentTypes).map((k) => {
+            return {
+              value: this.ContentTypes[k],
+              viewValue: this.resourceProvider(
+                this.ContentTypes[k]),
+            } as XFormSelectControlOption<ContentType>;
+          }),
+        } as XFormSelectControlConfig,
+      },
+      appearance: {
+        label: AppResourceIDs.content_type,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.customers_club,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        valueChanged: (
+          value: XFormControlValueChangeEventModel) => {
+          console.log('content type value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Content Visibility ...
+    this.xFormConfig.controls[4] = {
+      index: 4,
+      propName: 'visibility',
+      type: {
+        type: XFormControlType.Radio,
+        config: {
+          options: keys(this.ContentVisibilities)
+          .map((k) => {
+            return {
+              value: this.ContentVisibilities[k],
+              viewValue: this.resourceProvider(
+                this.ContentVisibilities[k]),
+            } as XFormSelectControlOption<ContentType>;
+          }),
+        } as XFormRadioControlConfig,
+      },
+      appearance: {
+        label: AppResourceIDs.visibility,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.customers_club,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        valueChanged: (
+          value: XFormControlValueChangeEventModel) => {
+          console.log(
+            'content visibility value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Publish ...
+    this.xFormConfig.controls[5] = {
+      index: 5,
+      propName: 'publish',
+      type: {
+        type: XFormControlType.CheckBox,
+        config: {
+          checkedChanged: (checked: boolean) => {
+            console.log('checked change: ', checked);
+          },
+        } as XFormCheckBoxControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.publish,
+      },
+      eventHandlers: {
+        valueChanged: (
+          value: XFormControlValueChangeEventModel) => {
+          console.log('Publish value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // BrithDate ...
+    this.xFormConfig.controls[6] = {
+      index: 6,
+      propName: 'brithDate',
+      type: {
+        type: XFormControlType.Date,
+        config: {
+          applyStateColor: true,
+          toggleIcon: XIconNames.calendar,
+          iconColor: XColorWithBrightness.SuccessShade,
+          datePickerPosition:
+            XFormDatePickerControlPickerPosition.Prefix,
+        } as XFormDatePickerControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.brithDate,
+      },
+      eventHandlers: {
+        valueChanged: (
+          value: XFormControlValueChangeEventModel) => {
+          console.log('BirthDate value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Wedding State ...
+    this.xFormConfig.controls[7] = {
+      index: 7,
+      propName: 'weddingState',
+      type: {
+        type: XFormControlType.Toggle,
+      },
+      appearance: {
+        label: this.ResourceIDs.wedding_state,
+      },
+      eventHandlers: {
+        valueChanged: async (
+          value: XFormControlValueChangeEventModel) => {
+          console.log(
+            'Wedding state value changed: ', value);
+          this.handsleHasNumberOfChild(
+            toBoolean(value.value));
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Number Of Childs ...
+    this.xFormConfig.controls[8] = {
+      index: 8,
+      propName: 'numberOfChilds',
+      type: {
+        type: XFormControlType.Hidden,
+        config: {
+          min: 0,
+          max: 15,
+          step: 1,
+          vertical: false,
+          thumbLabel: true,
+        } as XFormSliderControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.num_of_childs,
+      },
+      eventHandlers: {
+        valueChanged: (
+          value: XFormControlValueChangeEventModel) => {
+          console.log(
+            'Number of Childs value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Avatar ...
+    this.xFormConfig.controls[9] = {
+      index: 9,
+      propName: 'avatar',
+      type: {
+        type: XFormControlType.AvatarUpload,
+        config: {
+          canDrop: true,
+          color: XColorWithBrightness.Dark,
+          fileDropAreaColor: XColorWithBrightness.DarkTint,
+          placeHolderAvatar: this.managerService.getFullUrl(
+            '/assets/image/default-user-image.png'
+          ),
+        } as XFormAvatarUploadControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.avatar,
+      },
+      eventHandlers: {
+        valueChanged:
+        (value: XFormControlValueChangeEventModel) => {
+          console.log('Avatar value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Map ...
+    this.xFormConfig.controls[10] = {
+      index: 10,
+      propName: 'latLong',
+      type: {
+        type: XFormControlType.Map,
+        config: {
+          zoom: 2,
+          showZoom: true,
+          canSelect: true,
+          showRotate: true,
+          showLocate: true,
+          showSearchBar: true,
+          showClearMarker: true,
+          showGoMarkedPlace: true,
+          searchBarColor: XColorWithBrightness.Dark,
+          progressBarColor: XColorWithBrightness.Warning,
+          presentType: XFormMapControlPresentType.WithDialog,
+        } as XFormMapControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.location,
+        placeholder: this.ResourceIDs.location,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.locate,
+            color: XColorWithBrightness.SuccessShade,
+            tooltip: this.ResourceIDs.map_dialog_select_title,
+          },
+        },
+      },
+      eventHandlers: {
+        valueChanged: (
+          value: XFormControlValueChangeEventModel) => {
+          console.log('Location value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+  }
+  ` +
+    '```';
 
   //
   private NAME_AUTO_CONMPLETE_REF: TemplateRef<any>;
