@@ -14,7 +14,7 @@ export class TabPage2Page extends VPageComponent {
   //#region Props ...
   //
   //#region Page Props ...
-  titleRes = AppResourceIDs.tab_page_1;
+  titleRes = AppResourceIDs.tab_page_2;
   //#endregion
 
   //

@@ -500,8 +500,8 @@ export const PageIndex: PageIndexType = {
       // TabPage 3 ...
       {
         icon: XIconNames.list,
-        id: `${PageName.TabNavigator}`,
-        name: `${PageName.TabNavigator}`,
+        id: `${PageName.TabPage3}`,
+        name: `${PageName.TabPage3}`,
         title: AppResourceIDs.tab_page_3,
         baseRoute: `${TabsRoutes.TabPage3}`,
         description: AppResourceIDs.tab_navigator_description,

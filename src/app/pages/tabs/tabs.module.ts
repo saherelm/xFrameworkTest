@@ -6,7 +6,7 @@ import { ViewsModule } from '../../views/views.module';
 import { TabPage1Page } from './tab-page-1/tab-page-1.page';
 import { TabPage2Page } from './tab-page-2/tab-page-2.page';
 import { TabPage3Page } from './tab-page-3/tab-page-3.page';
-import { Pages, BaseRoutes, TabsRoutes } from 'src/app/config/page.config';
+import { Pages, BaseRoutes } from 'src/app/config/page.config';
 
 @NgModule({
   imports: [
@@ -16,18 +16,25 @@ import { Pages, BaseRoutes, TabsRoutes } from 'src/app/config/page.config';
       {
         path: BaseRoutes.Default,
         component: TabsPage,
-      },
-      {
-        path: `${TabsRoutes.Tabs}/${Pages.TabPage1.baseRoute}`,
-        component: TabPage1Page,
-      },
-      {
-        path: `${TabsRoutes.Tabs}/${Pages.TabPage2.baseRoute}`,
-        component: TabPage2Page,
-      },
-      {
-        path: `${TabsRoutes.Tabs}/${Pages.TabPage3.baseRoute}`,
-        component: TabPage3Page,
+        children: [
+          {
+            path: BaseRoutes.Default,
+            redirectTo: Pages.TabPage1.baseRoute,
+            pathMatch: 'full',
+          },
+          {
+            path: Pages.TabPage1.baseRoute,
+            component: TabPage1Page,
+          },
+          {
+            path: Pages.TabPage2.baseRoute,
+            component: TabPage2Page,
+          },
+          {
+            path: Pages.TabPage3.baseRoute,
+            component: TabPage3Page,
+          },
+        ],
       },
     ]),
   ],
