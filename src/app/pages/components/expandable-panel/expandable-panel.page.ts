@@ -28,7 +28,7 @@ export class ExpandablePanelPage extends VPageComponent {
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
-  );
+  ) as any;
 
   //
   readonly ColorNames = Object.assign({}, XColor);
@@ -48,7 +48,9 @@ export class ExpandablePanelPage extends VPageComponent {
   `;
 
   //
-  readonly sample1 = '```html' + `
+  readonly sample1 =
+    '```html' +
+    `
 <x-expandable-panel
   [isAccordion]="true"
   [selected]="'First'"
@@ -95,7 +97,8 @@ export class ExpandablePanelPage extends VPageComponent {
   Content 3
   </x-panel>
 </x-expandable-panel>
-` + '```';
+` +
+    '```';
 
   //
   //#region UI Providers ...

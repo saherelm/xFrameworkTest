@@ -1,7 +1,9 @@
 import {
   XIconNames,
   XNavigatorListItem,
+  toTabNavigatiorItem,
   toNavigatiorListItem,
+  XTabNavigatorItem,
 } from 'x-framework-components';
 import { XPage } from 'x-framework-core';
 import { AppResourceIDs } from './app.localization.config';
@@ -56,12 +58,21 @@ export enum ComponentsRoutes {
   TabNavigator = 'tab-navigator',
 }
 
+export enum TabsRoutes {
+  Default = 'tabs',
+  Tabs = 'tabs',
+  TabPage1 = 'tab-page-1',
+  TabPage2 = 'tab-page-2',
+  TabPage3 = 'tab-page-3',
+}
+
 export enum AppRoutes {
   Default = BaseRoutes.Default,
   Home = HomeRoutes.Default,
   Core = CoreRoutes.Default,
   Services = ServicesRoutes.Default,
   Components = ComponentsRoutes.Default,
+  TabsNav = TabsRoutes.Default,
   Unknown = BaseRoutes.Unknown,
 }
 //#endregion
@@ -107,6 +118,12 @@ export enum PageName {
   Table = ComponentsRoutes.Table,
   Page = ComponentsRoutes.Page,
   TabNavigator = ComponentsRoutes.TabNavigator,
+
+  //
+  TabsNav = AppRoutes.TabsNav,
+  TabPage1 = TabsRoutes.TabPage1,
+  TabPage2 = TabsRoutes.TabPage2,
+  TabPage3 = TabsRoutes.TabPage3,
 }
 
 export type PageNames = keyof typeof PageName;
@@ -446,6 +463,52 @@ export const PageIndex: PageIndexType = {
       },
     ],
   },
+
+  //
+  TabsNav: {
+    icon: XIconNames.list,
+    id: `${PageName.TabsNav}`,
+    name: `${PageName.TabsNav}`,
+    title: AppResourceIDs.tab_navigator,
+    baseRoute: `${AppRoutes.TabsNav}`,
+    route: ['/', `${AppRoutes.TabsNav}`],
+    description: AppResourceIDs.tab_navigator_description,
+    childs: [
+      //
+      // TabPage 1 ...
+      {
+        icon: XIconNames.list,
+        id: `${PageName.TabPage1}`,
+        name: `${PageName.TabPage1}`,
+        title: AppResourceIDs.tab_page_1,
+        baseRoute: `${TabsRoutes.TabPage1}`,
+        description: AppResourceIDs.tab_navigator_description,
+        route: ['/', `${AppRoutes.TabsNav}`, `${TabsRoutes.TabPage1}`],
+      },
+      //
+      // TabPage 2 ...
+      {
+        icon: XIconNames.list,
+        id: `${PageName.TabPage2}`,
+        name: `${PageName.TabPage2}`,
+        title: AppResourceIDs.tab_page_2,
+        baseRoute: `${TabsRoutes.TabPage2}`,
+        description: AppResourceIDs.tab_navigator_description,
+        route: ['/', `${AppRoutes.TabsNav}`, `${TabsRoutes.TabPage2}`],
+      },
+      //
+      // TabPage 3 ...
+      {
+        icon: XIconNames.list,
+        id: `${PageName.TabNavigator}`,
+        name: `${PageName.TabNavigator}`,
+        title: AppResourceIDs.tab_page_3,
+        baseRoute: `${TabsRoutes.TabPage3}`,
+        description: AppResourceIDs.tab_navigator_description,
+        route: ['/', `${AppRoutes.TabsNav}`, `${TabsRoutes.TabPage3}`],
+      },
+    ],
+  },
 };
 
 //
@@ -485,6 +548,12 @@ export const Pages = {
   Table: PageIndex.Components.childs[17],
   Page: PageIndex.Components.childs[18],
   TabNavigator: PageIndex.Components.childs[19],
+
+  //
+  TabsNav: PageIndex.TabsNav,
+  TabPage1: PageIndex.TabsNav.childs[0],
+  TabPage2: PageIndex.TabsNav.childs[1],
+  TabPage3: PageIndex.TabsNav.childs[2],
 };
 
 //
@@ -517,5 +586,19 @@ export const NavPageItems: XNavigatorListItem[] = [
     ...toNavigatiorListItem(PageIndex.Components),
   },
   //#endregion
+];
+
+//
+// Tabs Navigators Pages ...
+export const TabNavsItems: XTabNavigatorItem[] = [
+  {
+    ...toTabNavigatiorItem(Pages.TabPage1),
+  },
+  {
+    ...toTabNavigatiorItem(Pages.TabPage2),
+  },
+  {
+    ...toTabNavigatiorItem(Pages.TabPage3),
+  },
 ];
 //#endregion

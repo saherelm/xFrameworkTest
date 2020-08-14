@@ -13,32 +13,6 @@
       [content]="getContent('content')"
     ></x-markdown>
 
-    <x-markdown
-      [hasToolbar]="false"
-      [content]="sample1"
-      [cssClass]="'code-block'"
-      [mode]="MarkdownModes.PREVIEW"
-    ></x-markdown>
-
-    <x-markdown
-      [mode]="MarkdownModes.BOTH"
-      [(content)]="sampleContent1"
-      [toolbarColor]="ColorNames.Dark"
-    ></x-markdown>
-
-    <x-markdown
-      [hasToolbar]="false"
-      [content]="sample2"
-      [cssClass]="'code-block'"
-      [mode]="MarkdownModes.PREVIEW"
-    ></x-markdown>
-
-    <x-markdown
-      [hasToolbar]="false"
-      [content]="sampleContent2"
-      [mode]="MarkdownModes.PREVIEW"
-    ></x-markdown>
-
     <!-- Actions -->
     <div actions>
       <a
@@ -48,4 +22,44 @@
       >
     </div>
   </x-card>
+
+  <!-- Samples -->
+  <x-markdown
+    [isInPage]="true"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+    [mode]="MarkdownModes.PREVIEW"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <!-- Components -->
+  <x-markdown
+    [isInPage]="true"
+    [wrapWithCard]="true"
+    [mode]="MarkdownModes.BOTH"
+    [(content)]="sampleContent1"
+    [toolbarColor]="ColorNames.Dark"
+  ></x-markdown>
+
+  <!-- Samples -->
+  <x-markdown
+    [isInPage]="true"
+    [content]="sample2"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+    [mode]="MarkdownModes.PREVIEW"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <!-- Components -->
+  <x-markdown
+    [isInPage]="true"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [content]="sampleContent2"
+    [mode]="MarkdownModes.PREVIEW"
+  ></x-markdown>
 </v-page>

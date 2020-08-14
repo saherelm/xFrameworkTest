@@ -26,7 +26,7 @@ export class PagePage extends VPageComponent {
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
-  );
+  ) as any;
 
   //
   readonly ColorNames = Object.assign({}, XColor);

@@ -13,16 +13,31 @@
       [content]="getContent('content')"
     ></x-markdown>
 
-    <!-- Sample -->
-    <x-markdown
-      [mode]="'preview'"
-      [hasToolbar]="false"
-      [content]="sample1"
-      [cssClass]="'code-block'"
-    ></x-markdown>
+    <!-- Actions -->
+    <div actions>
+      <a
+        target="_blank"
+        href="./assets/docs/x-framework-components/modules/XSliderModule.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
 
-    <x-slider
-      [options]="{
+  <!-- Sample -->
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <!-- Component -->
+  <x-slider
+    [isInPage]="true"
+    [options]="{
       lazy: true,
       zoom: true,
       autoplay: true,
@@ -35,38 +50,29 @@
       speed: 400,
       pagination: true
     }"
-      [animation]="SliderAnimations.Coverflow"
-    >
-      <x-slide>
-        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
-      </x-slide>
+    [wrapWithCard]="true"
+    [animation]="SliderAnimations.Coverflow"
+  >
+    <x-slide>
+      <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+    </x-slide>
 
-      <x-slide>
-        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
-      </x-slide>
+    <x-slide>
+      <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+    </x-slide>
 
-      <x-slide>
-        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
-      </x-slide>
+    <x-slide>
+      <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+    </x-slide>
 
-      <x-slide>
-        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
-      </x-slide>
+    <x-slide>
+      <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+    </x-slide>
 
-      <x-slide>
-        <ng-container *ngTemplateOutlet="slideRef"></ng-container>
-      </x-slide>
-    </x-slider>
-
-    <!-- Actions -->
-    <div actions>
-      <a
-        target="_blank"
-        href="./assets/docs/x-framework-components/modules/XSliderModule.html"
-        >{{resourceProvider(ResourceIDs.documentation)}}</a
-      >
-    </div>
-  </x-card>
+    <x-slide>
+      <ng-container *ngTemplateOutlet="slideRef"></ng-container>
+    </x-slide>
+  </x-slider>
 </v-page>
 
 <ng-template #slideRef>

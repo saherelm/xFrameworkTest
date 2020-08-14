@@ -296,6 +296,13 @@ export enum AppResourceIDs {
   tab_navigator_description = 'tab_navigator_description',
   //#endregion
   //#endregion
+
+  //
+  //#region TabsNav ...
+  tab_page_1 = 'tab_page_1',
+  tab_page_2 = 'tab_page_2',
+  tab_page_3 = 'tab_page_3',
+  //#endregion
 }
 
 //
@@ -935,6 +942,22 @@ export const FaCustomLocales: XTranslationItem[] = [
   },
   //#endregion
   //#endregion
+
+  //
+  //#region TabsNav ...
+  {
+    id: 'tab_page_1',
+    value: 'برگه ۱',
+  },
+  {
+    id: 'tab_page_2',
+    value: 'برگه ۲',
+  },
+  {
+    id: 'tab_page_3',
+    value: 'برگه ۳',
+  },
+  //#endregion
 ];
 
 //
@@ -1572,5 +1595,21 @@ export const EnCustomLocales: XTranslationItem[] = [
     value: 'Tab Navigator Component Documentation',
   },
   //#endregion
+  //#endregion
+
+  //
+  //#region TabsNav ...
+  {
+    id: 'tab_page_1',
+    value: 'Page 1',
+  },
+  {
+    id: 'tab_page_2',
+    value: 'Page 2',
+  },
+  {
+    id: 'tab_page_3',
+    value: 'Page 3',
+  },
   //#endregion
 ];

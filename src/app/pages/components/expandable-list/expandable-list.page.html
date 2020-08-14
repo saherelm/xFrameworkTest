@@ -13,38 +13,6 @@
       [content]="getContent('content')"
     ></x-markdown>
 
-    <x-markdown
-      [mode]="'preview'"
-      [content]="sample1"
-      [hasToolbar]="false"
-      [cssClass]="'code-block'"
-    ></x-markdown>
-
-    <x-markdown
-      [mode]="'preview'"
-      [content]="sample2"
-      [hasToolbar]="false"
-      [cssClass]="'code-block'"
-    ></x-markdown>
-
-    <x-expandable-list
-      [items]="listItems"
-      [closeSiblings]="true"
-      [supportRouting]="false"
-      [showChildDetailIcon]="true"
-      [showParentDetailIcon]="true"
-      [startupState]="'expand-all'"
-      [disableParentRouting]="false"
-      [dividerColor]="ColorNames.Danger"
-      [childColor]="ColorNames.Secondary"
-      [parentColor]="ColorNames.Tertiary"
-      [highlightColor]="ColorNames.Success"
-      [parentActiveColor]="ColorNames.Danger"
-      [childActiveColor]="ColorNames.Warning"
-      (itemSelected)="handleItemSelected($event)"
-    >
-    </x-expandable-list>
-
     <!-- Actions -->
     <div actions>
       <a
@@ -54,4 +22,43 @@
       >
     </div>
   </x-card>
+
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample2"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+  ></x-markdown>
+
+  <x-expandable-list
+    [isInPage]="true"
+    [items]="listItems"
+    [wrapWithCard]="true"
+    [closeSiblings]="true"
+    [supportRouting]="false"
+    [showChildDetailIcon]="true"
+    [showParentDetailIcon]="true"
+    [startupState]="'expand-all'"
+    [disableParentRouting]="false"
+    [dividerColor]="ColorNames.Danger"
+    [childColor]="ColorNames.Secondary"
+    [parentColor]="ColorNames.Tertiary"
+    [highlightColor]="ColorNames.Success"
+    [parentActiveColor]="ColorNames.Danger"
+    [childActiveColor]="ColorNames.Warning"
+    (itemSelected)="handleItemSelected($event)"
+  >
+  </x-expandable-list>
 </v-page>

@@ -5,7 +5,11 @@ import {
   XBaseRangeRequestDto,
 } from 'x-framework-core';
 import { Component } from '@angular/core';
-import { XIconNames, XListItem, DefaultActionBarItemIds } from 'x-framework-components';
+import {
+  XIconNames,
+  XListItem,
+  DefaultActionBarItemIds,
+} from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
@@ -31,7 +35,7 @@ export class ListPage extends VPageComponent {
   readonly ResourceIDs = Object.assign(
     Object.assign({}, XResourceIDs),
     AppResourceIDs
-  );
+  ) as any;
 
   //
   readonly ColorNames = Object.assign({}, XColor);

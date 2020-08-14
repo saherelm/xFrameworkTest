@@ -42,6 +42,13 @@ const routes: Routes = [
         (m) => m.ComponentsPageModule
       ),
   },
+  //
+  // TabsNavs ...
+  {
+    path: Pages.TabsNav.baseRoute,
+    loadChildren: () =>
+      import('./pages/tabs/tabs.module').then((m) => m.TabsPageModule),
+  },
 ];
 
 @NgModule({
