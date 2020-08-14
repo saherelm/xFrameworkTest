@@ -49,7 +49,18 @@ export class TabNavigatorPage extends VPageComponent {
   `;
 
   //
-  readonly sample1 = '```' + '```';
+  readonly sample1 =
+    '```html' +
+    `
+<x-tab-navigator
+  [items]="tabItems"
+  [color]="ColorNames.Dark"
+  [iconColor]="ColorNames.Danger"
+  [highlightColor]="ColorNames.Light"
+  [selectedColor]="ColorNames.SecondaryShade"
+></x-tab-navigator>
+` +
+    '```';
 
   //
   tabsHref = Pages.TabsNav.baseRoute;

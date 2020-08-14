@@ -13,8 +13,18 @@
       [content]="getContent('content')"
     ></x-markdown>
 
+    <!-- Sample -->
+    <x-markdown
+      [mode]="'preview'"
+      [content]="sample1"
+      [hasToolbar]="false"
+      [cssClass]="'code-block'"
+    ></x-markdown>
+
     <!-- Link to ... -->
-    <a [href]="tabsHref" target="_blank">TABS Nav Page ...</a>
+    <a [href]="tabsHref" target="_blank"
+      >{{ resourceProvider(ResourceIDs.preview) }}</a
+    >
 
     <!-- Actions -->
     <div actions>

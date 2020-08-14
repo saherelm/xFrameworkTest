@@ -76,7 +76,40 @@ export class StepperPage extends VPageComponent {
   `;
 
   //
-  readonly sample1 = '```' + '```';
+  readonly sample1 =
+    '```html' +
+    `
+<!-- Stepper -->
+<x-stepper
+  isInPage="true"
+  showLabel="true"
+  wrapWithCard="true"
+  [type]="currentStepperType"
+>
+  <!-- Step 1 -->
+  <x-step [hasNext]="true" [disableNext]="xFormStepOne.status !== 'VALID'">
+    <div x-step-label>
+      Step ONe
+    </div>
+
+    <x-form #xFormStepOne [formConfig]="stepOneModelConfig"></x-form>
+  </x-step>
+
+  <!-- Step 2 -->
+  <x-step
+    [hasPrev]="true"
+    [hasReset]="true"
+    [disableReset]="xFormStepTwo.status !== 'VALID'"
+  >
+    <div x-step-label>
+      Step TWo
+    </div>
+
+    <x-form #xFormStepTwo [formConfig]="stepTwoModelConfig"></x-form>
+  </x-step>
+</x-stepper>
+` +
+    '```';
 
   //
   currentStepperType: XStepperTypeIdentifier;

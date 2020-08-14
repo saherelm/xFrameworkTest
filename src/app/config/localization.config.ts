@@ -364,6 +364,16 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'medias',
         value: 'رسانه ها',
       },
+
+      //
+      {
+        id: 'go',
+        value: 'رفتن',
+      },
+      {
+        id: 'preview',
+        value: 'پیش نمایش',
+      },
       //#endregion
 
       //
@@ -801,6 +811,16 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'medias',
         value: 'Medias',
+      },
+
+      //
+      {
+        id: 'go',
+        value: 'Go',
+      },
+      {
+        id: 'preview',
+        value: 'Preview',
       },
       //#endregion
 

@@ -26,6 +26,17 @@
     </div>
   </x-card>
 
+  <!-- Sample -->
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
   <!-- Stepper -->
   <x-stepper
     isInPage="true"
