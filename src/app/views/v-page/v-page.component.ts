@@ -324,7 +324,7 @@ export class VPageComponent extends XPageComponent {
     const showToolbar = await this.getValueAsync(this.showToolbar);
     if (showToolbar) {
       //
-      this.captureTopOffset = 0;
+      this.captureTopOffset = -56;
       this.detectChanges();
     }
 
@@ -442,7 +442,9 @@ export class VPageComponent extends XPageComponent {
     console.log('imageCaptured: ', image);
 
     //
-    this.imageCaptured.emit(image);
+    if (image) {
+      this.imageCaptured.emit(image);
+    }
 
     //
     this.enableCaptureMode = false;
