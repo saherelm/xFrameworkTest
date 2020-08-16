@@ -48,6 +48,7 @@ import {
   XSideSlotIdentifier,
   XSideTypeIdentifier,
   XTitleSlotIdentifier,
+  XListItemSlideOption,
   XContentSlotIdentifier,
 } from 'x-framework-components';
 import { map } from 'rxjs/operators';
@@ -323,8 +324,6 @@ export class VPageComponent extends XPageComponent {
     //
     const showToolbar = await this.getValueAsync(this.showToolbar);
     if (showToolbar) {
-      //
-      this.captureTopOffset = -56;
       this.detectChanges();
     }
 
@@ -371,34 +370,64 @@ export class VPageComponent extends XPageComponent {
   //#region UI Handlers ...
   async handleMoreButtonClicked(event: any) {
     //
+    const onlyIcon = false;
+
+    //
+    const slideOptions: XListItemSlideOption[] = [];
+
+    //
+    slideOptions.push({
+      id: 'change_language',
+      icon: XIconNames.language,
+      title: XResourceIDs.language,
+      color: XColor.Tertiary,
+      slot: 'start',
+      onlyIcon,
+      handler: async () => {
+        await this.handleChangeLocale();
+      },
+    });
+
+    //
+    const isCaptureModeEnabled = await this.getValueAsync(
+      this.enableCaptureMode
+    );
+    if (isCaptureModeEnabled) {
+      //
+      slideOptions.push({
+        id: 'disable_capture_mode',
+        icon: XIconNames.crop,
+        title: XResourceIDs.disable_capture_mode,
+        color: XColor.Danger,
+        slot: 'start',
+        onlyIcon,
+        handler: async () => {
+          //
+          this.enableCaptureMode = false;
+          this.detectChanges();
+        },
+      });
+    } else {
+      //
+      slideOptions.push({
+        id: 'enable_capture_mode',
+        icon: XIconNames.crop,
+        title: XResourceIDs.enable_capture_mode,
+        color: XColor.Tertiary,
+        slot: 'start',
+        onlyIcon,
+        handler: async () => {
+          //
+          this.enableCaptureMode = true;
+          this.detectChanges();
+        },
+      });
+    }
+
+    //
     const item: XListItem<any> = {
       data: '',
-      slideOptions: [
-        {
-          id: 'change_language',
-          icon: XIconNames.language,
-          title: XResourceIDs.language,
-          color: XColor.Tertiary,
-          slot: 'start',
-          onlyIcon: false,
-          handler: async () => {
-            await this.handleChangeLocale();
-          },
-        },
-        {
-          id: 'take_screenshot',
-          icon: XIconNames.crop,
-          title: XResourceIDs.take_screenshot,
-          color: XColor.Tertiary,
-          slot: 'start',
-          onlyIcon: false,
-          handler: async () => {
-            //
-            this.enableCaptureMode = true;
-            this.detectChanges();
-          },
-        },
-      ],
+      slideOptions,
     };
 
     //

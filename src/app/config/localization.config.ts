@@ -90,6 +90,14 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'take_screenshot',
         value: 'تصویر برداری ازمحیط',
       },
+      {
+        id: 'enable_capture_mode',
+        value: 'فعالسازی حالت تصویر برداری',
+      },
+      {
+        id: 'disable_capture_mode',
+        value: 'غیرفعالسازی حالت تصویر برداری',
+      },
       //#endregion
 
       //
@@ -537,6 +545,14 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'take_screenshot',
         value: 'Take Screenshot',
+      },
+      {
+        id: 'enable_capture_mode',
+        value: 'Enable Capture Mode',
+      },
+      {
+        id: 'disable_capture_mode',
+        value: 'Disable Capture Mode',
       },
       //#endregion
 
