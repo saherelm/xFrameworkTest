@@ -16,6 +16,7 @@ import { CounterPage } from './counter/counter.page';
 import { StepperPage } from './stepper/stepper.page';
 import { MarkdownPage } from './markdown/markdown.page';
 import { ViewsModule } from 'src/app/views/views.module';
+import { ColorPickerPage } from './color-picker/color-picker.page';
 import { IntroductionPage } from './introduction/introduction.page';
 import { TabNavigatorPage } from './tab-navigator/tab-navigator.page';
 import { BaseRoutes, ComponentsRoutes } from 'src/app/config/page.config';
@@ -54,6 +55,10 @@ import { SampleModalComponent } from './small-components/sample-modal/sample-mod
       {
         path: ComponentsRoutes.Counter,
         component: CounterPage,
+      },
+      {
+        path: ComponentsRoutes.ColorPicker,
+        component: ColorPickerPage,
       },
       {
         path: ComponentsRoutes.Fab,
@@ -132,6 +137,7 @@ import { SampleModalComponent } from './small-components/sample-modal/sample-mod
     StepperPage,
     CounterPage,
     MarkdownPage,
+    ColorPickerPage,
     IntroductionPage,
     TabNavigatorPage,
     ExpandableListPage,

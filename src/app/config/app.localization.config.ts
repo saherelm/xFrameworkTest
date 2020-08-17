@@ -176,6 +176,12 @@ export enum AppResourceIDs {
   //#endregion
 
   //
+  //#region ColorPicker ...
+  color_picker = 'color_picker',
+  color_picker_description = 'color_picker_description',
+  //#endregion
+
+  //
   //#region Fab ...
   fab = 'fab',
   fab_description = 'fab_description',
@@ -672,6 +678,18 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'pause',
     value: 'توقف',
+  },
+  //#endregion
+
+  //
+  //#region ColorPicker ...
+  {
+    id: 'color_picker',
+    value: 'انتخابگر رنگ',
+  },
+  {
+    id: 'color_picker_description',
+    value: 'مستندات مربوط به مولفه انتخابگر رنگ',
   },
   //#endregion
 
@@ -1326,6 +1344,18 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'pause',
     value: 'Pause',
+  },
+  //#endregion
+
+  //
+  //#region ColorPicker ...
+  {
+    id: 'color_picker',
+    value: 'ColorPicker',
+  },
+  {
+    id: 'color_picker_description',
+    value: 'ColorPicker Component Documentation',
   },
   //#endregion
 
