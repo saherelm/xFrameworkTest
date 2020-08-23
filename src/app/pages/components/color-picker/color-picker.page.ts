@@ -1,7 +1,7 @@
-import { XColor, XResourceIDs, isNullOrEmptyString } from 'x-framework-core';
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
+import { XColor, XResourceIDs, isNullOrEmptyString } from 'x-framework-core';
 
 @Component({
   selector: 'app-color-picker',
@@ -16,7 +16,9 @@ export class ColorPickerPage extends VPageComponent {
   //#region Page Props ...
   titleRes = AppResourceIDs.color_picker;
   toolbarTitle = this.resourceProvider(this.titleRes);
-  toolbarSubTitle = this.resourceProvider(AppResourceIDs.color_picker_description);
+  toolbarSubTitle = this.resourceProvider(
+    AppResourceIDs.color_picker_description
+  );
   toolbarShowSubTitle = true;
   //#endregion
 

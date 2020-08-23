@@ -175,6 +175,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'map_dialog_select_title',
         value: 'انتخاب موقعیت جغرافیایی',
       },
+      {
+        id: 'color_picker_dialog_title',
+        value: 'انتخاب رنگ',
+      },
       //#endregion
 
       //
@@ -629,6 +633,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'map_dialog_select_title',
         value: 'Select Location',
+      },
+      {
+        id: 'color_picker_dialog_title',
+        value: 'Select Color',
       },
       //#endregion
 

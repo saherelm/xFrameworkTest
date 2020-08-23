@@ -27,6 +27,7 @@ import {
   XFormMapControlPresentType,
   XFormCheckBoxControlConfig,
   XFormDatePickerControlConfig,
+  XFormColorPickerControlConfig,
   XFormControlAutoCompleteConfig,
   XFormAvatarUploadControlConfig,
   XFormControlActionProviderModel,
@@ -60,6 +61,7 @@ interface XFormModel {
   numberOfChilds: number;
   avatar: File;
   latLong: string;
+  color: string;
   phoneNumber: string;
   medias: XOneOrManyType<File>;
 }
@@ -1001,6 +1003,17 @@ export class FormPage extends VPageComponent {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Location value changed: ', value);
         },
+      },
+    } as XFormControlConfig<XFormModel>;
+
+    //
+    // Color Picker ...
+    this.xFormConfig.controls[11] = {
+      index: 11,
+      propName: 'color',
+      type: {
+        type: XFormControlType.ColorPicker,
+        config: {} as XFormColorPickerControlConfig,
       },
     } as XFormControlConfig<XFormModel>;
   }
