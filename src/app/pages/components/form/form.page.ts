@@ -34,6 +34,7 @@ import {
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormDatePickerControlPickerPosition,
+  XFormColorPickerControlPresentType,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -678,8 +679,8 @@ export class FormPage extends VPageComponent {
     this.xFormConfig = {
       name: 'PersonalForm',
       model: {
-        firstName: 'Ali',
-        lastName: 'Akhavan',
+        firstName: 'Hadi',
+        lastName: 'Khazaee Asl',
         weddingState: true,
       },
       updateOn: XFormUpdateOn.CHANGE,
@@ -1013,7 +1014,26 @@ export class FormPage extends VPageComponent {
       propName: 'color',
       type: {
         type: XFormControlType.ColorPicker,
-        config: {} as XFormColorPickerControlConfig,
+        config: {
+          presentType: XFormColorPickerControlPresentType.WithDialog,
+        } as XFormColorPickerControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.color,
+        placeholder: this.ResourceIDs.color,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.color_palette,
+            color: XColorWithBrightness.SuccessShade,
+            tooltip: this.ResourceIDs.color_picker_dialog_title,
+          },
+        },
+      },
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('color value changed: ', value);
+        },
       },
     } as XFormControlConfig<XFormModel>;
   }
