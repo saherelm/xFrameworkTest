@@ -911,7 +911,7 @@ export class FormPage extends VPageComponent {
       eventHandlers: {
         valueChanged: async (value: XFormControlValueChangeEventModel) => {
           console.log('Wedding state value changed: ', value);
-          this.handsleHasNumberOfChild(toBoolean(value.value));
+          this.handleHasNumberOfChild(toBoolean(value.value));
         },
       },
     } as XFormControlConfig<XFormModel>;
@@ -1032,7 +1032,7 @@ export class FormPage extends VPageComponent {
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
-          console.log('color value changed: ', value);
+          // console.log('color value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;
@@ -1135,7 +1135,7 @@ export class FormPage extends VPageComponent {
     });
   }
 
-  private handsleHasNumberOfChild(isMarried?: boolean) {
+  private handleHasNumberOfChild(isMarried?: boolean) {
     //
     if (!this.xFormConfig.controls[8]) {
       return;
