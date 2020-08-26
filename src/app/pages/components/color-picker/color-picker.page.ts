@@ -52,6 +52,37 @@ export class ColorPickerPage extends VPageComponent {
     '```';
 
   //
+  readonly presetColorsLable = 'PresetColors';
+
+  //
+  readonly presetColors = [
+    '#fff',
+    '#000',
+    '#2889e9',
+    '#e920e9',
+    '#fff500',
+    '#2889e9',
+    '#e920e9',
+    '#fff500',
+    '#2889e9',
+    '#e920e9',
+    '#fff500',
+    '#2889e9',
+    '#e920e9',
+    '#fff500',
+    '#2889e9',
+    '#e920e9',
+    '#fff500',
+    '#2889e9',
+    '#e920e9',
+    '#fff500',
+    '#2889e9',
+    '#e920e9',
+    '#fff500',
+    'rgb(236,64,64)',
+  ];
+
+  //
   //#region UI Providers ...
   //
   // Provide content based on current locale ...
