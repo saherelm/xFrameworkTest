@@ -1,3 +1,7 @@
+import {
+  XColorPickerOutputFormat,
+  XColorPickerOutputFormatIdentifier,
+} from 'x-framework-components';
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
@@ -64,22 +68,15 @@ export class ColorPickerPage extends VPageComponent {
     '#2889e9',
     '#e920e9',
     '#fff500',
-    '#2889e9',
-    '#e920e9',
-    '#fff500',
-    '#2889e9',
-    '#e920e9',
-    '#fff500',
-    '#2889e9',
-    '#e920e9',
-    '#fff500',
-    '#2889e9',
-    '#e920e9',
-    '#fff500',
-    '#2889e9',
-    '#e920e9',
-    '#fff500',
     'rgb(236,64,64)',
+  ];
+
+  readonly outputFormat = XColorPickerOutputFormat.XHEX;
+
+  readonly representFormats: XColorPickerOutputFormatIdentifier[] = [
+    XColorPickerOutputFormat.XHEX,
+    XColorPickerOutputFormat.XRGBA,
+    // XColorPickerOutputFormat.XHSLA,
   ];
 
   //
@@ -110,4 +107,8 @@ export class ColorPickerPage extends VPageComponent {
     return result || '';
   }
   //#endregion
+
+  handleColorSelected(color: string) {
+    console.log('Color Selected From ColorPicker Component: ', color);
+  }
 }

@@ -37,8 +37,13 @@
   <x-color-picker
     [isInPage]="true"
     [wrapWithCard]="true"
+    [selectedColor]="'#fff500'"
     [showCopyToClipboard]="true"
     [presetColors]="presetColors"
+    [outputFormat]="outputFormat"
+    [cursorColor]="'tertiary-tint'"
     [presetColorsLable]="presetColorsLable"
+    [representColorFormats]="representFormats"
+    (colorSelected)="handleColorSelected($event)"
   ></x-color-picker>
 </v-page>
