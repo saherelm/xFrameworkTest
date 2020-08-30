@@ -302,6 +302,14 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         value: 'انتخاب محل',
       },
       {
+        id: 'preset_colors',
+        value: 'رنگ های پیش فرض',
+      },
+      {
+        id: 'color',
+        value: 'رنگ'
+      },
+      {
         id: 'upload',
         value: 'بارگزاری',
       },
@@ -759,6 +767,14 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'selected_location',
         value: 'Selected Location',
+      },
+      {
+        id: 'preset_colors',
+        value: 'Preset Colors',
+      },
+      {
+        id: 'color',
+        value: 'Color'
       },
       //
       {

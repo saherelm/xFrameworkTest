@@ -682,6 +682,8 @@ export class FormPage extends VPageComponent {
         firstName: 'Hadi',
         lastName: 'Khazaee Asl',
         weddingState: true,
+        // latLong: '53.507080078125014,33.80273428614518',
+        color: '#eaf903ff'
       },
       updateOn: XFormUpdateOn.CHANGE,
       controls: [],
@@ -985,7 +987,7 @@ export class FormPage extends VPageComponent {
           showGoMarkedPlace: true,
           searchBarColor: XColorWithBrightness.Dark,
           progressBarColor: XColorWithBrightness.Warning,
-          presentType: XFormMapControlPresentType.WithDialog,
+          presentType: XFormMapControlPresentType.WithoutDialog,
         } as XFormMapControlConfig,
       },
       appearance: {
@@ -1015,7 +1017,8 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.ColorPicker,
         config: {
-          presentType: XFormColorPickerControlPresentType.WithDialog,
+          showCopyToClipboard: true,
+          presentType: XFormColorPickerControlPresentType.WithoutDialog,
         } as XFormColorPickerControlConfig,
       },
       appearance: {
