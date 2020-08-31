@@ -682,8 +682,8 @@ export class FormPage extends VPageComponent {
         firstName: 'Hadi',
         lastName: 'Khazaee Asl',
         weddingState: true,
-        // latLong: '53.507080078125014,33.80273428614518',
-        color: '#eaf903ff'
+        latLong: '53.507080078125014,33.80273428614518',
+        color: '#9847a6ff'
       },
       updateOn: XFormUpdateOn.CHANGE,
       controls: [],
@@ -977,7 +977,7 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.Map,
         config: {
-          zoom: 2,
+          zoom: 8,
           showZoom: true,
           canSelect: true,
           showRotate: true,
@@ -1035,7 +1035,7 @@ export class FormPage extends VPageComponent {
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
-          // console.log('color value changed: ', value);
+          console.log('color value changed: ', value);
         },
       },
     } as XFormControlConfig<XFormModel>;

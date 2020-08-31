@@ -7,7 +7,6 @@ export enum AppResourceIDs {
   temp_label = 'temp_label',
   documentation = 'documentation',
   default_loading = 'default_loading',
-  copy_to_clipboard = 'copy_to_clipboard',
 
   //
   english = 'english',
@@ -330,10 +329,6 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'default_loading',
     value: 'در حال بارگزاری',
-  },
-  {
-    id: 'copy_to_clipboard',
-    value: 'ثبت در حافظه موقت',
   },
 
   //
@@ -997,10 +992,6 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'default_loading',
     value: 'Loading',
-  },
-  {
-    id: 'copy_to_clipboard',
-    value: 'Copy to Clipboard',
   },
 
   //

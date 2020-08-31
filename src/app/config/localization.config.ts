@@ -306,8 +306,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         value: 'رنگ های پیش فرض',
       },
       {
+        id: 'copy_to_clipboard',
+        value: 'ثبت در حافظه موقت',
+      },
+      {
         id: 'color',
-        value: 'رنگ'
+        value: 'رنگ',
       },
       {
         id: 'upload',
@@ -773,8 +777,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         value: 'Preset Colors',
       },
       {
+        id: 'copy_to_clipboard',
+        value: 'Copy to Clipboard',
+      },
+      {
         id: 'color',
-        value: 'Color'
+        value: 'Color',
       },
       //
       {
