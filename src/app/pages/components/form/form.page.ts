@@ -682,7 +682,7 @@ export class FormPage extends VPageComponent {
         firstName: 'Hadi',
         lastName: 'Khazaee Asl',
         weddingState: true,
-        latLong: '53.507080078125014,33.80273428614518',
+        latLong: '50.958799848165526,35.82254339947069',
         color: '#9847a6ff'
       },
       updateOn: XFormUpdateOn.CHANGE,
