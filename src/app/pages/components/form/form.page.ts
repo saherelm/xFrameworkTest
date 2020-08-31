@@ -33,8 +33,8 @@ import {
   XFormControlActionProviderModel,
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
-  XFormDatePickerControlPickerPosition,
   XFormColorPickerControlPresentType,
+  XFormDatePickerControlPickerPosition,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -1018,7 +1018,7 @@ export class FormPage extends VPageComponent {
         type: XFormControlType.ColorPicker,
         config: {
           showCopyToClipboard: true,
-          presentType: XFormColorPickerControlPresentType.WithoutDialog,
+          presentType: XFormColorPickerControlPresentType.WithDialog,
         } as XFormColorPickerControlConfig,
       },
       appearance: {
