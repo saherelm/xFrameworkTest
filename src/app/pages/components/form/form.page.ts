@@ -989,7 +989,7 @@ export class FormPage extends VPageComponent {
           showSelectedPosition: true,
           searchBarColor: XColorWithBrightness.Dark,
           progressBarColor: XColorWithBrightness.Warning,
-          presentType: XFormMapControlPresentType.WithDialog,
+          presentType: XFormMapControlPresentType.WithoutDialog,
         } as XFormMapControlConfig,
       },
       appearance: {
