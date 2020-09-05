@@ -977,7 +977,7 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.Map,
         config: {
-          zoom: 8,
+          zoom: 2,
           showZoom: true,
           canSelect: true,
           showRotate: true,
@@ -986,10 +986,10 @@ export class FormPage extends VPageComponent {
           showClearMarker: true,
           centerAfterInit: true,
           showGoMarkedPlace: true,
-          showSelectedPosition: false,
+          showSelectedPosition: true,
           searchBarColor: XColorWithBrightness.Dark,
           progressBarColor: XColorWithBrightness.Warning,
-          presentType: XFormMapControlPresentType.WithoutDialog,
+          presentType: XFormMapControlPresentType.WithDialog,
         } as XFormMapControlConfig,
       },
       appearance: {
