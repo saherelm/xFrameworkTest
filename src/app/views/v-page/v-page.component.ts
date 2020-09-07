@@ -58,8 +58,9 @@ import { XConfig } from '../../config/app-config';
 import { PlatformLocation } from '@angular/common';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { XManagerService } from 'x-framework-services';
-import { NavPageItems } from '../../config/page.config';
+import { NavPageItems, Pages } from '../../config/page.config';
 import { isNullOrUndefined, hasChild } from 'x-framework-core';
+import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -423,6 +424,21 @@ export class VPageComponent extends XPageComponent {
         },
       });
     }
+
+    //
+    slideOptions.push({
+      id: 'theme_manager',
+      icon: XIconNames.color_palette,
+      title: AppResourceIDs.theme_manager,
+      color: XColor.Tertiary,
+      slot: 'start',
+      onlyIcon,
+      handler: async () => {
+        //
+        const route = this.managerService.mergeRoutes(Pages.ThemeManager.route);
+        await this.managerService.navigateByUrl(route);
+      },
+    });
 
     //
     const item: XListItem<any> = {

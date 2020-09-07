@@ -1,0 +1,37 @@
+<v-page
+  [hasSide]="true"
+  [actions]="actions"
+  [toolbarShowSubTitle]="true"
+  [toolbarHasBack]="toolbarHasBack"
+  [toolbarShowBack]="toolbarShowBack"
+  [toolbarSubTitle]="toolbarSubTitle"
+  [toolbarShowProgressBar]="isLoading"
+  [toolbarDefaultHref]="toolbarDefaultHref"
+  [toolbarBackHandler]="toolbarBackHandler"
+>
+  <!-- Tabs -->
+  <x-tabs
+    #xTabs
+    [swipable]="false"
+    [showHeader]="false"
+    [loading]="isLoading"
+    [dynamicHeight]="true"
+    [color]="'transparent'"
+    [uiDisabled]="uiDisabled"
+    [disablePagination]="true"
+    [(startIndex)]="currentTab"
+    [actionProvider]="tabsActionProvider"
+    (selectedTabChange)="handleSelectedTabChanged($event)"
+  >
+    <!-- Theme Summary -->
+    <x-tab>
+      <v-theme-preview
+        *ngIf="selectedTheme"
+        [theme]="selectedTheme"
+      ></v-theme-preview>
+    </x-tab>
+
+    <!-- Add or Update -->
+    <x-tab> Salamat Bashid ... </x-tab>
+  </x-tabs>
+</v-page>

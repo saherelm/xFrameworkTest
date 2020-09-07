@@ -49,6 +49,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/tabs/tabs.module').then((m) => m.TabsPageModule),
   },
+  //
+  // Themes ...
+  {
+    path: Pages.Themes.baseRoute,
+    loadChildren: () =>
+      import('./pages/themes/themes.module').then((m) => m.ThemesPageModule),
+  },
 ];
 
 @NgModule({

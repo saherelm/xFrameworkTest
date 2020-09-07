@@ -46,9 +46,10 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VPageComponent } from './v-page/v-page.component';
 import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
+import { VThemePreviewComponent } from './v-theme-preview/v-theme-preview.component';
 
 @NgModule({
-  declarations: [VPageComponent, VMaintainerComponent],
+  declarations: [VPageComponent, VMaintainerComponent, VThemePreviewComponent],
   providers: [
     XManagerService,
     //
@@ -165,6 +166,7 @@ import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
     //
     VPageComponent,
     VMaintainerComponent,
+    VThemePreviewComponent,
   ],
 })
 export class ViewsModule {}

@@ -67,6 +67,12 @@ export enum TabsRoutes {
   TabPage3 = 'tab-page-3',
 }
 
+export enum ThemesRoutes {
+  Default = 'themes',
+  Themes = 'themes',
+  ThemeManager = 'manager',
+}
+
 export enum AppRoutes {
   Default = BaseRoutes.Default,
   Home = HomeRoutes.Default,
@@ -74,6 +80,7 @@ export enum AppRoutes {
   Services = ServicesRoutes.Default,
   Components = ComponentsRoutes.Default,
   TabsNav = TabsRoutes.Default,
+  Themes = ThemesRoutes.Default,
   Unknown = BaseRoutes.Unknown,
 }
 //#endregion
@@ -122,10 +129,16 @@ export enum PageName {
   TabNavigator = ComponentsRoutes.TabNavigator,
 
   //
+  // Tabs Navigation ...
   TabsNav = AppRoutes.TabsNav,
   TabPage1 = TabsRoutes.TabPage1,
   TabPage2 = TabsRoutes.TabPage2,
   TabPage3 = TabsRoutes.TabPage3,
+
+  //
+  // Themes ...
+  Themes = AppRoutes.Themes,
+  ThemeManager = ThemesRoutes.ThemeManager,
 }
 
 export type PageNames = keyof typeof PageName;
@@ -291,7 +304,11 @@ export const PageIndex: PageIndexType = {
         title: AppResourceIDs.color_picker,
         baseRoute: `${ComponentsRoutes.ColorPicker}`,
         description: AppResourceIDs.color_picker_description,
-        route: ['/', `${AppRoutes.Components}`, `${ComponentsRoutes.ColorPicker}`],
+        route: [
+          '/',
+          `${AppRoutes.Components}`,
+          `${ComponentsRoutes.ColorPicker}`,
+        ],
       },
       //
       // Fab ...
@@ -522,6 +539,30 @@ export const PageIndex: PageIndexType = {
       },
     ],
   },
+
+  //
+  Themes: {
+    icon: XIconNames.color_palette,
+    id: `${PageName.Themes}`,
+    name: `${PageName.Themes}`,
+    title: AppResourceIDs.themes,
+    baseRoute: `${AppRoutes.Themes}`,
+    route: ['/', `${AppRoutes.Themes}`],
+    description: AppResourceIDs.themes_description,
+    childs: [
+      //
+      // ThemeManager ...
+      {
+        icon: XIconNames.color_palette,
+        id: `${PageName.ThemeManager}`,
+        name: `${PageName.ThemeManager}`,
+        title: AppResourceIDs.theme_manager,
+        baseRoute: `${ThemesRoutes.ThemeManager}`,
+        description: AppResourceIDs.theme_manager_description,
+        route: ['/', `${AppRoutes.Themes}`, `${ThemesRoutes.ThemeManager}`],
+      },
+    ],
+  },
 };
 
 //
@@ -568,6 +609,10 @@ export const Pages = {
   TabPage1: PageIndex.TabsNav.childs[0],
   TabPage2: PageIndex.TabsNav.childs[1],
   TabPage3: PageIndex.TabsNav.childs[2],
+
+  //
+  Themes: PageIndex.Themes,
+  ThemeManager: PageIndex.Themes.childs[0],
 };
 
 //

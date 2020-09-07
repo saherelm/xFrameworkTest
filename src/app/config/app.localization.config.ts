@@ -308,6 +308,14 @@ export enum AppResourceIDs {
   tab_page_2 = 'tab_page_2',
   tab_page_3 = 'tab_page_3',
   //#endregion
+
+  //
+  //#region Theme ...
+  themes = 'themes',
+  themes_description = 'themes_description',
+  theme_manager = 'theme_manager',
+  theme_manager_description = 'theme_manager_description',
+  //#endregion
 }
 
 //
@@ -971,6 +979,27 @@ export const FaCustomLocales: XTranslationItem[] = [
     value: 'برگه ۳',
   },
   //#endregion
+
+  //
+  //#region Theme ...
+  {
+    id: 'themes',
+    value: 'پوسته ها'
+  },
+  {
+    id: 'themes_description',
+    value: 'دسترسی به تمام امکانات مدیریت پوسته ها'
+  },
+  //
+  {
+    id: 'theme_manager',
+    value: 'مدیریت پوسته'
+  },
+  {
+    id: 'theme_manager_description',
+    value: 'مدیریت و دستکاری پوسته های نمایشی برنامه'
+  },
+  //#endregion
 ];
 
 //
@@ -1631,6 +1660,27 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'tab_page_3',
     value: 'Page 3',
+  },
+  //#endregion
+
+  //
+  //#region Theme ...
+  {
+    id: 'theme',
+    value: 'Themes'
+  },
+  {
+    id: 'themes_description',
+    value: 'Access All Theme Management tools'
+  },
+  //
+  {
+    id: 'theme_manager',
+    value: 'Theme Manager'
+  },
+  {
+    id: 'theme_manager_description',
+    value: 'add/remove and edit Application Themes'
   },
   //#endregion
 ];

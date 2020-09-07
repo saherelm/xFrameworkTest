@@ -469,6 +469,18 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       //#endregion
 
       //
+      //#region These Related ...
+      {
+        id: 'theme_dark',
+        value: 'تیره',
+      },
+      {
+        id: 'theme_light',
+        value: 'روشن',
+      },
+      //#endregion
+
+      //
       // Custom Translations ...
       ...FaCustomLocales,
 
@@ -937,6 +949,18 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'x_markdown_guide',
         value: 'Markdown Guide',
+      },
+      //#endregion
+
+      //
+      //#region These Related ...
+      {
+        id: 'theme_dark',
+        value: 'Dark',
+      },
+      {
+        id: 'theme_light',
+        value: 'Light',
       },
       //#endregion
 
