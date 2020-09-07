@@ -19,6 +19,7 @@ import {
   XGridModule,
   XFormModule,
   XTableModule,
+  XThemeModule,
   XEmptyModule,
   XButtonModule,
   XSliderModule,
@@ -46,10 +47,9 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VPageComponent } from './v-page/v-page.component';
 import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
-import { VThemePreviewComponent } from './v-theme-preview/v-theme-preview.component';
 
 @NgModule({
-  declarations: [VPageComponent, VMaintainerComponent, VThemePreviewComponent],
+  declarations: [VPageComponent, VMaintainerComponent],
   providers: [
     XManagerService,
     //
@@ -94,6 +94,7 @@ import { VThemePreviewComponent } from './v-theme-preview/v-theme-preview.compon
     XFormModule,
     CommonModule,
     XTableModule,
+    XThemeModule,
     XButtonModule,
     XSliderModule,
     XSpinnerModule,
@@ -145,6 +146,7 @@ import { VThemePreviewComponent } from './v-theme-preview/v-theme-preview.compon
     XFormModule,
     CommonModule,
     XTableModule,
+    XThemeModule,
     XButtonModule,
     XSliderModule,
     XSpinnerModule,
@@ -166,7 +168,6 @@ import { VThemePreviewComponent } from './v-theme-preview/v-theme-preview.compon
     //
     VPageComponent,
     VMaintainerComponent,
-    VThemePreviewComponent,
   ],
 })
 export class ViewsModule {}

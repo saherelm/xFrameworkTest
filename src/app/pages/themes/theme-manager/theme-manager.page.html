@@ -9,8 +9,11 @@
   [toolbarDefaultHref]="toolbarDefaultHref"
   [toolbarBackHandler]="toolbarBackHandler"
 >
+  <!--  -->
+  <x-theme-preview [theme]="selectedTheme"> </x-theme-preview>
+
   <!-- Tabs -->
-  <x-tabs
+  <!-- <x-tabs
     #xTabs
     [swipable]="false"
     [showHeader]="false"
@@ -22,16 +25,16 @@
     [(startIndex)]="currentTab"
     [actionProvider]="tabsActionProvider"
     (selectedTabChange)="handleSelectedTabChanged($event)"
-  >
-    <!-- Theme Summary -->
-    <x-tab>
+  > -->
+  <!-- Theme Summary -->
+  <!-- <x-tab>
       <v-theme-preview
         *ngIf="selectedTheme"
         [theme]="selectedTheme"
       ></v-theme-preview>
-    </x-tab>
+    </x-tab> -->
 
-    <!-- Add or Update -->
-    <x-tab> Salamat Bashid ... </x-tab>
-  </x-tabs>
+  <!-- Add or Update -->
+  <!-- <x-tab> Salamat Bashid ... </x-tab> -->
+  <!-- </x-tabs> -->
 </v-page>
