@@ -478,6 +478,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'theme_light',
         value: 'روشن',
       },
+      {
+        id: 'theme_name',
+        value: 'نام پوسته'
+      },
       //#endregion
 
       //
@@ -961,6 +965,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'theme_light',
         value: 'Light',
+      },
+      {
+        id: 'theme_name',
+        value: 'Theme Name'
       },
       //#endregion
 
