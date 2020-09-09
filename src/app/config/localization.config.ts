@@ -42,6 +42,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'error',
         value: 'خطا',
       },
+      {
+        id: 'required',
+        value: 'الزامی است.',
+      },
 
       //
       {
@@ -480,7 +484,7 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       },
       {
         id: 'theme_name',
-        value: 'نام پوسته'
+        value: 'نام پوسته',
       },
       //#endregion
 
@@ -529,6 +533,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'error',
         value: 'Error',
+      },
+      {
+        id: 'required',
+        value: 'required',
       },
 
       //
@@ -968,7 +976,7 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       },
       {
         id: 'theme_name',
-        value: 'Theme Name'
+        value: 'Theme Name',
       },
       //#endregion
 
