@@ -4,11 +4,11 @@ import {
   XResourceIDs,
   XThemeDescriptor,
   XColorWithBrightness,
-  XThemeColors,
 } from 'x-framework-core';
 import { Subject } from 'rxjs';
 import {
   XFormConfig,
+  XFormStatus,
   XTabChangeEvent,
   XTabsActionModel,
 } from 'x-framework-components';
@@ -90,6 +90,15 @@ export class ThemeManagerPage extends VPageComponent {
     this.currentTab = event.index;
     await this.prepareActions();
   }
+
+  //
+  async handleThemeValueChanged(event: XThemePack) {
+    console.log('handleThemeValueChanged: ', event);
+  }
+
+  async handleThemeStatusChanged(status: XFormStatus) {
+    console.log('handleThemeStatusChanged: ', status);
+  }
   //#endregion
 
   //
@@ -143,73 +152,6 @@ export class ThemeManagerPage extends VPageComponent {
 
     //
     this.detectChanges();
-  }
-
-  private async prepareThemeForm(model?: XThemeDescriptor) {
-    //
-    if (!model) {
-      model = {
-        type: this.ThemeTypes.Light,
-        colors: {
-          XColorPrimary: '',
-          XColorPrimaryContrast: '',
-          XColorPrimaryShade: '',
-          XColorPrimaryShadeContrast: '',
-          XColorPrimaryTint: '',
-          XColorPrimaryTintContrast: '',
-          XColorSecondary: '',
-          XColorSecondaryContrast: '',
-          XColorSecondaryShade: '',
-          XColorSecondaryShadeContrast: '',
-          XColorSecondaryTint: '',
-          XColorSecondaryTintContrast: '',
-          XColorTertiary: '',
-          XColorTertiaryContrast: '',
-          XColorTertiaryShade: '',
-          XColorTertiaryShadeContrast: '',
-          XColorTertiaryTint: '',
-          XColorTertiaryTintContrast: '',
-          XColorSuccess: '',
-          XColorSuccessContrast: '',
-          XColorSuccessShade: '',
-          XColorSuccessShadeContrast: '',
-          XColorSuccessTint: '',
-          XColorSuccessTintContrast: '',
-          XColorWarning: '',
-          XColorWarningContrast: '',
-          XColorWarningShade: '',
-          XColorWarningShadeContrast: '',
-          XColorWarningTint: '',
-          XColorWarningTintContrast: '',
-          XColorDanger: '',
-          XColorDangerContrast: '',
-          XColorDangerShade: '',
-          XColorDangerShadeContrast: '',
-          XColorDangerTint: '',
-          XColorDangerTintContrast: '',
-          XColorDark: '',
-          XColorDarkContrast: '',
-          XColorDarkShade: '',
-          XColorDarkShadeContrast: '',
-          XColorDarkTint: '',
-          XColorDarkTintContrast: '',
-          XColorMedium: '',
-          XColorMediumContrast: '',
-          XColorMediumShade: '',
-          XColorMediumShadeContrast: '',
-          XColorMediumTint: '',
-          XColorMediumTintContrast: '',
-          XColorLight: '',
-          XColorLightContrast: '',
-          XColorLightShade: '',
-          XColorLightShadeContrast: '',
-          XColorLightTint: '',
-          XColorLightTintContrast: '',
-        },
-      };
-    }
-
-    //
   }
   //#endregion
 }

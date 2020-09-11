@@ -17,8 +17,17 @@
   >
   </x-theme-preview> -->
 
-  <!--  -->
-  <x-theme-maker [isInPage]="true" [wrapWithCard]="true" [formColor]="ColorNames.MediumShade"> </x-theme-maker>
+  <!--
+    (themeValueChange)="handleThemeValueChanged($event)"
+    (themeStatusChange)="handleThemeStatusChanged($event)"
+  -->
+  <x-theme-maker
+    [isInPage]="true"
+    [wrapWithCard]="true"
+    [formColor]="ColorNames.Tertiary"
+    [formIconColor]="ColorNames.Secondary"
+  >
+  </x-theme-maker>
 
   <!-- Tabs -->
   <!-- <x-tabs
