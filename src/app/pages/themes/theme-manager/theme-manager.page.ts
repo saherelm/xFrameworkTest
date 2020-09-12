@@ -2,15 +2,16 @@ import {
   XThemePack,
   XThemeType,
   XResourceIDs,
-  XThemeDescriptor,
   XColorWithBrightness,
 } from 'x-framework-core';
 import { Subject } from 'rxjs';
 import {
-  XFormConfig,
   XFormStatus,
   XTabChangeEvent,
   XTabsActionModel,
+  getEmptyThemePack,
+  XFormStatusIdentifier,
+  XThemeMakerActionModel,
 } from 'x-framework-components';
 import { Component } from '@angular/core';
 import { VPageComponent } from 'src/app/views/v-page/v-page.component';
@@ -65,7 +66,15 @@ export class ThemeManagerPage extends VPageComponent {
   themes: XThemePack[];
   themeNames: string[];
   selectedTheme: XThemePack;
-  themeDescriptorForm: XFormConfig<XThemeDescriptor>;
+
+  //
+  formProvidedTheme: XThemePack;
+  formStatus: XFormStatusIdentifier;
+  emptyThemePack = getEmptyThemePack();
+
+  //
+  // Theme Maker Action Provider ...
+  themeMakerActionProvider = new Subject<XThemeMakerActionModel>();
   //#endregion
 
   //
@@ -93,11 +102,14 @@ export class ThemeManagerPage extends VPageComponent {
 
   //
   async handleThemeValueChanged(event: XThemePack) {
-    console.log('handleThemeValueChanged: ', event);
+    this.formProvidedTheme = {
+      ...event,
+    };
   }
 
+  //
   async handleThemeStatusChanged(status: XFormStatus) {
-    console.log('handleThemeStatusChanged: ', status);
+    this.formStatus = status;
   }
   //#endregion
 

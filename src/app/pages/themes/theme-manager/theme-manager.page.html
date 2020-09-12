@@ -18,16 +18,21 @@
   </x-theme-preview> -->
 
   <!--
+    [formColor]="ColorNames.Dark"
+    [formIconColor]="ColorNames.SecondaryShade"
+
     (themeValueChange)="handleThemeValueChanged($event)"
     (themeStatusChange)="handleThemeStatusChanged($event)"
   -->
-  <x-theme-maker
+  <!-- <x-theme-maker
     [isInPage]="true"
     [wrapWithCard]="true"
-    [formColor]="ColorNames.Tertiary"
-    [formIconColor]="ColorNames.Secondary"
+    [theme]="selectedTheme"
+    [actionProvider]="themeMakerActionProvider"
+    (themeValueChange)="handleThemeValueChanged($event)"
+    (themeStatusChange)="handleThemeStatusChanged($event)"
   >
-  </x-theme-maker>
+  </x-theme-maker> -->
 
   <!-- Tabs -->
   <!-- <x-tabs
@@ -54,4 +59,7 @@
   <!-- Add or Update -->
   <!-- <x-tab> Salamat Bashid ... </x-tab> -->
   <!-- </x-tabs> -->
+
+  <!-- Theme Manager -->
+  <x-theme-manager></x-theme-manager>
 </v-page>

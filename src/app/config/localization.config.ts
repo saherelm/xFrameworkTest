@@ -49,6 +49,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
 
       //
       {
+        id: 'loading',
+        value: 'بارگزاری'
+      },
+
+      //
+      {
         id: 'username',
         value: 'نام کاربری',
       },
@@ -198,6 +204,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'ok',
         value: 'بسیار خب',
+      },
+      {
+        id: 'save',
+        value: 'ذخیره',
       },
       {
         id: 'cancel',
@@ -541,6 +551,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
 
       //
       {
+        id: 'loading',
+        value: 'loading'
+      },
+
+      //
+      {
         id: 'username',
         value: 'Username',
       },
@@ -689,6 +705,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'ok',
         value: 'Ok',
+      },
+      {
+        id: 'save',
+        value: 'Save',
       },
       {
         id: 'cancel',
