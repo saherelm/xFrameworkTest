@@ -143,7 +143,7 @@ export class ThemeManagerPage extends VPageComponent {
     console.log('themes: ', this.themes);
 
     //
-    this.selectedTheme = await this.managerService.themeManagerService.getDefaultTheme();
+    this.selectedTheme = await this.managerService.themeManagerService.getCurrentTheme();
     console.log('current theme: ', this.selectedTheme);
   }
 
