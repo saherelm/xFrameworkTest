@@ -287,6 +287,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         value: 'حذف',
       },
       {
+        id: 'clone',
+        value: 'نمونه گیری',
+      },
+      {
         id: 'select_all',
         value: 'انتخاب همه',
       },
@@ -786,6 +790,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'delete',
         value: 'Delete',
+      },
+      {
+        id: 'clone',
+        value: 'Clone',
       },
       {
         id: 'select_all',
