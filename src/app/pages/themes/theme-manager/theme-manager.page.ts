@@ -111,6 +111,13 @@ export class ThemeManagerPage extends VPageComponent {
   async handleThemeStatusChanged(status: XFormStatus) {
     this.formStatus = status;
   }
+
+  async handleTabChange(event: any) {
+    console.log('handleTabChange: ', event);
+
+    //
+    this.detectChanges();
+  }
   //#endregion
 
   //

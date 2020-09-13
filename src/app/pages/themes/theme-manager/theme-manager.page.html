@@ -61,5 +61,5 @@
   <!-- </x-tabs> -->
 
   <!-- Theme Manager -->
-  <x-theme-manager [isInPage]="true" [wrapWithCard]="true"></x-theme-manager>
+  <x-theme-manager [isInPage]="true" [wrapWithCard]="true" (tabChange)="handleTabChange($event)"></x-theme-manager>
 </v-page>
