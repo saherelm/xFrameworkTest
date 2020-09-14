@@ -1,22 +1,17 @@
-import { Component } from '@angular/core';
 import {
   XIconNames,
   XFormConfig,
-  XFormControlType,
-  XFormStatusChangeEventModel,
-  XFormComponent,
   XStepperType,
+  XFormComponent,
+  XFormControlType,
   XStepperTypeIdentifier,
   XFormSelectControlOption,
+  XFormStatusChangeEventModel,
 } from 'x-framework-components';
+import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import {
-  XResourceIDs,
-  isNullOrEmptyString,
-  XColor,
-  keys,
-} from 'x-framework-core';
+import { XColor, XResourceIDs, isNullOrEmptyString } from 'x-framework-core';
 
 interface StepOne {
   id: number;

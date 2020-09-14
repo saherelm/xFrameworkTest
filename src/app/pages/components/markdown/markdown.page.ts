@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { XIconNames } from 'x-framework-components';
+import { XMarkdownMode } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';
-import { XMarkdownMode } from 'x-framework-components';
 
 @Component({
   selector: 'app-markdown',

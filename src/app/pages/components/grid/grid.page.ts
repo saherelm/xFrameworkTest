@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
 import {
-  XIconNames,
   XGridItem,
+  XIconNames,
   XGridPresentType,
-  XStaggedGridOptions,
   defaultGridOptions,
+  XStaggedGridOptions,
 } from 'x-framework-components';
+import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import { XResourceIDs, isNullOrEmptyString, XColor } from 'x-framework-core';

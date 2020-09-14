@@ -1,10 +1,6 @@
-import { Component } from '@angular/core';
-import { VPageComponent } from '../../../views/v-page/v-page.component';
-import { AppResourceIDs } from 'src/app/config/app.localization.config';
 import {
   XResourceIDs,
   isNullOrEmptyString,
-  XColor,
   XColorWithBrightness,
 } from 'x-framework-core';
 import {
@@ -12,6 +8,9 @@ import {
   XTableProps,
   XTableItemPosition,
 } from 'x-framework-components';
+import { Component } from '@angular/core';
+import { VPageComponent } from '../../../views/v-page/v-page.component';
+import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
 interface Temp {
   id?: string;

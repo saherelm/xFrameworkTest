@@ -1,6 +1,6 @@
 import {
-  XIconNames,
   XTabAlign,
+  XIconNames,
   XTabsHeaderPosition,
 } from 'x-framework-components';
 import { Component } from '@angular/core';

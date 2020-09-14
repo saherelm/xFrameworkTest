@@ -55,7 +55,6 @@ import { map } from 'rxjs/operators';
 import { MenuController } from '@ionic/angular';
 import { X_CONFIG } from '../../config/x-config';
 import { XConfig } from '../../config/app-config';
-import { PlatformLocation } from '@angular/common';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { XManagerService } from 'x-framework-services';
 import { NavPageItems, Pages } from '../../config/page.config';
@@ -206,7 +205,12 @@ export class VPageComponent extends XPageComponent {
   toolbarHasBack: XStandardType<boolean> = true;
 
   @Input()
-  toolbarDefaultHref = '/';
+  toolbarDefaultHref: string = null;
+
+  @Input()
+  toolbarBackHandler?: () => XStandardType<void> = () => {
+    this.onBack();
+  };
   //#endregion
 
   //
@@ -287,8 +291,7 @@ export class VPageComponent extends XPageComponent {
     public menuController: MenuController,
     public managerService: XManagerService,
     public changeDetector: ChangeDetectorRef,
-    @Inject(X_CONFIG) public config: XConfig,
-    public platformLocation: PlatformLocation
+    @Inject(X_CONFIG) public config: XConfig
   ) {
     super(
       zone,
@@ -298,8 +301,7 @@ export class VPageComponent extends XPageComponent {
       menuController,
       managerService,
       changeDetector,
-      config,
-      platformLocation
+      config
     );
 
     //

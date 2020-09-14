@@ -488,6 +488,11 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
 
       //
       //#region These Related ...
+      //
+      {
+        id: 'theme',
+        value: 'پوسته'
+      },
       {
         id: 'theme_dark',
         value: 'تیره',
@@ -496,9 +501,19 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'theme_light',
         value: 'روشن',
       },
+      //
       {
         id: 'theme_name',
         value: 'نام پوسته',
+      },
+      {
+        id: 'theme_name_description',
+        value: 'نام پوسته را وارد کنید'
+      },
+      //
+      {
+        id: 'theme_clone_title',
+        value: 'نمونه گیری از پوسته'
       },
       //#endregion
 
@@ -994,6 +1009,12 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
 
       //
       //#region These Related ...
+      //
+      {
+        id: 'theme',
+        value: 'Theme'
+      },
+      //
       {
         id: 'theme_dark',
         value: 'Dark',
@@ -1002,9 +1023,19 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'theme_light',
         value: 'Light',
       },
+      //
       {
         id: 'theme_name',
         value: 'Theme Name',
+      },
+      {
+        id: 'theme_name_description',
+        value: 'Enter Theme name'
+      },
+      //
+      {
+        id: 'theme_clone_title',
+        value: 'Theme Cloning'
       },
       //#endregion
 

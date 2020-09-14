@@ -7,20 +7,16 @@ import {
 import { Subject } from 'rxjs';
 import {
   XFormStatus,
-  XTabChangeEvent,
   XTabsActionModel,
   getEmptyThemePack,
+  XThemeManagerTabs,
+  XThemeManagerAction,
   XFormStatusIdentifier,
-  XThemeMakerActionModel,
+  XThemeManagerActionModel,
 } from 'x-framework-components';
 import { Component } from '@angular/core';
 import { VPageComponent } from 'src/app/views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-
-enum Tabs {
-  ThemesSummary,
-  AddOrEditTheme,
-}
 
 @Component({
   selector: 'app-theme-manager',
@@ -54,8 +50,7 @@ export class ThemeManagerPage extends VPageComponent {
 
   //
   // Tabs ...
-  readonly Tabs = Object.assign({}, Tabs);
-  currentTab = Tabs.ThemesSummary;
+  currentTab: XThemeManagerTabs;
   tabsActionProvider = new Subject<XTabsActionModel>();
 
   //
@@ -74,16 +69,23 @@ export class ThemeManagerPage extends VPageComponent {
 
   //
   // Theme Maker Action Provider ...
-  themeMakerActionProvider = new Subject<XThemeMakerActionModel>();
+  themeManagerActionProvider = new Subject<XThemeManagerActionModel>();
   //#endregion
 
   //
   //#region LifeCycles ...
   async onInit() {
     super.onInit();
+  }
+
+  onBack() {
+    super.onBack();
 
     //
-    await this.prepareMaterials();
+    console.log('Back Pressed ...: ', this.isBackPrevented);
+    this.themeManagerActionProvider.next({
+      action: XThemeManagerAction.Back,
+    });
   }
   //#endregion
 
@@ -93,13 +95,6 @@ export class ThemeManagerPage extends VPageComponent {
 
   //
   //#region UI Handlers ...
-  //
-  async handleSelectedTabChanged(event: XTabChangeEvent) {
-    //
-    this.currentTab = event.index;
-    await this.prepareActions();
-  }
-
   //
   async handleThemeValueChanged(event: XThemePack) {
     this.formProvidedTheme = {
@@ -112,8 +107,41 @@ export class ThemeManagerPage extends VPageComponent {
     this.formStatus = status;
   }
 
-  async handleTabChange(event: any) {
+  async handleTabChange(event: XThemeManagerTabs) {
     console.log('handleTabChange: ', event);
+
+    //
+    this.currentTab = event;
+
+    //
+    switch (event) {
+      //
+      case XThemeManagerTabs.List:
+        //
+        this.preventBack = false;
+        this.toolbarHasBack = false;
+        this.toolbarShowBack = false;
+        break;
+
+      //
+      case XThemeManagerTabs.Details:
+        //
+        this.preventBack = true;
+        this.toolbarHasBack = true;
+        this.toolbarShowBack = true;
+        break;
+
+      //
+      case XThemeManagerTabs.AddOrUpdate:
+        //
+        this.preventBack = true;
+        this.toolbarHasBack = true;
+        this.toolbarShowBack = true;
+        break;
+    }
+
+    //
+    await this.prepareActions();
 
     //
     this.detectChanges();
@@ -122,52 +150,30 @@ export class ThemeManagerPage extends VPageComponent {
 
   //
   //#region Actions ...
-  async changeTab(tab: Tabs) {
-    //
-    switch (tab) {
-      //
-      case Tabs.ThemesSummary:
-        break;
-
-      //
-      case Tabs.AddOrEditTheme:
-        break;
-    }
-
-    //
-  }
   //#endregion
 
   //
   //#region Private ...
-  private async prepareMaterials() {
-    //
-    this.themeNames = await this.managerService.themeManagerService.getThemeNames();
-    console.log('themes names: ', this.themeNames);
-
-    //
-    this.themes = await this.managerService.themeManagerService.getThemes();
-    console.log('themes: ', this.themes);
-
-    //
-    this.selectedTheme = await this.managerService.themeManagerService.getCurrentTheme();
-    console.log('current theme: ', this.selectedTheme);
-  }
-
-  private async prepareActions() {
+  private async prepareActions(tab = XThemeManagerTabs.List) {
     //
     this.actions = null;
+    this.detectChanges();
+  }
+
+  private async handleBack() {
+    //
+    console.log('handleBack: ', this.currentTab);
 
     //
-    switch (this.currentTab) {
-      //
-      case Tabs.ThemesSummary:
-        break;
-
-      //
-      case Tabs.AddOrEditTheme:
-        break;
+    const currentTab = this.currentTab || XThemeManagerTabs.List;
+    if (!currentTab) {
+      return;
     }
+
+    //
+    this.themeManagerActionProvider.next({
+      action: XThemeManagerAction.Back,
+    });
 
     //
     this.detectChanges();

@@ -31,7 +31,6 @@ import {
 } from 'x-framework-components';
 import { MenuController } from '@ionic/angular';
 import { X_CONFIG } from 'src/app/config/x-config';
-import { PlatformLocation } from '@angular/common';
 import { XConfig } from 'src/app/config/app-config';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { XManagerService } from 'x-framework-services';
@@ -346,7 +345,6 @@ export class FileComponentsPage extends VPageComponent {
     public managerService: XManagerService,
     public changeDetector: ChangeDetectorRef,
     @Inject(X_CONFIG) public config: XConfig,
-    public platformLocation: PlatformLocation,
     public imageCropperService: XImageCropperService
   ) {
     super(
@@ -357,8 +355,7 @@ export class FileComponentsPage extends VPageComponent {
       menuController,
       managerService,
       changeDetector,
-      config,
-      platformLocation
+      config
     );
   }
   //#endregion

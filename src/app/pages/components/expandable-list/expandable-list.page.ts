@@ -1,13 +1,13 @@
+import {
+  XColor,
+  random,
+  XResourceIDs,
+  isNullOrEmptyString,
+} from 'x-framework-core';
 import { Component } from '@angular/core';
 import { XIconNames, XExpandableListItem } from 'x-framework-components';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import {
-  XResourceIDs,
-  isNullOrEmptyString,
-  XColor,
-  random,
-} from 'x-framework-core';
 
 @Component({
   selector: 'app-expandable-list',

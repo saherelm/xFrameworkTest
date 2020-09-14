@@ -9,57 +9,11 @@
   [toolbarDefaultHref]="toolbarDefaultHref"
   [toolbarBackHandler]="toolbarBackHandler"
 >
-  <!--  -->
-  <!-- <x-theme-preview
-    [isInPage]="true"
-    [wrapWithCard]="true"
-    [theme]="selectedTheme"
-  >
-  </x-theme-preview> -->
-
-  <!--
-    [formColor]="ColorNames.Dark"
-    [formIconColor]="ColorNames.SecondaryShade"
-
-    (themeValueChange)="handleThemeValueChanged($event)"
-    (themeStatusChange)="handleThemeStatusChanged($event)"
-  -->
-  <!-- <x-theme-maker
-    [isInPage]="true"
-    [wrapWithCard]="true"
-    [theme]="selectedTheme"
-    [actionProvider]="themeMakerActionProvider"
-    (themeValueChange)="handleThemeValueChanged($event)"
-    (themeStatusChange)="handleThemeStatusChanged($event)"
-  >
-  </x-theme-maker> -->
-
-  <!-- Tabs -->
-  <!-- <x-tabs
-    #xTabs
-    [swipable]="false"
-    [showHeader]="false"
-    [loading]="isLoading"
-    [dynamicHeight]="true"
-    [color]="'transparent'"
-    [uiDisabled]="uiDisabled"
-    [disablePagination]="true"
-    [(startIndex)]="currentTab"
-    [actionProvider]="tabsActionProvider"
-    (selectedTabChange)="handleSelectedTabChanged($event)"
-  > -->
-  <!-- Theme Summary -->
-  <!-- <x-tab>
-      <v-theme-preview
-        *ngIf="selectedTheme"
-        [theme]="selectedTheme"
-      ></v-theme-preview>
-    </x-tab> -->
-
-  <!-- Add or Update -->
-  <!-- <x-tab> Salamat Bashid ... </x-tab> -->
-  <!-- </x-tabs> -->
-
   <!-- Theme Manager -->
-  <x-theme-manager [isInPage]="true" [wrapWithCard]="true" (tabChange)="handleTabChange($event)"></x-theme-manager>
+  <x-theme-manager
+    [isInPage]="true"
+    [wrapWithCard]="true"
+    (tabChange)="handleTabChange($event)"
+    [actionProvider]="themeManagerActionProvider"
+  ></x-theme-manager>
 </v-page>
