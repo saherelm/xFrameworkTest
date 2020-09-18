@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ViewsModule } from '../../views/views.module';
+import { XCanDeactivateGuard } from 'x-framework-core';
 import { BaseRoutes, ThemesRoutes } from 'src/app/config/page.config';
 import { ThemeManagerPage } from './theme-manager/theme-manager.page';
 
@@ -18,6 +19,7 @@ import { ThemeManagerPage } from './theme-manager/theme-manager.page';
       {
         path: ThemesRoutes.ThemeManager,
         component: ThemeManagerPage,
+        canDeactivate: [XCanDeactivateGuard]
       },
     ]),
   ],

@@ -206,11 +206,6 @@ export class VPageComponent extends XPageComponent {
 
   @Input()
   toolbarDefaultHref: string = null;
-
-  @Input()
-  toolbarBackHandler?: () => XStandardType<void> = () => {
-    this.onBack();
-  };
   //#endregion
 
   //

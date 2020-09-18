@@ -83,9 +83,9 @@ export class ThemeManagerPage extends VPageComponent {
 
     //
     console.log('Back Pressed ...: ', this.isBackPrevented);
-    this.themeManagerActionProvider.next({
-      action: XThemeManagerAction.Back,
-    });
+    // this.themeManagerActionProvider.next({
+    //   action: XThemeManagerAction.Back,
+    // });
   }
   //#endregion
 
@@ -95,18 +95,6 @@ export class ThemeManagerPage extends VPageComponent {
 
   //
   //#region UI Handlers ...
-  //
-  async handleThemeValueChanged(event: XThemePack) {
-    this.formProvidedTheme = {
-      ...event,
-    };
-  }
-
-  //
-  async handleThemeStatusChanged(status: XFormStatus) {
-    this.formStatus = status;
-  }
-
   async handleTabChange(event: XThemeManagerTabs) {
     console.log('handleTabChange: ', event);
 
@@ -146,6 +134,17 @@ export class ThemeManagerPage extends VPageComponent {
     //
     this.detectChanges();
   }
+
+  async handleThemeChange(event: boolean) {
+    //
+    if ((!event && !this.isLocked) || (event && this.isLocked)) {
+      return;
+    }
+
+    //
+    this.lock = event;
+    this.detectChanges();
+  }
   //#endregion
 
   //
@@ -157,25 +156,6 @@ export class ThemeManagerPage extends VPageComponent {
   private async prepareActions(tab = XThemeManagerTabs.List) {
     //
     this.actions = null;
-    this.detectChanges();
-  }
-
-  private async handleBack() {
-    //
-    console.log('handleBack: ', this.currentTab);
-
-    //
-    const currentTab = this.currentTab || XThemeManagerTabs.List;
-    if (!currentTab) {
-      return;
-    }
-
-    //
-    this.themeManagerActionProvider.next({
-      action: XThemeManagerAction.Back,
-    });
-
-    //
     this.detectChanges();
   }
   //#endregion

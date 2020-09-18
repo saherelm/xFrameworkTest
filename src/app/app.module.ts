@@ -1,4 +1,5 @@
 import {
+  XCanDeactivateGuard,
   XFrameworkCoreModule,
   X_FRAMEWORK_CORE_CONFIG,
 } from 'x-framework-core';
@@ -64,6 +65,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       useClass: XHttpInterceptorService,
       multi: true,
     },
+    //
+    // Provide it ..
+    XCanDeactivateGuard
   ],
   bootstrap: [AppComponent],
 })

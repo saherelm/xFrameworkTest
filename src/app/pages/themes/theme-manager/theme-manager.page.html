@@ -6,7 +6,6 @@
   [toolbarShowBack]="toolbarShowBack"
   [toolbarSubTitle]="toolbarSubTitle"
   [toolbarShowProgressBar]="isLoading"
-  [toolbarDefaultHref]="toolbarDefaultHref"
   [toolbarBackHandler]="toolbarBackHandler"
 >
   <!-- Theme Manager -->
@@ -14,6 +13,7 @@
     [isInPage]="true"
     [wrapWithCard]="true"
     (tabChange)="handleTabChange($event)"
+    (themeChange)="handleThemeChange($event)"
     [actionProvider]="themeManagerActionProvider"
   ></x-theme-manager>
 </v-page>
