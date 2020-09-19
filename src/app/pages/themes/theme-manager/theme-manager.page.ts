@@ -2,11 +2,11 @@ import {
   XThemePack,
   XThemeType,
   XResourceIDs,
+  XStandardType,
   XColorWithBrightness,
 } from 'x-framework-core';
 import { Subject } from 'rxjs';
 import {
-  XFormStatus,
   XTabsActionModel,
   getEmptyThemePack,
   XThemeManagerTabs,
@@ -35,6 +35,11 @@ export class ThemeManagerPage extends VPageComponent {
     AppResourceIDs.theme_manager_description
   );
   toolbarShowSubTitle = true;
+
+  //
+  toolbarBackHandler: () => XStandardType<void> = async () => {
+    await this.backHandler();
+  };
   //#endregion
 
   //
@@ -78,14 +83,13 @@ export class ThemeManagerPage extends VPageComponent {
     super.onInit();
   }
 
-  onBack() {
+  async onBack() {
     super.onBack();
 
     //
-    console.log('Back Pressed ...: ', this.isBackPrevented);
-    // this.themeManagerActionProvider.next({
-    //   action: XThemeManagerAction.Back,
-    // });
+    if (this.currentTab !== XThemeManagerTabs.List) {
+      await this.backHandler();
+    }
   }
   //#endregion
 
@@ -96,8 +100,6 @@ export class ThemeManagerPage extends VPageComponent {
   //
   //#region UI Handlers ...
   async handleTabChange(event: XThemeManagerTabs) {
-    console.log('handleTabChange: ', event);
-
     //
     this.currentTab = event;
 
@@ -157,6 +159,31 @@ export class ThemeManagerPage extends VPageComponent {
     //
     this.actions = null;
     this.detectChanges();
+  }
+
+  private async backHandler() {
+    //
+    if (this.currentTab === XThemeManagerTabs.List) {
+      //
+      this.lock = false;
+      this.managerService.historyService.back();
+    } else {
+      //
+      if (this.isLocked) {
+        await this.presentDeactiveGuardDialog(() => {
+          this.issueThemeManagerComponentBackAction();
+        });
+      } else {
+        this.issueThemeManagerComponentBackAction();
+      }
+    }
+  }
+
+  private issueThemeManagerComponentBackAction() {
+    //
+    this.themeManagerActionProvider.next({
+      action: XThemeManagerAction.Back,
+    });
   }
   //#endregion
 }

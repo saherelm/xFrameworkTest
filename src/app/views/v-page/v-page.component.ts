@@ -205,7 +205,7 @@ export class VPageComponent extends XPageComponent {
   toolbarHasBack: XStandardType<boolean> = true;
 
   @Input()
-  toolbarDefaultHref: string = null;
+  toolbarDefaultHref: string;
   //#endregion
 
   //

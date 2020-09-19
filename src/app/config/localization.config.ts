@@ -436,6 +436,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         id: 'next',
         value: 'بعدی',
       },
+      {
+        id: 'back',
+        value: 'بازگشت'
+      },
       //#endregion
 
       //
@@ -956,6 +960,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       {
         id: 'next',
         value: 'Next',
+      },
+      {
+        id: 'back',
+        value: 'Back'
       },
       //#endregion
 
