@@ -50,7 +50,7 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       //
       {
         id: 'loading',
-        value: 'بارگزاری'
+        value: 'بارگزاری',
       },
 
       //
@@ -413,6 +413,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         value: 'رفتن',
       },
       {
+        id: 'input',
+        value: 'ورود',
+      },
+      {
         id: 'preview',
         value: 'پیش نمایش',
       },
@@ -438,7 +442,7 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       },
       {
         id: 'back',
-        value: 'بازگشت'
+        value: 'بازگشت',
       },
       //#endregion
 
@@ -491,12 +495,17 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       //#endregion
 
       //
-      //#region These Related ...
+      //#region Theme Related ...
       //
       {
         id: 'theme',
-        value: 'پوسته'
+        value: 'پوسته',
       },
+      {
+        id: 'theme_mode',
+        value: 'حالت نمایشی',
+      },
+      //
       {
         id: 'theme_dark',
         value: 'تیره',
@@ -512,12 +521,24 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       },
       {
         id: 'theme_name_description',
-        value: 'نام پوسته را وارد کنید'
+        value: 'نام پوسته را وارد کنید',
       },
       //
       {
         id: 'theme_clone_title',
-        value: 'نمونه گیری از پوسته'
+        value: 'نمونه گیری از پوسته',
+      },
+      //#endregion
+
+      //
+      //#region Color Picker Related ...
+      {
+        id: 'input_color_title',
+        value: 'تعیین رنگ',
+      },
+      {
+        id: 'input_color_description',
+        value: 'مقدار رنگ را وارد کنید',
       },
       //#endregion
 
@@ -575,7 +596,7 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       //
       {
         id: 'loading',
-        value: 'loading'
+        value: 'loading',
       },
 
       //
@@ -938,6 +959,10 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
         value: 'Go',
       },
       {
+        id: 'input',
+        value: 'Input',
+      },
+      {
         id: 'preview',
         value: 'Preview',
       },
@@ -963,7 +988,7 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       },
       {
         id: 'back',
-        value: 'Back'
+        value: 'Back',
       },
       //#endregion
 
@@ -1016,11 +1041,15 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       //#endregion
 
       //
-      //#region These Related ...
+      //#region Theme Related ...
       //
       {
         id: 'theme',
-        value: 'Theme'
+        value: 'Theme',
+      },
+      {
+        id: 'theme_mode',
+        value: 'Theme Mode',
       },
       //
       {
@@ -1038,12 +1067,24 @@ export const AvailableTranslationResources: XLanguageDescriptor[] = [
       },
       {
         id: 'theme_name_description',
-        value: 'Enter Theme name'
+        value: 'Enter Theme name',
       },
       //
       {
         id: 'theme_clone_title',
-        value: 'Theme Cloning'
+        value: 'Theme Cloning',
+      },
+      //#endregion
+
+      //
+      //#region Color Picker Related ...
+      {
+        id: 'input_color_title',
+        value: 'Color Value',
+      },
+      {
+        id: 'input_color_description',
+        value: 'input color value',
       },
       //#endregion
 

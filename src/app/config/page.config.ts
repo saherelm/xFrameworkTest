@@ -1,9 +1,9 @@
 import {
   XIconNames,
+  XTabNavigatorItem,
   XNavigatorListItem,
   toTabNavigatiorItem,
   toNavigatiorListItem,
-  XTabNavigatorItem,
 } from 'x-framework-components';
 import { XPage } from 'x-framework-core';
 import { AppResourceIDs } from './app.localization.config';
