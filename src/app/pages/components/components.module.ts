@@ -22,6 +22,7 @@ import { TabNavigatorPage } from './tab-navigator/tab-navigator.page';
 import { BaseRoutes, ComponentsRoutes } from 'src/app/config/page.config';
 import { FileComponentsPage } from './file-components/file-components.page';
 import { ExpandableListPage } from './expandable-list/expandable-list.page';
+import { DescriptionListPage } from './description-list/description-list.page';
 import { SmallComponentsPage } from './small-components/small-components.page';
 import { ExpandablePanelPage } from './expandable-panel/expandable-panel.page';
 import { SampleModalComponent } from './small-components/sample-modal/sample-modal.component';
@@ -89,6 +90,10 @@ import { SampleModalComponent } from './small-components/sample-modal/sample-mod
         component: MarkdownPage,
       },
       {
+        path: ComponentsRoutes.DescriptionList,
+        component: DescriptionListPage,
+      },
+      {
         path: ComponentsRoutes.ExpandableList,
         component: ExpandableListPage,
       },
@@ -144,6 +149,7 @@ import { SampleModalComponent } from './small-components/sample-modal/sample-mod
     FileComponentsPage,
     SmallComponentsPage,
     ExpandablePanelPage,
+    DescriptionListPage,
 
     //
     SampleModalComponent,

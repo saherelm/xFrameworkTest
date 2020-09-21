@@ -124,6 +124,12 @@ export enum AppResourceIDs {
   //#endregion
 
   //
+  //#region Color ...
+  color = 'color',
+  color_description = 'color_description',
+  //#endregion
+
+  //
   //#region Picker ...
   picker = 'picker',
   picker_description = 'picker_description',
@@ -251,6 +257,12 @@ export enum AppResourceIDs {
   //#region Markdown ...
   markdown = 'markdown',
   markdown_description = 'markdown_description',
+  //#endregion
+
+  //
+  //#region DescriptionList ...
+  description_list = 'description_list',
+  description_list_description = 'description_list_description',
   //#endregion
 
   //
@@ -576,6 +588,18 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
+  //#region Color ...
+  {
+    id: 'color',
+    value: 'رنگ',
+  },
+  {
+    id: 'color_description',
+    value: 'مستندات مربوط به مولفه رنگ',
+  },
+  //#endregion
+
+  //
   //#region Picker ...
   {
     id: 'picker',
@@ -868,6 +892,18 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
+  //#region DescriptionList ...
+  {
+    id: 'description_list',
+    value: 'لیست توضیحات',
+  },
+  {
+    id: 'description_list_description',
+    value: 'مستندات مربوط به مولفه لیست توضیحات',
+  },
+  //#endregion
+
+  //
   //#region ExpandableList ...
   {
     id: 'expandable_list',
@@ -984,20 +1020,20 @@ export const FaCustomLocales: XTranslationItem[] = [
   //#region Theme ...
   {
     id: 'themes',
-    value: 'پوسته ها'
+    value: 'پوسته ها',
   },
   {
     id: 'themes_description',
-    value: 'دسترسی به تمام امکانات مدیریت پوسته ها'
+    value: 'دسترسی به تمام امکانات مدیریت پوسته ها',
   },
   //
   {
     id: 'theme_manager',
-    value: 'مدیریت پوسته'
+    value: 'مدیریت پوسته',
   },
   {
     id: 'theme_manager_description',
-    value: 'مدیریت و دستکاری پوسته های نمایشی برنامه'
+    value: 'مدیریت و دستکاری پوسته های نمایشی برنامه',
   },
   //#endregion
 ];
@@ -1255,6 +1291,18 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'prompt_description',
     value: 'Prompt Component Documentation',
+  },
+  //#endregion
+
+  //
+  //#region Color ...
+  {
+    id: 'color',
+    value: 'Color',
+  },
+  {
+    id: 'color_description',
+    value: 'Color Component Documentation',
   },
   //#endregion
 
@@ -1551,6 +1599,18 @@ export const EnCustomLocales: XTranslationItem[] = [
   //#endregion
 
   //
+  //#region DescriptionList ...
+  {
+    id: 'description_list',
+    value: 'ِDescription List',
+  },
+  {
+    id: 'description_list_description',
+    value: 'Description List Component Documentation',
+  },
+  //#endregion
+
+  //
   //#region ExpandableList ...
   {
     id: 'expandable_list',
@@ -1667,20 +1727,20 @@ export const EnCustomLocales: XTranslationItem[] = [
   //#region Theme ...
   {
     id: 'theme',
-    value: 'Themes'
+    value: 'Themes',
   },
   {
     id: 'themes_description',
-    value: 'Access All Theme Management tools'
+    value: 'Access All Theme Management tools',
   },
   //
   {
     id: 'theme_manager',
-    value: 'Theme Manager'
+    value: 'Theme Manager',
   },
   {
     id: 'theme_manager_description',
-    value: 'add/remove and edit Application Themes'
+    value: 'add/remove and edit Application Themes',
   },
   //#endregion
 ];

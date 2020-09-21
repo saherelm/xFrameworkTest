@@ -19,7 +19,10 @@ import {
 import { Component } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
-import { SampleModalComponent, XModalContext } from './sample-modal/sample-modal.component';
+import {
+  SampleModalComponent,
+  XModalContext,
+} from './sample-modal/sample-modal.component';
 
 @Component({
   selector: 'app-small-components',
@@ -408,6 +411,18 @@ await this.managerService
 ` +
     '```';
 
+  readonly colorContentFa = 'این مولفه جهت نمایش رنگ بکار می رود';
+
+  readonly colorContentEn = 'this component used to represent a color';
+
+  readonly colorSample1 =
+'```typescript' +
+`
+<x-color [value]="{ key: 'black', value: '#000000' }">
+</x-color>
+` +
+'```';
+
   readonly modalContentFa = `
 برخی اوقات احتیاج داریم که یک مولفه مجزا در انگولار را بعنوان یک کادر محاوره به کاربر نمایش دهیم.
 `;
@@ -695,8 +710,9 @@ await this
 this component used when user requet item(s) from resources and the result is empty.
 `;
 
-  readonly emptySample1 = '```html' +
-`
+  readonly emptySample1 =
+    '```html' +
+    `
 <x-empty
   [hasRefresh]="true"
   [foregroundColor]="false"
@@ -707,7 +723,8 @@ this component used when user requet item(s) from resources and the result is em
   [refreshButtonColor]="ColorNames.Dark"
   [foregroundRefreshButtonColor]="false"
 ></x-empty>
-` + '```';
+` +
+    '```';
 
   //#endregion
   //#endregion

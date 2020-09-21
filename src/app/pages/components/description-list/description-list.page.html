@@ -1,0 +1,43 @@
+<v-page
+  [hasSide]="true"
+  [toolbarTitle]="toolbarTitle"
+  [toolbarSubTitle]="toolbarSubTitle"
+  [toolbarShowSubTitle]="toolbarShowSubTitle"
+>
+  <!-- Content -->
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
+    <!-- Content -->
+    <x-markdown
+      [mode]="'preview'"
+      [hasToolbar]="false"
+      [content]="getContent('content')"
+    ></x-markdown>
+
+    <!-- Actions -->
+    <div actions>
+      <a
+        target="_blank"
+        href="./assets/docs/x-framework-components/components/XDescriptionListComponent.html"
+        >{{resourceProvider(ResourceIDs.documentation)}}</a
+      >
+    </div>
+  </x-card>
+
+  <!-- Sample -->
+  <x-markdown
+    [isInPage]="true"
+    [mode]="'preview'"
+    [content]="sample1"
+    [hasToolbar]="false"
+    [wrapWithCard]="true"
+    [cssClass]="'code-block'"
+    [cardTitle]="resourceProvider(ResourceIDs.sample)"
+  ></x-markdown>
+
+  <!-- Component -->
+  <x-description-list
+    [model]="item"
+    [isInPage]="true"
+    [wrapWithCard]="true"
+  ></x-description-list>
+</v-page>

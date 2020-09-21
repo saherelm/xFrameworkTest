@@ -49,6 +49,7 @@ export enum ComponentsRoutes {
   List = 'list',
   Map = 'map',
   MarkDown = 'markdown',
+  DescriptionList = 'description-list',
   ExpandableList = 'expandable-list',
   ExpandablePanel = 'expandable-panel',
   Slider = 'slider',
@@ -119,6 +120,7 @@ export enum PageName {
   List = ComponentsRoutes.List,
   Map = ComponentsRoutes.Map,
   MarkDown = ComponentsRoutes.MarkDown,
+  DescriptionList = ComponentsRoutes.DescriptionList,
   ExpandableList = ComponentsRoutes.ExpandableList,
   ExpandablePanel = ComponentsRoutes.ExpandablePanel,
   Slider = ComponentsRoutes.Slider,
@@ -392,6 +394,21 @@ export const PageIndex: PageIndexType = {
         route: ['/', `${AppRoutes.Components}`, `${ComponentsRoutes.MarkDown}`],
       },
       //
+      // DescriptionList ...
+      {
+        icon: XIconNames.list,
+        id: `${PageName.DescriptionList}`,
+        name: `${PageName.DescriptionList}`,
+        title: AppResourceIDs.description_list,
+        baseRoute: `${ComponentsRoutes.DescriptionList}`,
+        description: AppResourceIDs.description_list_description,
+        route: [
+          '/',
+          `${AppRoutes.Components}`,
+          `${ComponentsRoutes.DescriptionList}`,
+        ],
+      },
+      //
       // ExpandableList ...
       {
         icon: XIconNames.list,
@@ -595,14 +612,15 @@ export const Pages = {
   List: PageIndex.Components.childs[10],
   Map: PageIndex.Components.childs[11],
   MarkDown: PageIndex.Components.childs[12],
-  ExpandableList: PageIndex.Components.childs[13],
-  ExpandablePanel: PageIndex.Components.childs[14],
-  Slider: PageIndex.Components.childs[15],
-  Stepper: PageIndex.Components.childs[16],
-  Tabs: PageIndex.Components.childs[17],
-  Table: PageIndex.Components.childs[18],
-  Page: PageIndex.Components.childs[19],
-  TabNavigator: PageIndex.Components.childs[20],
+  DescriptionList: PageIndex.Components.childs[13],
+  ExpandableList: PageIndex.Components.childs[14],
+  ExpandablePanel: PageIndex.Components.childs[15],
+  Slider: PageIndex.Components.childs[16],
+  Stepper: PageIndex.Components.childs[17],
+  Tabs: PageIndex.Components.childs[18],
+  Table: PageIndex.Components.childs[19],
+  Page: PageIndex.Components.childs[20],
+  TabNavigator: PageIndex.Components.childs[21],
 
   //
   TabsNav: PageIndex.TabsNav,

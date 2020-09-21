@@ -21,6 +21,7 @@ import {
   XTableModule,
   XThemeModule,
   XEmptyModule,
+  XColorModule,
   XButtonModule,
   XSliderModule,
   XSpinnerModule,
@@ -39,6 +40,7 @@ import {
   XBaseComponentModule,
   XExpandableListModule,
   XExpandablePanelModule,
+  XDescriptionListModule,
   XFrameworkComponentsModule,
 } from 'x-framework-components';
 import { NgModule } from '@angular/core';
@@ -92,6 +94,7 @@ import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
     XListModule,
     XGridModule,
     XFormModule,
+    XColorModule,
     CommonModule,
     XTableModule,
     XThemeModule,
@@ -112,6 +115,7 @@ import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
     XAvatarUploadModule,
     XExpandableListModule,
     XExpandablePanelModule,
+    XDescriptionListModule,
   ],
   exports: [
     //
@@ -131,12 +135,12 @@ import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
     XBaseComponentModule,
 
     //
+    XFabModule,
+    XMapModule,
     XPageModule,
     XIconModule,
     XFormModule,
     XTabsModule,
-    XFabModule,
-    XMapModule,
     XTabsModule,
     XPageModule,
     XCardModule,
@@ -144,6 +148,7 @@ import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
     XListModule,
     XGridModule,
     XFormModule,
+    XColorModule,
     CommonModule,
     XTableModule,
     XThemeModule,
@@ -164,6 +169,7 @@ import { VMaintainerComponent } from './v-maintainer/v-maintainer.component';
     XAvatarUploadModule,
     XExpandableListModule,
     XExpandablePanelModule,
+    XDescriptionListModule,
 
     //
     VPageComponent,
