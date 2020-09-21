@@ -72,8 +72,8 @@ export class VPageComponent extends XPageComponent {
   //
   //#region Props ...
   //
-  isMobileUi$: Observable<boolean>;
-  isNotMobileUi$: Observable<boolean>;
+  isMobileUi$ = this.managerService.isMobileUi$;
+  isNotMobileUi$ = this.managerService.isNotMobileUi$;
 
   //
   //#region CaptureMode ...

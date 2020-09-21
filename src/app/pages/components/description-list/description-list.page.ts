@@ -16,7 +16,9 @@ export class DescriptionListPage extends VPageComponent {
   //#region Page Props ...
   titleRes = AppResourceIDs.description_list;
   toolbarTitle = this.resourceProvider(this.titleRes);
-  toolbarSubTitle = this.resourceProvider(AppResourceIDs.description_list_description);
+  toolbarSubTitle = this.resourceProvider(
+    AppResourceIDs.description_list_description
+  );
   toolbarShowSubTitle = true;
   //#endregion
 
@@ -26,8 +28,8 @@ export class DescriptionListPage extends VPageComponent {
     last_name: 'Khazaee Asl',
     gender: 'male',
     mobile: '09121694056',
-    email: 'hadi_khazaee_asl@yahoo.com'
-  }
+    email: 'hadi_khazaee_asl@yahoo.com',
+  };
 
   //
   // Prepare All Resource IDs ...
@@ -45,15 +47,24 @@ export class DescriptionListPage extends VPageComponent {
   // Content ...
   readonly contentFa = `
   # ${this.toolbarTitle}
+این مولفه جهت نمایش یک مدل داده ای در غالبی ساختار یافته بکار میرود
   `;
   readonly contentEn = `
   # ${this.toolbarTitle}
+this component used to show a data model in an structural template
   `;
 
   //
   readonly sample1 =
     '```html' +
     `
+<x-description-list
+  [model]="item"
+  [isInPage]="true"
+  [wrapWithCard]="true"
+  [hiddenModelKeys]="['gender', 'mobile']"
+>
+</x-description-list>
 ` +
     '```';
 
