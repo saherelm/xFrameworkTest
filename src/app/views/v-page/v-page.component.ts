@@ -27,7 +27,6 @@ import {
   XModalButtonRole,
   XPickerColumnOption,
 } from 'x-framework-core';
-import { Observable } from 'rxjs';
 import {
   XMenuSlot,
   XLogoSlot,
