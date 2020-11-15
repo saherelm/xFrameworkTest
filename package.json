@@ -11,7 +11,8 @@
     "removeDependencies": "npm uninstall x-framework-components x-framework-services x-framework-core",
     "installDependencies": "npm i -s .././pack/x-framework-core-0.0.1.tgz .././pack/x-framework-services-0.0.1.tgz .././pack/x-framework-components-0.0.1.tgz",
     "prepareDependencies": "npm run removeDependencies && npm run installDependencies",
-    "serveXFrameworkProject": "npm run installDependencies && ng serve -o"
+    "serveXFrameworkProject": "npm run installDependencies && ng serve -o",
+    "servePublicXFrameworkProject": "npm run installDependencies && ng serve --host 0.0.0.0 -o --ssl"
   },
   "private": true,
   "dependencies": {
