@@ -4,10 +4,10 @@ import {
   X_FRAMEWORK_CORE_CONFIG,
 } from 'x-framework-core';
 import {
-  XFrameworkServicesModule,
-  X_FRAMEWORK_SERVICES_CONFIG,
   XManagerService,
   XHttpInterceptorService,
+  XFrameworkServicesModule,
+  X_FRAMEWORK_SERVICES_CONFIG,
 } from 'x-framework-services';
 import {
   XFrameworkComponentsModule,
@@ -41,7 +41,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     }),
   ],
   providers: [
+    //
+    // Manager Service ...
     XManagerService,
+    //
+    // Provide it ...
+    XCanDeactivateGuard,
     {
       provide: X_FRAMEWORK_CORE_CONFIG,
       useValue: XCONFIG,
@@ -65,9 +70,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       useClass: XHttpInterceptorService,
       multi: true,
     },
-    //
-    // Provide it ..
-    XCanDeactivateGuard
   ],
   bootstrap: [AppComponent],
 })
