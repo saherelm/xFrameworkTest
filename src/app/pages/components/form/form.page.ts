@@ -698,6 +698,7 @@ export class FormPage extends VPageComponent {
         type: XFormControlType.Text,
       },
       appearance: {
+        disabled: true,
         label: this.ResourceIDs.first_name,
         icons: {
           prefix: {
@@ -738,6 +739,7 @@ export class FormPage extends VPageComponent {
         type: XFormControlType.Text,
       },
       appearance: {
+        disabled: true,
         label: this.ResourceIDs.last_name,
         tooltip: 'Insert your Last Name here ...',
         icons: {
