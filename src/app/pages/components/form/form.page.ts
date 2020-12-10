@@ -35,6 +35,7 @@ import {
   XFormControlStatusChangeEventModel,
   XFormColorPickerControlPresentType,
   XFormDatePickerControlPickerPosition,
+  XFormControlAppearance,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
@@ -94,6 +95,9 @@ export class FormPage extends VPageComponent {
   //
   readonly ColorNames = Object.assign({}, XColorWithBrightness);
   readonly IconNames = Object.assign({}, XIconNames);
+
+  //
+  readonly FormControlAppearance = XFormControlAppearance.Legacy;
   //#endregion
 
   //
@@ -526,9 +530,7 @@ export class FormPage extends VPageComponent {
   //
   private firstNameAutoCompleteIsOpened = false;
   private firstNameAutoCompleteQuery = '';
-  private firstNameAutoCompleteItems: XListItem<
-    string
-  >[] = this.getFirstNameAutoCompleteItems();
+  private firstNameAutoCompleteItems: XListItem<string>[] = this.getFirstNameAutoCompleteItems();
 
   //
   private nameStrings: string[] = [
@@ -683,7 +685,7 @@ export class FormPage extends VPageComponent {
         lastName: 'Khazaee Asl',
         weddingState: true,
         latLong: '50.958799848165526,35.82254339947069',
-        color: '#9847a6ff'
+        color: '#9847a6ff',
       },
       updateOn: XFormUpdateOn.CHANGE,
       controls: [],
@@ -698,7 +700,8 @@ export class FormPage extends VPageComponent {
         type: XFormControlType.Text,
       },
       appearance: {
-        disabled: true,
+        disabled: false,
+        appearance: this.FormControlAppearance,
         label: this.ResourceIDs.first_name,
         icons: {
           prefix: {
@@ -741,6 +744,7 @@ export class FormPage extends VPageComponent {
       appearance: {
         disabled: true,
         label: this.ResourceIDs.last_name,
+        appearance: this.FormControlAppearance,
         tooltip: 'Insert your Last Name here ...',
         icons: {
           prefix: {
@@ -784,6 +788,13 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: AppResourceIDs.content,
+        appearance: this.FormControlAppearance,
+        icons: {
+          prefix: {
+            name: this.IconNames.account,
+            color: this.ColorNames.Primary
+          }
+        }
       },
     } as XFormControlConfig<XFormModel>;
 
@@ -806,6 +817,7 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: AppResourceIDs.content_type,
+        appearance: this.FormControlAppearance,
         icons: {
           prefix: {
             applyStateColor: true,
@@ -839,6 +851,7 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: AppResourceIDs.visibility,
+        appearance: this.FormControlAppearance,
         icons: {
           prefix: {
             applyStateColor: true,
@@ -869,6 +882,7 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.publish,
+        appearance: this.FormControlAppearance,
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
@@ -893,6 +907,7 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.brithDate,
+        appearance: this.FormControlAppearance,
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
@@ -911,6 +926,7 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.wedding_state,
+        appearance: this.FormControlAppearance,
       },
       eventHandlers: {
         valueChanged: async (value: XFormControlValueChangeEventModel) => {
@@ -937,6 +953,7 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.num_of_childs,
+        appearance: this.FormControlAppearance,
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
@@ -963,6 +980,7 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.avatar,
+        appearance: this.FormControlAppearance,
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
@@ -995,7 +1013,9 @@ export class FormPage extends VPageComponent {
         } as XFormMapControlConfig,
       },
       appearance: {
+        disabled: false,
         label: this.ResourceIDs.location,
+        appearance: this.FormControlAppearance,
         placeholder: this.ResourceIDs.location,
         icons: {
           prefix: {
@@ -1027,6 +1047,7 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.color,
+        appearance: this.FormControlAppearance,
         placeholder: this.ResourceIDs.color,
         icons: {
           prefix: {
