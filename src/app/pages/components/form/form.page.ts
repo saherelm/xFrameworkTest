@@ -97,7 +97,7 @@ export class FormPage extends VPageComponent {
   readonly IconNames = Object.assign({}, XIconNames);
 
   //
-  readonly FormControlAppearance = XFormControlAppearance.Legacy;
+  readonly FormControlAppearance = XFormControlAppearance.None;
   //#endregion
 
   //
@@ -1007,6 +1007,8 @@ export class FormPage extends VPageComponent {
           centerAfterInit: true,
           showGoMarkedPlace: true,
           showSelectedPosition: true,
+          inputCssClass: 'ion-text-end',
+          disableInput: true,
           searchBarColor: XColorWithBrightness.Dark,
           progressBarColor: XColorWithBrightness.Warning,
           presentType: XFormMapControlPresentType.WithDialog,
@@ -1042,6 +1044,7 @@ export class FormPage extends VPageComponent {
         type: XFormControlType.ColorPicker,
         config: {
           showCopyToClipboard: true,
+          inputCssClass: 'ion-text-end',
           presentType: XFormColorPickerControlPresentType.WithDialog,
         } as XFormColorPickerControlConfig,
       },

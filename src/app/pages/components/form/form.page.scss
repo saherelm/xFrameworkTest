@@ -47,6 +47,15 @@
     }
 
     //
+    .x-form-input-element {
+      width: 100%;
+      border: unset;
+      border-color: transparent;
+      color: var(--regular-color);
+      background-color: transparent;
+    }
+
+    //
     .x-form-checkbox-control {
       //
       .mat-checkbox-layout {
