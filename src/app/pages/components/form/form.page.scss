@@ -39,7 +39,7 @@
       //
       &.x-form-field-appearance-legacy,
       &.x-form-field-appearance-standard {
-        border-bottom-width: 2px;
+        border-bottom-width: 1px;
         border-bottom-style: solid;
         border-radius: 0 !important;
         border-bottom-color: var(--fill-color) !important;
@@ -56,6 +56,13 @@
       //
       .mat-checkbox-label {
         width: 100%;
+      }
+
+      //
+      .mat-checkbox-background {
+        &.mat-checkbox-checked {
+          background-color: var(--fill-color) !important;
+        }
       }
     }
   }
