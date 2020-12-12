@@ -77,6 +77,7 @@
     .x-form-field {
       //
       @include checkBoxProps;
+      @include radioButtonProps;
       @include rangeOptionProps;
       @include selectOptionProps;
       @include formFieldRegularProps;
@@ -97,12 +98,31 @@
       }
 
       //
-      &:not(.x-mat-form-field) {
+      &.x-form-radio-field {
         //
         outline: unset;
 
         //
         &.x-focused {
+          //
+          .x-field-label {
+            color: var(--active-color) !important;
+          }
+          border-color: var(--active-color) !important;
+
+          //
+          @include iconStatusColorHandler(var(--active-color));
+        }
+      }
+
+      //
+      &:not(.x-mat-form-field):not(.x-form-radio-field) {
+        //
+        outline: unset;
+
+        //
+        &.x-focused {
+          //
           @include formFieldFocusHandler;
         }
       }
@@ -211,6 +231,37 @@
     }
   }
 
+  @mixin radioButtonProps($disabled: false) {
+    //
+    .x-radio-button {
+      //
+      @include radioColorHandler(var(--regular-color), true, false);
+
+      //
+      &.active {
+        //
+        @include radioColorHandler(var(--active-color) !important, true, true);
+      }
+    }
+
+    &.x-form-radio-field {
+      //
+      outline: unset;
+
+      //
+      &.x-focused {
+        //
+        .x-field-label {
+          color: var(--active-color) !important;
+        }
+        border-color: var(--active-color) !important;
+
+        //
+        @include iconStatusColorHandler(var(--active-color));
+      }
+    }
+  }
+
   @mixin formFieldFocusHandler {
     //
     .mat-form-field-ripple {
@@ -228,6 +279,11 @@
     // Label Colors ...
     @if $disabled {
       @include formFieldLabelColorHandler(var(--disabled-color));
+
+      //
+      .x-form-field-appearance-fill:not(.x-mat-form-field) {
+        border-color: var(--disabled-fill-color);
+      }
     }
 
     //
@@ -242,22 +298,8 @@
 
     //
     // Legacy ...
-    .x-form-field-appearance-legacy {
-      //
-      @if $disabled {
-        @include matFormFieldUnderlineColorHandler(
-          var(--disabled-fill-color) !important,
-          true
-        );
-      } @else {
-        @include matFormFieldUnderlineColorHandler(
-          var(--fill-color) !important
-        );
-      }
-    }
-
-    //
     // Standard ...
+    .x-form-field-appearance-legacy,
     .x-form-field-appearance-standard {
       //
       @if $disabled {
@@ -270,6 +312,19 @@
           var(--fill-color) !important
         );
       }
+
+      //
+      &:not(.x-mat-form-field) {
+        @if $disabled {
+        } @else {
+          //
+          padding: 8px;
+          border-radius: 0;
+          border-bottom-width: 1px;
+          border-bottom-style: solid;
+          border-color: var(--regular-color);
+        }
+      }
     }
 
     //
@@ -280,6 +335,23 @@
         @include matFormFieldOutlineColorHandler(var(--disabled-fill-color));
       } @else {
         @include matFormFieldOutlineColorHandler(var(--fill-color));
+      }
+
+      //
+      &:not(.x-mat-form-field) {
+        @if $disabled {
+          @include backgroundColorHandler(
+            var(--disabled-fill-color) !important,
+            false
+          );
+        } @else {
+          //
+          padding: 8px;
+          border-radius: 3px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: var(--regular-color);
+        }
       }
     }
 
@@ -319,9 +391,22 @@
       //
       &:not(.x-mat-form-field) {
         @if $disabled {
-          @include backgroundColorHandler(var(--disabled-fill-color));
+          @include backgroundColorHandler(
+            var(--disabled-fill-color) !important,
+            false
+          );
         } @else {
-          @include backgroundColorHandler(var(--fill-color));
+          //
+          padding: 8px;
+          border-radius: 3px;
+          border-bottom-width: 1px;
+          border-bottom-style: solid;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          border-color: var(--regular-color);
+
+          //
+          @include backgroundColorHandler(var(--fill-color) !important, false);
         }
       }
     }
@@ -356,49 +441,26 @@
       @include formFieldHintProps(var(--disabled-color));
       @include formFieldErrorProps(var(--disabled-color));
       @include iconStatusColorHandler(var(--disabled-color));
+      @include formFieldWrapperColorHandler(var(--disabled-color));
+      @include radioColorHandler(var(--disabled-color) !important, true, true);
     }
 
     //
     // Valid ...
     &.x-form-field-wrapper-valid {
+      @include formFieldWrapperColorHandler(var(--valid-color))
     }
 
     //
     // Invalid ...
     &.x-form-field-wrapper-invalid {
-      //
-      .x-form-input-element {
-        outline: var(--invalid-color) auto 1px;
-      }
-
-      //
-      @include matFormFieldOutlineColorHandler(
-        $color: var(--invalid-color) !important
-      );
-      @include matFormFieldUnderlineColorHandler(
-        var(--invalid-color) !important
-      );
-      @include iconStatusColorHandler(var(--invalid-color));
-      @include formFieldLabelColorHandler(var(--invalid-color));
+      @include formFieldWrapperColorHandler(var(--invalid-color))
     }
 
     //
     // Pending ...
     &.x-form-field-wrapper-pending {
-      //
-      .x-form-input-element {
-        outline: var(--pending-color) auto 1px;
-      }
-
-      //
-      @include matFormFieldOutlineColorHandler(
-        $color: var(--pending-color) !important
-      );
-      @include matFormFieldUnderlineColorHandler(
-        var(--pending-color) !important
-      );
-      @include iconStatusColorHandler(var(--pending-color));
-      @include formFieldLabelColorHandler(var(--pending-color));
+      @include formFieldWrapperColorHandler(var(--pending-color))
     }
   }
 
@@ -423,6 +485,50 @@
     @if $applyToChilds {
       *:not(.mat-form-field-ripple) {
         background-color: $color;
+      }
+    }
+  }
+
+  @mixin formFieldWrapperColorHandler($color: var(--regular-color)) {
+    //
+    .x-form-input-element {
+      outline: $color auto 1px;
+    }
+
+    //
+    .x-form-field:not(.x-mat-form-field) {
+      border-color: $color !important;
+    }
+
+    //
+    @include iconStatusColorHandler($color);
+    @include formFieldLabelColorHandler($color);
+    @include matFormFieldOutlineColorHandler($color !important);
+    @include matFormFieldUnderlineColorHandler($color !important);
+  }
+
+  @mixin radioColorHandler(
+    $color: var(--regular-color),
+    $applyOnOuterCircle: false,
+    $applyOnInnerCircle: false
+  ) {
+    //
+    .mat-radio-label {
+      //
+      color: $color;
+
+      //
+      @if $applyOnOuterCircle {
+        .mat-radio-outer-circle {
+          border-color: $color;
+        }
+      }
+
+      //
+      @if $applyOnInnerCircle {
+        .mat-radio-inner-circle {
+          background-color: $color;
+        }
       }
     }
   }

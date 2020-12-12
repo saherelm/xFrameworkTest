@@ -703,113 +703,118 @@ export class FormPage extends VPageComponent {
     let cIdx = 0;
 
     //
-    const customDisabled = false;
+    const showHint = true;
+    const showTooltip = true;
+    const disabledByDefault = false;
     const hasRequiredValidator = true;
-    const FormControlAppearance = XFormControlAppearance.Fill;
+    const FormControlAppearance = XFormControlAppearance.Standard;
 
     //
     //#region First Name ...
-    // this.xFormConfig.controls[cIdx] = {
-    //   index: cIdx,
-    //   propName: 'firstName',
-    //   type: {
-    //     type: XFormControlType.Text,
-    //   },
-    //   appearance: {
-    //     disabled: customDisabled || false,
-    //     appearance: FormControlAppearance,
-    //     label: this.ResourceIDs.first_name,
-    //     icons: {
-    //       prefix: {
-    //         applyStateColor: true,
-    //         name: this.IconNames.first_name,
-    //         color: XColorWithBrightness.SuccessShade,
-    //       },
-    //     },
-    //   },
-    // validators: hasRequiredValidator
-    // ? {
-    //     validators: [Validators.required],
-    //   }
-    // : undefined,
-    //   errorHandlers: [
-    //     {
-    //       errorName: 'required',
-    //       errorMessage: 'Required Field ...',
-    //     },
-    //   ],
-    //   eventHandlers: {
-    //     onBlured: (name: any) => {
-    //       console.log('control: ', name, ', was blured ...');
-    //       this.prepareFirstNameAutoComplete({ opened: false });
-    //     },
-    //     onFocused: (name: any) => {
-    //       console.log('control: ', name, ', was focused ...');
-    //     },
-    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
-    //       // console.log('status changed: ', model);
-    //     },
-    //     valueChanged: async (model: XFormControlValueChangeEventModel) => {
-    //       //
-    //       console.log('value changed: ', model);
-    //       await this.handleFilterAutoCompleteFirstName(model.value);
-    //     },
-    //   },
-    // } as XFormControlConfig<XFormModel>;
-    // cIdx++;
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
+      propName: 'firstName',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        disabled: disabledByDefault || false,
+        appearance: FormControlAppearance,
+        hint: showHint ? this.ResourceIDs.first_name : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.first_name : undefined,
+        label: this.ResourceIDs.first_name,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+          this.prepareFirstNameAutoComplete({ opened: false });
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (model: XFormControlStatusChangeEventModel) => {
+          // console.log('status changed: ', model);
+        },
+        valueChanged: async (model: XFormControlValueChangeEventModel) => {
+          //
+          console.log('value changed: ', model);
+          await this.handleFilterAutoCompleteFirstName(model.value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+    cIdx++;
 
-    // //
-    // this.prepareFirstNameAutoComplete();
+    //
+    this.prepareFirstNameAutoComplete();
     //#endregion
 
     //
     //#region Last Name ...
-    // this.xFormConfig.controls[cIdx] = {
-    //   index: cIdx,
-    //   propName: 'lastName',
-    //   type: {
-    //     type: XFormControlType.Text,
-    //   },
-    //   appearance: {
-    // disabled: customDisabled || false,
-    //     label: this.ResourceIDs.last_name,
-    //     appearance: FormControlAppearance,
-    //     tooltip: 'Insert your Last Name here ...',
-    //     icons: {
-    //       prefix: {
-    //         applyStateColor: true,
-    //         name: this.IconNames.first_name,
-    //         color: XColorWithBrightness.SuccessShade,
-    //       },
-    //     },
-    //   },
-    // validators: hasRequiredValidator
-    // ? {
-    //     validators: [Validators.required],
-    //   }
-    // : undefined,
-    //   errorHandlers: [
-    //     {
-    //       errorName: 'required',
-    //       errorMessage: 'Required Field ...',
-    //     },
-    //   ],
-    //   eventHandlers: {
-    //     onBlured: (name: any) => {
-    //       console.log('control: ', name, ', was blured ...');
-    //     },
-    //     onFocused: (name: any) => {
-    //       console.log('control: ', name, ', was focused ...');
-    //     },
-    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
-    //       console.log('status changed: ', model);
-    //     },
-    //     valueChanged: (model: XFormControlValueChangeEventModel) => {
-    //       console.log('value changed: ', model);
-    //     },
-    //   },
-    // } as XFormControlConfig<XFormModel>;
-    // cIdx++;
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
+      propName: 'lastName',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        disabled: disabledByDefault || false,
+        label: this.ResourceIDs.last_name,
+        appearance: FormControlAppearance,
+        hint: showHint ? this.ResourceIDs.last_name : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.last_name : undefined,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (model: XFormControlStatusChangeEventModel) => {
+          console.log('status changed: ', model);
+        },
+        valueChanged: (model: XFormControlValueChangeEventModel) => {
+          console.log('value changed: ', model);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+    cIdx++;
     //#endregion
 
     //
@@ -1090,8 +1095,10 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: AppResourceIDs.content,
+        hint: showHint ? AppResourceIDs.content : undefined,
+        tooltip: showTooltip ? AppResourceIDs.content : undefined,
         appearance: FormControlAppearance,
-        disabled: customDisabled || false,
+        disabled: disabledByDefault || false,
         icons: {
           prefix: {
             name: this.IconNames.account,
@@ -1121,9 +1128,10 @@ export class FormPage extends VPageComponent {
         } as XFormSelectControlConfig,
       },
       appearance: {
-        disabled: customDisabled || false,
+        disabled: disabledByDefault || false,
         label: AppResourceIDs.content_type,
-        hint: AppResourceIDs.content_type,
+        hint: showHint ? AppResourceIDs.content_type : undefined,
+        tooltip: showTooltip ? AppResourceIDs.content_type : undefined,
         placeholder: AppResourceIDs.content_type,
         appearance: FormControlAppearance,
         icons: {
@@ -1172,7 +1180,9 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: AppResourceIDs.visibility,
-        disabled: customDisabled || false,
+        hint: showHint ? AppResourceIDs.visibility : undefined,
+        tooltip: showTooltip ? AppResourceIDs.visibility : undefined,
+        disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
         icons: {
           prefix: {
@@ -1217,7 +1227,9 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.publish,
-        disabled: customDisabled || false,
+        hint: showHint ? this.ResourceIDs.publish : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.publish : undefined,
+        disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
       },
       validators: hasRequiredValidator
@@ -1256,7 +1268,9 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.brithDate,
-        disabled: customDisabled || false,
+        hint: showHint ? this.ResourceIDs.brithDate : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.brithDate : undefined,
+        disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
       },
       validators: hasRequiredValidator
@@ -1289,7 +1303,9 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.wedding_state,
-        disabled: customDisabled || false,
+        hint: showHint ? this.ResourceIDs.wedding_state : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.wedding_state : undefined,
+        disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
       },
       validators: hasRequiredValidator
@@ -1330,7 +1346,9 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.num_of_childs,
-        disabled: customDisabled || false,
+        hint: showHint ? this.ResourceIDs.num_of_childs : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.num_of_childs : undefined,
+        disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
       },
       validators: hasRequiredValidator
@@ -1371,7 +1389,9 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.avatar,
-        disabled: customDisabled || false,
+        hint: showHint ? this.ResourceIDs.avatar : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.avatar : undefined,
+        disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
       },
       validators: hasRequiredValidator
@@ -1421,7 +1441,9 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.location,
-        disabled: customDisabled || false,
+        hint: showHint ? this.ResourceIDs.location : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.location : undefined,
+        disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
         placeholder: this.ResourceIDs.location,
         icons: {
@@ -1468,7 +1490,9 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.color,
-        disabled: customDisabled || false,
+        hint: showHint ? this.ResourceIDs.color : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.color : undefined,
+        disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
         placeholder: this.ResourceIDs.color,
         icons: {
