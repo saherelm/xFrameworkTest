@@ -1,10 +1,13 @@
 :host-context(::ng-deep.x-form) {
-  //
-  --hint-text-size: 7pt;
-  --hint-color: var(--x-color-tertiary);
-  --error-text-size: 7pt;
-  --form-fields-vertical-margin: 16px;
-  --disabled-color: var(--x-color-medium);
+  // //
+  // --hint-text-size: 7pt;
+  // --hint-color: var(--x-color-tertiary);
+  // --error-text-size: 7pt;
+  // --checkbox-check-color: var(--x-color-light);
+
+  // //
+  // --form-fields-vertical-margin: 16px;
+  // --disabled-color: var(--x-color-medium);
 
   @mixin formFieldRegularProps {
     //
@@ -76,7 +79,6 @@
       @include checkBoxProps;
       @include rangeOptionProps;
       @include selectOptionProps;
-      @include autoCompleteProps;
       @include formFieldRegularProps;
       @include formInputElementProps;
       @include formFieldAppearanceHandler;
@@ -122,6 +124,11 @@
     .x-auto-complete {
       //
       position: fixed;
+
+      //
+      &.x-auto-complete-margin {
+        margin-top: 0;
+      }
 
       //
       height: calc(50%);
@@ -322,6 +329,10 @@
 
   @mixin formFieldStatusHandler {
     //
+    // Global ...
+    @include formFieldAppearanceHandler(false);
+
+    //
     // Disabled ...
     &.x-form-field-wrapper-disabled {
       //
@@ -364,7 +375,6 @@
       @include matFormFieldOutlineColorHandler(
         $color: var(--invalid-color) !important
       );
-      @include formFieldAppearanceHandler(false);
       @include matFormFieldUnderlineColorHandler(
         var(--invalid-color) !important
       );
@@ -478,18 +488,29 @@
 
     //
     @include formFieldProps;
+    @include autoCompleteProps;
     @include formFieldStatusHandler;
     @include formFieldHintProps(var(--hint-color), var(--hint-text-size));
     @include formFieldErrorProps(var(--invalid-color), var(--error-text-size));
   }
 }
 
+::ng-deep.cdk-overlay-pane {
+  transform: translateY(0px) !important;
+}
+
 ::ng-deep.x-form-select-control {
   //
-  max-width: 100% !important;
   min-width: 100% !important;
-  color: var(--regular-color) !important;
-  background-color: transparent !important;
+
+  //
+  &:not(.x-form-select-control-panel) {
+    max-width: 100% !important;
+  }
+
+  //
+  &.x-form-select-control-panel {
+  }
 
   //
   .mat-select-value-text {
@@ -504,7 +525,25 @@
 
     //
     &.mat-selected {
+      //
       color: var(--active-color) !important;
+
+      //
+      .mat-pseudo-checkbox-checked {
+        background: var(--active-color) !important;
+      }
+
+      //
+      .mat-pseudo-checkbox::after {
+        color: var(--checkbox-check-color) !important;
+      }
+    }
+
+    //
+    &:hover {
+      $level: 0.5;
+      -webkit-filter: brightness($level);
+      filter: brightness($level);
     }
   }
 }

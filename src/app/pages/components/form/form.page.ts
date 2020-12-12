@@ -101,9 +101,6 @@ export class FormPage extends VPageComponent {
   //
   readonly ColorNames = Object.assign({}, XColorWithBrightness);
   readonly IconNames = Object.assign({}, XIconNames);
-
-  //
-  readonly FormControlAppearance = XFormControlAppearance.None;
   //#endregion
 
   //
@@ -706,7 +703,9 @@ export class FormPage extends VPageComponent {
     let cIdx = 0;
 
     //
-    const customDisabled = true;
+    const customDisabled = false;
+    const hasRequiredValidator = true;
+    const FormControlAppearance = XFormControlAppearance.Fill;
 
     //
     //#region First Name ...
@@ -717,8 +716,8 @@ export class FormPage extends VPageComponent {
     //     type: XFormControlType.Text,
     //   },
     //   appearance: {
-    //     disabled: false,
-    //     appearance: this.FormControlAppearance,
+    //     disabled: customDisabled || false,
+    //     appearance: FormControlAppearance,
     //     label: this.ResourceIDs.first_name,
     //     icons: {
     //       prefix: {
@@ -728,6 +727,17 @@ export class FormPage extends VPageComponent {
     //       },
     //     },
     //   },
+    // validators: hasRequiredValidator
+    // ? {
+    //     validators: [Validators.required],
+    //   }
+    // : undefined,
+    //   errorHandlers: [
+    //     {
+    //       errorName: 'required',
+    //       errorMessage: 'Required Field ...',
+    //     },
+    //   ],
     //   eventHandlers: {
     //     onBlured: (name: any) => {
     //       console.log('control: ', name, ', was blured ...');
@@ -753,7 +763,7 @@ export class FormPage extends VPageComponent {
     //#endregion
 
     //
-    //#region  Last Name ...
+    //#region Last Name ...
     // this.xFormConfig.controls[cIdx] = {
     //   index: cIdx,
     //   propName: 'lastName',
@@ -761,10 +771,62 @@ export class FormPage extends VPageComponent {
     //     type: XFormControlType.Text,
     //   },
     //   appearance: {
-    //     disabled: false,
+    // disabled: customDisabled || false,
     //     label: this.ResourceIDs.last_name,
-    //     appearance: XFormControlAppearance.Fill, // this.FormControlAppearance,
+    //     appearance: FormControlAppearance,
     //     tooltip: 'Insert your Last Name here ...',
+    //     icons: {
+    //       prefix: {
+    //         applyStateColor: true,
+    //         name: this.IconNames.first_name,
+    //         color: XColorWithBrightness.SuccessShade,
+    //       },
+    //     },
+    //   },
+    // validators: hasRequiredValidator
+    // ? {
+    //     validators: [Validators.required],
+    //   }
+    // : undefined,
+    //   errorHandlers: [
+    //     {
+    //       errorName: 'required',
+    //       errorMessage: 'Required Field ...',
+    //     },
+    //   ],
+    //   eventHandlers: {
+    //     onBlured: (name: any) => {
+    //       console.log('control: ', name, ', was blured ...');
+    //     },
+    //     onFocused: (name: any) => {
+    //       console.log('control: ', name, ', was focused ...');
+    //     },
+    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
+    //       console.log('status changed: ', model);
+    //     },
+    //     valueChanged: (model: XFormControlValueChangeEventModel) => {
+    //       console.log('value changed: ', model);
+    //     },
+    //   },
+    // } as XFormControlConfig<XFormModel>;
+    // cIdx++;
+    //#endregion
+
+    //
+    //#region Text 0 ...
+    // this.xFormConfig.controls[cIdx] = {
+    //   index: cIdx,
+    //   propName: 'text0',
+    //   type: {
+    //     type: XFormControlType.Text,
+    //   },
+    //   appearance: {
+    //     disabled: customDisabled || false,
+    //     label: 'Text 0',
+    //     hint: 'Hint 0',
+    //     tooltip: 'Tooltip 0 ...',
+    //     placeholder: 'PlaceHolder 0',
+    //     appearance: XFormControlAppearance.None, // this.FormControlAppearance,
     //     icons: {
     //       prefix: {
     //         applyStateColor: true,
@@ -787,258 +849,227 @@ export class FormPage extends VPageComponent {
     //       console.log('value changed: ', model);
     //     },
     //   },
+    // validators: hasRequiredValidator
+    // ? {
+    //     validators: [Validators.required],
+    //   }
+    // : undefined,
+    //   errorHandlers: [
+    //     {
+    //       errorName: 'required',
+    //       errorMessage: 'Required Field ...',
+    //     },
+    //   ],
     // } as XFormControlConfig<XFormModel>;
     // cIdx++;
     //#endregion
 
     //
-    //#region Text 0 ...
-    this.xFormConfig.controls[cIdx] = {
-      index: cIdx,
-      propName: 'text0',
-      type: {
-        type: XFormControlType.Text,
-      },
-      appearance: {
-        disabled: customDisabled || false,
-        label: 'Text 0',
-        hint: 'Hint 0',
-        tooltip: 'Tooltip 0 ...',
-        placeholder: 'PlaceHolder 0',
-        appearance: XFormControlAppearance.None, // this.FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: true,
-            name: this.IconNames.first_name,
-            color: XColorWithBrightness.SuccessShade,
-          },
-        },
-      },
-      eventHandlers: {
-        onBlured: (name: any) => {
-          console.log('control: ', name, ', was blured ...');
-        },
-        onFocused: (name: any) => {
-          console.log('control: ', name, ', was focused ...');
-        },
-        statusChanged: (model: XFormControlStatusChangeEventModel) => {
-          console.log('status changed: ', model);
-        },
-        valueChanged: (model: XFormControlValueChangeEventModel) => {
-          console.log('value changed: ', model);
-        },
-      },
-      validators: {
-        validators: [Validators.required],
-      },
-      errorHandlers: [
-        {
-          errorName: 'required',
-          errorMessage: 'Required Field ...',
-        },
-      ],
-    } as XFormControlConfig<XFormModel>;
-    cIdx++;
-    //#endregion
-
-    //
     //#region Text 1 ...
-    this.xFormConfig.controls[cIdx] = {
-      index: cIdx,
-      propName: 'text1',
-      type: {
-        type: XFormControlType.Text,
-      },
-      appearance: {
-        disabled: customDisabled || false,
-        label: 'Text 1',
-        hint: 'Hint 1',
-        tooltip: 'Tooltip 1 ...',
-        placeholder: 'PlaceHolder 1',
-        appearance: XFormControlAppearance.Fill, // this.FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: true,
-            name: this.IconNames.first_name,
-            color: XColorWithBrightness.SuccessShade,
-          },
-        },
-      },
-      eventHandlers: {
-        onBlured: (name: any) => {
-          console.log('control: ', name, ', was blured ...');
-        },
-        onFocused: (name: any) => {
-          console.log('control: ', name, ', was focused ...');
-        },
-        statusChanged: (model: XFormControlStatusChangeEventModel) => {
-          console.log('status changed: ', model);
-        },
-        valueChanged: (model: XFormControlValueChangeEventModel) => {
-          console.log('value changed: ', model);
-        },
-      },
-      validators: {
-        validators: [Validators.required],
-      },
-      errorHandlers: [
-        {
-          errorName: 'required',
-          errorMessage: 'Required Field ...',
-        },
-      ],
-    } as XFormControlConfig<XFormModel>;
-    cIdx++;
+    // this.xFormConfig.controls[cIdx] = {
+    //   index: cIdx,
+    //   propName: 'text1',
+    //   type: {
+    //     type: XFormControlType.Text,
+    //   },
+    //   appearance: {
+    //     disabled: customDisabled || false,
+    //     label: 'Text 1',
+    //     hint: 'Hint 1',
+    //     tooltip: 'Tooltip 1 ...',
+    //     placeholder: 'PlaceHolder 1',
+    //     appearance: XFormControlAppearance.Fill, // this.FormControlAppearance,
+    //     icons: {
+    //       prefix: {
+    //         applyStateColor: true,
+    //         name: this.IconNames.first_name,
+    //         color: XColorWithBrightness.SuccessShade,
+    //       },
+    //     },
+    //   },
+    //   eventHandlers: {
+    //     onBlured: (name: any) => {
+    //       console.log('control: ', name, ', was blured ...');
+    //     },
+    //     onFocused: (name: any) => {
+    //       console.log('control: ', name, ', was focused ...');
+    //     },
+    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
+    //       console.log('status changed: ', model);
+    //     },
+    //     valueChanged: (model: XFormControlValueChangeEventModel) => {
+    //       console.log('value changed: ', model);
+    //     },
+    //   },
+    // validators: hasRequiredValidator
+    // ? {
+    //     validators: [Validators.required],
+    //   }
+    // : undefined,
+    //   errorHandlers: [
+    //     {
+    //       errorName: 'required',
+    //       errorMessage: 'Required Field ...',
+    //     },
+    //   ],
+    // } as XFormControlConfig<XFormModel>;
+    // cIdx++;
     //#endregion
 
     //
     //#region Text2 ...
-    this.xFormConfig.controls[cIdx] = {
-      index: cIdx,
-      propName: 'text2',
-      type: {
-        type: XFormControlType.Text,
-      },
-      appearance: {
-        disabled: customDisabled || false,
-        label: 'Text 2',
-        hint: 'Hint 2',
-        tooltip: 'Tooltip 2 ...',
-        placeholder: 'PlaceHolder 2',
-        appearance: XFormControlAppearance.Outline, // this.FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: true,
-            name: this.IconNames.first_name,
-            color: XColorWithBrightness.SuccessShade,
-          },
-        },
-      },
-      eventHandlers: {
-        onBlured: (name: any) => {
-          console.log('control: ', name, ', was blured ...');
-        },
-        onFocused: (name: any) => {
-          console.log('control: ', name, ', was focused ...');
-        },
-        statusChanged: (model: XFormControlStatusChangeEventModel) => {
-          console.log('status changed: ', model);
-        },
-        valueChanged: (model: XFormControlValueChangeEventModel) => {
-          console.log('value changed: ', model);
-        },
-      },
-      validators: {
-        validators: [Validators.required],
-      },
-      errorHandlers: [
-        {
-          errorName: 'required',
-          errorMessage: 'Required Field ...',
-        },
-      ],
-    } as XFormControlConfig<XFormModel>;
-    cIdx++;
+    // this.xFormConfig.controls[cIdx] = {
+    //   index: cIdx,
+    //   propName: 'text2',
+    //   type: {
+    //     type: XFormControlType.Text,
+    //   },
+    //   appearance: {
+    //     disabled: customDisabled || false,
+    //     label: 'Text 2',
+    //     hint: 'Hint 2',
+    //     tooltip: 'Tooltip 2 ...',
+    //     placeholder: 'PlaceHolder 2',
+    //     appearance: XFormControlAppearance.Outline, // this.FormControlAppearance,
+    //     icons: {
+    //       prefix: {
+    //         applyStateColor: true,
+    //         name: this.IconNames.first_name,
+    //         color: XColorWithBrightness.SuccessShade,
+    //       },
+    //     },
+    //   },
+    //   eventHandlers: {
+    //     onBlured: (name: any) => {
+    //       console.log('control: ', name, ', was blured ...');
+    //     },
+    //     onFocused: (name: any) => {
+    //       console.log('control: ', name, ', was focused ...');
+    //     },
+    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
+    //       console.log('status changed: ', model);
+    //     },
+    //     valueChanged: (model: XFormControlValueChangeEventModel) => {
+    //       console.log('value changed: ', model);
+    //     },
+    //   },
+    // validators: hasRequiredValidator
+    // ? {
+    //     validators: [Validators.required],
+    //   }
+    // : undefined,
+    //   errorHandlers: [
+    //     {
+    //       errorName: 'required',
+    //       errorMessage: 'Required Field ...',
+    //     },
+    //   ],
+    // } as XFormControlConfig<XFormModel>;
+    // cIdx++;
     //#endregion
 
     //
     //#region Text3 ...
-    this.xFormConfig.controls[cIdx] = {
-      index: cIdx,
-      propName: 'text3',
-      type: {
-        type: XFormControlType.Text,
-      },
-      appearance: {
-        disabled: customDisabled || false,
-        label: 'Text 3',
-        hint: 'Hint 3',
-        tooltip: 'Tooltip 3 ...',
-        placeholder: 'PlaceHolder 3',
-        appearance: XFormControlAppearance.Legacy, // this.FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: true,
-            name: this.IconNames.first_name,
-            color: XColorWithBrightness.SuccessShade,
-          },
-        },
-      },
-      eventHandlers: {
-        onBlured: (name: any) => {
-          console.log('control: ', name, ', was blured ...');
-        },
-        onFocused: (name: any) => {
-          console.log('control: ', name, ', was focused ...');
-        },
-        statusChanged: (model: XFormControlStatusChangeEventModel) => {
-          console.log('status changed: ', model);
-        },
-        valueChanged: (model: XFormControlValueChangeEventModel) => {
-          console.log('value changed: ', model);
-        },
-      },
-      validators: {
-        validators: [Validators.required],
-      },
-      errorHandlers: [
-        {
-          errorName: 'required',
-          errorMessage: 'Required Field ...',
-        },
-      ],
-    } as XFormControlConfig<XFormModel>;
-    cIdx++;
+    // this.xFormConfig.controls[cIdx] = {
+    //   index: cIdx,
+    //   propName: 'text3',
+    //   type: {
+    //     type: XFormControlType.Text,
+    //   },
+    //   appearance: {
+    //     disabled: customDisabled || false,
+    //     label: 'Text 3',
+    //     hint: 'Hint 3',
+    //     tooltip: 'Tooltip 3 ...',
+    //     placeholder: 'PlaceHolder 3',
+    //     appearance: XFormControlAppearance.Legacy, // this.FormControlAppearance,
+    //     icons: {
+    //       prefix: {
+    //         applyStateColor: true,
+    //         name: this.IconNames.first_name,
+    //         color: XColorWithBrightness.SuccessShade,
+    //       },
+    //     },
+    //   },
+    //   eventHandlers: {
+    //     onBlured: (name: any) => {
+    //       console.log('control: ', name, ', was blured ...');
+    //     },
+    //     onFocused: (name: any) => {
+    //       console.log('control: ', name, ', was focused ...');
+    //     },
+    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
+    //       console.log('status changed: ', model);
+    //     },
+    //     valueChanged: (model: XFormControlValueChangeEventModel) => {
+    //       console.log('value changed: ', model);
+    //     },
+    //   },
+    // validators: hasRequiredValidator
+    // ? {
+    //     validators: [Validators.required],
+    //   }
+    // : undefined,
+    //   errorHandlers: [
+    //     {
+    //       errorName: 'required',
+    //       errorMessage: 'Required Field ...',
+    //     },
+    //   ],
+    // } as XFormControlConfig<XFormModel>;
+    // cIdx++;
     //#endregion
 
     //
     //#region Text4 ...
-    this.xFormConfig.controls[cIdx] = {
-      index: cIdx,
-      propName: 'text4',
-      type: {
-        type: XFormControlType.Text,
-      },
-      appearance: {
-        disabled: customDisabled || false,
-        label: 'Text 4',
-        hint: 'Hint 4',
-        tooltip: 'Tooltip 4 ...',
-        placeholder: 'PlaceHolder 4',
-        appearance: XFormControlAppearance.Standard, // this.FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: true,
-            name: this.IconNames.first_name,
-            color: XColorWithBrightness.SuccessShade,
-          },
-        },
-      },
-      eventHandlers: {
-        onBlured: (name: any) => {
-          console.log('control: ', name, ', was blured ...');
-        },
-        onFocused: (name: any) => {
-          console.log('control: ', name, ', was focused ...');
-        },
-        statusChanged: (model: XFormControlStatusChangeEventModel) => {
-          console.log('status changed: ', model);
-        },
-        valueChanged: (model: XFormControlValueChangeEventModel) => {
-          console.log('value changed: ', model);
-        },
-      },
-      validators: {
-        validators: [Validators.required],
-      },
-      errorHandlers: [
-        {
-          errorName: 'required',
-          errorMessage: 'Required Field ...',
-        },
-      ],
-    } as XFormControlConfig<XFormModel>;
-    cIdx++;
+    // this.xFormConfig.controls[cIdx] = {
+    //   index: cIdx,
+    //   propName: 'text4',
+    //   type: {
+    //     type: XFormControlType.Text,
+    //   },
+    //   appearance: {
+    //     disabled: customDisabled || false,
+    //     label: 'Text 4',
+    //     hint: 'Hint 4',
+    //     tooltip: 'Tooltip 4 ...',
+    //     placeholder: 'PlaceHolder 4',
+    //     appearance: XFormControlAppearance.Standard, // this.FormControlAppearance,
+    //     icons: {
+    //       prefix: {
+    //         applyStateColor: true,
+    //         name: this.IconNames.first_name,
+    //         color: XColorWithBrightness.SuccessShade,
+    //       },
+    //     },
+    //   },
+    //   eventHandlers: {
+    //     onBlured: (name: any) => {
+    //       console.log('control: ', name, ', was blured ...');
+    //     },
+    //     onFocused: (name: any) => {
+    //       console.log('control: ', name, ', was focused ...');
+    //     },
+    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
+    //       console.log('status changed: ', model);
+    //     },
+    //     valueChanged: (model: XFormControlValueChangeEventModel) => {
+    //       console.log('value changed: ', model);
+    //     },
+    //   },
+    // validators: hasRequiredValidator
+    // ? {
+    //     validators: [Validators.required],
+    //   }
+    // : undefined,
+    //   errorHandlers: [
+    //     {
+    //       errorName: 'required',
+    //       errorMessage: 'Required Field ...',
+    //     },
+    //   ],
+    // } as XFormControlConfig<XFormModel>;
+    // cIdx++;
     //#endregion
 
     //
@@ -1059,7 +1090,8 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: AppResourceIDs.content,
-        appearance: this.FormControlAppearance,
+        appearance: FormControlAppearance,
+        disabled: customDisabled || false,
         icons: {
           prefix: {
             name: this.IconNames.account,
@@ -1079,7 +1111,7 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.Select,
         config: {
-          multiple: false,
+          multiple: true,
           options: keys(this.ContentTypes).map((k) => {
             return {
               value: this.ContentTypes[k],
@@ -1089,8 +1121,11 @@ export class FormPage extends VPageComponent {
         } as XFormSelectControlConfig,
       },
       appearance: {
+        disabled: customDisabled || false,
         label: AppResourceIDs.content_type,
-        appearance: this.FormControlAppearance,
+        hint: AppResourceIDs.content_type,
+        placeholder: AppResourceIDs.content_type,
+        appearance: FormControlAppearance,
         icons: {
           prefix: {
             applyStateColor: true,
@@ -1104,6 +1139,17 @@ export class FormPage extends VPageComponent {
           console.log('content type value changed: ', value);
         },
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
     } as XFormControlConfig<XFormModel>;
     cIdx++;
     //#endregion
@@ -1126,7 +1172,8 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: AppResourceIDs.visibility,
-        appearance: this.FormControlAppearance,
+        disabled: customDisabled || false,
+        appearance: FormControlAppearance,
         icons: {
           prefix: {
             applyStateColor: true,
@@ -1135,6 +1182,17 @@ export class FormPage extends VPageComponent {
           },
         },
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('content visibility value changed: ', value);
@@ -1159,8 +1217,20 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.publish,
-        appearance: this.FormControlAppearance,
+        disabled: customDisabled || false,
+        appearance: FormControlAppearance,
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Publish value changed: ', value);
@@ -1186,8 +1256,20 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.brithDate,
-        appearance: this.FormControlAppearance,
+        disabled: customDisabled || false,
+        appearance: FormControlAppearance,
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('BirthDate value changed: ', value);
@@ -1207,8 +1289,20 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.wedding_state,
-        appearance: this.FormControlAppearance,
+        disabled: customDisabled || false,
+        appearance: FormControlAppearance,
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
       eventHandlers: {
         valueChanged: async (value: XFormControlValueChangeEventModel) => {
           console.log('Wedding state value changed: ', value);
@@ -1236,8 +1330,20 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.num_of_childs,
-        appearance: this.FormControlAppearance,
+        disabled: customDisabled || false,
+        appearance: FormControlAppearance,
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Number of Childs value changed: ', value);
@@ -1265,8 +1371,20 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.avatar,
-        appearance: this.FormControlAppearance,
+        disabled: customDisabled || false,
+        appearance: FormControlAppearance,
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Avatar value changed: ', value);
@@ -1302,9 +1420,9 @@ export class FormPage extends VPageComponent {
         } as XFormMapControlConfig,
       },
       appearance: {
-        disabled: false,
         label: this.ResourceIDs.location,
-        appearance: this.FormControlAppearance,
+        disabled: customDisabled || false,
+        appearance: FormControlAppearance,
         placeholder: this.ResourceIDs.location,
         icons: {
           prefix: {
@@ -1315,6 +1433,17 @@ export class FormPage extends VPageComponent {
           },
         },
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('Location value changed: ', value);
@@ -1339,7 +1468,8 @@ export class FormPage extends VPageComponent {
       },
       appearance: {
         label: this.ResourceIDs.color,
-        appearance: this.FormControlAppearance,
+        disabled: customDisabled || false,
+        appearance: FormControlAppearance,
         placeholder: this.ResourceIDs.color,
         icons: {
           prefix: {
@@ -1350,6 +1480,17 @@ export class FormPage extends VPageComponent {
           },
         },
       },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
           console.log('color value changed: ', value);
