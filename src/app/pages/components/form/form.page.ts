@@ -167,7 +167,7 @@ export class FormPage extends VPageComponent {
         label: this.ResourceIDs.first_name,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.first_name,
             color: XColorWithBrightness.SuccessShade,
           },
@@ -214,7 +214,7 @@ export class FormPage extends VPageComponent {
         tooltip: 'Insert your Last Name here ...',
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.first_name,
             color: XColorWithBrightness.SuccessShade,
           },
@@ -282,7 +282,7 @@ export class FormPage extends VPageComponent {
         label: AppResourceIDs.content_type,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.customers_club,
             color: XColorWithBrightness.SuccessShade,
           },
@@ -318,7 +318,7 @@ export class FormPage extends VPageComponent {
         label: AppResourceIDs.visibility,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.customers_club,
             color: XColorWithBrightness.SuccessShade,
           },
@@ -365,7 +365,7 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.Date,
         config: {
-          applyStateColor: true,
+          applyStateColor: applyIconsStateColor || false,
           toggleIcon: XIconNames.calendar,
           iconColor: XColorWithBrightness.SuccessShade,
           datePickerPosition:
@@ -485,7 +485,7 @@ export class FormPage extends VPageComponent {
         placeholder: this.ResourceIDs.location,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.locate,
             color: XColorWithBrightness.SuccessShade,
             tooltip: this.ResourceIDs.map_dialog_select_title,
@@ -707,7 +707,9 @@ export class FormPage extends VPageComponent {
     const showTooltip = true;
     const disabledByDefault = false;
     const hasRequiredValidator = true;
-    const FormControlAppearance = XFormControlAppearance.Standard;
+    const applyIconsStateColor = false;
+    const FormControlAppearance = XFormControlAppearance.Fill;
+    const iconsDefaultColor = XColorWithBrightness.WarningShade;
 
     //
     //#region First Name ...
@@ -725,9 +727,9 @@ export class FormPage extends VPageComponent {
         label: this.ResourceIDs.first_name,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.first_name,
-            color: XColorWithBrightness.SuccessShade,
+            color: iconsDefaultColor,
           },
         },
       },
@@ -782,9 +784,9 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? this.ResourceIDs.last_name : undefined,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.first_name,
-            color: XColorWithBrightness.SuccessShade,
+            color: iconsDefaultColor,
           },
         },
       },
@@ -834,9 +836,9 @@ export class FormPage extends VPageComponent {
     //     appearance: XFormControlAppearance.None, // this.FormControlAppearance,
     //     icons: {
     //       prefix: {
-    //         applyStateColor: true,
+    //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
-    //         color: XColorWithBrightness.SuccessShade,
+    //         color: iconsDefaultColor,
     //       },
     //     },
     //   },
@@ -886,9 +888,9 @@ export class FormPage extends VPageComponent {
     //     appearance: XFormControlAppearance.Fill, // this.FormControlAppearance,
     //     icons: {
     //       prefix: {
-    //         applyStateColor: true,
+    //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
-    //         color: XColorWithBrightness.SuccessShade,
+    //         color: iconsDefaultColor,
     //       },
     //     },
     //   },
@@ -938,9 +940,9 @@ export class FormPage extends VPageComponent {
     //     appearance: XFormControlAppearance.Outline, // this.FormControlAppearance,
     //     icons: {
     //       prefix: {
-    //         applyStateColor: true,
+    //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
-    //         color: XColorWithBrightness.SuccessShade,
+    //         color: iconsDefaultColor,
     //       },
     //     },
     //   },
@@ -990,9 +992,9 @@ export class FormPage extends VPageComponent {
     //     appearance: XFormControlAppearance.Legacy, // this.FormControlAppearance,
     //     icons: {
     //       prefix: {
-    //         applyStateColor: true,
+    //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
-    //         color: XColorWithBrightness.SuccessShade,
+    //         color: iconsDefaultColor,
     //       },
     //     },
     //   },
@@ -1042,9 +1044,9 @@ export class FormPage extends VPageComponent {
     //     appearance: XFormControlAppearance.Standard, // this.FormControlAppearance,
     //     icons: {
     //       prefix: {
-    //         applyStateColor: true,
+    //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
-    //         color: XColorWithBrightness.SuccessShade,
+    //         color: iconsDefaultColor,
     //       },
     //     },
     //   },
@@ -1101,8 +1103,9 @@ export class FormPage extends VPageComponent {
         disabled: disabledByDefault || false,
         icons: {
           prefix: {
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.account,
-            color: this.ColorNames.Primary,
+            color: iconsDefaultColor,
           },
         },
       },
@@ -1136,9 +1139,9 @@ export class FormPage extends VPageComponent {
         appearance: FormControlAppearance,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.customers_club,
-            color: XColorWithBrightness.SuccessShade,
+            color: iconsDefaultColor,
           },
         },
       },
@@ -1186,9 +1189,9 @@ export class FormPage extends VPageComponent {
         appearance: FormControlAppearance,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.customers_club,
-            color: XColorWithBrightness.SuccessShade,
+            color: iconsDefaultColor,
           },
         },
       },
@@ -1231,15 +1234,22 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? this.ResourceIDs.publish : undefined,
         disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
+        icons: {
+          prefix: {
+            applyStateColor: applyIconsStateColor || false,
+            name: this.IconNames.analytics,
+            color: iconsDefaultColor,
+          },
+        },
       },
       validators: hasRequiredValidator
         ? {
-            validators: [Validators.required],
+            validators: [Validators.requiredTrue],
           }
         : undefined,
       errorHandlers: [
         {
-          errorName: 'required',
+          errorName: 'requiredTrue',
           errorMessage: 'Required Field ...',
         },
       ],
@@ -1260,7 +1270,7 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.Date,
         config: {
-          applyStateColor: true,
+          applyStateColor: applyIconsStateColor || false,
           toggleIcon: XIconNames.calendar,
           iconColor: XColorWithBrightness.SuccessShade,
           datePickerPosition: XFormDatePickerControlPickerPosition.Prefix,
@@ -1307,15 +1317,22 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? this.ResourceIDs.wedding_state : undefined,
         disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
+        icons: {
+          prefix: {
+            applyStateColor: applyIconsStateColor || false,
+            name: this.IconNames.analytics,
+            color: iconsDefaultColor,
+          },
+        },
       },
       validators: hasRequiredValidator
         ? {
-            validators: [Validators.required],
+            validators: [Validators.requiredTrue],
           }
         : undefined,
       errorHandlers: [
         {
-          errorName: 'required',
+          errorName: 'requiredTrue',
           errorMessage: 'Required Field ...',
         },
       ],
@@ -1448,9 +1465,9 @@ export class FormPage extends VPageComponent {
         placeholder: this.ResourceIDs.location,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.locate,
-            color: XColorWithBrightness.SuccessShade,
+            color: iconsDefaultColor,
             tooltip: this.ResourceIDs.map_dialog_select_title,
           },
         },
@@ -1497,9 +1514,9 @@ export class FormPage extends VPageComponent {
         placeholder: this.ResourceIDs.color,
         icons: {
           prefix: {
-            applyStateColor: true,
+            applyStateColor: applyIconsStateColor || false,
             name: this.IconNames.color_palette,
-            color: XColorWithBrightness.SuccessShade,
+            color: iconsDefaultColor,
             tooltip: this.ResourceIDs.color_picker_dialog_title,
           },
         },

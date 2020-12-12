@@ -76,7 +76,6 @@
     //
     .x-form-field {
       //
-      @include checkBoxProps;
       @include radioButtonProps;
       @include rangeOptionProps;
       @include selectOptionProps;
@@ -105,13 +104,8 @@
         //
         &.x-focused {
           //
-          .x-field-label {
-            color: var(--active-color) !important;
-          }
-          border-color: var(--active-color) !important;
-
-          //
-          @include iconStatusColorHandler(var(--active-color));
+          @include formFieldFocusHandler;
+          @include iconStatusColorHandler(var(--active-color) !important);
         }
       }
 
@@ -124,6 +118,7 @@
         &.x-focused {
           //
           @include formFieldFocusHandler;
+          border-color: var(--active-color);
         }
       }
     }
@@ -190,28 +185,6 @@
     /* END Auto Complete Styling */
   }
 
-  @mixin checkBoxProps {
-    //
-    .x-form-checkbox-control {
-      //
-      .mat-checkbox-layout {
-        width: 100%;
-      }
-
-      //
-      .mat-checkbox-label {
-        width: 100%;
-      }
-
-      //
-      .mat-checkbox-background {
-        &.mat-checkbox-checked {
-          background-color: var(--fill-color) !important;
-        }
-      }
-    }
-  }
-
   @mixin selectOptionProps {
     //
     .x-select-option {
@@ -271,6 +244,7 @@
     //
     @include iconStatusColorHandler(var(--active-color));
     @include formFieldLabelColorHandler(var(--active-color));
+    @include formFieldWrapperColorHandler(var(--active-color));
     @include matFormFieldOutlineColorHandler(var(--active-color) !important);
   }
 
@@ -448,19 +422,20 @@
     //
     // Valid ...
     &.x-form-field-wrapper-valid {
-      @include formFieldWrapperColorHandler(var(--valid-color))
+      @include formFieldWrapperColorHandler(var(--valid-color));
     }
 
     //
     // Invalid ...
     &.x-form-field-wrapper-invalid {
-      @include formFieldWrapperColorHandler(var(--invalid-color))
+      @include formFieldWrapperColorHandler(var(--invalid-color));
     }
 
     //
     // Pending ...
+    // :not(.x-focused)
     &.x-form-field-wrapper-pending {
-      @include formFieldWrapperColorHandler(var(--pending-color))
+      @include formFieldWrapperColorHandler(var(--pending-color));
     }
   }
 
@@ -497,13 +472,15 @@
 
     //
     .x-form-field:not(.x-mat-form-field) {
-      border-color: $color !important;
+      border-color: $color;
     }
 
     //
-    @include iconStatusColorHandler($color);
+    @include toogleColorHandler($color);
+    @include checkBoxColorHandler($color);
     @include formFieldLabelColorHandler($color);
-    @include matFormFieldOutlineColorHandler($color !important);
+    @include matFormFieldOutlineColorHandler($color);
+    @include iconStatusColorHandler($color !important);
     @include matFormFieldUnderlineColorHandler($color !important);
   }
 
@@ -533,6 +510,49 @@
     }
   }
 
+  @mixin checkBoxColorHandler($color: var(--regular-color)) {
+    //
+    .mat-checkbox-frame {
+      border-color: var(--regular-color); // $color;
+    }
+
+    //
+    .mat-checkbox-checked {
+      .mat-checkbox-background {
+        background-color: var(--active-color) !important;
+      }
+    }
+
+    //
+    .mat-checkbox-label {
+      .x-field-label {
+        width: 100%;
+      }
+    }
+
+    //
+    .x-form-control {
+      &.has-icon {
+        margin: {
+          left: 4px;
+          right: 4px;
+        }
+      }
+    }
+  }
+
+  @mixin toogleColorHandler($color: var(--regular-color)) {
+    //
+    .mat-slide-toggle-bar {
+      background-color: var(--active-color) !important;
+    }
+
+    //
+    .mat-slide-toggle-thumb {
+      background-color: $color !important;
+    }
+  }
+
   @mixin formFieldLabelColorHandler($color: var(--regular-color)) {
     //
     .mat-form-field-label {
@@ -547,7 +567,7 @@
   @mixin iconStatusColorHandler($color: var(--regular-color)) {
     //
     x-icon.x-status-handler > * {
-      color: $color !important;
+      color: $color;
     }
   }
 
