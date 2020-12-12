@@ -43,16 +43,18 @@
   ></x-markdown> -->
 
   <!-- Form -->
+
+  <!-- [fillColor]="ColorNames.Dark"
+  [activeColor]="ColorNames.Primary"
+  [invalidColor]="ColorNames.DangerShade"
+  [regularColor]="ColorNames.SecondaryShade" -->
+
   <x-form
     [isInPage]="true"
     *ngIf="xFormConfig"
     [wrapWithCard]="true"
     [formConfig]="xFormConfig"
-    [fillColor]="ColorNames.Dark"
-    [activeColor]="ColorNames.Primary"
     [actionProvider]="formActionProvider"
-    [invalidColor]="ColorNames.DangerShade"
-    [regularColor]="ColorNames.SecondaryShade"
   ></x-form>
 </v-page>
 

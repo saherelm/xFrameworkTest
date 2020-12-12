@@ -19,6 +19,7 @@ import {
   XFormControlType,
   XFormControlConfig,
   XFormMapControlConfig,
+  XFormControlAppearance,
   XFormRadioControlConfig,
   XFormSelectControlConfig,
   XFormSelectControlOption,
@@ -35,11 +36,11 @@ import {
   XFormControlStatusChangeEventModel,
   XFormColorPickerControlPresentType,
   XFormDatePickerControlPickerPosition,
-  XFormControlAppearance,
 } from 'x-framework-components';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { VPageComponent } from '../../../views/v-page/v-page.component';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
+import { Validators } from '@angular/forms';
 
 enum ContentType {
   POST = 'post',
@@ -54,6 +55,11 @@ enum ContentVisibility {
 interface XFormModel {
   firstName: string;
   lastName: string;
+  text0: string;
+  text1: string;
+  text2: string;
+  text3: string;
+  text4: string;
   content: string;
   contentType: ContentType;
   visibility: ContentVisibility;
@@ -683,6 +689,11 @@ export class FormPage extends VPageComponent {
       model: {
         firstName: 'Hadi',
         lastName: 'Khazaee Asl',
+        text0: '',
+        text1: '',
+        text2: '',
+        text3: '',
+        text4: '',
         weddingState: true,
         latLong: '50.958799848165526,35.82254339947069',
         color: '#9847a6ff',
@@ -692,60 +703,109 @@ export class FormPage extends VPageComponent {
     };
 
     //
-    // First Name ...
-    this.xFormConfig.controls[0] = {
-      index: 0,
-      propName: 'firstName',
+    let cIdx = 0;
+
+    //
+    const customDisabled = true;
+
+    //
+    //#region First Name ...
+    // this.xFormConfig.controls[cIdx] = {
+    //   index: cIdx,
+    //   propName: 'firstName',
+    //   type: {
+    //     type: XFormControlType.Text,
+    //   },
+    //   appearance: {
+    //     disabled: false,
+    //     appearance: this.FormControlAppearance,
+    //     label: this.ResourceIDs.first_name,
+    //     icons: {
+    //       prefix: {
+    //         applyStateColor: true,
+    //         name: this.IconNames.first_name,
+    //         color: XColorWithBrightness.SuccessShade,
+    //       },
+    //     },
+    //   },
+    //   eventHandlers: {
+    //     onBlured: (name: any) => {
+    //       console.log('control: ', name, ', was blured ...');
+    //       this.prepareFirstNameAutoComplete({ opened: false });
+    //     },
+    //     onFocused: (name: any) => {
+    //       console.log('control: ', name, ', was focused ...');
+    //     },
+    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
+    //       // console.log('status changed: ', model);
+    //     },
+    //     valueChanged: async (model: XFormControlValueChangeEventModel) => {
+    //       //
+    //       console.log('value changed: ', model);
+    //       await this.handleFilterAutoCompleteFirstName(model.value);
+    //     },
+    //   },
+    // } as XFormControlConfig<XFormModel>;
+    // cIdx++;
+
+    // //
+    // this.prepareFirstNameAutoComplete();
+    //#endregion
+
+    //
+    //#region  Last Name ...
+    // this.xFormConfig.controls[cIdx] = {
+    //   index: cIdx,
+    //   propName: 'lastName',
+    //   type: {
+    //     type: XFormControlType.Text,
+    //   },
+    //   appearance: {
+    //     disabled: false,
+    //     label: this.ResourceIDs.last_name,
+    //     appearance: XFormControlAppearance.Fill, // this.FormControlAppearance,
+    //     tooltip: 'Insert your Last Name here ...',
+    //     icons: {
+    //       prefix: {
+    //         applyStateColor: true,
+    //         name: this.IconNames.first_name,
+    //         color: XColorWithBrightness.SuccessShade,
+    //       },
+    //     },
+    //   },
+    //   eventHandlers: {
+    //     onBlured: (name: any) => {
+    //       console.log('control: ', name, ', was blured ...');
+    //     },
+    //     onFocused: (name: any) => {
+    //       console.log('control: ', name, ', was focused ...');
+    //     },
+    //     statusChanged: (model: XFormControlStatusChangeEventModel) => {
+    //       console.log('status changed: ', model);
+    //     },
+    //     valueChanged: (model: XFormControlValueChangeEventModel) => {
+    //       console.log('value changed: ', model);
+    //     },
+    //   },
+    // } as XFormControlConfig<XFormModel>;
+    // cIdx++;
+    //#endregion
+
+    //
+    //#region Text 0 ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
+      propName: 'text0',
       type: {
         type: XFormControlType.Text,
       },
       appearance: {
-        disabled: false,
-        appearance: this.FormControlAppearance,
-        label: this.ResourceIDs.first_name,
-        icons: {
-          prefix: {
-            applyStateColor: true,
-            name: this.IconNames.first_name,
-            color: XColorWithBrightness.SuccessShade,
-          },
-        },
-      },
-      eventHandlers: {
-        onBlured: (name: any) => {
-          console.log('control: ', name, ', was blured ...');
-          this.prepareFirstNameAutoComplete({ opened: false });
-        },
-        onFocused: (name: any) => {
-          console.log('control: ', name, ', was focused ...');
-        },
-        statusChanged: (model: XFormControlStatusChangeEventModel) => {
-          // console.log('status changed: ', model);
-        },
-        valueChanged: async (model: XFormControlValueChangeEventModel) => {
-          //
-          console.log('value changed: ', model);
-          await this.handleFilterAutoCompleteFirstName(model.value);
-        },
-      },
-    } as XFormControlConfig<XFormModel>;
-
-    //
-    this.prepareFirstNameAutoComplete();
-
-    //
-    // Last Name ...
-    this.xFormConfig.controls[1] = {
-      index: 1,
-      propName: 'lastName',
-      type: {
-        type: XFormControlType.Text,
-      },
-      appearance: {
-        disabled: true,
-        label: this.ResourceIDs.last_name,
-        appearance: this.FormControlAppearance,
-        tooltip: 'Insert your Last Name here ...',
+        disabled: customDisabled || false,
+        label: 'Text 0',
+        hint: 'Hint 0',
+        tooltip: 'Tooltip 0 ...',
+        placeholder: 'PlaceHolder 0',
+        appearance: XFormControlAppearance.None, // this.FormControlAppearance,
         icons: {
           prefix: {
             applyStateColor: true,
@@ -768,12 +828,223 @@ export class FormPage extends VPageComponent {
           console.log('value changed: ', model);
         },
       },
+      validators: {
+        validators: [Validators.required],
+      },
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Content ...
-    this.xFormConfig.controls[2] = {
-      index: 2,
+    //#region Text 1 ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
+      propName: 'text1',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        disabled: customDisabled || false,
+        label: 'Text 1',
+        hint: 'Hint 1',
+        tooltip: 'Tooltip 1 ...',
+        placeholder: 'PlaceHolder 1',
+        appearance: XFormControlAppearance.Fill, // this.FormControlAppearance,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (model: XFormControlStatusChangeEventModel) => {
+          console.log('status changed: ', model);
+        },
+        valueChanged: (model: XFormControlValueChangeEventModel) => {
+          console.log('value changed: ', model);
+        },
+      },
+      validators: {
+        validators: [Validators.required],
+      },
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
+    } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
+
+    //
+    //#region Text2 ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
+      propName: 'text2',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        disabled: customDisabled || false,
+        label: 'Text 2',
+        hint: 'Hint 2',
+        tooltip: 'Tooltip 2 ...',
+        placeholder: 'PlaceHolder 2',
+        appearance: XFormControlAppearance.Outline, // this.FormControlAppearance,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (model: XFormControlStatusChangeEventModel) => {
+          console.log('status changed: ', model);
+        },
+        valueChanged: (model: XFormControlValueChangeEventModel) => {
+          console.log('value changed: ', model);
+        },
+      },
+      validators: {
+        validators: [Validators.required],
+      },
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
+    } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
+
+    //
+    //#region Text3 ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
+      propName: 'text3',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        disabled: customDisabled || false,
+        label: 'Text 3',
+        hint: 'Hint 3',
+        tooltip: 'Tooltip 3 ...',
+        placeholder: 'PlaceHolder 3',
+        appearance: XFormControlAppearance.Legacy, // this.FormControlAppearance,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (model: XFormControlStatusChangeEventModel) => {
+          console.log('status changed: ', model);
+        },
+        valueChanged: (model: XFormControlValueChangeEventModel) => {
+          console.log('value changed: ', model);
+        },
+      },
+      validators: {
+        validators: [Validators.required],
+      },
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
+    } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
+
+    //
+    //#region Text4 ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
+      propName: 'text4',
+      type: {
+        type: XFormControlType.Text,
+      },
+      appearance: {
+        disabled: customDisabled || false,
+        label: 'Text 4',
+        hint: 'Hint 4',
+        tooltip: 'Tooltip 4 ...',
+        placeholder: 'PlaceHolder 4',
+        appearance: XFormControlAppearance.Standard, // this.FormControlAppearance,
+        icons: {
+          prefix: {
+            applyStateColor: true,
+            name: this.IconNames.first_name,
+            color: XColorWithBrightness.SuccessShade,
+          },
+        },
+      },
+      eventHandlers: {
+        onBlured: (name: any) => {
+          console.log('control: ', name, ', was blured ...');
+        },
+        onFocused: (name: any) => {
+          console.log('control: ', name, ', was focused ...');
+        },
+        statusChanged: (model: XFormControlStatusChangeEventModel) => {
+          console.log('status changed: ', model);
+        },
+        valueChanged: (model: XFormControlValueChangeEventModel) => {
+          console.log('value changed: ', model);
+        },
+      },
+      validators: {
+        validators: [Validators.required],
+      },
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
+    } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
+
+    //
+    //#region Content ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'content',
       type: {
         type: XFormControlType.MarkDown,
@@ -792,16 +1063,18 @@ export class FormPage extends VPageComponent {
         icons: {
           prefix: {
             name: this.IconNames.account,
-            color: this.ColorNames.Primary
-          }
-        }
+            color: this.ColorNames.Primary,
+          },
+        },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Content Type ...
-    this.xFormConfig.controls[3] = {
-      index: 3,
+    //#region Content Type ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'contentType',
       type: {
         type: XFormControlType.Select,
@@ -832,11 +1105,13 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Content Visibility ...
-    this.xFormConfig.controls[4] = {
-      index: 4,
+    //#region Content Visibility ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'visibility',
       type: {
         type: XFormControlType.Radio,
@@ -866,11 +1141,13 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Publish ...
-    this.xFormConfig.controls[5] = {
-      index: 5,
+    //#region Publish ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'publish',
       type: {
         type: XFormControlType.CheckBox,
@@ -890,11 +1167,13 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // BrithDate ...
-    this.xFormConfig.controls[6] = {
-      index: 6,
+    //#region BrithDate ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'brithDate',
       type: {
         type: XFormControlType.Date,
@@ -915,11 +1194,13 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Wedding State ...
-    this.xFormConfig.controls[7] = {
-      index: 7,
+    //#region Wedding State ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'weddingState',
       type: {
         type: XFormControlType.Toggle,
@@ -935,11 +1216,13 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Number Of Childs ...
-    this.xFormConfig.controls[8] = {
-      index: 8,
+    //#region Number Of Childs ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'numberOfChilds',
       type: {
         type: XFormControlType.Hidden,
@@ -961,11 +1244,13 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Avatar ...
-    this.xFormConfig.controls[9] = {
-      index: 9,
+    //#region Avatar ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'avatar',
       type: {
         type: XFormControlType.AvatarUpload,
@@ -988,11 +1273,13 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Map ...
-    this.xFormConfig.controls[10] = {
-      index: 10,
+    //#region Map ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'latLong',
       type: {
         type: XFormControlType.Map,
@@ -1034,11 +1321,13 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
 
     //
-    // Color Picker ...
-    this.xFormConfig.controls[11] = {
-      index: 11,
+    //#region Color Picker ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
       propName: 'color',
       type: {
         type: XFormControlType.ColorPicker,
@@ -1067,6 +1356,8 @@ export class FormPage extends VPageComponent {
         },
       },
     } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
   }
 
   private prepareFirstNameAutoComplete(
