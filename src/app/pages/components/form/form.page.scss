@@ -1,14 +1,4 @@
 :host-context(::ng-deep.x-form) {
-  // //
-  // --hint-text-size: 7pt;
-  // --hint-color: var(--x-color-tertiary);
-  // --error-text-size: 7pt;
-  // --checkbox-check-color: var(--x-color-light);
-
-  // //
-  // --form-fields-vertical-margin: 16px;
-  // --disabled-color: var(--x-color-medium);
-
   @mixin formFieldRegularProps {
     //
     x-icon {
@@ -17,7 +7,6 @@
 
     //
     .x-field-label {
-      // display: block;
     }
 
     //
@@ -79,6 +68,8 @@
       @include radioButtonProps;
       @include rangeOptionProps;
       @include selectOptionProps;
+      @include toogleColorHandler;
+      @include checkBoxColorHandler;
       @include formFieldRegularProps;
       @include formInputElementProps;
       @include formFieldAppearanceHandler;
@@ -422,20 +413,25 @@
     //
     // Valid ...
     &.x-form-field-wrapper-valid {
-      @include formFieldWrapperColorHandler(var(--valid-color));
+      &.apply-status {
+        @include formFieldWrapperColorHandler(var(--valid-color));
+      }
     }
 
     //
     // Invalid ...
     &.x-form-field-wrapper-invalid {
-      @include formFieldWrapperColorHandler(var(--invalid-color));
+      &.apply-status {
+        @include formFieldWrapperColorHandler(var(--invalid-color));
+      }
     }
 
     //
     // Pending ...
-    // :not(.x-focused)
     &.x-form-field-wrapper-pending {
-      @include formFieldWrapperColorHandler(var(--pending-color));
+      &.apply-status {
+        @include formFieldWrapperColorHandler(var(--pending-color));
+      }
     }
   }
 
@@ -533,9 +529,11 @@
     //
     .x-form-control {
       &.has-icon {
-        margin: {
-          left: 4px;
-          right: 4px;
+        .mat-checkbox-layout {
+          margin: {
+            left: 4px;
+            right: 4px;
+          }
         }
       }
     }
@@ -550,6 +548,18 @@
     //
     .mat-slide-toggle-thumb {
       background-color: $color !important;
+    }
+
+    //
+    .x-form-control {
+      &.has-icon {
+        .mat-slide-toggle-label {
+          margin: {
+            left: 4px;
+            right: 4px;
+          }
+        }
+      }
     }
   }
 
@@ -575,14 +585,26 @@
     $color: var(--fill-color),
     $clearBackground: false
   ) {
+    //
     .mat-form-field-underline {
       //
+      border-color: $color;
       background-color: $color;
+
+      //
+      &::before {
+        background-color: $color;
+      }
 
       //
       @if $clearBackground {
         background-image: none;
       }
+    }
+
+    //
+    .mat-select-arrow {
+      color: $color;
     }
   }
 
@@ -591,9 +613,17 @@
     color: $color;
 
     //
+    .mat-form-field-outline-start,
+    .mat-form-field-outline-end,
+    .mat-form-field-outline-gap {
+      border-width: 1px !important;
+    }
+
+    //
     .mat-form-field-outline,
     .mat-form-field-outline-thick {
       color: $color;
+      border-width: 1px !important;
     }
   }
 
@@ -610,6 +640,15 @@
     //
     .mat-form-field-underline {
       position: initial;
+    }
+
+    //
+    .ng-invalid,
+    .mat-form-field-invalid {
+      * {
+        color: inherit;
+        background-color: inherit;
+      }
     }
 
     //

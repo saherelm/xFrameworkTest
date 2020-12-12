@@ -703,12 +703,13 @@ export class FormPage extends VPageComponent {
     let cIdx = 0;
 
     //
+    const hasIcon = true;
     const showHint = true;
     const showTooltip = true;
     const disabledByDefault = false;
     const hasRequiredValidator = true;
-    const applyIconsStateColor = false;
-    const FormControlAppearance = XFormControlAppearance.Fill;
+    const applyIconsStateColor = true;
+    const FormControlAppearance = XFormControlAppearance.Outline;
     const iconsDefaultColor = XColorWithBrightness.WarningShade;
 
     //
@@ -725,13 +726,15 @@ export class FormPage extends VPageComponent {
         hint: showHint ? this.ResourceIDs.first_name : undefined,
         tooltip: showTooltip ? this.ResourceIDs.first_name : undefined,
         label: this.ResourceIDs.first_name,
-        icons: {
-          prefix: {
-            applyStateColor: applyIconsStateColor || false,
-            name: this.IconNames.first_name,
-            color: iconsDefaultColor,
-          },
-        },
+        icons: hasIcon
+          ? {
+              prefix: {
+                applyStateColor: applyIconsStateColor || false,
+                name: this.IconNames.first_name,
+                color: iconsDefaultColor,
+              },
+            }
+          : undefined,
       },
       validators: hasRequiredValidator
         ? {
@@ -782,13 +785,15 @@ export class FormPage extends VPageComponent {
         appearance: FormControlAppearance,
         hint: showHint ? this.ResourceIDs.last_name : undefined,
         tooltip: showTooltip ? this.ResourceIDs.last_name : undefined,
-        icons: {
-          prefix: {
-            applyStateColor: applyIconsStateColor || false,
-            name: this.IconNames.first_name,
-            color: iconsDefaultColor,
-          },
-        },
+        icons: hasIcon
+          ? {
+              prefix: {
+                applyStateColor: applyIconsStateColor || false,
+                name: this.IconNames.first_name,
+                color: iconsDefaultColor,
+              },
+            }
+          : undefined,
       },
       validators: hasRequiredValidator
         ? {
@@ -834,13 +839,13 @@ export class FormPage extends VPageComponent {
     //     tooltip: 'Tooltip 0 ...',
     //     placeholder: 'PlaceHolder 0',
     //     appearance: XFormControlAppearance.None, // this.FormControlAppearance,
-    //     icons: {
+    //     icons: hasIcon ? {
     //       prefix: {
     //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
     //         color: iconsDefaultColor,
     //       },
-    //     },
+    //     } : undefined,
     //   },
     //   eventHandlers: {
     //     onBlured: (name: any) => {
@@ -886,13 +891,13 @@ export class FormPage extends VPageComponent {
     //     tooltip: 'Tooltip 1 ...',
     //     placeholder: 'PlaceHolder 1',
     //     appearance: XFormControlAppearance.Fill, // this.FormControlAppearance,
-    //     icons: {
+    //     icons: hasIcon ? {
     //       prefix: {
     //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
     //         color: iconsDefaultColor,
     //       },
-    //     },
+    //     } : undefined,
     //   },
     //   eventHandlers: {
     //     onBlured: (name: any) => {
@@ -938,13 +943,13 @@ export class FormPage extends VPageComponent {
     //     tooltip: 'Tooltip 2 ...',
     //     placeholder: 'PlaceHolder 2',
     //     appearance: XFormControlAppearance.Outline, // this.FormControlAppearance,
-    //     icons: {
+    //     icons: hasIcon ? {
     //       prefix: {
     //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
     //         color: iconsDefaultColor,
     //       },
-    //     },
+    //     } : undefined,
     //   },
     //   eventHandlers: {
     //     onBlured: (name: any) => {
@@ -990,13 +995,13 @@ export class FormPage extends VPageComponent {
     //     tooltip: 'Tooltip 3 ...',
     //     placeholder: 'PlaceHolder 3',
     //     appearance: XFormControlAppearance.Legacy, // this.FormControlAppearance,
-    //     icons: {
+    //     icons: hasIcon ? {
     //       prefix: {
     //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
     //         color: iconsDefaultColor,
     //       },
-    //     },
+    //     } : undefined,
     //   },
     //   eventHandlers: {
     //     onBlured: (name: any) => {
@@ -1042,13 +1047,13 @@ export class FormPage extends VPageComponent {
     //     tooltip: 'Tooltip 4 ...',
     //     placeholder: 'PlaceHolder 4',
     //     appearance: XFormControlAppearance.Standard, // this.FormControlAppearance,
-    //     icons: {
+    //     icons: hasIcon ? {
     //       prefix: {
     //         applyStateColor: applyIconsStateColor || false,
     //         name: this.IconNames.first_name,
     //         color: iconsDefaultColor,
     //       },
-    //     },
+    //     } : undefined,
     //   },
     //   eventHandlers: {
     //     onBlured: (name: any) => {
@@ -1101,13 +1106,15 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? AppResourceIDs.content : undefined,
         appearance: FormControlAppearance,
         disabled: disabledByDefault || false,
-        icons: {
-          prefix: {
-            applyStateColor: applyIconsStateColor || false,
-            name: this.IconNames.account,
-            color: iconsDefaultColor,
-          },
-        },
+        icons: hasIcon
+          ? {
+              prefix: {
+                applyStateColor: applyIconsStateColor || false,
+                name: this.IconNames.account,
+                color: iconsDefaultColor,
+              },
+            }
+          : undefined,
       },
     } as XFormControlConfig<XFormModel>;
     cIdx++;
@@ -1137,13 +1144,15 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? AppResourceIDs.content_type : undefined,
         placeholder: AppResourceIDs.content_type,
         appearance: FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: applyIconsStateColor || false,
-            name: this.IconNames.customers_club,
-            color: iconsDefaultColor,
-          },
-        },
+        icons: hasIcon
+          ? {
+              prefix: {
+                applyStateColor: applyIconsStateColor || false,
+                name: this.IconNames.customers_club,
+                color: iconsDefaultColor,
+              },
+            }
+          : undefined,
       },
       eventHandlers: {
         valueChanged: (value: XFormControlValueChangeEventModel) => {
@@ -1187,13 +1196,15 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? AppResourceIDs.visibility : undefined,
         disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: applyIconsStateColor || false,
-            name: this.IconNames.customers_club,
-            color: iconsDefaultColor,
-          },
-        },
+        icons: hasIcon
+          ? {
+              prefix: {
+                applyStateColor: applyIconsStateColor || false,
+                name: this.IconNames.customers_club,
+                color: iconsDefaultColor,
+              },
+            }
+          : undefined,
       },
       validators: hasRequiredValidator
         ? {
@@ -1234,13 +1245,15 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? this.ResourceIDs.publish : undefined,
         disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: applyIconsStateColor || false,
-            name: this.IconNames.analytics,
-            color: iconsDefaultColor,
-          },
-        },
+        icons: hasIcon
+          ? {
+              prefix: {
+                applyStateColor: applyIconsStateColor || false,
+                name: this.IconNames.analytics,
+                color: iconsDefaultColor,
+              },
+            }
+          : undefined,
       },
       validators: hasRequiredValidator
         ? {
@@ -1270,9 +1283,9 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.Date,
         config: {
-          applyStateColor: applyIconsStateColor || false,
+          iconColor: iconsDefaultColor,
           toggleIcon: XIconNames.calendar,
-          iconColor: XColorWithBrightness.SuccessShade,
+          applyStateColor: applyIconsStateColor || false,
           datePickerPosition: XFormDatePickerControlPickerPosition.Prefix,
         } as XFormDatePickerControlConfig,
       },
@@ -1317,13 +1330,15 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? this.ResourceIDs.wedding_state : undefined,
         disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
-        icons: {
-          prefix: {
-            applyStateColor: applyIconsStateColor || false,
-            name: this.IconNames.analytics,
-            color: iconsDefaultColor,
-          },
-        },
+        icons: hasIcon
+          ? {
+              prefix: {
+                applyStateColor: applyIconsStateColor || false,
+                name: this.IconNames.analytics,
+                color: iconsDefaultColor,
+              },
+            }
+          : undefined,
       },
       validators: hasRequiredValidator
         ? {
@@ -1367,6 +1382,15 @@ export class FormPage extends VPageComponent {
         tooltip: showTooltip ? this.ResourceIDs.num_of_childs : undefined,
         disabled: disabledByDefault || false,
         appearance: FormControlAppearance,
+        icons: hasIcon
+          ? {
+              prefix: {
+                applyStateColor: applyIconsStateColor || false,
+                name: this.IconNames.analytics,
+                color: iconsDefaultColor,
+              },
+            }
+          : undefined,
       },
       validators: hasRequiredValidator
         ? {
