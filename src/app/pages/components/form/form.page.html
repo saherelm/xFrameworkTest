@@ -42,23 +42,17 @@
     [cssClass]="'code-block'"
   ></x-markdown> -->
 
-  <!-- Form -->
-
-  <!-- [fillColor]="ColorNames.Dark"
-  [activeColor]="ColorNames.Primary"
-  [invalidColor]="ColorNames.DangerShade"
-  [regularColor]="ColorNames.SecondaryShade" -->
-
   <!-- Form Control Center -->
   <x-form
     [isInPage]="true"
     [wrapWithCard]="true"
+    *ngIf="showFormControlCenter"
     [formConfig]="xFormControlConfig"
     (valueChanged)="handleFormControlCenterValueChanged($event)"
   >
   </x-form>
 
-  <!-- [disabledColor]="ColorNames.SecondaryShade" -->
+  <!-- Form -->
   <x-form
     [isInPage]="true"
     *ngIf="xFormConfig"
