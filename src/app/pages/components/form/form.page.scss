@@ -443,6 +443,11 @@
       }
 
       //
+      x-icon.x-action-icon > * {
+        color: var(--disabled-color) !important;
+      }
+
+      //
       .mat-form-field-disabled {
         color: var(--disabled-color) !important;
       }
@@ -473,8 +478,8 @@
       @include formFieldAppearanceHandler(true);
       @include formFieldHintProps(var(--disabled-color));
       @include formFieldErrorProps(var(--disabled-color));
-      @include iconStatusColorHandler(var(--disabled-color));
       @include checkBoxColorHandler(--disabled-color, true);
+      @include iconStatusColorHandler(var(--disabled-color));
       @include formFieldWrapperColorHandler(var(--disabled-color));
       @include radioColorHandler(var(--disabled-color) !important, true, true);
     }

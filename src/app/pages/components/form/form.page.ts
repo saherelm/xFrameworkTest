@@ -6,9 +6,10 @@ import {
   XResourceIDs,
   toNormalString,
   XOneOrManyType,
+  XColorIdentifier,
   isNullOrEmptyString,
   XColorWithBrightness,
-  XColorIdentifier,
+  XBaseDataPagerQueryResult,
 } from 'x-framework-core';
 import { Subject } from 'rxjs';
 import {
@@ -30,17 +31,19 @@ import {
   XFormMapControlPresentType,
   XFormCheckBoxControlConfig,
   XFormControlIconDescriptor,
+  XFormSelectorControlConfig,
+  XFormValueChangeEventModel,
   XFormDatePickerControlConfig,
   XFormColorPickerControlConfig,
   XFormControlAutoCompleteConfig,
   XFormAvatarUploadControlConfig,
   XFormControlActionProviderModel,
+  XFormControlAppearanceIdentifier,
   XFormControlValueChangeEventModel,
   XFormControlStatusChangeEventModel,
   XFormColorPickerControlPresentType,
   XFormDatePickerControlPickerPosition,
-  XFormControlAppearanceIdentifier,
-  XFormValueChangeEventModel,
+  XControlIconDescriptor,
 } from 'x-framework-components';
 import { Validators } from '@angular/forms';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
@@ -55,6 +58,14 @@ enum ContentType {
 enum ContentVisibility {
   VISIBLE = 'visible',
   HIDDEN = 'hidden',
+}
+
+enum Car {
+  GMC = 'gmc',
+  BMD = 'bmw',
+  JAC = 'jac',
+  TOYOTA = 'toyota',
+  NISSAN = 'nissan',
 }
 
 interface XFormModel {
@@ -77,6 +88,7 @@ interface XFormModel {
   color: string;
   phoneNumber: string;
   medias: XOneOrManyType<File>;
+  car: Car;
 }
 
 interface XFormControlModel {
@@ -541,6 +553,7 @@ export class FormPage extends VPageComponent {
   }
 
   //
+  readonly Cars = Object.assign({}, Car);
   readonly ContentTypes = Object.assign({}, ContentType);
   readonly ContentVisibilities = Object.assign({}, ContentVisibility);
 
@@ -897,6 +910,7 @@ export class FormPage extends VPageComponent {
         numberOfChilds: 0,
         latLong: '50.958799848165526,35.82254339947069',
         color: '#9847a6ff',
+        car: Car.BMD,
       },
       updateOn: XFormUpdateOn.CHANGE,
       controls: [],
@@ -929,6 +943,16 @@ export class FormPage extends VPageComponent {
           suffix: !isPrefixIcon ? defaultIconObject : undefined,
         }
       : undefined;
+    const clearIcon: XControlIconDescriptor = {
+      applyStateColor: false, //applyIconsStateColor || false,
+      name: this.IconNames.clear,
+      color: this.ColorNames.Danger,
+    };
+    const selectIcon: XControlIconDescriptor = {
+      applyStateColor: false, // applyIconsStateColor || false,
+      name: this.IconNames.touch,
+      color: this.ColorNames.SuccessShade,
+    };
 
     //
     //#region First Name ...
@@ -1505,9 +1529,9 @@ export class FormPage extends VPageComponent {
           min: 0,
           max: 15,
           step: 1,
-          vertical: true,
+          vertical: false,
           thumbLabel: true,
-          formatter: (value) => this.applyLocale(value)
+          formatter: (value) => this.applyLocale(value),
         } as XFormSliderControlConfig,
       },
       appearance: {
@@ -1590,17 +1614,19 @@ export class FormPage extends VPageComponent {
         type: XFormControlType.Map,
         config: {
           zoom: 2,
+          clearIcon,
+          selectIcon,
           showZoom: true,
           canSelect: true,
           showRotate: true,
           showLocate: true,
+          disableInput: true,
           showSearchBar: true,
           showClearMarker: true,
           centerAfterInit: true,
           showGoMarkedPlace: true,
           showSelectedPosition: true,
           inputCssClass: 'ion-text-end',
-          disableInput: true,
           searchBarColor: XColorWithBrightness.Dark,
           progressBarColor: XColorWithBrightness.Warning,
           presentType: XFormMapControlPresentType.WithDialog,
@@ -1643,10 +1669,70 @@ export class FormPage extends VPageComponent {
       type: {
         type: XFormControlType.ColorPicker,
         config: {
+          clearIcon,
+          selectIcon,
           showCopyToClipboard: true,
           inputCssClass: 'ion-text-end',
           presentType: XFormColorPickerControlPresentType.WithDialog,
         } as XFormColorPickerControlConfig,
+      },
+      appearance: {
+        label: this.ResourceIDs.color,
+        hint: showHint ? this.ResourceIDs.color : undefined,
+        tooltip: showTooltip ? this.ResourceIDs.color : undefined,
+        disabled: disabledByDefault || false,
+        appearance: FormControlAppearance,
+        placeholder: this.ResourceIDs.color,
+        icons: defaultIcon,
+      },
+      validators: hasRequiredValidator
+        ? {
+            validators: [Validators.required],
+          }
+        : undefined,
+      errorHandlers: [
+        {
+          errorName: 'required',
+          errorMessage: 'Required Field ...',
+        },
+      ],
+      eventHandlers: {
+        valueChanged: (value: XFormControlValueChangeEventModel) => {
+          console.log('color value changed: ', value);
+        },
+      },
+    } as XFormControlConfig<XFormModel>;
+    cIdx++;
+    //#endregion
+
+    //
+    //#region Selector ...
+    this.xFormConfig.controls[cIdx] = {
+      index: cIdx,
+      propName: 'car',
+      type: {
+        type: XFormControlType.Selector,
+        config: {
+          clearIcon,
+          selectIcon,
+          title: 'Select Car',
+          showPaginator: true,
+          taskName: 'load-cars',
+          queryFetcher: (query) => {
+            //
+            const result: XBaseDataPagerQueryResult<Car> = {
+              count: keys(this.Cars).length,
+              items: keys(this.Cars).map((k) => k as Car),
+            };
+
+            //
+            return this.getValue(result);
+          },
+          formatSelectedItem: (item: Car) => this.resourceProvider(item),
+          onTaskFinished: (name) => {
+            console.log('Task Finished: ', name);
+          },
+        } as XFormSelectorControlConfig,
       },
       appearance: {
         label: this.ResourceIDs.color,
