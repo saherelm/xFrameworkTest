@@ -679,8 +679,8 @@ export class FormPage extends VPageComponent {
     disabledByDefault: false,
     hasRequiredValidator: true,
     applyIconsStateColor: true,
-    applyStatusOnControls: false,
-    FormControlAppearance: XFormControlAppearance.Outline,
+    applyStatusOnControls: true,
+    FormControlAppearance: XFormControlAppearance.Fill,
     iconsDefaultColor: XColorWithBrightness.WarningShade,
   };
   xFormControlConfig: XFormConfig<XFormControlModel> = {
@@ -894,7 +894,7 @@ export class FormPage extends VPageComponent {
         text3: '',
         text4: '',
         weddingState: true,
-        numberOfChilds: 2,
+        numberOfChilds: 0,
         latLong: '50.958799848165526,35.82254339947069',
         color: '#9847a6ff',
       },
@@ -1520,7 +1520,7 @@ export class FormPage extends VPageComponent {
       },
       validators: hasRequiredValidator
         ? {
-            validators: [Validators.required],
+            validators: [Validators.min(1)],
           }
         : undefined,
       errorHandlers: [

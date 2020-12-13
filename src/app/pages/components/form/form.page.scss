@@ -314,6 +314,7 @@
       @if $disabled {
         @include matFormFieldOutlineColorHandler(var(--disabled-fill-color));
       } @else {
+        @include formFieldLabelColorHandler(var(--regular-color));
         @include matFormFieldOutlineColorHandler(var(--fill-color));
       }
 
@@ -385,7 +386,22 @@
         }
 
         //
+        .x-form-slider-control {
+          .mat-slider-thumb {
+            background-color: var(--disabled-color) !important;
+          }
+        }
+
+        //
         @include matFormFieldUnderlineColorHandler(var(--disabled-color));
+      } @else {
+        //
+        .x-form-slider-control {
+          .mat-slider-wrapper,
+          .mat-slider-track-wrapper {
+            background-color: var(--regular-color) !important;
+          }
+        }
       }
 
       //
