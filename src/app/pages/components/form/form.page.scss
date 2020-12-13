@@ -13,6 +13,13 @@
     .auto-size-flex {
       flex: 0 0 auto !important;
     }
+
+    //
+    .full-heigh {
+      * {
+        height: 100%;
+      }
+    }
   }
 
   @mixin formInputElementProps {
@@ -30,12 +37,18 @@
 
       //
       &:focus {
-        outline: var(--active-color) auto 1px;
+        // outline: var(--active-color) auto 1px;
       }
 
       //
       @include colorHandler(var(--regular-color), false);
       @include backgroundColorHandler(transparent, false);
+    }
+
+    //
+    .x-form-date-input-element,
+    .x-form-input-element:not(.mat-input-element) {
+      height: 100% !important;
     }
   }
 
@@ -65,8 +78,9 @@
     //
     .x-form-field {
       //
+      @include dateProps;
+      @include sliderProps;
       @include radioButtonProps;
-      @include rangeOptionProps;
       @include selectOptionProps;
       @include toogleColorHandler;
       @include checkBoxColorHandler;
@@ -188,10 +202,11 @@
     }
   }
 
-  @mixin rangeOptionProps {
+  @mixin dateProps {
     //
-    .x-form-range-control {
-      width: 100%;
+    .mat-icon-button {
+      display: table-cell;
+      vertical-align: bottom;
     }
   }
 
@@ -287,7 +302,7 @@
           border-radius: 0;
           border-bottom-width: 1px;
           border-bottom-style: solid;
-          border-color: var(--regular-color);
+          border-color: var(--fill-color);
         }
       }
     }
@@ -305,17 +320,14 @@
       //
       &:not(.x-mat-form-field) {
         @if $disabled {
-          @include backgroundColorHandler(
-            var(--disabled-fill-color) !important,
-            false
-          );
+          @include backgroundColorHandler(transaprent!important, false);
         } @else {
           //
           padding: 8px;
           border-radius: 3px;
           border-width: 1px;
           border-style: solid;
-          border-color: var(--regular-color);
+          // border-color: var(--regular-color);
         }
       }
     }
@@ -324,7 +336,7 @@
     // Fill ...
     .x-form-field-appearance-fill {
       //
-      &.x-mat-form-field {
+      &.x-mat-form-field:not(.x-form-field-disabled) {
         //
         @if $disabled {
           //
@@ -340,6 +352,9 @@
           @include matFormFieldUnderlineColorHandler(var(--disabled-color));
         } @else {
           //
+          @include backgroundColorHandler(var(--fill-color) !important, false);
+
+          //
           .mat-form-field-flex {
             @include colorHandler(var(--regular-color) !important);
             @include backgroundColorHandler(
@@ -351,6 +366,26 @@
           //
           @include matFormFieldUnderlineColorHandler(var(--regular-color));
         }
+      }
+
+      //
+      @if $disabled {
+        //
+        &.x-form-field-disabled {
+          background-color: var(--disabled-fill-color) !important;
+        }
+
+        //
+        .mat-form-field-flex {
+          @include colorHandler(var(--disabled-fill-color) !important);
+          @include backgroundColorHandler(
+            var(--disabled-fill-color) !important,
+            false
+          );
+        }
+
+        //
+        @include matFormFieldUnderlineColorHandler(var(--disabled-color));
       }
 
       //
@@ -386,6 +421,17 @@
     // Disabled ...
     &.x-form-field-wrapper-disabled {
       //
+      * {
+        cursor: default;
+        pointer-events: none;
+      }
+
+      //
+      .mat-form-field-disabled {
+        color: var(--disabled-color) !important;
+      }
+
+      //
       .x-form-input-element {
         //
         opacity: 1 !important;
@@ -402,10 +448,17 @@
       }
 
       //
+      .mat-slide-toggle-bar {
+        background-color: var(--disabled-fill-color) !important;
+      }
+
+      //
+      @include sliderProps(true);
       @include formFieldAppearanceHandler(true);
       @include formFieldHintProps(var(--disabled-color));
       @include formFieldErrorProps(var(--disabled-color));
       @include iconStatusColorHandler(var(--disabled-color));
+      @include checkBoxColorHandler(--disabled-color, true);
       @include formFieldWrapperColorHandler(var(--disabled-color));
       @include radioColorHandler(var(--disabled-color) !important, true, true);
     }
@@ -450,11 +503,13 @@
   }
 
   @mixin backgroundColorHandler($color: transaprent, $applyToChilds: true) {
+    //
     background-color: $color;
 
     //
     @if $applyToChilds {
-      *:not(.mat-form-field-ripple) {
+      *:not(.mat-form-field-ripple):not(.mat-slide-toggle-thumb):not(.mat-slide-toggle-bar):not(.mat-checkbox-frame):not(.mat-radio-inner-circle):not(.mat-form-field-underline):not(.mat-slide):not(.mat-slider
+          *) {
         background-color: $color;
       }
     }
@@ -463,7 +518,7 @@
   @mixin formFieldWrapperColorHandler($color: var(--regular-color)) {
     //
     .x-form-input-element {
-      outline: $color auto 1px;
+      // outline: $color auto 1px;
     }
 
     //
@@ -472,6 +527,7 @@
     }
 
     //
+    @include sliderProps;
     @include toogleColorHandler($color);
     @include checkBoxColorHandler($color);
     @include formFieldLabelColorHandler($color);
@@ -506,14 +562,19 @@
     }
   }
 
-  @mixin checkBoxColorHandler($color: var(--regular-color)) {
+  @mixin checkBoxColorHandler($color: var(--regular-color), $disabled: false) {
     //
     .mat-checkbox-frame {
-      border-color: var(--regular-color); // $color;
+      @if $disabled {
+        border-color: var(--disabled-color) !important;
+      } @else {
+        border-color: var(--regular-color);
+      }
     }
 
     //
     .mat-checkbox-checked {
+      .mat-checkbox-frame,
       .mat-checkbox-background {
         background-color: var(--active-color) !important;
       }
@@ -541,8 +602,17 @@
 
   @mixin toogleColorHandler($color: var(--regular-color)) {
     //
-    .mat-slide-toggle-bar {
-      background-color: var(--active-color) !important;
+    :not(.x-form-field-disabled) {
+      .mat-slide-toggle-bar {
+        background-color: var(--active-color) !important;
+      }
+    }
+
+    //
+    .x-form-field-disabled {
+      .mat-slide-toggle-bar {
+        background-color: var(--disabled-color) !important;
+      }
     }
 
     //
@@ -563,13 +633,84 @@
     }
   }
 
+  @mixin sliderProps($disabled: false) {
+    //
+    .x-form-slider-control {
+      //
+      @if $disabled {
+        //
+        cursor: default;
+        pointer-events: none;
+      }
+
+      //
+      &:not(.vertical) {
+        width: 100%;
+      }
+
+      //
+      &.vertical {
+        display: block;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+
+      //
+      .mat-slider-wrapper,
+      .mat-slider-track-wrapper {
+        //
+        @if $disabled {
+          background-color: var(--disabled-fill-color) !important;
+        } @else {
+          background-color: var(--fill-color);
+        }
+      }
+
+      //
+      .mat-slider-thumb,
+      .mat-slider-thumb-label,
+      .mat-slider-thumb-label-text {
+        //
+        @if $disabled {
+          color: var(--disabled-color) !important;
+          background-color: var(--disabled-fill-color) !important;
+        } @else {
+          color: var(--checkbox-check-color);
+          background-color: var(--active-color);
+        }
+      }
+
+      //
+      .mat-slider-track-fill {
+        //
+        @if $disabled {
+          background-color: var(--disabled-color) !important;
+        } @else {
+          background-color: var(--active-color);
+        }
+      }
+
+      //
+      .mat-slider-vertical {
+      }
+    }
+  }
+
   @mixin formFieldLabelColorHandler($color: var(--regular-color)) {
     //
     .mat-form-field-label {
       color: $color;
     }
 
+    //
     .x-field-label {
+      color: $color;
+    }
+
+    //
+    .mat-select-placeholder {
       color: $color;
     }
   }
@@ -645,9 +786,24 @@
     //
     .ng-invalid,
     .mat-form-field-invalid {
+      //
+      *:not(.x-field-label):not(ion-icon):not(.mat-form-field-outline):not(.mat-form-field-outline-thick):not(.mat-form-field-outline-end):not(.mat-form-field-outline-gap):not(.mat-form-field-outline-start) {
+        color: var(--regular-color);
+      }
+
+      //
+      &.apply-status {
+        * {
+          color: var(--invalid-color);
+        }
+      }
+
+      // * {
+      //   border-color: yellow;
+      // }
+
       * {
-        color: inherit;
-        background-color: inherit;
+        background-color: transparent;
       }
     }
 
@@ -709,6 +865,57 @@
       $level: 0.5;
       -webkit-filter: brightness($level);
       filter: brightness($level);
+    }
+  }
+}
+
+::ng-deep.x-form-control-date-picker {
+  //
+  &.mat-calendar {
+    //
+    color: var(--regular-color) !important;
+    background-color: var(--fill-color) !important;
+
+    //
+    .mat-calendar-arrow {
+      border-top-color: unset;
+    }
+
+    //
+    .mat-calendar-body-today {
+      color: var(--active-color);
+      border-color: var(--acttive-color);
+    }
+
+    //
+    .mat-calendar-table-header {
+      color: var(--regular-color);
+    }
+
+    //
+    .mat-calendar-body-selected {
+      //
+      color: var(--checkbox-check-color);
+      background-color: var(--active-color);
+      border-color: var(--checkbox-check-color);
+    }
+
+    //
+    .mat-calendar-next-button,
+    .mat-calendar-previous-button,
+    .mat-calendar-period-button {
+      color: var(--active-color) !important;
+    }
+
+    //
+    .mat-calendar-body-label,
+    .mat-calendar-body-cell-content {
+    }
+
+    //
+    .mat-calendar-body-disabled {
+      color: var(--disabled-color) !important;
+      filter: contrast(0.5) !important;
     }
   }
 }

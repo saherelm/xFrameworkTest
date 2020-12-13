@@ -49,16 +49,24 @@
   [invalidColor]="ColorNames.DangerShade"
   [regularColor]="ColorNames.SecondaryShade" -->
 
+  <!-- Form Control Center -->
+  <x-form
+    [isInPage]="true"
+    [wrapWithCard]="true"
+    [formConfig]="xFormControlConfig"
+    (valueChanged)="handleFormControlCenterValueChanged($event)"
+  >
+  </x-form>
+
+  <!-- [disabledColor]="ColorNames.SecondaryShade" -->
   <x-form
     [isInPage]="true"
     *ngIf="xFormConfig"
     [wrapWithCard]="true"
     [formConfig]="xFormConfig"
-    [applyStatusOnControls]="true"
     [actionProvider]="formActionProvider"
+    [applyStatusOnControls]="applyStatusOnControls"
   ></x-form>
 </v-page>
 
-<ng-template #nameAutoCompleteRef let-item>
-  {{ item.data }}
-</ng-template>
+<ng-template #nameAutoCompleteRef let-item> {{ item.data }} </ng-template>
