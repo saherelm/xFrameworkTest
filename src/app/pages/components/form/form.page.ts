@@ -620,7 +620,19 @@ export class FormPage extends VPageComponent {
           errorMessage: 'Required Field ...',
         },
       ],
-      eventHandlers,
+      eventHandlers: {
+        ...eventHandlers,
+        onBlured: (name) => {
+          //
+          eventHandlers.onBlured(name);
+          this.prepareFirstNameAutoComplete({ opened: false });
+        },
+        valueChanged: async (event) => {
+          //
+          eventHandlers.valueChanged(event);
+          await this.handleFilterAutoCompleteFirstName(event.value);
+        },
+      },
     } as XFormControlConfig<XFormModel>;
     cIdx++;
 
@@ -873,7 +885,13 @@ export class FormPage extends VPageComponent {
           errorMessage: 'Required Field ...',
         },
       ],
-      eventHandlers,
+      eventHandlers: {
+        ...eventHandlers,
+        valueChanged: (model) => {
+          eventHandlers.valueChanged(model);
+          this.handleHasNumberOfChild(toBoolean(model.value));
+        },
+      },
     } as XFormControlConfig<XFormModel>;
     cIdx++;
     //#endregion
