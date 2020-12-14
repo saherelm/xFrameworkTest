@@ -23,6 +23,7 @@ import {
   XFormIconDescriptor,
   XFormMapControlConfig,
   XFormControlAppearance,
+  XControlIconDescriptor,
   XFormRadioControlConfig,
   XFormSelectControlConfig,
   XFormSelectControlOption,
@@ -33,6 +34,8 @@ import {
   XFormControlIconDescriptor,
   XFormSelectorControlConfig,
   XFormValueChangeEventModel,
+  XBaseFormControlActionModel,
+  XFormControlEventsDescriptor,
   XFormDatePickerControlConfig,
   XFormColorPickerControlConfig,
   XFormControlAutoCompleteConfig,
@@ -43,9 +46,6 @@ import {
   XFormControlStatusChangeEventModel,
   XFormColorPickerControlPresentType,
   XFormDatePickerControlPickerPosition,
-  XControlIconDescriptor,
-  XFormControlEventsDescriptor,
-  XBaseFormControlActionModel,
 } from 'x-framework-components';
 import { Validators } from '@angular/forms';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
@@ -314,7 +314,7 @@ export class FormPage extends VPageComponent {
   ];
 
   //
-  showFormControlCenter = false;
+  showFormControlCenter = true;
   formConfigModel: XFormControlModel = {
     hasIcon: true,
     showHint: true,
