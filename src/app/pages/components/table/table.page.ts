@@ -5,7 +5,7 @@ import {
 } from 'x-framework-core';
 import {
   XIconNames,
-  XTableProps,
+  XTableConfig,
   XTableItemPosition,
 } from 'x-framework-components';
 import { Component } from '@angular/core';
@@ -60,7 +60,7 @@ export class TablePage extends VPageComponent {
   readonly TableItemPositions = Object.assign({}, XTableItemPosition);
 
   //
-  tempTableProps: XTableProps<Partial<Temp>> = {
+  tempTableProps: XTableConfig<Partial<Temp>> = {
     items: [
       {
         id: '71f14439-262f-44bf-8dc8-ee85929c349c',

@@ -947,9 +947,7 @@ export class FormPage extends VPageComponent {
           canDrop: true,
           color: this.ColorNames.Light,
           fileDropAreaColor: this.ColorNames.Light,
-          placeHolderAvatar: this.managerService.getFullUrl(
-            '/assets/image/default-user-image.png'
-          ),
+          placeHolderAvatar: './assets/image/default-user-image.png',
         } as XFormAvatarUploadControlConfig,
       },
       appearance: {
