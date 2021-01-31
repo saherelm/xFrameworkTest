@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ViewsModule } from '../../views/views.module';
 import { IntroductionPage } from './introduction/introduction.page';
 import { BaseRoutes, ServicesRoutes } from 'src/app/config/page.config';
+import { UserDevicePage } from './user-device/user-device.page';
 
 @NgModule({
   imports: [
@@ -19,8 +20,12 @@ import { BaseRoutes, ServicesRoutes } from 'src/app/config/page.config';
         path: ServicesRoutes.Introduction,
         component: IntroductionPage,
       },
+      {
+        path: ServicesRoutes.UserDevice,
+        component: UserDevicePage,
+      },
     ]),
   ],
-  declarations: [IntroductionPage],
+  declarations: [UserDevicePage, IntroductionPage],
 })
 export class ServicesPageModule {}

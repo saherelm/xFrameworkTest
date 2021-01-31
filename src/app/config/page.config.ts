@@ -31,6 +31,7 @@ export enum ServicesRoutes {
   Default = 'services',
   Services = 'services',
   Introduction = 'introduction',
+  UserDevice = 'user_device',
 }
 
 export enum ComponentsRoutes {
@@ -103,6 +104,7 @@ export enum PageName {
   // Services ...
   Services = AppRoutes.Services,
   ServicesIntoduction = ServicesRoutes.Introduction,
+  UserDevice = ServicesRoutes.UserDevice,
 
   //
   // Components ...
@@ -220,6 +222,17 @@ export const PageIndex: PageIndexType = {
         baseRoute: `${ServicesRoutes.Introduction}`,
         description: AppResourceIDs.services_introduction_description,
         route: ['/', `${AppRoutes.Services}`, `${ServicesRoutes.Introduction}`],
+      },
+      //
+      // UserDevice ...
+      {
+        icon: XIconNames.guide,
+        id: `${PageName.UserDevice}`,
+        name: `${PageName.UserDevice}`,
+        title: AppResourceIDs.user_device,
+        baseRoute: `${ServicesRoutes.UserDevice}`,
+        description: AppResourceIDs.user_device_description,
+        route: ['/', `${AppRoutes.Services}`, `${ServicesRoutes.UserDevice}`],
       },
     ],
   },

@@ -51,6 +51,12 @@ export enum AppResourceIDs {
   services_introduction = 'services_introduction',
   services_introduction_description = 'services_introduction_description',
   //#endregion
+
+  //
+  //#region User Device ...
+  user_device = 'user_device',
+  user_device_description = 'user_device_description',
+  //#endregion
   //#endregion
 
   //
@@ -440,6 +446,18 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'services_introduction_description',
     value: 'آشنایی با واحد خدمات از چارچوب ایکس',
+  },
+  //#endregion
+
+  //
+  //#region User Device ...
+  {
+    id: 'user_device',
+    value: 'ابزار کاربر',
+  },
+  {
+    id: 'user_device_description',
+    value: 'شناسایی ابزار مقصد کاربر',
   },
   //#endregion
   //#endregion
@@ -1148,6 +1166,18 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'services_introduction_description',
     value: 'Introduction to xFramework Services Module',
+  },
+  //#endregion
+
+  //
+  //#region User Device ...
+  {
+    id: 'user_device',
+    value: 'َUser Device',
+  },
+  {
+    id: 'user_device_description',
+    value: 'User Device Detection',
   },
   //#endregion
   //#endregion

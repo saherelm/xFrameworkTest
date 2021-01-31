@@ -1,0 +1,11 @@
+<v-page
+  [hasSide]="true"
+  [toolbarTitle]="toolbarTitle"
+  [toolbarSubTitle]="toolbarSubTitle"
+  [toolbarShowSubTitle]="toolbarShowSubTitle"
+>
+  <!-- Content -->
+  <x-card [isInPage]="true" [showActions]="true" [color]="ColorNames.Light">
+    {{ device | json }}
+  </x-card>
+</v-page>
