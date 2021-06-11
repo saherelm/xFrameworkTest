@@ -49,3 +49,4 @@ src/assets/docs
 
 #
 dist
+package-lock.json
