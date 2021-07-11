@@ -88,6 +88,8 @@
     [childColor]="'primary-shade'"
     [parentColor]="'tertiary-shade'"
     [parentActiveColor]="'warning-shade'"
+    (itemSelected)="handleNavigatorItemSelected($event)"
+    *ngIf="(getValue(hasSide) | async) && (hasChildValue(navPages) | async)"
   ></x-navigator>
 </ng-template>
 

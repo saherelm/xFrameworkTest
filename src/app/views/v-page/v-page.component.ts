@@ -40,6 +40,7 @@ import {
   XContentSlot,
   XPageComponent,
   XPopoverComponent,
+  XNavigatorListItem,
   XBackSlotIdentifier,
   XLogoSlotIdentifier,
   XMenuSlotIdentifier,
@@ -174,6 +175,9 @@ export class VPageComponent extends XPageComponent {
   @Input()
   toolbarShowTitle: XStandardType<boolean> = true;
 
+  @Input()
+  toolbarShowSubTitle: XStandardType<boolean> = false;
+  
   @Input()
   toolbarTitle: XStandardType<string> = super.resourceProvider(
     this.ResourceIDs.app_name
@@ -365,6 +369,16 @@ export class VPageComponent extends XPageComponent {
 
   //
   //#region UI Handlers ...
+  async handleNavigatorItemSelected(event: XNavigatorListItem) {
+    //
+    if (!event) {
+      return;
+    }
+
+    //
+    // TODO: Complete Special Actions here ...
+  }
+
   async handleMoreButtonClicked(event: any) {
     //
     const onlyIcon = false;
@@ -432,7 +446,7 @@ export class VPageComponent extends XPageComponent {
       handler: async () => {
         //
         const route = this.managerService.mergeRoutes(Pages.ThemeManager.route);
-        await this.managerService.navigateByUrl(route);
+        await this.managerService.navigateByUrlReplace(route);
       },
     });
 
