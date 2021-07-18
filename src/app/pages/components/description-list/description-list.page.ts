@@ -37,10 +37,6 @@ export class DescriptionListPage extends VPageComponent {
     Object.assign({}, XResourceIDs),
     AppResourceIDs
   ) as any;
-
-  //
-  // Color Names ...
-  readonly ColorNames = Object.assign({}, XColor);
   //#endregion
 
   //

@@ -2,13 +2,16 @@ import {
   DefaultLocale,
   AvailableTranslationResources,
 } from './localization.config';
-import { XFrameworkCoreConfig } from 'x-framework-core';
 import { NotificationAudioSources } from './audio.config';
+import { XFrameworkCoreConfig, XPage } from 'x-framework-core';
 import { XFrameworkServicesConfig } from 'x-framework-services';
 import { XFrameworkComponentsConfig } from 'x-framework-components';
 
 // tslint:disable-next-line:no-empty-interface
-export interface AppConfig {}
+export interface AppConfig {
+  defaultLandingPage?: XPage;
+  defaultBlogPage?: XPage;
+}
 
 export type XFrameworkCoreSharedConfig = Partial<XFrameworkCoreConfig>;
 export type XFrameworkServicesSharedConfig = Partial<XFrameworkServicesConfig>;

@@ -53,10 +53,6 @@ export class SmallComponentsPage extends VPageComponent {
   ) as any;
 
   //
-  // Color Names ...
-  readonly ColorNames = Object.assign({}, XColor);
-
-  //
   // Content ...
   readonly contentFa = `
   # مولفه های جزئی
@@ -416,12 +412,12 @@ await this.managerService
   readonly colorContentEn = 'this component used to represent a color';
 
   readonly colorSample1 =
-'```typescript' +
-`
+    '```typescript' +
+    `
 <x-color [value]="{ key: 'black', value: '#000000' }">
 </x-color>
 ` +
-'```';
+    '```';
 
   readonly modalContentFa = `
 برخی اوقات احتیاج داریم که یک مولفه مجزا در انگولار را بعنوان یک کادر محاوره به کاربر نمایش دهیم.

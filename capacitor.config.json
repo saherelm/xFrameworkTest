@@ -1,8 +1,0 @@
-{
-  "appId": "ir.saherelm.x-framewor.xframeworktest",
-  "appName": "xFrameworkTest",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www",
-  "cordova": {}
-}

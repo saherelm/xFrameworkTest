@@ -18,6 +18,12 @@ export enum AppResourceIDs {
   //#endregion
 
   //
+  //#region Landing ...
+  landing_page_title = 'landing_page_title',
+  landing_page_description = 'landing_page_description',
+  //#endregion
+
+  //
   //#region Home ...
   home = 'home',
   home_description = 'home_description',
@@ -375,6 +381,19 @@ export const FaCustomLocales: XTranslationItem[] = [
   {
     id: 'maintainer_name',
     value: 'هادی خزاعی اصل',
+  },
+  //#endregion
+
+  //
+  //#region Landing ...
+  //
+  {
+    id: 'landing_page_title',
+    value: 'صفحه نخست',
+  },
+  {
+    id: 'landing_page_description',
+    value: 'نخستین صفحه ای که نمایش داده میشود',
   },
   //#endregion
 
@@ -1095,6 +1114,19 @@ export const EnCustomLocales: XTranslationItem[] = [
   {
     id: 'maintainer_name',
     value: 'Hadi Khazaee Asl',
+  },
+  //#endregion
+
+  //
+  //#region Landing ...
+  //
+  {
+    id: 'landing_page_title',
+    value: 'First Page',
+  },
+  {
+    id: 'landing_page_description',
+    value: 'First Page was shown',
   },
   //#endregion
 

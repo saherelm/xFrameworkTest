@@ -40,10 +40,6 @@ export class CounterPage extends VPageComponent {
   ) as any;
 
   //
-  // Color Names ...
-  readonly ColorNames = Object.assign({}, XColor);
-
-  //
   // Counter Types ...
   readonly CounterTypes = Object.assign({}, XCounterType);
 

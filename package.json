@@ -1,7 +1,14 @@
 {
   "name": "x-framework-test",
+  "description": "an xFramework app to make Postex apps launching easier",
+  "homepage": "http://postex.ir",
+  "author": {
+    "name": "Hadi Khazaee Asl",
+    "email": "hadi_khazaee_asl@yahoo.com",
+    "url": "https://saherelm.ir"
+  },
+  "version": "0.0.1",
   "main": "app.electron.js",
-  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "e2e": "ng e2e",
@@ -10,17 +17,26 @@
     "start": "ng serve",
     "electronStart": "electron .",
     "build": "ng build --aot --base-href ./",
+    "runAndroid": "ionic cordova run android",
     "electronDev": "nodemon --exec electron .",
+    "serveInLabXFrameworkProject": "ionic serve -l",
+    "emulateAndroid": "ionic cordova emulate android",
     "buildProd": "ng build --prod --aot --base-href ./",
+    "resourcesAndroid": "ionic cordova resources android",
     "electronRun": "npm run build && npm run electronStart",
+    "requirementsAndroid": "ionic cordova requirements android",
     "electronRunProd": "npm run buildProd && npm run electronStart",
     "serveXFrameworkProject": "npm run installDependencies && ng serve -o",
     "serveSSLXFrameworkProject": "npm run installDependencies && ng serve -o --ssl",
     "prepareDependencies": "npm run removeDependencies && npm run installDependencies",
     "servePublicXFrameworkProject": "npm run installDependencies && ng serve --host 0.0.0.0 -o",
-    "servePublicSSLXFrameworkProject": "npm run installDependencies && ng serve --host 0.0.0.0 -o --ssl",
     "removeDependencies": "npm uninstall x-framework-components x-framework-services x-framework-core",
-    "installDependencies": "npm i -s .././pack/x-framework-core-0.0.1.tgz .././pack/x-framework-services-0.0.1.tgz .././pack/x-framework-components-0.0.1.tgz"
+    "servePublicSSLXFrameworkProject": "npm run installDependencies && ng serve --host 0.0.0.0 -o --ssl",
+    "installDependencies": "npm i -s .././pack/x-framework-core-0.0.1.tgz .././pack/x-framework-services-0.0.1.tgz .././pack/x-framework-components-0.0.1.tgz",
+    "buildElectronWin32": "npm run buildProd && electron-packager . --platform=win32 --arch=ia32 --icon=src/assets/icon/favicon.ico --electron-version=$(electron --version) --overwrite --prune=true --out=dist",
+    "buildElectronWin64": "npm run buildProd && electron-packager . --platform=win32 --arch=x64 --icon=src/assets/icon/favicon.ico --electron-version=$(electron --version) --overwrite --prune=true --out=dist",
+    "buildElectronMac64": "npm run buildProd && electron-packager . --platform=darwin --arch=x64 --icon=src/assets/icon/favicon.icns --electron-version=$(electron --version) --overwrite --prune=true --out=dist",
+    "buildElectronLinux64": "npm run buildProd && electron-packager . --platform=linux --arch=x64 --icon=src/assets/icon/favicon.png --electron-version=$(electron --version) --overwrite --prune=true --out=dist"
   },
   "private": true,
   "dependencies": {
@@ -66,10 +82,19 @@
     "@angular-devkit/build-angular": "~0.1000.8",
     "@angular/cli": "~10.0.8",
     "@angular/compiler-cli": "~10.0.14",
-    "@types/node": "^12.11.1",
+    "@ionic/angular-toolkit": "^2.2.0",
+    "@ionic/lab": "3.2.10",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "cordova-android": "^9.1.0",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-ionic-webview": "^4.2.1",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-whitelist": "^1.3.3",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -81,5 +106,20 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
+      "cordova-plugin-ionic-keyboard": {}
+    },
+    "platforms": [
+      "android"
+    ]
   }
 }

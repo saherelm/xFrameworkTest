@@ -29,7 +29,6 @@ export class MapPage extends VPageComponent {
   ) as any;
 
   //
-  readonly ColorNames = Object.assign({}, XColor);
   readonly IconNames = Object.assign({}, XIconNames);
   //#endregion
 

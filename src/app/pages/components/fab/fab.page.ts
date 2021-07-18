@@ -40,10 +40,6 @@ export class FabPage extends VPageComponent {
   ) as any;
 
   //
-  // Color Names ...
-  readonly ColorNames = Object.assign({}, XColor);
-
-  //
   readonly IconNames = Object.assign({}, XIconNames);
   readonly ButtonTypes = Object.assign({}, XButtonType);
 

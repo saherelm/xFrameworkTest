@@ -15,6 +15,7 @@ import {
 import {
   XColor,
   assign,
+  nameof,
   XParam,
   XLocale,
   notValue,
@@ -26,6 +27,7 @@ import {
   XColorIdentifier,
   XModalButtonRole,
   XPickerColumnOption,
+  XColorWithBrightness,
 } from 'x-framework-core';
 import {
   XMenuSlot,
@@ -53,11 +55,12 @@ import {
 } from 'x-framework-components';
 import { map } from 'rxjs/operators';
 import { MenuController } from '@ionic/angular';
-import { X_CONFIG } from '../../config/x-config';
-import { XConfig } from '../../config/app-config';
+import { X_CONFIG } from 'src/app/config/x-config';
+import { Pages } from 'src/app/config/page.config';
+import { XConfig } from 'src/app/config/app-config';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { XManagerService } from 'x-framework-services';
-import { NavPageItems, Pages } from '../../config/page.config';
+import { NavPageItems } from 'src/app/config/page.config';
 import { isNullOrUndefined, hasChild } from 'x-framework-core';
 import { AppResourceIDs } from 'src/app/config/app.localization.config';
 
@@ -74,6 +77,22 @@ export class VPageComponent extends XPageComponent {
   //
   isMobileUi$ = this.managerService.isMobileUi$;
   isNotMobileUi$ = this.managerService.isNotMobileUi$;
+
+  //
+  readonly IconNames = Object.assign({}, XIconNames);
+  readonly AppResourceIDs = Object.assign({}, AppResourceIDs);
+  readonly ColorNames = Object.assign({}, XColorWithBrightness);
+
+  //
+  navPages = NavPageItems;
+
+  //
+  @Input()
+  uiDisabled: boolean;
+
+  //
+  @Input()
+  loading: boolean;
 
   //
   //#region CaptureMode ...
@@ -95,6 +114,11 @@ export class VPageComponent extends XPageComponent {
 
   //
   //#region Page Props ...
+  //
+  //#region Toolbar Content ...
+  @Input()
+  showToolbarContent = true;
+
   private TOOLBAR_CONTENT_TEMPLATE: TemplateRef<any>;
 
   /**
@@ -114,6 +138,12 @@ export class VPageComponent extends XPageComponent {
   get toolbarContentTemplateRef() {
     return this.TOOLBAR_CONTENT_TEMPLATE;
   }
+  //#endregion
+
+  //
+  //#region Toolbar End Slot ...
+  @Input()
+  showToolbarEndSlot = true;
 
   private TOOLBAR_END_SLOT_TEMPLATE: TemplateRef<any>;
 
@@ -132,11 +162,9 @@ export class VPageComponent extends XPageComponent {
   }
 
   get toolbarEndSlotButtonsTemplate() {
-    return this.TOOLBAR_END_SLOT_TEMPLATE;
+    return this.showToolbarEndSlot ? this.TOOLBAR_END_SLOT_TEMPLATE : undefined;
   }
-
-  //
-  navPages = NavPageItems;
+  //#endregion
 
   //
   @Input()
@@ -177,7 +205,7 @@ export class VPageComponent extends XPageComponent {
 
   @Input()
   toolbarShowSubTitle: XStandardType<boolean> = false;
-  
+
   @Input()
   toolbarTitle: XStandardType<string> = super.resourceProvider(
     this.ResourceIDs.app_name
@@ -187,7 +215,7 @@ export class VPageComponent extends XPageComponent {
   //
   //#region Toolbar Logo ...
   @Input()
-  toolbarLogoSlot: XStandardType<XLogoSlotIdentifier> = XLogoSlot.Start;
+  toolbarLogoSlot: XStandardType<XLogoSlotIdentifier> = XLogoSlot.End;
 
   @Input()
   toolbarShowLogo: XStandardType<boolean> = true;
@@ -281,15 +309,16 @@ export class VPageComponent extends XPageComponent {
 
   //
   //#region Constructor ...
-  constructor(
+  public constructor(
     public zone: NgZone,
+    @Inject(X_CONFIG)
+    public config: XConfig,
     public element: ElementRef,
     public renderer: Renderer2,
     public ruler: ViewportRuler,
     public menuController: MenuController,
     public managerService: XManagerService,
-    public changeDetector: ChangeDetectorRef,
-    @Inject(X_CONFIG) public config: XConfig
+    public changeDetector: ChangeDetectorRef
   ) {
     super(
       zone,
@@ -343,28 +372,36 @@ export class VPageComponent extends XPageComponent {
     super.onChange(changeKeys);
 
     //
-    if (changeKeys.includes('hasSide')) {
+    const isHasSideChanged = changeKeys.includes(
+      nameof<VPageComponent>('hasSide')
+    );
+    if (isHasSideChanged) {
       await this.handleHasSideEffect();
+    }
+
+    //
+    const isToolbarHasMenuChanged = changeKeys.includes(
+      nameof<VPageComponent>('toolbarHasMenu')
+    );
+    const isToolbarShowMenuChanged = changeKeys.includes(
+      nameof<VPageComponent>('toolbarShowMenu')
+    );
+    if (isToolbarHasMenuChanged || isToolbarShowMenuChanged) {
+      this.detectChanges();
     }
   }
   //#endregion
 
   //
   //#region Register Handlers ...
-  registerViewHandlers() {
-    super.registerViewHandlers();
-
-    //
-    //#region Register ManagerService Loading Handler ...
-    this.managerService.isLoading$.subscribe((isLoading) => {
-      this.toolbarShowProgressBar = isLoading;
-    });
-    //#endregion
-  }
   //#endregion
 
   //
   //#region Handlers ...
+  //#endregion
+
+  //
+  //#region UI Providers ...
   //#endregion
 
   //
@@ -376,7 +413,7 @@ export class VPageComponent extends XPageComponent {
     }
 
     //
-    // TODO: Complete Special Actions here ...
+    // TODO: Complete Special Actions on NavItems ...
   }
 
   async handleMoreButtonClicked(event: any) {
@@ -387,6 +424,39 @@ export class VPageComponent extends XPageComponent {
     const slideOptions: XListItemSlideOption[] = [];
 
     //
+    // Landing Page ...
+    if (!isNullOrUndefined(this.config.defaultLandingPage)) {
+      //
+      // Landing ...
+      slideOptions.push({
+        id: 'go_landing',
+        icon: XIconNames.refresh,
+        title: AppResourceIDs.landing_page_title,
+        color: XColor.Tertiary,
+        slot: 'start',
+        onlyIcon,
+        handler: async () => {
+          // await this.managerService.navigateByPageReplace(Pages.Landing);
+        },
+      });
+
+      //
+      // Home ...
+      slideOptions.push({
+        id: 'go_home',
+        icon: XIconNames.home,
+        title: AppResourceIDs.home,
+        color: XColor.Tertiary,
+        slot: 'start',
+        onlyIcon,
+        handler: async () => {
+          await this.managerService.navigateByPageReplace(Pages.Home);
+        },
+      });
+    }
+
+    //
+    // Change Language ...
     slideOptions.push({
       id: 'change_language',
       icon: XIconNames.language,
@@ -400,42 +470,47 @@ export class VPageComponent extends XPageComponent {
     });
 
     //
+    // Capture Mode ...
     const isCaptureModeEnabled = await this.getValueAsync(
       this.enableCaptureMode
     );
-    if (isCaptureModeEnabled) {
-      //
-      slideOptions.push({
-        id: 'disable_capture_mode',
-        icon: XIconNames.crop,
-        title: XResourceIDs.disable_capture_mode,
-        color: XColor.Danger,
-        slot: 'start',
-        onlyIcon,
-        handler: async () => {
-          //
-          this.enableCaptureMode = false;
-          this.detectChanges();
-        },
-      });
-    } else {
-      //
-      slideOptions.push({
-        id: 'enable_capture_mode',
-        icon: XIconNames.crop,
-        title: XResourceIDs.enable_capture_mode,
-        color: XColor.Tertiary,
-        slot: 'start',
-        onlyIcon,
-        handler: async () => {
-          //
-          this.enableCaptureMode = true;
-          this.detectChanges();
-        },
-      });
+    const isNotMobileUi = await this.getValueAsync(this.isNotMobileUi$);
+    if (isNotMobileUi) {
+      if (isCaptureModeEnabled) {
+        //
+        slideOptions.push({
+          id: 'disable_capture_mode',
+          icon: XIconNames.crop,
+          title: XResourceIDs.disable_capture_mode,
+          color: XColor.Danger,
+          slot: 'start',
+          onlyIcon,
+          handler: async () => {
+            //
+            this.enableCaptureMode = false;
+            this.detectChanges();
+          },
+        });
+      } else {
+        //
+        slideOptions.push({
+          id: 'enable_capture_mode',
+          icon: XIconNames.crop,
+          title: XResourceIDs.enable_capture_mode,
+          color: XColor.Tertiary,
+          slot: 'start',
+          onlyIcon,
+          handler: async () => {
+            //
+            this.enableCaptureMode = true;
+            this.detectChanges();
+          },
+        });
+      }
     }
 
     //
+    // Theme ...
     slideOptions.push({
       id: 'theme_manager',
       icon: XIconNames.color_palette,
@@ -493,9 +568,6 @@ export class VPageComponent extends XPageComponent {
   }
 
   async handleImageCaptured(image: string | Blob) {
-    //
-    console.log('imageCaptured: ', image);
-
     //
     if (image) {
       this.imageCaptured.emit(image);

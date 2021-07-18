@@ -1,16 +1,7 @@
 {
-  "projects": {
-    "xFrameworkTest": {
-      "name": "xFrameworkTest",
-      "integrations": {
-        "capacitor": {}
-      },
-      "type": "angular",
-      "root": "."
-    }
-  },
+  "name": "xFrameworkTest",
   "integrations": {
-    "capacitor": {}
+    "cordova": {}
   },
-  "defaultProject": "xFrameworkTest"
+  "type": "angular"
 }

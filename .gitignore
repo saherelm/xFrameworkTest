@@ -50,3 +50,12 @@ src/assets/docs
 #
 dist
 package-lock.json
+
+#
+platforms
+plugins
+www
+
+#
+resources/android
+resources/ios

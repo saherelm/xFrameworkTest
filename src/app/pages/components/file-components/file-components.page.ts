@@ -113,7 +113,6 @@ export class FileComponentsPage extends VPageComponent {
   ) as any;
 
   //
-  readonly ColorNames = Object.assign({}, XColor);
   readonly IconNames = Object.assign({}, XIconNames);
   //#endregion
 
@@ -349,13 +348,13 @@ export class FileComponentsPage extends VPageComponent {
   ) {
     super(
       zone,
+      config,
       element,
       renderer,
       ruler,
       menuController,
       managerService,
       changeDetector,
-      config
     );
   }
   //#endregion

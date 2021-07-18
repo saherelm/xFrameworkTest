@@ -2,7 +2,7 @@
 //#region Required Modules ...
 const url = require('url');
 const path = require('path');
-const { app, Tray, BrowserWindow, Menu } = require('electron');
+const { app, shell, Tray, BrowserWindow, Menu } = require('electron');
 //#endregion
 
 //
@@ -16,14 +16,15 @@ const isDevelopment = process.env.NODE_ENV !== 'production' ? true : false; // a
 const isMac = process.platform === 'darwin' ? true : false;
 
 //
-const iconPath = path.join(__dirname, 'dist/xFrameworkTest/assets/icon/favicon.png');
-const trayIconPath = path.join(__dirname, 'dist/xFrameworkTest/assets/icon/icon-16x16.png');
+const iconPath = path.join(__dirname, 'www/assets/icon/favicon.png');
+const trayIconPath = path.join(__dirname, 'www/assets/icon/icon-16x16.png');
 //#endregion
 
 //
 //#region Global Objects ...
 let tray;
 let mainWindow;
+let mainUrl;
 //#endregion
 
 //
@@ -46,14 +47,16 @@ function createTray() {
   // Attach Event Listener to Tray RightClick ...
   tray.on('right-click', () => {
     //
-    const contextMenu = Menu.buildFromTemplate([{
-      label: 'quit',
-      click: () => {
-        //
-        app.isClosing = true;
-        app.quit();
-      }
-    }]);
+    const contextMenu = Menu.buildFromTemplate([
+      {
+        label: 'quit',
+        click: () => {
+          //
+          app.isClosing = true;
+          app.quit();
+        },
+      },
+    ]);
 
     //
     tray.popUpContextMenu(contextMenu);
@@ -77,13 +80,29 @@ function createWindow() {
   });
 
   //
+  mainWindow.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    shell.openExternal(url);
+  });
+
+  //
+  mainWindow.webContents.on('will-navigate', function(e, url) {
+    e.preventDefault();
+    mainWindow.loadURL(mainUrl);
+  });
+
+  //
+  // Prepare Main Url ...
+  mainUrl = url.format({
+    pathname: path.join(__dirname, '/www/index.html'),
+    protocol: 'file',
+    slashes: true,
+  });
+
+  //
   // Load Content on Main Window ...
   mainWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, '/dist/xFrameworkTest/index.html'),
-      protocol: 'file',
-      slashes: true,
-    })
+    mainUrl
   );
 
   //
